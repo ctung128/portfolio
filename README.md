@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Carolyn Tung — Portfolio
 
-## Getting Started
+Next.js 16 + TypeScript + Tailwind CSS v4. Replaces the Framer site at carolynatung.com.
 
-First, run the development server:
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Editing content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+All copy lives in `src/content/` as plain TypeScript objects — no MDX, no CMS, no touching layout code.
 
-## Learn More
+- `src/content/site.ts` — hero text, specialization pillars, about/education, recommendations, nav links, resume/Calendly/LinkedIn URLs.
+- `src/content/case-studies/*.ts` — one file per case study (`props.ts`, `splitev.ts`, `eva.ts`, `inkline.ts`, `jino.ts`). Each is a `CaseStudy` object (shape defined in `types.ts`) with a `sections` array. Each section has an `id`, a short `navLabel` (shown in the sticky sidebar table of contents), a `heading`, and a list of `blocks`.
+- Block types: `paragraph`, `subheading`, `quote`, `stats`, `list`, `image`. Add/reorder/remove blocks freely — the page and the table of contents both render directly from this data.
+- To add a new case study: copy an existing file, fill it in, then add it to the `caseStudies` array in `src/content/case-studies/index.ts`. It'll automatically get a route at `/work/<slug>`, a homepage card, and a spot in the prev/next case study nav.
 
-To learn more about Next.js, take a look at the following resources:
+## Adding real images
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Case studies currently reference image paths that don't exist yet (e.g. `/case-studies/props/cover.png`), so they render as a labeled placeholder box instead of a broken image. To swap in a real screenshot:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Drop the file into `public/case-studies/<slug>/` using the exact filename referenced in that case study's data file (each placeholder box shows you the expected path).
+2. That's it — the image renders automatically once the file exists at that path. No code changes needed.
 
-## Deploy on Vercel
+## Personal photos
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The hero's rotating photo strip and the About section's portrait are also placeholder-until-real-file, same mechanism as case study images. Drop files into `public/personal/`:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `street.jpg`, `calligraphy.jpg`, `flowers.jpg`, `storefront.jpg`, `boy.jpg`, `decor.jpg` — hero carousel (edit the list in `src/content/site.ts` → `personalPhotos` to add, remove, or relabel)
+- `me.jpg` — small circular photo next to the "About" heading (`src/content/site.ts` → `portrait`)
+
+## Brand assets
+
+`public/brand/` holds the logo, favicon, and OG/social preview image pulled from the original site. `src/app/icon.svg` is the browser tab favicon.
+
+## Deploying (Vercel)
+
+1. Push this repo to GitHub.
+2. Go to [vercel.com/new](https://vercel.com/new), import the repo. Framework preset (Next.js) is auto-detected — no config needed.
+3. Once deployed, go to the project's Settings → Domains and add `carolynatung.com` (and `www.carolynatung.com`).
+4. Vercel will show you DNS records to add. Update those at your domain registrar (wherever `carolynatung.com` is currently pointed for Framer), then remove the domain from Framer once DNS has propagated.
+5. Every push to `main` auto-deploys.
+
+Free tier covers this site comfortably (static pages, no server costs).

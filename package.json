@@ -1,11 +1,11 @@
 {
-  "name": "portfolio",
+  "name": "carolyn-tung-portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 4310",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 4310",
     "lint": "eslint"
   },
   "dependencies": {

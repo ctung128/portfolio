@@ -1,26 +1,89 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-cream: #fcfdfc;
+  --color-cream-subtle: #f4f6f4;
+  --color-ink: #252525;
+  --color-ink-soft: #5c5c5c;
+  --color-ink-faint: #8a8f8a;
+  --color-border: #e0e6e0;
+  --color-border-strong: #d0d8d0;
+  --color-green: #628a00;
+  --spring: linear(
+    0, 0.049, 0.175, 0.348, 0.54, 0.729, 0.897, 1.035, 1.136, 1.2, 1.23, 1.231,
+    1.21, 1.175, 1.132, 1.087, 1.044, 1.008, 0.98, 0.96, 0.949, 0.945, 0.948,
+    0.954, 0.964, 0.974, 0.984, 0.994, 1
+  );
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-cream: var(--color-cream);
+  --color-cream-subtle: var(--color-cream-subtle);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-ink-faint: var(--color-ink-faint);
+  --color-border: var(--color-border);
+  --color-border-strong: var(--color-border-strong);
+  --color-green: var(--color-green);
+  --font-serif: var(--font-instrument-serif);
+  --font-sans: var(--font-open-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: light;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+
+::selection {
+  background: var(--color-green);
+  color: var(--color-cream);
+}
+
+* {
+  scroll-margin-top: 6rem;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+/* Hovering anywhere on the button sends the label AND arrow sliding out
+   together, each with a duplicate looped in via text-shadow.
+   .btn-slide-viewport is a fixed-height viewport (clips, never moves); the
+   span nested inside it is what actually translates. */
+.btn-slide {
+  position: relative;
+}
+
+.btn-slide:hover {
+  --y: -1lh;
+}
+
+.btn-slide-viewport {
+  display: inline-block;
+  overflow: clip;
+  height: 1lh;
+  line-height: 1lh;
+}
+
+.btn-slide-viewport > span {
+  display: inline-block;
+  translate: 0 var(--y, 0lh);
+  transition: translate 0.875s var(--spring);
+  text-shadow:
+    0 1lh currentColor,
+    0 -1lh currentColor;
 }

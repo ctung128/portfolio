@@ -1,0 +1,84 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { caseStudies, getCaseStudy } from "@/content/case-studies";
+import { CaseStudyHeader } from "@/components/case-study/CaseStudyHeader";
+import { BlockRenderer } from "@/components/case-study/BlockRenderer";
+import {
+  TableOfContents,
+  MobileTableOfContents,
+} from "@/components/case-study/TableOfContents";
+
+export function generateStaticParams() {
+  return caseStudies.map((cs) => ({ slug: cs.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const caseStudy = getCaseStudy(slug);
+  if (!caseStudy) return {};
+  return {
+    title: `${caseStudy.title} — Carolyn Tung`,
+    description: caseStudy.oneLiner,
+  };
+}
+
+const backLink = (
+  <Link href="/#work" className="font-serif text-base text-ink-faint hover:text-green">
+    ← Back to work
+  </Link>
+);
+
+export default async function CaseStudyPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const caseStudy = getCaseStudy(slug);
+  if (!caseStudy) notFound();
+
+  const tocItems = caseStudy.sections.map((s) => ({ id: s.id, navLabel: s.navLabel }));
+
+  return (
+    <article className="mx-auto max-w-5xl px-4 pb-24 pt-8 sm:px-6 sm:pt-12">
+      <div className="lg:hidden">
+        {backLink}
+        <div className="mt-6">
+          <MobileTableOfContents items={tocItems} />
+        </div>
+      </div>
+
+      <div className="grid gap-12 lg:grid-cols-[200px_minmax(0,1fr)]">
+        <div className="hidden lg:block">
+          <div className="sticky top-24 flex flex-col gap-8">
+            {backLink}
+            <TableOfContents items={tocItems} />
+          </div>
+        </div>
+
+        <div className="w-full max-w-3xl">
+          <CaseStudyHeader caseStudy={caseStudy} />
+          <div className="space-y-20">
+            {caseStudy.sections.map((section) => (
+              <section key={section.id} id={section.id} className="space-y-5">
+                <h2 className="font-serif text-2xl text-ink sm:text-3xl">
+                  {section.heading}
+                </h2>
+                <div className="space-y-5">
+                  {section.blocks.map((block, i) => (
+                    <BlockRenderer key={i} block={block} />
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
