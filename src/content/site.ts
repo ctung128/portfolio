@@ -79,33 +79,34 @@ export const education = {
 
 export const about = {
   paragraphs: [
-    "I grew up in Cleveland and studied Cognitive Science at Johns Hopkins University, but my second home is in Nanjing, China.",
+    "Hi there! I'm a product designer that loves building things. I grew up in Cleveland and studied Cognitive Science at Johns Hopkins University, but my second home is in Nanjing, China.",
     "In my free time, I love drinking tea, reading Italian literature, and running.",
   ],
 };
 
 export const recommendations = {
   reading: [
-    "Lies and Sorcery — Elsa Morante",
-    "Siddhartha — Hermann Hesse",
-    "Stay True — Hua Hsu",
-    "Being Mortal — Atul Gawande",
-    "Days of Abandonment — Elena Ferrante",
-    "Blockchain Chicken Farm — Xiaowei Wang",
+    { title: "jasmi.news", detail: "- my favorite journalist on Silicon Valley and trends in startup/tech/AI culture" },
+    { title: "Lies and Sorcery", detail: "by Elsa Morante" },
   ],
   listening: [
-    "Dive Club",
-    "How I Built This with Guy Raz",
-    "The Lonely Palette",
-    "Sinica Podcast",
+    { title: "Dive Club", detail: "- my favorite product design podcast" },
+    { title: "How I Built This with Guy Raz" },
+    { title: "The Lonely Palette", detail: "- my favorite art history podcast" },
+    { title: "Sinica Podcast", detail: "- my favorite podcast on Chinese geopolitics, history & culture" },
   ],
   learning: [
-    "Training for a half-marathon",
-    "Relearning tennis :')",
-    "HSK 6 — advanced Chinese proficiency",
-    "Philosophy of aesthetics",
+    { title: "Training for a half-marathon" },
+    { title: "Relearning tennis :')" },
+    { title: "HSK 6", detail: "→ advanced Chinese proficiency test" },
+    { title: "A freelance portrait photography studio" },
   ],
-  films: ["Whiplash (2014)", "Farewell My Concubine (1993)"],
+  recommending: [
+    { title: "Siddhartha", detail: "by Hermann Hesse" },
+    { title: "Being Mortal: Medicine and What Matters in the End", detail: "by Atul Gawande" },
+    { title: "Days of Abandonment", detail: "by Elena Ferrante" },
+    { title: "Whiplash", detail: "(2014)" },
+  ],
 };
 
 export const nav = [
