@@ -112,6 +112,19 @@ export const playProjects = [
     image: { src: "/play/project-one/cover.png", alt: "Project one cover image" },
   },
   {
+    title: "Smart essay merging for college apps",
+    tag: "UX DESIGN",
+    image: { src: "/play/project-eight/cover.mp4", alt: "Project eight cover image" },
+    video: "/play/project-eight/cover.mp4",
+    href: "https://mysupplementals.com",
+  },
+  {
+    title: "Design studio marketing website",
+    tag: "BRANDING * SHIPPED 2025",
+    image: { src: "/play/project-seven/cover.png", alt: "Project seven cover image" },
+    href: "https://www.bmore-designful.com",
+  },
+  {
     title: "Branding for a micro-SaaS app",
     tag: "BRANDING * $15K MRR",
     image: { src: "/play/project-two/cover.png", alt: "Project two cover image" },
@@ -135,15 +148,5 @@ export const playProjects = [
     title: "Landing page for a sustainability firm",
     tag: "BRANDING * SHIPPED 2025",
     image: { src: "/play/project-six/cover.png", alt: "Project six cover image" },
-  },
-  {
-    title: "Design studio marketing website",
-    tag: "BRANDING * SHIPPED 2025",
-    image: { src: "/play/project-seven/cover.png", alt: "Project seven cover image" },
-  },
-  {
-    title: "Smart essay merging for college apps",
-    tag: "UX DESIGN",
-    image: { src: "/play/project-eight/cover.mp4", alt: "Project eight cover image" },
   },
 ];
