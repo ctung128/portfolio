@@ -26,5 +26,6 @@ export type CaseStudy = {
   skills: string[];
   tags: string[];
   coverImage: { src: string; alt: string };
+  coverVideo?: string;
   sections: CaseStudySection[];
 };

@@ -1,0 +1,25 @@
+import type { Metadata } from "next";
+import { playPage } from "@/content/site";
+import { PlayGallery } from "@/components/play/PlayGallery";
+
+export const metadata: Metadata = {
+  title: "Play",
+  description: playPage.description,
+};
+
+export default function PlayPage() {
+  return (
+    <div className="mx-auto max-w-5xl px-4 pb-24 pt-16 sm:px-6 sm:pt-20">
+      <header className="max-w-2xl">
+        <h1 className="font-serif text-4xl leading-tight text-ink sm:text-5xl">
+          {playPage.headline}
+        </h1>
+        <p className="mt-5 font-sans text-lg leading-relaxed text-ink-soft">
+          {playPage.description}
+        </p>
+      </header>
+
+      <PlayGallery />
+    </div>
+  );
+}

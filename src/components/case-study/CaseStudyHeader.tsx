@@ -26,7 +26,11 @@ export function CaseStudyHeader({ caseStudy }: { caseStudy: CaseStudy }) {
         </div>
         <div className="col-span-2 sm:col-span-1">
           <dt className="font-sans text-xs uppercase tracking-wider text-ink-faint">Team</dt>
-          <dd className="mt-1 font-sans text-sm text-ink">{caseStudy.team.length} people</dd>
+          <dd className="mt-1 space-y-1 font-sans text-sm text-ink">
+            {caseStudy.team.map((member) => (
+              <div key={member}>{member}</div>
+            ))}
+          </dd>
         </div>
         <div className="col-span-2 sm:col-span-1">
           <dt className="font-sans text-xs uppercase tracking-wider text-ink-faint">Skills</dt>

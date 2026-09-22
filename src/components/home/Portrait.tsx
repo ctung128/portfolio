@@ -9,7 +9,7 @@ export function Portrait({ src, alt }: { src: string; alt: string }) {
     return (
       <div
         title={`Add a portrait at ${src}`}
-        className={`h-16 w-16 flex-shrink-0 rounded-full border border-dashed border-border-strong bg-cream sm:h-20 sm:w-20 ${
+        className={`aspect-[4/3] w-full rounded-[12px] border border-dashed border-border-strong bg-cream ${
           status === "loading" ? "animate-pulse" : ""
         }`}
       />
@@ -21,7 +21,7 @@ export function Portrait({ src, alt }: { src: string; alt: string }) {
     <img
       src={src}
       alt={alt}
-      className="h-16 w-16 flex-shrink-0 rounded-full border border-border object-cover sm:h-20 sm:w-20"
+      className="h-auto w-full rounded-[12px] border border-border object-contain"
     />
   );
 }

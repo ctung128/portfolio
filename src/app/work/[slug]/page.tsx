@@ -63,9 +63,27 @@ export default async function CaseStudyPage({
 
         <div className="w-full max-w-3xl">
           <CaseStudyHeader caseStudy={caseStudy} />
+          {caseStudy.coverVideo ? (
+            <div className="mb-20 aspect-video overflow-hidden rounded-[12px] border border-border">
+              <video
+                className="h-full w-full object-cover"
+                src={caseStudy.coverVideo}
+                poster={caseStudy.coverImage.src}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label={caseStudy.coverImage.alt}
+              />
+            </div>
+          ) : null}
           <div className="space-y-20">
             {caseStudy.sections.map((section) => (
               <section key={section.id} id={section.id} className="space-y-5">
+                <p className="font-sans text-xs uppercase tracking-widest text-ink-faint">
+                  {section.navLabel}
+                </p>
                 <h2 className="font-serif text-2xl text-ink sm:text-3xl">
                   {section.heading}
                 </h2>

@@ -18,7 +18,7 @@ export const splitev: CaseStudy = {
   ],
   timeline: "Dec 2024 — Jan 2026",
   skills: ["UI Design", "Prototyping", "Rapid Testing (RITE)", "Product Strategy", "Handoff"],
-  tags: ["0→1", "Climate Tech", "MVP"],
+  tags: ["Climate Tech", "MVP"],
   coverImage: {
     src: "/case-studies/splitev/cover.png",
     alt: "SplitEV app redesign cover image",

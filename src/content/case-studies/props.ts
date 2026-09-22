@@ -19,7 +19,7 @@ export const props: CaseStudy = {
   ],
   timeline: "Aug — Oct 2025",
   skills: ["UX Research", "iOS App Design", "Rapid Testing (RITE)", "Product Strategy"],
-  tags: ["0→1", "Consumer Social", "Mobile"],
+  tags: ["Redesign", "Consumer Social", "Mobile"],
   coverImage: {
     src: "/case-studies/props/cover.png",
     alt: "Props app redesign cover image",

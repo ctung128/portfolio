@@ -7,21 +7,23 @@ export function CaseStudyImage({
   alt,
   caption,
   wide,
+  fill,
 }: {
   src: string;
   alt: string;
   caption?: string;
   wide?: boolean;
+  fill?: boolean;
 }) {
   const status = useImageStatus(src);
 
   if (status !== "loaded") {
     return (
-      <figure className={wide ? "-mx-4 sm:mx-0" : ""}>
+      <figure className={`${wide ? "-mx-4 sm:mx-0" : ""} ${fill ? "h-full w-full" : ""}`}>
         <div
-          className={`flex aspect-video w-full flex-col items-center justify-center gap-2 rounded-[12px] border border-dashed border-border-strong bg-cream-subtle px-6 text-center ${
-            status === "loading" ? "animate-pulse" : ""
-          }`}
+          className={`flex flex-col items-center justify-center gap-2 rounded-[12px] border border-dashed border-border-strong bg-cream-subtle px-6 text-center ${
+            fill ? "h-full w-full" : "aspect-video w-full"
+          } ${status === "loading" ? "animate-pulse" : ""}`}
         >
           {status === "failed" && (
             <>
@@ -40,12 +42,14 @@ export function CaseStudyImage({
   }
 
   return (
-    <figure className={wide ? "-mx-4 sm:mx-0" : ""}>
+    <figure className={`${wide ? "-mx-4 sm:mx-0" : ""} ${fill ? "h-full w-full" : ""}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}
         alt={alt}
-        className="w-full rounded-[12px] border border-border object-cover"
+        className={`rounded-[12px] border border-border object-cover ${
+          fill ? "h-full w-full" : "w-full"
+        }`}
       />
       {caption && (
         <figcaption className="mt-3 font-sans text-sm text-ink-soft">{caption}</figcaption>

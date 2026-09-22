@@ -30,24 +30,6 @@ export const portrait = {
   alt: "Carolyn Tung",
 };
 
-export const specializationPillars = [
-  {
-    title: "I ship, not just design",
-    description:
-      "I design in Figma and build with Claude Code. I shipped a consumer app, led QA testing, and beta tested it with 10 users.",
-  },
-  {
-    title: "I take 0→1 problems to shipped product",
-    description:
-      "SplitEV, Jino, and Inkline all started as an unvalidated idea. In each, I owned the strategy, the research, and the final screens that made it to production.",
-  },
-  {
-    title: "I design AI products people trust.",
-    description:
-      "On EVA, I learned the hard way that AI-first isn't the goal — trustworthy is. I designed for verification and source attribution before I designed for novelty.",
-  },
-];
-
 export const workExperience = [
   {
     role: "Product Designer",
@@ -61,9 +43,9 @@ export const workExperience = [
     note: "Design studio helping founders secure funding.",
   },
   {
-    role: "UX Designer",
+    role: "Product Designer",
     company: "EOX Vantage",
-    period: "2023",
+    period: "2025",
     note: "Enterprise B2B SaaS.",
   },
   {
@@ -79,8 +61,8 @@ export const education = {
 
 export const about = {
   paragraphs: [
-    "Hi there! I'm a product designer that loves building things. I grew up in Cleveland and studied Cognitive Science at Johns Hopkins University, but my second home is in Nanjing, China.",
-    "In my free time, I love drinking tea, reading Italian literature, and running.",
+    "Hey there! I'm a product designer that loves building things, whether that's an app or a good story. I studied Cognitive Science at Johns Hopkins University, where I became involved with the startup scene and eventually founded a design studio. I've worked with 15+ founders across consumer social, healthcare, and enterprise products, helping companies scale and drive growth.",
+    "Outside of work, I love tea, Italian literature, mountains, and all things wabi-sabi.",
   ],
 };
 
@@ -97,9 +79,9 @@ export const recommendations = {
   ],
   learning: [
     { title: "Training for a half-marathon" },
+    { title: "Running a quarterly Substack translation blog" },
     { title: "Relearning tennis :')" },
-    { title: "HSK 6", detail: "→ advanced Chinese proficiency test" },
-    { title: "A freelance portrait photography studio" },
+    { title: "Building a freelance portrait photography studio", href: "https://snowbellphoto.com" },
   ],
   recommending: [
     { title: "Siddhartha", detail: "by Hermann Hesse" },
@@ -112,5 +94,56 @@ export const recommendations = {
 export const nav = [
   { label: "Work", href: "/#work" },
   { label: "About", href: "/#about" },
+  { label: "Play", href: "/play" },
   { label: "Resume", href: siteConfig.resume, external: true },
+];
+
+export const playPage = {
+  // TODO: swap this for your real intro copy
+  headline: "Things I build for fun when I get that itch. ",
+  description:
+    "branding/marketing, vibe-coding, web design, etc etc :-)"
+};
+
+export const playProjects = [
+  {
+    title: "Queue management dashboard for tattoo studios",
+    tag: "CLAUDE CODE * SHIPPED 2025",
+    image: { src: "/play/project-one/cover.png", alt: "Project one cover image" },
+  },
+  {
+    title: "Branding for a micro-SaaS app",
+    tag: "BRANDING * $15K MRR",
+    image: { src: "/play/project-two/cover.png", alt: "Project two cover image" },
+  },
+  {
+    title: "Landing page for a HVAC startup",
+    tag: "FRAMER WEB DESIGN",
+    image: { src: "/play/project-three/cover.png", alt: "Project three cover image" },
+  },
+  {
+    title: "Menu for a friend's pop-up cafe",
+    tag: "GRAPHIC DESIGN",
+    image: { src: "/play/project-four/cover.png", alt: "Project four cover image" },
+  },
+  {
+    title: "Cards for an art investing venture",
+    tag: "VISUAL DESIGN",
+    image: { src: "/play/project-five/cover.png", alt: "Project five cover image" },
+  },
+  {
+    title: "Landing page for a sustainability firm",
+    tag: "BRANDING * SHIPPED 2025",
+    image: { src: "/play/project-six/cover.png", alt: "Project six cover image" },
+  },
+  {
+    title: "Design studio marketing website",
+    tag: "BRANDING * SHIPPED 2025",
+    image: { src: "/play/project-seven/cover.png", alt: "Project seven cover image" },
+  },
+  {
+    title: "Smart essay merging for college apps",
+    tag: "UX DESIGN",
+    image: { src: "/play/project-eight/cover.mp4", alt: "Project eight cover image" },
+  },
 ];
