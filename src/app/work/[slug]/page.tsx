@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { caseStudies, getCaseStudy } from "@/content/case-studies";
 import { CaseStudyHeader } from "@/components/case-study/CaseStudyHeader";
 import { CaseStudyHeroMockup } from "@/components/case-study/CaseStudyHeroMockup";
+import { CaseStudyDuoHero } from "@/components/case-study/CaseStudyDuoHero";
 import { BlockRenderer } from "@/components/case-study/BlockRenderer";
 import {
   TableOfContents,
@@ -64,9 +65,18 @@ export default async function CaseStudyPage({
 
         <div className="w-full max-w-3xl">
           <CaseStudyHeader caseStudy={caseStudy} />
-          {caseStudy.heroMockup ? (
+          {caseStudy.duoHero ? (
+            <CaseStudyDuoHero
+              background={caseStudy.duoHero.background}
+              splash={caseStudy.duoHero.splash}
+              video={caseStudy.duoHero.video}
+              alt={caseStudy.duoHero.alt}
+              variant={caseStudy.duoHero.variant}
+            />
+          ) : caseStudy.heroMockup ? (
             <CaseStudyHeroMockup
               video={caseStudy.heroMockup.video}
+              frames={caseStudy.heroMockup.frames}
               background={caseStudy.heroMockup.background}
               alt={caseStudy.heroMockup.alt}
               variant={caseStudy.heroMockup.variant}

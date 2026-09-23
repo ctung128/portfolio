@@ -1,9 +1,51 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 const PLAYBACK_RATE = 1.25;
 
 function setPlaybackRate(video: HTMLVideoElement | null) {
   if (video) video.playbackRate = PLAYBACK_RATE;
+}
+
+const FRAME_HOLD_MS = 550;
+const FRAME_TRANSITION_MS = 300;
+const FRAME_EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
+
+/** Cycles through a sequence of static screenshots with a crossfade +
+ * subtle scale/drift settle, mimicking an After Effects/Lottie-style
+ * mobile product demo loop. */
+function FrameSequence({ frames, alt }: { frames: string[]; alt: string }) {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    if (frames.length <= 1) return;
+    const id = setInterval(() => {
+      setActive((i) => (i + 1) % frames.length);
+    }, FRAME_HOLD_MS + FRAME_TRANSITION_MS);
+    return () => clearInterval(id);
+  }, [frames.length]);
+
+  return (
+    <div className="absolute inset-0">
+      {frames.map((src, i) => (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          key={src}
+          src={src}
+          alt={i === 0 ? alt : ""}
+          aria-hidden={i !== 0}
+          className="absolute inset-0 h-full w-full object-cover object-top"
+          style={{
+            opacity: i === active ? 1 : 0,
+            transform: i === active ? "scale(1) translateY(0)" : "scale(1.045) translateY(10px)",
+            transition: `opacity ${FRAME_TRANSITION_MS}ms ${FRAME_EASE}, transform ${FRAME_TRANSITION_MS}ms ${FRAME_EASE}`,
+            zIndex: i === active ? 1 : 0,
+          }}
+        />
+      ))}
+    </div>
+  );
 }
 
 function StatusBarIcons() {
@@ -57,34 +99,47 @@ type Variant = "13-pro" | "15-pro";
 
 const VARIANT_STYLES: Record<
   Variant,
-  { frameRadius: string; bezelRadius: string; screenRadius: string }
+  { frameRadius: string; bezelRadius: string; screenRadius: string; bezelPadding: string }
 > = {
   "13-pro": {
     frameRadius: "rounded-[2.6rem]",
     bezelRadius: "rounded-[2.45rem]",
     screenRadius: "rounded-[1.9rem]",
+    bezelPadding: "p-[5px]",
   },
   "15-pro": {
     frameRadius: "rounded-[3.1rem]",
     bezelRadius: "rounded-[2.95rem]",
     screenRadius: "rounded-[2.35rem]",
+    bezelPadding: "p-[10px]",
   },
 };
 
 export function IPhoneMockup({
   videoSrc,
+  frames,
   poster,
   alt,
   className,
-  sizeClassName = "w-[240px] sm:w-[270px] md:w-[300px]",
+  sizeClassName = "w-[210px] sm:w-[240px] md:w-[270px]",
+  position = "relative",
   showStatusBar = false,
   variant = "15-pro",
 }: {
-  videoSrc: string;
+  /** A looping video to fill the screen. Provide this or `frames`. */
+  videoSrc?: string;
+  /** A sequence of static screenshots to animate between (crossfade +
+   * settle), for case studies without device footage. Provide this or
+   * `videoSrc`. */
+  frames?: string[];
   poster?: string;
   alt: string;
   className?: string;
   sizeClassName?: string;
+  /** CSS position of the root element. Use "absolute" when placing this
+   * inside a custom layout that positions it with top/right/etc via
+   * `className` — avoids conflicting with the default "relative". */
+  position?: "relative" | "absolute";
   /** Draw a synthetic status bar + notch/Dynamic Island over the video. Leave
    * off (default) when the source footage is a real device recording that
    * already shows its own status bar/notch. */
@@ -94,30 +149,34 @@ export function IPhoneMockup({
   variant?: Variant;
 }) {
   const isThirteen = variant === "13-pro";
-  const { frameRadius, bezelRadius, screenRadius } = VARIANT_STYLES[variant];
+  const { frameRadius, bezelRadius, screenRadius, bezelPadding } = VARIANT_STYLES[variant];
 
   return (
-    <div className={`relative aspect-[9/19.5] ${sizeClassName} ${className ?? ""}`}>
+    <div className={`${position} aspect-[9/19.5] ${sizeClassName} ${className ?? ""}`}>
       {/* Titanium frame */}
       <div
         className={`absolute inset-0 ${frameRadius} bg-gradient-to-b from-[#4a4a4d] via-[#2c2c2e] to-[#1c1c1e] p-[3px] shadow-[0_30px_60px_-20px_rgba(0,0,0,0.55)] ring-1 ring-black/30`}
       >
-        <div className={`h-full w-full ${bezelRadius} bg-black p-[10px]`}>
+        <div className={`h-full w-full ${bezelRadius} bg-black ${bezelPadding}`}>
           {/* Screen */}
           <div className={`relative h-full w-full overflow-hidden ${screenRadius} bg-black`}>
-            <video
-              ref={setPlaybackRate}
-              className="absolute inset-0 h-full w-full object-cover"
-              src={videoSrc}
-              poster={poster}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-label={alt}
-              onLoadedMetadata={(e) => setPlaybackRate(e.currentTarget)}
-            />
+            {frames && frames.length > 0 ? (
+              <FrameSequence frames={frames} alt={alt} />
+            ) : videoSrc ? (
+              <video
+                ref={setPlaybackRate}
+                className="absolute inset-0 h-full w-full object-cover"
+                src={videoSrc}
+                poster={poster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label={alt}
+                onLoadedMetadata={(e) => setPlaybackRate(e.currentTarget)}
+              />
+            ) : null}
 
             {showStatusBar && (
               <>
@@ -141,28 +200,6 @@ export function IPhoneMockup({
           </div>
         </div>
       </div>
-
-      {isThirteen ? (
-        <>
-          {/* Mute switch */}
-          <span className="absolute -left-[3px] top-[11%] h-[3.2%] w-[3px] rounded-l-sm bg-[#3a3a3c]" />
-          {/* Volume buttons */}
-          <span className="absolute -left-[3px] top-[17.5%] h-[6.5%] w-[3px] rounded-l-sm bg-[#3a3a3c]" />
-          <span className="absolute -left-[3px] top-[25.5%] h-[6.5%] w-[3px] rounded-l-sm bg-[#3a3a3c]" />
-          {/* Power button */}
-          <span className="absolute -right-[3px] top-[19%] h-[9%] w-[3px] rounded-r-sm bg-[#3a3a3c]" />
-        </>
-      ) : (
-        <>
-          {/* Action button */}
-          <span className="absolute -left-[3px] top-[13.2%] h-[3.7%] w-[3px] rounded-l-sm bg-[#3a3a3c]" />
-          {/* Volume buttons */}
-          <span className="absolute -left-[3px] top-[19.1%] h-[6.8%] w-[3px] rounded-l-sm bg-[#3a3a3c]" />
-          <span className="absolute -left-[3px] top-[27.1%] h-[6.8%] w-[3px] rounded-l-sm bg-[#3a3a3c]" />
-          {/* Power button */}
-          <span className="absolute -right-[3px] top-[21.5%] h-[9.8%] w-[3px] rounded-r-sm bg-[#3a3a3c]" />
-        </>
-      )}
     </div>
   );
 }

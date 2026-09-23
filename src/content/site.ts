@@ -100,7 +100,7 @@ export const nav = [
 
 export const playPage = {
   // TODO: swap this for your real intro copy
-  headline: "Things I build for fun when I get that itch. ",
+  headline: "Things I build for fun when I get that itch. If you know you know. ",
   description:
     "branding/marketing, vibe-coding, web design, etc etc :-)"
 };
@@ -132,7 +132,11 @@ export const playProjects = [
   {
     title: "Landing page for a HVAC startup",
     tag: "FRAMER WEB DESIGN",
-    image: { src: "/play/project-three/cover.png", alt: "Project three cover image" },
+    image: {
+      src: "/play/project-three/cover.png",
+      alt: "Project three cover image",
+      position: "left",
+    },
   },
   {
     title: "Menu for a friend's pop-up cafe",
@@ -145,7 +149,7 @@ export const playProjects = [
     image: { src: "/play/project-five/cover.png", alt: "Project five cover image" },
   },
   {
-    title: "Landing page for a sustainability firm",
+    title: "Branding for a sustainability firm",
     tag: "BRANDING * SHIPPED 2025",
     image: { src: "/play/project-six/cover.png", alt: "Project six cover image" },
   },

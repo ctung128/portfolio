@@ -8,12 +8,16 @@ export function CaseStudyImage({
   caption,
   wide,
   fill,
+  objectPosition = "center",
+  imageClassName,
 }: {
   src: string;
   alt: string;
   caption?: string;
   wide?: boolean;
   fill?: boolean;
+  objectPosition?: string;
+  imageClassName?: string;
 }) {
   const status = useImageStatus(src);
 
@@ -49,7 +53,8 @@ export function CaseStudyImage({
         alt={alt}
         className={`rounded-[12px] border border-border object-cover ${
           fill ? "h-full w-full" : "w-full"
-        }`}
+        } ${imageClassName ?? ""}`}
+        style={{ objectPosition }}
       />
       {caption && (
         <figcaption className="mt-3 font-sans text-sm text-ink-soft">{caption}</figcaption>

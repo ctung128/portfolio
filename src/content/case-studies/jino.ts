@@ -7,10 +7,10 @@ export const jino: CaseStudy = {
   cardDescription:
     "Founder & designer of a relationship app built around daily behavioral loops instead of journal prompts or paywalls.",
   year: "Shipped 2026",
-  industry: "Consumer Social",
+  industry: "Jino — Consumer Social",
   role: "Founder, UX Designer",
-  team: ["Carolyn Tung — Founder, UX Designer", "Sean Pak — Engineer"],
-  timeline: "Design: Nov 2025 · Development: Aug 2026",
+  team: ["1 UX Designer", "1 Engineer"],
+  timeline: "Design: Nov 2025 Development: Aug 2026",
   skills: ["Design System", "Prototyping", "Product Strategy", "QA Testing"],
   tags: ["0→1", "Founder", "Consumer Social"],
   coverImage: {
@@ -20,6 +20,16 @@ export const jino: CaseStudy = {
   heroMockup: {
     video: "/case-studies/jino/cover.mp4",
     background: "/case-studies/jino/cover-bg.png",
+    alt: "Jino app demo playing inside an iPhone mockup",
+    variant: "13-pro",
+  },
+  duoHero: {
+    background: "/case-studies/jino/cover-bg.png",
+    splash: {
+      src: "/case-studies/jino/splash-screen.png",
+      alt: "Jino splash screen with two hamster mascots",
+    },
+    video: "/case-studies/jino/cover.mp4",
     alt: "Jino app demo playing inside an iPhone mockup",
     variant: "13-pro",
   },

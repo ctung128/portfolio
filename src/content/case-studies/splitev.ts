@@ -7,14 +7,14 @@ export const splitev: CaseStudy = {
   cardDescription:
     "A Techstars-backed EV charging startup's five most critical flows, rebuilt from fragmented prototype into a launch-ready MVP.",
   year: "Shipped 2025",
-  industry: "Climate Tech",
+  industry: "SplitEV — Climate Tech",
   role: "UX Designer",
   team: [
-    "Abi Odugbesan — Founder",
-    "Carolyn Tung — UX Designer",
-    "Rey Benoit — Fractional UX Manager",
-    "Sean Pak — UX Researcher",
-    "Engineering",
+    "1 Founder",
+    "1 UX Designer",
+    "1 Fractional UX Manager",
+    "1 UX Researcher",
+    "4 Engineers",
   ],
   timeline: "Dec 2024 — Jan 2026",
   skills: ["UI Design", "Prototyping", "Rapid Testing (RITE)", "Product Strategy", "Handoff"],
@@ -22,6 +22,17 @@ export const splitev: CaseStudy = {
   coverImage: {
     src: "/case-studies/splitev/cover.png",
     alt: "SplitEV app redesign cover image",
+  },
+  heroMockup: {
+    frames: [
+      "/case-studies/splitev/frame-1.png",
+      "/case-studies/splitev/frame-2.png",
+      "/case-studies/splitev/frame-3.png",
+      "/case-studies/splitev/frame-4.png",
+    ],
+    background: "/case-studies/splitev/cover-bg.png",
+    alt: "SplitEV app demo playing inside an iPhone mockup",
+    variant: "13-pro",
   },
   sections: [
     {

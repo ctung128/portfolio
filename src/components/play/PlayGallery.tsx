@@ -1,6 +1,10 @@
 import { playProjects } from "@/content/site";
 import { CaseStudyImage } from "@/components/case-study/CaseStudyImage";
 
+// Premium hover scale: a slow, ease-out-expo settle rather than a snappy
+// linear zoom — the same curve used for the frame-sequence animation.
+const HOVER_SCALE = "transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]";
+
 export function PlayGallery() {
   return (
     <div className="mt-14 grid grid-cols-1 gap-10 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3">
@@ -17,7 +21,7 @@ export function PlayGallery() {
             <div className="aspect-[4/3] overflow-hidden rounded-[12px]">
               {project.video ? (
                 <video
-                  className="h-full w-full rounded-[12px] border border-border object-cover"
+                  className={`h-full w-full rounded-[12px] border border-border object-cover ${HOVER_SCALE}`}
                   src={project.video}
                   aria-label={project.image.alt}
                   autoPlay
@@ -27,7 +31,13 @@ export function PlayGallery() {
                   preload="metadata"
                 />
               ) : (
-                <CaseStudyImage src={project.image.src} alt={project.image.alt} fill />
+                <CaseStudyImage
+                  src={project.image.src}
+                  alt={project.image.alt}
+                  objectPosition={project.image.position}
+                  imageClassName={HOVER_SCALE}
+                  fill
+                />
               )}
             </div>
             <div className="mt-4 flex items-baseline justify-between gap-3">

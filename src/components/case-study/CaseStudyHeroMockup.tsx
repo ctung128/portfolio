@@ -2,13 +2,18 @@ import { IPhoneMockup } from "./IPhoneMockup";
 
 export function CaseStudyHeroMockup({
   video,
+  frames,
   background,
   alt,
-  className = "mb-20 rounded-[24px] border border-border py-16 sm:py-20",
+  className = "mb-20 rounded-[24px] border border-border py-20 sm:py-24",
   phoneSizeClassName,
   variant,
 }: {
-  video: string;
+  /** A looping video to fill the screen. Provide this or `frames`. */
+  video?: string;
+  /** A sequence of static screenshots to animate between. Provide this or
+   * `video`. */
+  frames?: string[];
   background: string;
   alt: string;
   className?: string;
@@ -26,6 +31,7 @@ export function CaseStudyHeroMockup({
       />
       <IPhoneMockup
         videoSrc={video}
+        frames={frames}
         alt={alt}
         className="z-10"
         sizeClassName={phoneSizeClassName}

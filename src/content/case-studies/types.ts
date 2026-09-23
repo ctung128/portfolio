@@ -28,8 +28,23 @@ export type CaseStudy = {
   coverImage: { src: string; alt: string };
   coverVideo?: string;
   heroMockup?: {
-    video: string;
+    /** A looping video to fill the screen. Provide this or `frames`. */
+    video?: string;
+    /** A sequence of static screenshots to animate between. Provide this or
+     * `video`. */
+    frames?: string[];
     background: string;
+    alt: string;
+    variant?: "13-pro" | "15-pro";
+  };
+  /** Two-card case study hero: a static splash screenshot staggered up/left
+   * behind an animated phone mockup staggered down/right. Used instead of
+   * `heroMockup` on the case study page only (the homepage card keeps using
+   * `heroMockup`). */
+  duoHero?: {
+    background: string;
+    splash: { src: string; alt: string };
+    video: string;
     alt: string;
     variant?: "13-pro" | "15-pro";
   };

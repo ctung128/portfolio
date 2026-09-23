@@ -3,6 +3,11 @@ import { caseStudies } from "@/content/case-studies";
 import { CaseStudyImage } from "@/components/case-study/CaseStudyImage";
 import { CaseStudyHeroMockup } from "@/components/case-study/CaseStudyHeroMockup";
 
+// Premium hover scale: a slow, ease-out-expo settle rather than a snappy
+// linear zoom — the same curve used for the frame-sequence animation.
+const HOVER_SCALE =
+  "transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]";
+
 export function FeaturedWork() {
   return (
     <section id="work" className="border-y border-border bg-cream-subtle">
@@ -19,15 +24,16 @@ export function FeaturedWork() {
               {cs.heroMockup ? (
                 <CaseStudyHeroMockup
                   video={cs.heroMockup.video}
+                  frames={cs.heroMockup.frames}
                   background={cs.heroMockup.background}
                   alt={cs.heroMockup.alt}
-                  className="h-full w-full border border-border"
+                  className={`h-full w-full border border-border ${HOVER_SCALE}`}
                   phoneSizeClassName="h-[92%] w-auto"
                   variant={cs.heroMockup.variant}
                 />
               ) : cs.coverVideo ? (
                 <video
-                  className="h-full w-full rounded-[12px] border border-border object-cover"
+                  className={`h-full w-full rounded-[12px] border border-border object-cover ${HOVER_SCALE}`}
                   src={cs.coverVideo}
                   poster={cs.coverImage.src}
                   autoPlay
@@ -38,7 +44,12 @@ export function FeaturedWork() {
                   aria-label={cs.coverImage.alt}
                 />
               ) : (
-                <CaseStudyImage src={cs.coverImage.src} alt={cs.coverImage.alt} fill />
+                <CaseStudyImage
+                  src={cs.coverImage.src}
+                  alt={cs.coverImage.alt}
+                  imageClassName={HOVER_SCALE}
+                  fill
+                />
               )}
             </div>
             <div className="mt-4 flex items-baseline justify-between gap-4">
