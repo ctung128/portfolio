@@ -63,6 +63,7 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
           src={block.src}
           alt={block.alt}
           caption={block.caption}
+          label={block.label}
           wide={block.wide}
           background={block.background}
           backgroundImageWidth={block.backgroundImageWidth}

@@ -9,6 +9,10 @@ export type CaseStudyBlock =
       src: string;
       alt: string;
       caption?: string;
+      /** Small eyebrow-style label overlaid at the top-left of the card
+       * (matches the mockup/comparison-card label treatment), instead of a
+       * caption below the image. */
+      label?: string;
       wide?: boolean;
       /** Render as a foreground layer over a solid-color background card. */
       background?: string;
@@ -85,6 +89,9 @@ export type CaseStudy = {
   tags: string[];
   coverImage: { src: string; alt: string };
   coverVideo?: string;
+  /** Small translucent status chip shown next to the one-liner in the
+   * header, e.g. "Currently in beta!". */
+  badge?: string;
   heroMockup?: {
     /** A looping video to fill the screen. Provide this or `frames`. */
     video?: string;

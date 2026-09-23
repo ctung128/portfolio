@@ -6,6 +6,7 @@ export const jino: CaseStudy = {
   oneLiner: "A daily check-in for couples building big lives without slipping into codependency or growing apart.",
   cardDescription:
     "Founder & designer of a relationship app built around daily behavioral loops instead of journal prompts or paywalls.",
+  badge: "Currently in beta!",
   year: "Shipped 2026",
   industry: "Jino / Consumer Social",
   role: "Founder, UX Designer",
@@ -222,7 +223,7 @@ export const jino: CaseStudy = {
           type: "image",
           src: "/case-studies/jino/error-state.png",
           alt: "Jino onboarding error state",
-          caption: "Error state",
+          label: "Error state",
           background: "#FCFFFA",
           backgroundImageWidth: "45%",
           shadow: true,

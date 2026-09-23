@@ -6,6 +6,7 @@ export function CaseStudyImage({
   src,
   alt,
   caption,
+  label,
   wide,
   fill,
   objectPosition = "center",
@@ -17,6 +18,10 @@ export function CaseStudyImage({
   src: string;
   alt: string;
   caption?: string;
+  /** Small eyebrow-style label overlaid at the top-left of the card
+   * (matches the mockup/comparison-card label treatment), instead of a
+   * caption below the image. */
+  label?: string;
   wide?: boolean;
   fill?: boolean;
   objectPosition?: string;
@@ -63,9 +68,14 @@ export function CaseStudyImage({
     return (
       <figure>
         <div
-          className="flex items-center justify-center rounded-[24px] border border-border py-16 sm:py-20"
+          className="relative flex items-center justify-center rounded-[24px] border border-border py-16 sm:py-20"
           style={{ backgroundColor: background }}
         >
+          {label && (
+            <p className="absolute left-6 top-6 z-20 font-sans text-xs uppercase tracking-wider text-ink-faint sm:left-8 sm:top-8">
+              {label}
+            </p>
+          )}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={src}
