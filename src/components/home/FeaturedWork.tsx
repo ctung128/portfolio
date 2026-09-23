@@ -28,7 +28,7 @@ export function FeaturedWork() {
                   background={cs.heroMockup.background}
                   alt={cs.heroMockup.alt}
                   className={`h-full w-full border border-border ${HOVER_SCALE}`}
-                  phoneSizeClassName="h-[92%] w-auto"
+                  phoneSizeClassName="h-[84%] w-auto"
                   variant={cs.heroMockup.variant}
                 />
               ) : cs.coverVideo ? (
@@ -56,7 +56,10 @@ export function FeaturedWork() {
               <h3 className="font-serif text-xl text-ink group-hover:text-ink-soft sm:text-2xl">
                 {cs.title}
               </h3>
-              <span className="whitespace-nowrap font-sans text-sm text-ink-faint">
+              <span className="inline-flex items-center gap-1.5 whitespace-nowrap font-sans text-sm text-ink-faint">
+                {cs.year.startsWith("Shipped") && (
+                  <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-green" />
+                )}
                 {cs.year}
               </span>
             </div>
@@ -64,7 +67,11 @@ export function FeaturedWork() {
               {cs.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-[12px] border border-border px-2.5 py-1 font-sans text-xs text-ink-soft"
+                  className={
+                    tag === "Techstars"
+                      ? "rounded-[12px] border border-[#39C463] bg-[#39C463]/10 px-2.5 py-1 font-sans text-xs text-[#1f8a45]"
+                      : "rounded-[12px] border border-border px-2.5 py-1 font-sans text-xs text-ink-soft"
+                  }
                 >
                   {tag}
                 </span>

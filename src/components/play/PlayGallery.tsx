@@ -18,10 +18,14 @@ export function PlayGallery() {
               : {})}
             className={`flex flex-col ${project.href ? "group" : ""}`}
           >
-            <div className="aspect-[4/3] overflow-hidden rounded-[12px]">
+            <div
+              className={`aspect-[4/3] overflow-hidden rounded-[12px] ${
+                project.video ? "bg-[#FDFDFD]" : ""
+              }`}
+            >
               {project.video ? (
                 <video
-                  className={`h-full w-full rounded-[12px] border border-border object-cover ${HOVER_SCALE}`}
+                  className={`h-full w-full rounded-[12px] border border-border object-contain ${HOVER_SCALE}`}
                   src={project.video}
                   aria-label={project.image.alt}
                   autoPlay
