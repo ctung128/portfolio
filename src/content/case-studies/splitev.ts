@@ -6,7 +6,7 @@ export const splitev: CaseStudy = {
   oneLiner: "Redesigning SplitEV's MVP, an EV charging startup.",
   cardDescription:
     "A Techstars-backed EV charging startup's five most critical flows, rebuilt from fragmented prototype into a launch-ready MVP.",
-  year: "Shipped 2025",
+  year: "Shipped 2026",
   industry: "SplitEV — Climate Tech",
   role: "UX Designer",
   team: [
