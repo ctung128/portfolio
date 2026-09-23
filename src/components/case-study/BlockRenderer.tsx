@@ -1,5 +1,6 @@
 import type { CaseStudyBlock } from "@/content/case-studies/types";
 import { CaseStudyImage } from "./CaseStudyImage";
+import { CaseStudyHeroMockup } from "./CaseStudyHeroMockup";
 
 export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
   switch (block.type) {
@@ -63,7 +64,62 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
           alt={block.alt}
           caption={block.caption}
           wide={block.wide}
+          background={block.background}
+          backgroundImageWidth={block.backgroundImageWidth}
+          shadow={block.shadow}
         />
+      );
+
+    case "mockup":
+      return (
+        <CaseStudyHeroMockup
+          video={block.video}
+          frames={block.frames}
+          scrollImage={block.scrollImage}
+          background={block.background}
+          alt={block.alt}
+          label={block.label}
+          variant={block.variant}
+          className="rounded-[24px] border border-border py-16 sm:py-20"
+          frameHoldMs={block.frameHoldMs}
+          frameTransitionMs={block.frameTransitionMs}
+          frameMotion={block.frameMotion}
+        />
+      );
+
+    case "gallery":
+      return (
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
+          {block.images.map((image) => (
+            <CaseStudyImage key={image.src} src={image.src} alt={image.alt} />
+          ))}
+        </div>
+      );
+
+    case "comparison":
+      return (
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {block.groups.map((group, i) => (
+            <div
+              key={group.label}
+              className="rounded-[16px] border border-border bg-cream-subtle p-5 sm:p-6"
+            >
+              <p className="font-sans text-xs uppercase tracking-wider text-ink-faint">
+                {i + 1} — {group.label}
+              </p>
+              <div className="mt-4 grid grid-cols-2 gap-3">
+                {group.images.map((image) => (
+                  <CaseStudyImage key={image.src} src={image.src} alt={image.alt} />
+                ))}
+              </div>
+              {group.caption && (
+                <p className="mt-4 font-sans text-sm leading-relaxed text-ink-soft">
+                  {group.caption}
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
       );
 
     default:

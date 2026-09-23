@@ -3,14 +3,14 @@ import type { CaseStudy } from "./types";
 export const jino: CaseStudy = {
   slug: "jino",
   title: "A relationship companion app for ambitious couples",
-  oneLiner: "The relationship growth companion for ambitious couples.",
+  oneLiner: "A daily check-in for couples building big lives without slipping into codependency or growing apart.",
   cardDescription:
     "Founder & designer of a relationship app built around daily behavioral loops instead of journal prompts or paywalls.",
   year: "Shipped 2026",
-  industry: "Consumer Social",
+  industry: "Jino / Consumer Social",
   role: "Founder, UX Designer",
-  team: ["Carolyn Tung — Founder, UX Designer", "Sean Pak — Engineer"],
-  timeline: "Design: Nov 2025 · Development: Aug 2026",
+  team: ["1 UX Designer", "1 Engineer"],
+  timeline: "Design: Nov 2025 Development: Aug 2026 Testing: Sep 2026",
   skills: ["Design System", "Prototyping", "Product Strategy", "QA Testing"],
   tags: ["0→1", "Founder", "Consumer Social"],
   coverImage: {
@@ -35,13 +35,31 @@ export const jino: CaseStudy = {
   },
   sections: [
     {
-      id: "context",
-      navLabel: "Context",
-      heading: "Context",
+      id: "overview",
+      navLabel: "Overview",
+      heading: "Introducing Jino",
       blocks: [
         {
           type: "paragraph",
           text: "Jino is a relationship growth companion for ambitious, emotionally intelligent couples. It is a lightweight app that creates opportunity for shared rituals for connection, emotional presence, and goal tracking. The goal of Jino is to help couples maintain emotional closeness and personal development while preserving individuality and a strong sense of self.",
+        },
+        {
+          type: "mockup",
+          video: "/case-studies/jino/goal-tracking.mp4",
+          background: "/case-studies/jino/bg-fcfffa.png",
+          alt: "Jino goal-tracking flow playing inside an iPhone mockup",
+          variant: "13-pro",
+        },
+        {
+          type: "gallery",
+          images: [
+            { src: "/case-studies/jino/appstore-1.png", alt: "Jino App Store screenshot 1" },
+            { src: "/case-studies/jino/appstore-2.png", alt: "Jino App Store screenshot 2" },
+            { src: "/case-studies/jino/appstore-3.png", alt: "Jino App Store screenshot 3" },
+            { src: "/case-studies/jino/appstore-4.png", alt: "Jino App Store screenshot 4" },
+            { src: "/case-studies/jino/appstore-5.png", alt: "Jino App Store screenshot 5" },
+            { src: "/case-studies/jino/appstore-6.png", alt: "Jino App Store screenshot 6" },
+          ],
         },
       ],
     },
@@ -103,14 +121,31 @@ export const jino: CaseStudy = {
       heading: "Preserving whimsy and play for couples set on achieving their goals",
       blocks: [
         {
-          type: "paragraph",
-          text: "Most relationship apps are split into two extremes:",
-        },
-        {
-          type: "list",
-          items: [
-            "Ultra-cute, gamified Asian-market apps — charming branding and playful mascots, but held back by inconsistent English localization and cluttered UX",
-            "Premium Western apps — polished, but often corporate and lifeless",
+          type: "comparison",
+          groups: [
+            {
+              label: "Cute, gamified Asian-market apps",
+              images: [
+                { src: "/case-studies/jino/asia-1.png", alt: "SumOne couple app screenshot" },
+                { src: "/case-studies/jino/asia-2.png", alt: "Couple Tree app screenshot" },
+              ],
+              caption:
+                "Charming branding and playful mascots, but held back by inconsistent English localization and cluttered UX.",
+            },
+            {
+              label: "Premium Western apps",
+              images: [
+                {
+                  src: "/case-studies/jino/west-1.png",
+                  alt: "Premium Western relationship app screenshot with daily question, quiz, and game activities",
+                },
+                {
+                  src: "/case-studies/jino/west-2.png",
+                  alt: "Premium Western relationship app screenshot with a growth-tracking home screen",
+                },
+              ],
+              caption: "Polished, but often corporate and lifeless.",
+            },
           ],
         },
         {
@@ -138,9 +173,10 @@ export const jino: CaseStudy = {
         },
         {
           type: "image",
-          src: "/case-studies/jino/brand-illustrations.png",
+          src: "/case-studies/jino/branding.png",
           alt: "Jino brand illustrations and mascot",
-          wide: true,
+          background: "#FCFFFA",
+          shadow: true,
         },
       ],
     },
@@ -151,39 +187,84 @@ export const jino: CaseStudy = {
       blocks: [
         {
           type: "quote",
-          text: "A relationship product lives or dies in the first five minutes.",
+          text: "A consumer product lives or dies in the first five minutes.",
         },
         {
           type: "paragraph",
           text: "For an MVP whose business model is dependent on user stickiness and behavioral loops, I needed to ensure that onboarding was quick and optimized for low click rate. I approached this by providing social logins and minimal form elements so that users completed key sign up in fewer than 5 screens.",
         },
         {
+          type: "mockup",
+          frames: [
+            "/case-studies/jino/onboarding-1.png",
+            "/case-studies/jino/onboarding-2.png",
+            "/case-studies/jino/onboarding-3.png",
+            "/case-studies/jino/onboarding-4.png",
+            "/case-studies/jino/onboarding-5.png",
+            "/case-studies/jino/onboarding-6.png",
+            "/case-studies/jino/onboarding-7.png",
+            "/case-studies/jino/onboarding-8.png",
+            "/case-studies/jino/onboarding-9.png",
+            "/case-studies/jino/onboarding-10.png",
+            "/case-studies/jino/onboarding-11.png",
+            "/case-studies/jino/onboarding-12.png",
+            "/case-studies/jino/onboarding-13.png",
+          ],
+          background: "/case-studies/jino/bg-fcfffa.png",
+          alt: "Jino onboarding happy path playing inside an iPhone mockup",
+          label: "Onboarding happy path",
+          variant: "13-pro",
+          frameHoldMs: 1200,
+          frameTransitionMs: 400,
+          frameMotion: "fade",
+        },
+        {
           type: "image",
-          src: "/case-studies/jino/onboarding.png",
-          alt: "Jino onboarding flow",
+          src: "/case-studies/jino/error-state.png",
+          alt: "Jino onboarding error state",
+          caption: "Error state",
+          background: "#FCFFFA",
+          backgroundImageWidth: "45%",
+          shadow: true,
         },
         {
           type: "paragraph",
           text: "Next, instead of dumping users into a blank home screen, the first-time user flow prompts them to complete key rituals (ex. daily check-ins or sending a voice note). With an example Connect Day streak calendar and preview cards, the empty states also teach the user what the app will feel like once they consistently use the app. This primes users for loops that drive retention.",
         },
         {
+          type: "mockup",
+          scrollImage: {
+            src: "/case-studies/jino/home-empty.png",
+            alt: "Jino home screen empty state, panning to reveal the full screen inside an iPhone mockup",
+            endPercent: -47.15,
+          },
+          background: "/case-studies/jino/bg-fcfffa.png",
+          alt: "Jino home screen empty state, panning to reveal the full screen inside an iPhone mockup",
+          label: "Home empty state",
+          variant: "13-pro",
+        },
+      ],
+    },
+    {
+      id: "testing",
+      navLabel: "Testing",
+      heading: "QA Testing & Beta Testing with my ICP",
+      blocks: [
+        {
           type: "paragraph",
-          text: "Once shipped, I plan on testing user stickiness and retention using the following success metrics:",
+          text: "After I conducted 4 rounds of QA testing on TestFlight, we opened up Jino to a sample of 5 couples that matched my ICP criteria for a 2-week period, collecting D14 retention and feature engagement with Posthog. After the trial period ends, I plan on distributing a post-hoc SUS survey. The specific features I am tracking are Daily Standups per week, Weekly Connect interactions per user, and Pair Connection Days per week.",
         },
         {
-          type: "list",
-          items: [
-            "Day 7 retention on Daily Standups",
-            "Weekly Connect interactions per user",
-            "Pair Connection Days per week",
-          ],
+          type: "image",
+          src: "/case-studies/jino/waitlist.png",
+          alt: "Jino waitlist",
         },
       ],
     },
     {
       id: "takeaways",
       navLabel: "Takeaways",
-      heading: "Key takeaways",
+      heading: "What I learned",
       blocks: [
         {
           type: "paragraph",

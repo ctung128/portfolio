@@ -30,7 +30,7 @@ export async function generateMetadata({
 }
 
 const backLink = (
-  <Link href="/#work" className="font-serif text-base text-ink-faint hover:text-green">
+  <Link href="/#work" className="font-sans text-base text-ink-faint hover:text-green">
     ← Back to work
   </Link>
 );
@@ -64,38 +64,43 @@ export default async function CaseStudyPage({
         </div>
 
         <div className="w-full max-w-3xl">
-          <CaseStudyHeader caseStudy={caseStudy} />
-          {caseStudy.duoHero ? (
-            <CaseStudyDuoHero
-              background={caseStudy.duoHero.background}
-              splash={caseStudy.duoHero.splash}
-              video={caseStudy.duoHero.video}
-              alt={caseStudy.duoHero.alt}
-              variant={caseStudy.duoHero.variant}
-            />
-          ) : caseStudy.heroMockup ? (
-            <CaseStudyHeroMockup
-              video={caseStudy.heroMockup.video}
-              frames={caseStudy.heroMockup.frames}
-              background={caseStudy.heroMockup.background}
-              alt={caseStudy.heroMockup.alt}
-              variant={caseStudy.heroMockup.variant}
-            />
-          ) : caseStudy.coverVideo ? (
-            <div className="mb-20 aspect-video overflow-hidden rounded-[12px] border border-border">
-              <video
-                className="h-full w-full object-cover"
-                src={caseStudy.coverVideo}
-                poster={caseStudy.coverImage.src}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label={caseStudy.coverImage.alt}
-              />
-            </div>
-          ) : null}
+          <CaseStudyHeader caseStudy={caseStudy}>
+            {caseStudy.duoHero || caseStudy.heroMockup || caseStudy.coverVideo ? (
+              <div className="mt-10">
+                {caseStudy.duoHero ? (
+                  <CaseStudyDuoHero
+                    background={caseStudy.duoHero.background}
+                    splash={caseStudy.duoHero.splash}
+                    video={caseStudy.duoHero.video}
+                    alt={caseStudy.duoHero.alt}
+                    variant={caseStudy.duoHero.variant}
+                  />
+                ) : caseStudy.heroMockup ? (
+                  <CaseStudyHeroMockup
+                    video={caseStudy.heroMockup.video}
+                    frames={caseStudy.heroMockup.frames}
+                    background={caseStudy.heroMockup.background}
+                    alt={caseStudy.heroMockup.alt}
+                    variant={caseStudy.heroMockup.variant}
+                  />
+                ) : (
+                  <div className="mb-20 aspect-video overflow-hidden rounded-[12px] border border-border">
+                    <video
+                      className="h-full w-full object-cover"
+                      src={caseStudy.coverVideo}
+                      poster={caseStudy.coverImage.src}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      aria-label={caseStudy.coverImage.alt}
+                    />
+                  </div>
+                )}
+              </div>
+            ) : null}
+          </CaseStudyHeader>
           <div className="space-y-20">
             {caseStudy.sections.map((section) => (
               <section key={section.id} id={section.id} className="space-y-5">

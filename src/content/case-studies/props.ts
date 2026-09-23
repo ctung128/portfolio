@@ -8,7 +8,7 @@ export const props: CaseStudy = {
   cardDescription:
     "A gamified community platform's confusing MVP, rebuilt into a learnable, reward-driven experience.",
   year: "2025",
-  industry: "Props — Consumer Social",
+  industry: "Props / Consumer Social",
   role: "UX Manager/Designer",
   team: [
     "2 Founders-Engineers",

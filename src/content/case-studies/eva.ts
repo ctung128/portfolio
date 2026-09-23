@@ -8,7 +8,7 @@ export const eva: CaseStudy = {
   cardDescription:
     "A 0→1 conversational ops agent for enterprise leadership, designed to be AI-second, not AI-first.",
   year: "2025",
-  industry: "EOX Vantage — Enterprise Ops Intelligence",
+  industry: "EOX Vantage / Enterprise Ops Intelligence",
   role: "Product Designer",
   team: [
     "1 Designer (me!)",

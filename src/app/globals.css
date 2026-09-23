@@ -16,6 +16,25 @@
   );
 }
 
+/* Scrolls a tall screenshot down inside a phone screen mask and back,
+   looping. --scroll-end is set per-instance to the exact translateY needed
+   to reveal the bottom of that specific image (computed from its aspect
+   ratio vs. the phone screen's fixed aspect ratio). */
+@keyframes scroll-reveal {
+  0%,
+  10% {
+    transform: translateY(0);
+  }
+  40%,
+  60% {
+    transform: translateY(var(--scroll-end));
+  }
+  90%,
+  100% {
+    transform: translateY(0);
+  }
+}
+
 @theme inline {
   --color-cream: var(--color-cream);
   --color-cream-subtle: var(--color-cream-subtle);

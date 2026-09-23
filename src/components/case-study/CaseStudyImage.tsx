@@ -10,6 +10,9 @@ export function CaseStudyImage({
   fill,
   objectPosition = "center",
   imageClassName,
+  background,
+  backgroundImageWidth = "85%",
+  shadow,
 }: {
   src: string;
   alt: string;
@@ -18,6 +21,17 @@ export function CaseStudyImage({
   fill?: boolean;
   objectPosition?: string;
   imageClassName?: string;
+  /** Render the image as a foreground layer over a solid-color background
+   * card (e.g. a hex value), with breathing-room padding. */
+  background?: string;
+  /** Width of the image within the `background` card (CSS value, e.g.
+   * "50%"). Defaults to 85%; use a smaller value for a single
+   * supplementary screenshot so it does not dominate the wide card. */
+  backgroundImageWidth?: string;
+  /** Apply a drop shadow that follows the image's own alpha silhouette
+   * (works well for images with transparent backgrounds), matching the
+   * device mockup shadow treatment. */
+  shadow?: boolean;
 }) {
   const status = useImageStatus(src);
 
@@ -41,6 +55,31 @@ export function CaseStudyImage({
             </>
           )}
         </div>
+      </figure>
+    );
+  }
+
+  if (background) {
+    return (
+      <figure>
+        <div
+          className="flex items-center justify-center rounded-[24px] border border-border py-16 sm:py-20"
+          style={{ backgroundColor: background }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={src}
+            alt={alt}
+            className={imageClassName}
+            style={{
+              width: backgroundImageWidth,
+              filter: shadow ? "drop-shadow(0 20px 30px rgba(0,0,0,0.25))" : undefined,
+            }}
+          />
+        </div>
+        {caption && (
+          <figcaption className="mt-3 font-sans text-sm text-ink-soft">{caption}</figcaption>
+        )}
       </figure>
     );
   }

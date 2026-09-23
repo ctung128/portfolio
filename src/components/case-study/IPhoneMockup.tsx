@@ -12,19 +12,33 @@ const FRAME_HOLD_MS = 550;
 const FRAME_TRANSITION_MS = 300;
 const FRAME_EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
-/** Cycles through a sequence of static screenshots with a crossfade +
- * subtle scale/drift settle, mimicking an After Effects/Lottie-style
- * mobile product demo loop. */
-function FrameSequence({ frames, alt }: { frames: string[]; alt: string }) {
+/** Cycles through a sequence of static screenshots. "scale" crossfades with
+ * a subtle scale/drift settle (After Effects/Lottie-style), best for small
+ * incremental state changes. "fade" is a plain opacity crossfade with no
+ * motion, which reads cleaner when consecutive frames are very different
+ * screens (e.g. a keyboard appearing, a full navigation change). */
+function FrameSequence({
+  frames,
+  alt,
+  holdMs = FRAME_HOLD_MS,
+  transitionMs = FRAME_TRANSITION_MS,
+  motion = "scale",
+}: {
+  frames: string[];
+  alt: string;
+  holdMs?: number;
+  transitionMs?: number;
+  motion?: "scale" | "fade";
+}) {
   const [active, setActive] = useState(0);
 
   useEffect(() => {
     if (frames.length <= 1) return;
     const id = setInterval(() => {
       setActive((i) => (i + 1) % frames.length);
-    }, FRAME_HOLD_MS + FRAME_TRANSITION_MS);
+    }, holdMs + transitionMs);
     return () => clearInterval(id);
-  }, [frames.length]);
+  }, [frames.length, holdMs, transitionMs]);
 
   return (
     <div className="absolute inset-0">
@@ -38,13 +52,53 @@ function FrameSequence({ frames, alt }: { frames: string[]; alt: string }) {
           className="absolute inset-0 h-full w-full object-cover object-top"
           style={{
             opacity: i === active ? 1 : 0,
-            transform: i === active ? "scale(1) translateY(0)" : "scale(1.045) translateY(10px)",
-            transition: `opacity ${FRAME_TRANSITION_MS}ms ${FRAME_EASE}, transform ${FRAME_TRANSITION_MS}ms ${FRAME_EASE}`,
+            transform:
+              motion === "scale"
+                ? i === active
+                  ? "scale(1) translateY(0)"
+                  : "scale(1.045) translateY(10px)"
+                : undefined,
+            transition: `opacity ${transitionMs}ms ${FRAME_EASE}${
+              motion === "scale" ? `, transform ${transitionMs}ms ${FRAME_EASE}` : ""
+            }`,
             zIndex: i === active ? 1 : 0,
           }}
         />
       ))}
     </div>
+  );
+}
+
+const SCROLL_EASE = "cubic-bezier(0.65, 0, 0.35, 1)";
+
+/** Pans a single tall screenshot down inside the fixed-aspect screen mask
+ * and back, looping — a live CSS transform, not a rendered video. `endPercent`
+ * is the exact translateY (relative to the image's own rendered height)
+ * needed to reveal the image's bottom edge, computed from its aspect ratio
+ * vs. the phone screen's fixed 9:19.5 aspect ratio: -(1 - (19.5 * imgWidth)
+ * / (9 * imgHeight)) * 100. */
+function ScrollingImage({
+  src,
+  alt,
+  endPercent,
+  durationMs = 9000,
+}: {
+  src: string;
+  alt: string;
+  endPercent: number;
+  durationMs?: number;
+}) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={src}
+      alt={alt}
+      className="absolute inset-x-0 top-0 w-full"
+      style={{
+        ["--scroll-end" as string]: `${endPercent}%`,
+        animation: `scroll-reveal ${durationMs}ms ${SCROLL_EASE} infinite`,
+      }}
+    />
   );
 }
 
@@ -122,6 +176,7 @@ const VARIANT_STYLES: Record<
 export function IPhoneMockup({
   videoSrc,
   frames,
+  scrollImage,
   poster,
   alt,
   className,
@@ -129,17 +184,34 @@ export function IPhoneMockup({
   position = "relative",
   showStatusBar = false,
   variant = "15-pro",
+  frameHoldMs,
+  frameTransitionMs,
+  frameMotion,
 }: {
-  /** A looping video to fill the screen. Provide this or `frames`. */
+  /** A looping video to fill the screen. Provide this or `frames`/`scrollImage`. */
   videoSrc?: string;
   /** A sequence of static screenshots to animate between (crossfade +
    * settle), for case studies without device footage. Provide this or
-   * `videoSrc`. */
+   * `videoSrc`/`scrollImage`. */
   frames?: string[];
+  /** A single tall screenshot that pans down inside the screen mask and
+   * back, looping — for a live-scroll effect with no video render step.
+   * Provide this or `videoSrc`/`frames`. */
+  scrollImage?: { src: string; alt: string; endPercent: number; durationMs?: number };
   poster?: string;
   alt: string;
   className?: string;
   sizeClassName?: string;
+  /** Milliseconds each frame holds before transitioning. Only used with
+   * `frames`. */
+  frameHoldMs?: number;
+  /** Milliseconds the crossfade itself takes. Only used with `frames`. */
+  frameTransitionMs?: number;
+  /** "scale" (default) crossfades with a subtle scale/drift settle, best
+   * for small incremental changes. "fade" is a plain opacity crossfade,
+   * which reads cleaner between very different screens (e.g. a keyboard
+   * appearing). Only used with `frames`. */
+  frameMotion?: "scale" | "fade";
   /** CSS position of the root element. Use "absolute" when placing this
    * inside a custom layout that positions it with top/right/etc via
    * `className` — avoids conflicting with the default "relative". */
@@ -167,7 +239,13 @@ export function IPhoneMockup({
           {/* Screen */}
           <div className={`relative h-full w-full overflow-hidden ${screenRadius} bg-black`}>
             {frames && frames.length > 0 ? (
-              <FrameSequence frames={frames} alt={alt} />
+              <FrameSequence
+                frames={frames}
+                alt={alt}
+                holdMs={frameHoldMs}
+                transitionMs={frameTransitionMs}
+                motion={frameMotion}
+              />
             ) : videoSrc ? (
               <video
                 ref={setPlaybackRate}
@@ -181,6 +259,13 @@ export function IPhoneMockup({
                 preload="metadata"
                 aria-label={alt}
                 onLoadedMetadata={(e) => setPlaybackRate(e.currentTarget)}
+              />
+            ) : scrollImage ? (
+              <ScrollingImage
+                src={scrollImage.src}
+                alt={scrollImage.alt}
+                endPercent={scrollImage.endPercent}
+                durationMs={scrollImage.durationMs}
               />
             ) : null}
 
