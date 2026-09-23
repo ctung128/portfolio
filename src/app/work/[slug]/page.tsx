@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { caseStudies, getCaseStudy } from "@/content/case-studies";
 import { CaseStudyHeader } from "@/components/case-study/CaseStudyHeader";
+import { CaseStudyHeroMockup } from "@/components/case-study/CaseStudyHeroMockup";
 import { BlockRenderer } from "@/components/case-study/BlockRenderer";
 import {
   TableOfContents,
@@ -63,7 +64,14 @@ export default async function CaseStudyPage({
 
         <div className="w-full max-w-3xl">
           <CaseStudyHeader caseStudy={caseStudy} />
-          {caseStudy.coverVideo ? (
+          {caseStudy.heroMockup ? (
+            <CaseStudyHeroMockup
+              video={caseStudy.heroMockup.video}
+              background={caseStudy.heroMockup.background}
+              alt={caseStudy.heroMockup.alt}
+              variant={caseStudy.heroMockup.variant}
+            />
+          ) : caseStudy.coverVideo ? (
             <div className="mb-20 aspect-video overflow-hidden rounded-[12px] border border-border">
               <video
                 className="h-full w-full object-cover"

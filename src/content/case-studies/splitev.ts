@@ -2,7 +2,7 @@ import type { CaseStudy } from "./types";
 
 export const splitev: CaseStudy = {
   slug: "splitev",
-  title: "SplitEV",
+  title: "A two-sided EV charging marketplace",
   oneLiner: "Redesigning SplitEV's MVP, an EV charging startup.",
   cardDescription:
     "A Techstars-backed EV charging startup's five most critical flows, rebuilt from fragmented prototype into a launch-ready MVP.",

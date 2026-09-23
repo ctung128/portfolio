@@ -27,5 +27,11 @@ export type CaseStudy = {
   tags: string[];
   coverImage: { src: string; alt: string };
   coverVideo?: string;
+  heroMockup?: {
+    video: string;
+    background: string;
+    alt: string;
+    variant?: "13-pro" | "15-pro";
+  };
   sections: CaseStudySection[];
 };

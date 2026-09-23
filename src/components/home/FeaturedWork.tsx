@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { caseStudies } from "@/content/case-studies";
 import { CaseStudyImage } from "@/components/case-study/CaseStudyImage";
+import { CaseStudyHeroMockup } from "@/components/case-study/CaseStudyHeroMockup";
 
 export function FeaturedWork() {
   return (
@@ -15,7 +16,16 @@ export function FeaturedWork() {
             className="group flex flex-col"
           >
             <div className="aspect-[16/9] overflow-hidden rounded-[12px]">
-              {cs.coverVideo ? (
+              {cs.heroMockup ? (
+                <CaseStudyHeroMockup
+                  video={cs.heroMockup.video}
+                  background={cs.heroMockup.background}
+                  alt={cs.heroMockup.alt}
+                  className="h-full w-full border border-border"
+                  phoneSizeClassName="h-[92%] w-auto"
+                  variant={cs.heroMockup.variant}
+                />
+              ) : cs.coverVideo ? (
                 <video
                   className="h-full w-full rounded-[12px] border border-border object-cover"
                   src={cs.coverVideo}

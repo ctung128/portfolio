@@ -2,7 +2,7 @@ import type { CaseStudy } from "./types";
 
 export const jino: CaseStudy = {
   slug: "jino",
-  title: "Jino",
+  title: "A relationship companion app for ambitious couples",
   oneLiner: "The relationship growth companion for ambitious couples.",
   cardDescription:
     "Founder & designer of a relationship app built around daily behavioral loops instead of journal prompts or paywalls.",
@@ -16,6 +16,12 @@ export const jino: CaseStudy = {
   coverImage: {
     src: "/case-studies/jino/cover.png",
     alt: "Jino relationship app cover image",
+  },
+  heroMockup: {
+    video: "/case-studies/jino/cover.mp4",
+    background: "/case-studies/jino/cover-bg.png",
+    alt: "Jino app demo playing inside an iPhone mockup",
+    variant: "13-pro",
   },
   sections: [
     {

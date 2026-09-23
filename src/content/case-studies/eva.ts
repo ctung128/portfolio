@@ -2,7 +2,7 @@ import type { CaseStudy } from "./types";
 
 export const eva: CaseStudy = {
   slug: "eva",
-  title: "EVA",
+  title: "Conversational AI operational chatbot",
   oneLiner:
     "A conversational ops agent that interprets EOX Vantage's operational data so leaders can validate performance metrics on demand.",
   cardDescription:
@@ -16,7 +16,7 @@ export const eva: CaseStudy = {
     "1 Software Engineer",
   ],
   timeline: "Jan–Mar 2025",
-  skills: ["User Research", "\nPrototyping", "Conversational AI Design", "AI-Native Product Thinking"],
+  skills: ["User Research", "Prototyping", "Conversational AI Design", "AI-Native Product Thinking"],
   tags: ["0→1", "AI / Enterprise", "Internal Tool"],
   coverImage: {
     src: "/case-studies/eva/cover.png",

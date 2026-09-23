@@ -2,7 +2,7 @@ import type { CaseStudy } from "./types";
 
 export const props: CaseStudy = {
   slug: "props",
-  title: "Props",
+  title: "A discoverable community that platforms & gamifies social orgs",
   oneLiner:
     "Redesigning Props' mobile app to reduce drop-off for first-time users and increase Day 1–7 retention.",
   cardDescription:
@@ -23,6 +23,12 @@ export const props: CaseStudy = {
   coverImage: {
     src: "/case-studies/props/cover.png",
     alt: "Props app redesign cover image",
+  },
+  heroMockup: {
+    video: "/case-studies/props/cover.mp4",
+    background: "/case-studies/props/cover-bg.png",
+    alt: "Props app demo playing inside an iPhone mockup",
+    variant: "13-pro",
   },
   sections: [
     {
