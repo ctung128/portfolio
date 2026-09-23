@@ -5,6 +5,13 @@ export type CaseStudyBlock =
   | { type: "stats"; items: { value: string; label: string }[] }
   | { type: "list"; items: string[]; ordered?: boolean }
   | {
+      /** A list of labeled research insights, each pairing a short
+       * category tag with an arrow-led quote and a supporting body
+       * description (e.g. synthesized user-interview findings). */
+      type: "insights";
+      items: { label: string; quote: string; body: string }[];
+    }
+  | {
       type: "image";
       src: string;
       alt: string;

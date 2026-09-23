@@ -57,6 +57,32 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
         </ul>
       );
 
+    case "insights":
+      return (
+        <div className="space-y-8">
+          {block.items.map((item) => (
+            <div key={item.label}>
+              <p className="font-sans text-xs uppercase tracking-wider text-ink-faint">
+                {item.label}
+              </p>
+              <div className="mt-2 flex items-start gap-3">
+                <span aria-hidden className="mt-1 font-sans text-ink-faint">
+                  →
+                </span>
+                <div>
+                  <p className="font-serif text-xl italic leading-snug text-ink sm:text-2xl">
+                    &ldquo;{item.quote}&rdquo;
+                  </p>
+                  <p className="mt-2 font-sans text-sm leading-relaxed text-ink-soft sm:text-base">
+                    {item.body}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      );
+
     case "image":
       return (
         <CaseStudyImage

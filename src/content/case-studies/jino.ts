@@ -77,6 +77,70 @@ export const jino: CaseStudy = {
       ],
     },
     {
+      id: "user-research",
+      navLabel: "User research",
+      heading: "To discover this, first I did a deep dive into what hurts Gen Z relationships. ",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "Before designing, I wanted to understand the problems that couples my age struggle with. I pulled from three sources:",
+        },
+        {
+          type: "list",
+          ordered: false,
+          items: [
+            "Reddit threads from r/relationships, r/relationship_advice, and r/LongDistance, plus App Store and Google Play reviews of existing couple apps",
+            "Competitor audience research of relationship app users and why they drop off",
+            "5 user interviews with couples in my network who matched my ICP (ages 22–28, career-driven or in school, in committed relationships)",
+          ],
+        },
+        {
+          type: "subheading",
+          text: "Key insights",
+        },
+        {
+          type: "insights",
+          items: [
+            {
+              label: "Emotional drift",
+              quote: "We're together but feel like roommates.",
+              body: "Once routines set in, dates and intentional quality time quietly drop off.",
+            },
+            {
+              label: "Communication inertia",
+              quote: "We talk every day, but not about anything.",
+              body: "Constant texting creates the feeling of connection without real emotional check-ins.",
+            },
+            {
+              label: "Uneven effort",
+              quote: "I plan everything; they don't notice.",
+              body: "One partner usually carries the planning and remembers anniversaries, and resentment builds when it goes unacknowledged.",
+            },
+            {
+              label: "Emotional misalignment",
+              quote: "They don't express love the same way I do.",
+              body: "Differences in love languages and introversion vs. extroversion get misread as indifference.",
+            },
+            {
+              label: "Complacency",
+              quote: "We love each other but we stopped growing.",
+              body: "Comfort slides into stagnation. Ambitious partners worry the relationship is slowing their momentum and want emotional upkeep that feels efficient.",
+            },
+            {
+              label: "Loss of individuality",
+              quote: "I miss doing my own thing.",
+              body: "Partners feel guilty taking solo time or when one falls behind on personal goals, especially when their productivity rhythms don't match.",
+            },
+            {
+              label: "Milestone amnesia",
+              quote: "What year did we move in together?",
+              body: "Shared history lives in scattered camera rolls, so couples lose sight of how they've grown together.",
+            },
+          ],
+        },
+      ],
+    },
+    {
       id: "competitive-research",
       navLabel: "Competitive research",
       heading: "Why isn't there a go-to relationship app that has monopolized the industry yet?",
