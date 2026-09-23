@@ -16,7 +16,7 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
         <h3
           className={`${block.spaced ? "mt-14!" : ""} ${
             block.style === "heading"
-              ? "font-serif text-xl text-ink sm:text-2xl"
+              ? "font-serif text-2xl text-ink sm:text-3xl"
               : "font-sans text-sm font-semibold uppercase tracking-wider text-ink"
           }`}
         >

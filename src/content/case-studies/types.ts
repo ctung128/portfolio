@@ -4,9 +4,9 @@ export type CaseStudyBlock =
       type: "subheading";
       text: string;
       /** "eyebrow" (default) is the small uppercase tracked-out label used
-       * throughout case studies. "heading" is the serif paragraph-header
-       * treatment (same font-serif family as the section h2, one size
-       * down) used to break up a section into named subsections. */
+       * throughout case studies. "heading" matches the section h2 exactly
+       * (same font-serif family and size) and is used to break a section
+       * into named subsections that read as equally weighted headers. */
       style?: "eyebrow" | "heading";
       /** Add extra top margin to separate this subsection from the one
        * before it, beyond the standard block-to-block spacing. */

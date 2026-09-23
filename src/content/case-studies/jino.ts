@@ -89,7 +89,7 @@ export const jino: CaseStudy = {
           type: "list",
           ordered: false,
           items: [
-            "User interviews with couples in my network who matched my ICP (ages 22–28, career-driven or in school, in committed relationships)",
+            "User interviews with couples in my network who matched my ICP",
             "Competitor audience research of relationship app users and why they drop off", 
             "Reddit threads from r/relationships, r/relationship_advice, and r/LongDistance, plus App Store and Google Play reviews of existing couple apps",
           ],
@@ -241,29 +241,13 @@ export const jino: CaseStudy = {
       heading: "Defining the brand vision",
       blocks: [
         {
-          type: "paragraph",
-          text: "I set out to create a visual identity that sits between those two worlds:",
-        },
-        {
-          type: "list",
-          items: [
-            "Expressive illustrations inspired by KakaoTalk/WeChat sticker culture",
-            "A premium, wellness-inspired brand",
-            "A playful mascot, like Duolingo or 365 Memories",
-          ],
-        },
-        {
-          type: "image",
-          src: "/case-studies/jino/branding.png",
-          alt: "Jino brand illustrations and mascot",
-          background: "#FCFFFA",
-          shadow: true,
+          type: "subheading",
+          text: "Understanding my ICP",
         },
         {
           type: "subheading",
           text: "Preserving whimsy and play for couples set on achieving their goals",
           style: "heading",
-          spaced: true,
         },
         {
           type: "comparison",
@@ -296,6 +280,25 @@ export const jino: CaseStudy = {
         {
           type: "paragraph",
           text: "Neither experience resonates with the couples I'm designing for: Gen Z Asian or Asian-adjacent audiences who value both emotional intentionality and personal ambition (ex. a couple who might be building a company together while also loving Pokémon, Sanrio, or Studio Ghibli).",
+        },
+        {
+          type: "paragraph",
+          text: "I set out to create a visual identity that sits between those two worlds:",
+        },
+        {
+          type: "list",
+          items: [
+            "Expressive illustrations inspired by KakaoTalk/WeChat sticker culture",
+            "A premium, wellness-inspired brand",
+            "A playful mascot, like Duolingo or 365 Memories",
+          ],
+        },
+        {
+          type: "image",
+          src: "/case-studies/jino/branding.png",
+          alt: "Jino brand illustrations and mascot",
+          background: "#FCFFFA",
+          shadow: true,
         },
       ],
     },
