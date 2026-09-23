@@ -79,7 +79,10 @@ export const recommendations = {
   ],
   learning: [
     { title: "Training for a half-marathon" },
-    { title: "Running a quarterly Substack translation blog" },
+    {
+      title: "Running a quarterly Substack translation blog",
+      href: "https://tealeafgirl.substack.com",
+    },
     { title: "Relearning tennis :')" },
     { title: "Building a freelance portrait photography studio", href: "https://snowbellphoto.com" },
   ],

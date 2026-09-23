@@ -57,11 +57,11 @@ export function AboutSection() {
                           href={item.href}
                           target="_blank"
                           rel="noreferrer"
-                          className={`underline decoration-border-strong underline-offset-2 hover:decoration-ink ${
+                          className={`hover:text-ink-soft ${
                             group.boldTitles ? "font-medium text-ink" : "text-ink"
                           }`}
                         >
-                          {item.title}
+                          {item.title} <span aria-hidden className="text-ink-faint">↗</span>
                         </a>
                       ) : (
                         <span className={group.boldTitles ? "font-medium text-ink" : "text-ink"}>
