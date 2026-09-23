@@ -93,8 +93,8 @@ export const jino: CaseStudy = {
     },
     {
       id: "strategy",
-      navLabel: "My approach",
-      heading: "Product Strategy: Defining the MVP",
+      navLabel: "Product Strategy",
+      heading: "Defining the MVP",
       blocks: [
         {
           type: "paragraph",
@@ -131,7 +131,7 @@ export const jino: CaseStudy = {
                 { src: "/case-studies/jino/asia-2.png", alt: "Couple Tree app screenshot" },
               ],
               caption:
-                "Charming branding and playful mascots, but held back by inconsistent English localization and cluttered UX.",
+                "Charming branding and playful mascots, but held back by inconsistent English localization and cluttered UX",
             },
             {
               label: "Premium Western apps",
@@ -145,7 +145,7 @@ export const jino: CaseStudy = {
                   alt: "Premium Western relationship app screenshot with a growth-tracking home screen",
                 },
               ],
-              caption: "Polished, but often corporate and lifeless.",
+              caption: "Polished, but often corporate and lifeless",
             },
           ],
         },
