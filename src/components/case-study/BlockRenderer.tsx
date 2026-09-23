@@ -13,7 +13,13 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
 
     case "subheading":
       return (
-        <h3 className="font-sans text-sm font-semibold uppercase tracking-wider text-ink">
+        <h3
+          className={`${block.spaced ? "mt-14!" : ""} ${
+            block.style === "heading"
+              ? "font-sans text-lg font-semibold text-ink sm:text-xl"
+              : "font-sans text-sm font-semibold uppercase tracking-wider text-ink"
+          }`}
+        >
           {block.text}
         </h3>
       );
@@ -116,7 +122,11 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
 
     case "gallery":
       return (
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
+        <div
+          className={`grid grid-cols-2 gap-3 sm:gap-4 ${
+            block.columns === 2 ? "" : "sm:grid-cols-3"
+          }`}
+        >
           {block.images.map((image) => (
             <CaseStudyImage key={image.src} src={image.src} alt={image.alt} />
           ))}

@@ -97,19 +97,20 @@ export const jino: CaseStudy = {
         {
           type: "subheading",
           text: "Key insights",
+          spaced: true,
         },
         {
           type: "insights",
           items: [
             {
-              label: "Emotional drift",
+              label: "post-honeymoon phase complacency",
               quote: "We're together but feel like roommates.",
               body: "Once routines set in, dates and intentional quality time quietly drop off.",
             },
             {
-              label: "Communication inertia",
-              quote: "We talk every day, but not about anything.",
-              body: "Constant texting creates the feeling of connection without real emotional check-ins.",
+              label: "Lack of curiosity",
+              quote: "We talk every day, but not about anything substantial.",
+              body: "Constant texting creates the feeling of connection without getting to know each other on a deeper level.",
             },
             {
               label: "Uneven effort",
@@ -117,12 +118,12 @@ export const jino: CaseStudy = {
               body: "One partner usually carries the planning and remembers anniversaries, and resentment builds when it goes unacknowledged.",
             },
             {
-              label: "Emotional misalignment",
+              label: "Not meeting each other's love languages",
               quote: "They don't express love the same way I do.",
               body: "Differences in love languages and introversion vs. extroversion get misread as indifference.",
             },
             {
-              label: "Complacency",
+              label: "Not leaving the comfort zone",
               quote: "We love each other but we stopped growing.",
               body: "Comfort slides into stagnation. Ambitious partners worry the relationship is slowing their momentum and want emotional upkeep that feels efficient.",
             },
@@ -132,15 +133,17 @@ export const jino: CaseStudy = {
               body: "Partners feel guilty taking solo time or when one falls behind on personal goals, especially when their productivity rhythms don't match.",
             },
             {
-              label: "Milestone amnesia",
+              label: "Forgetting relationship milestones",
               quote: "What year did we move in together?",
-              body: "Shared history lives in scattered camera rolls, so couples lose sight of how they've grown together.",
+              body: "Sweet texts live in massive chat histories that don't load, so couples lose sight of how they've grown together.",
             },
           ],
         },
         {
           type: "subheading",
           text: "Existing apps lose users in one of two ways",
+          style: "heading",
+          spaced: true,
         },
         {
           type: "paragraph",
@@ -153,6 +156,8 @@ export const jino: CaseStudy = {
         {
           type: "subheading",
           text: "How might we…",
+          style: "heading",
+          spaced: true,
         },
         {
           type: "quote",
@@ -161,10 +166,26 @@ export const jino: CaseStudy = {
         {
           type: "subheading",
           text: "Meet the couple",
+          style: "heading",
+          spaced: true,
         },
         {
           type: "paragraph",
           text: "A couples app only works if the less-engaged partner opens it too. Instead of designing for one user, I built paired personas: the partner who initiates and the partner who needs a low-effort way in.",
+        },
+        {
+          type: "gallery",
+          columns: 2,
+          images: [
+            {
+              src: "/case-studies/jino/persona-1.png",
+              alt: "Persona: Serena Park, \"The Intentional Planner\" — the partner who initiates",
+            },
+            {
+              src: "/case-studies/jino/persona-2.png",
+              alt: "Persona: Daniel Nguyen, \"The Heads-Down Builder\" — the partner who needs a low-effort way in",
+            },
+          ],
         },
       ],
     },

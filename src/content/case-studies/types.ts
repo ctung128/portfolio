@@ -1,6 +1,16 @@
 export type CaseStudyBlock =
   | { type: "paragraph"; text: string }
-  | { type: "subheading"; text: string }
+  | {
+      type: "subheading";
+      text: string;
+      /** "eyebrow" (default) is the small uppercase tracked-out label used
+       * throughout case studies. "heading" is a normal-weight, sentence-case
+       * paragraph header for a more prominent in-section break. */
+      style?: "eyebrow" | "heading";
+      /** Add extra top margin to separate this subsection from the one
+       * before it, beyond the standard block-to-block spacing. */
+      spaced?: boolean;
+    }
   | { type: "quote"; text: string; attribution?: string }
   | { type: "stats"; items: { value: string; label: string }[] }
   | { type: "list"; items: string[]; ordered?: boolean }
@@ -62,6 +72,10 @@ export type CaseStudyBlock =
        * baked in — no additional mockup wrapper. */
       type: "gallery";
       images: { src: string; alt: string }[];
+      /** Force a fixed 2-column layout at every breakpoint (e.g. a pair of
+       * side-by-side persona cards), instead of the default responsive
+       * 2→3 column grid. */
+      columns?: 2;
     }
   | {
       /** Side-by-side labeled groups of images, e.g. a competitive audit
