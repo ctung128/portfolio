@@ -11,7 +11,7 @@ const HOVER_SCALE =
 export function FeaturedWork() {
   return (
     <section id="work" className="border-y border-border bg-cream-subtle">
-      <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
+      <div className="mx-auto max-w-5xl px-6 py-16 sm:px-8 sm:py-24">
         <h2 className="font-serif text-3xl text-ink sm:text-4xl">Selected work</h2>
         <div className="mt-10 grid grid-cols-1 gap-16">
         {caseStudies.map((cs) => (
@@ -58,7 +58,7 @@ export function FeaturedWork() {
               </h3>
               <span className="inline-flex items-center gap-1.5 whitespace-nowrap font-sans text-sm text-ink-faint">
                 {cs.year.startsWith("Shipped") && (
-                  <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-green" />
+                  <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-[#628a00]" />
                 )}
                 {cs.year}
               </span>

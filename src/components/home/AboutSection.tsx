@@ -15,7 +15,7 @@ const recommendationGroups: {
 export function AboutSection() {
   return (
     <section id="about">
-      <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
+      <div className="mx-auto max-w-5xl px-6 py-16 sm:px-8 sm:py-24">
         <div className="grid gap-8 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] sm:items-center sm:gap-14">
           <Portrait src={portrait.src} alt={portrait.alt} />
 

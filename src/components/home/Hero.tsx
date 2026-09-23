@@ -6,8 +6,6 @@ import { PersonalCarousel } from "./PersonalCarousel";
 
 const TITLE_MAX = 40;
 const TITLE_MIN = 13;
-const SUBHEAD_MAX = 18;
-const SUBHEAD_MIN = 11;
 
 function fitToContainer(
   container: HTMLElement,
@@ -28,10 +26,7 @@ function fitToContainer(
 export function Hero() {
   const titleContainerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const subheadContainerRef = useRef<HTMLDivElement>(null);
-  const subheadRef = useRef<HTMLParagraphElement>(null);
   const [titleSize, setTitleSize] = useState(TITLE_MAX);
-  const [subheadSize, setSubheadSize] = useState(SUBHEAD_MAX);
 
   useLayoutEffect(() => {
     const fit = () => {
@@ -39,12 +34,6 @@ export function Hero() {
       const title = titleRef.current;
       if (titleContainer && title) {
         setTitleSize(fitToContainer(titleContainer, title, TITLE_MAX, TITLE_MIN));
-      }
-
-      const subheadContainer = subheadContainerRef.current;
-      const subhead = subheadRef.current;
-      if (subheadContainer && subhead) {
-        setSubheadSize(fitToContainer(subheadContainer, subhead, SUBHEAD_MAX, SUBHEAD_MIN));
       }
     };
 
@@ -55,7 +44,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="mx-auto max-w-5xl px-4 pb-16 pt-16 sm:px-6 sm:pb-20 sm:pt-20">
+    <section className="mx-auto max-w-5xl px-6 pb-16 pt-16 sm:px-8 sm:pb-20 sm:pt-20">
       <div ref={titleContainerRef} className="w-full min-w-0">
         <h1
           ref={titleRef}
@@ -66,16 +55,10 @@ export function Hero() {
         </h1>
       </div>
 
-      <div ref={subheadContainerRef} className="mt-5 w-full min-w-0">
-        <p
-          ref={subheadRef}
-          className="block whitespace-nowrap font-sans leading-relaxed"
-          style={{ fontSize: subheadSize }}
-        >
-          <span className="font-semibold text-ink">{hero.subheadBold}</span>{" "}
-          <span className="text-ink-faint">{hero.subheadMuted}</span>
-        </p>
-      </div>
+      <p className="mt-[14px] max-w-2xl font-sans text-base leading-relaxed">
+        <span className="font-semibold text-ink">{hero.subheadBold}</span>{" "}
+        <span className="text-ink-faint">{hero.subheadMuted}</span>
+      </p>
 
       <a
         href={siteConfig.calendly}

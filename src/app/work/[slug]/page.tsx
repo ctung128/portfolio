@@ -47,7 +47,7 @@ export default async function CaseStudyPage({
   const tocItems = caseStudy.sections.map((s) => ({ id: s.id, navLabel: s.navLabel }));
 
   return (
-    <article className="mx-auto max-w-5xl px-4 pb-24 pt-8 sm:px-6 sm:pt-12">
+    <article className="mx-auto max-w-5xl px-6 pb-24 pt-8 sm:px-8 sm:pt-12">
       <div className="lg:hidden">
         {backLink}
         <div className="mt-6">

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function PlayPage() {
   return (
-    <div className="mx-auto max-w-5xl px-4 pb-24 pt-16 sm:px-6 sm:pt-20">
+    <div className="mx-auto max-w-5xl px-6 pb-24 pt-16 sm:px-8 sm:pt-20">
       <header className="max-w-2xl">
         <h1 className="font-serif text-4xl leading-tight text-ink sm:text-5xl">
           {playPage.headline}

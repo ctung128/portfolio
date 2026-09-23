@@ -97,21 +97,25 @@ function StatusBarIcons() {
 
 type Variant = "13-pro" | "15-pro";
 
+// Values expressed in cqw (% of the mockup's own rendered width, via a
+// container query on the root element) instead of fixed rem/px, so the
+// bezel and corner rounding stay proportional at every size instead of
+// looking thick and over-rounded on a narrow mobile-width phone.
 const VARIANT_STYLES: Record<
   Variant,
   { frameRadius: string; bezelRadius: string; screenRadius: string; bezelPadding: string }
 > = {
   "13-pro": {
-    frameRadius: "rounded-[2.6rem]",
-    bezelRadius: "rounded-[2.45rem]",
-    screenRadius: "rounded-[1.9rem]",
-    bezelPadding: "p-[5px]",
+    frameRadius: "rounded-[15.4cqw]",
+    bezelRadius: "rounded-[14.5cqw]",
+    screenRadius: "rounded-[11.3cqw]",
+    bezelPadding: "p-[1.85cqw]",
   },
   "15-pro": {
-    frameRadius: "rounded-[3.1rem]",
-    bezelRadius: "rounded-[2.95rem]",
-    screenRadius: "rounded-[2.35rem]",
-    bezelPadding: "p-[10px]",
+    frameRadius: "rounded-[16.5cqw]",
+    bezelRadius: "rounded-[15.7cqw]",
+    screenRadius: "rounded-[12.5cqw]",
+    bezelPadding: "p-[3.3cqw]",
   },
 };
 
@@ -152,10 +156,12 @@ export function IPhoneMockup({
   const { frameRadius, bezelRadius, screenRadius, bezelPadding } = VARIANT_STYLES[variant];
 
   return (
-    <div className={`${position} aspect-[9/19.5] ${sizeClassName} ${className ?? ""}`}>
+    <div
+      className={`${position} aspect-[9/19.5] [container-type:inline-size] ${sizeClassName} ${className ?? ""}`}
+    >
       {/* Titanium frame */}
       <div
-        className={`absolute inset-0 ${frameRadius} bg-gradient-to-b from-[#4a4a4d] via-[#2c2c2e] to-[#1c1c1e] p-[3px] shadow-[0_30px_60px_-20px_rgba(0,0,0,0.55)] ring-1 ring-black/30`}
+        className={`absolute inset-0 ${frameRadius} bg-gradient-to-b from-[#4a4a4d] via-[#2c2c2e] to-[#1c1c1e] p-[1.1cqw] shadow-[0_30px_60px_-20px_rgba(0,0,0,0.55)] ring-1 ring-black/30`}
       >
         <div className={`h-full w-full ${bezelRadius} bg-black ${bezelPadding}`}>
           {/* Screen */}
