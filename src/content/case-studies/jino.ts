@@ -72,7 +72,7 @@ export const jino: CaseStudy = {
       blocks: [
         {
           type: "paragraph",
-          text: "In some circles, self-development culture runs rampant. For these people, self-optimization and independence often come before relationships. For these users, being in a relationship can even be seen as a threat to one's individuality or ambition. Many ambitious, goal-driven people want relationships that help support their personal growth.",
+          text: "In some circles, self-development culture runs rampant. For these people, self-optimization and independence often come before relationships. Even being in a relationship can be seen as a threat to one's individuality or ambition. Many ambitious, goal-driven people want relationships that help support their personal growth.",
         },
       ],
     },
@@ -83,15 +83,15 @@ export const jino: CaseStudy = {
       blocks: [
         {
           type: "paragraph",
-          text: "Before designing, I wanted to understand the problems that couples my age struggle with. I pulled from three sources:",
+          text: "Before designing, I wanted to understand the problems that Gen Z couples struggle with. I pulled from three sources:",
         },
         {
           type: "list",
           ordered: false,
           items: [
+            "User interviews with couples in my network who matched my ICP (ages 22–28, career-driven or in school, in committed relationships)",
+            "Competitor audience research of relationship app users and why they drop off", 
             "Reddit threads from r/relationships, r/relationship_advice, and r/LongDistance, plus App Store and Google Play reviews of existing couple apps",
-            "Competitor audience research of relationship app users and why they drop off",
-            "5 user interviews with couples in my network who matched my ICP (ages 22–28, career-driven or in school, in committed relationships)",
           ],
         },
         {
@@ -110,13 +110,23 @@ export const jino: CaseStudy = {
             {
               label: "Lack of curiosity",
               quote: "We talk every day, but not about anything substantial.",
-              body: "Constant texting creates the feeling of connection without getting to know each other on a deeper level.",
+              body: "People want to be known and to peek into their partner's inner life through deep conversations.",
             },
             {
               label: "Uneven effort",
               quote: "I plan everything; they don't notice.",
               body: "One partner usually carries the planning and remembers anniversaries, and resentment builds when it goes unacknowledged.",
             },
+          ],
+        },
+        {
+          type: "image",
+          src: "/case-studies/jino/affinity-1.png",
+          alt: "Affinity map of user interview notes on complacency, lack of curiosity, and uneven effort",
+        },
+        {
+          type: "insights",
+          items: [
             {
               label: "Not meeting each other's love languages",
               quote: "They don't express love the same way I do.",
@@ -132,12 +142,12 @@ export const jino: CaseStudy = {
               quote: "I miss doing my own thing.",
               body: "Partners feel guilty taking solo time or when one falls behind on personal goals, especially when their productivity rhythms don't match.",
             },
-            {
-              label: "Forgetting relationship milestones",
-              quote: "What year did we move in together?",
-              body: "Sweet texts live in massive chat histories that don't load, so couples lose sight of how they've grown together.",
-            },
           ],
+        },
+        {
+          type: "image",
+          src: "/case-studies/jino/affinity-2.png",
+          alt: "Affinity map of user interview notes on love languages, comfort zones, and loss of individuality",
         },
         {
           type: "subheading",
@@ -148,10 +158,6 @@ export const jino: CaseStudy = {
         {
           type: "paragraph",
           text: "Reviews showed two recurring churn points: apps were either too basic, with novelty prompts that run dry within weeks, or locked behind a subscription before users experienced enough value to justify paying. Neither model supports a relationship that's meant to last years.",
-        },
-        {
-          type: "paragraph",
-          text: "Users also wanted more than prompts. They wanted to be known: to see their partner's inner life through the books, playlists, and films they love, not just answer another \"what's your favorite memory?\" question.",
         },
         {
           type: "subheading",
@@ -211,7 +217,7 @@ export const jino: CaseStudy = {
       blocks: [
         {
           type: "paragraph",
-          text: "Competitors focus on diaries, memories, or journal prompts, but not the actual behaviors that keep couples aligned. To solve emotional drift, Jino needed to create daily rituals that address the root cause of the problem. Instead of designing another \"couple diary,\" I designed behavioral loops to drive connection.",
+          text: "Competitors focus on diaries, memories, or journal prompts, but not the actual behaviors that keep couples aligned. To prevent couples from growing apart, Jino needed to create daily rituals that address the root cause of the problem. Instead of designing another \"couple diary,\" I designed behavioral loops to drive connection.",
         },
         {
           type: "paragraph",
@@ -366,7 +372,7 @@ export const jino: CaseStudy = {
       blocks: [
         {
           type: "paragraph",
-          text: "After I conducted 4 rounds of QA testing on TestFlight, we opened up Jino to a sample of 5 couples that matched my ICP criteria for a 2-week period, collecting D14 retention and feature engagement with Posthog. After the trial period ends, I plan on distributing a post-hoc SUS survey. The specific features I am tracking are Daily Standups per week, Weekly Connect interactions per user, and Pair Connection Days per week.",
+          text: "After I conducted 4 rounds of QA testing on TestFlight, we opened Jino up to 5 couples that matched my ICP criteria for a 2-week period, collecting D14 retention and feature engagement with Posthog. After the trial period ends, I plan on distributing a post-hoc SUS survey. The specific features I am tracking are Daily Standups per week, Weekly Connect interactions per user, and Pair Connection Days per week.",
         },
         {
           type: "image",
