@@ -58,7 +58,7 @@ export function FeaturedWork() {
               </h3>
               <span className="inline-flex items-center gap-1.5 whitespace-nowrap font-sans text-sm text-ink-faint">
                 {cs.year.startsWith("Shipped") && (
-                  <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-[#628a00]" />
+                  <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-[#39C463]" />
                 )}
                 {cs.year}
               </span>

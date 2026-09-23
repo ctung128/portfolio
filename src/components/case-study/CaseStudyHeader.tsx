@@ -21,7 +21,7 @@ export function CaseStudyHeader({
           {caseStudy.oneLiner}
         </p>
         {caseStudy.badge && (
-          <span className="mt-1 inline-flex shrink-0 items-center gap-1.5 rounded-full border border-black/10 bg-white/40 px-3 py-1 font-sans text-xs font-medium text-ink shadow-[0_1px_3px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-md backdrop-saturate-150">
+          <span className="mt-1 inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#39C463]/40 bg-[#39C463]/20 px-3 py-1 font-sans text-xs font-medium text-[#1f8a45] shadow-[0_1px_3px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.6)] backdrop-blur-md backdrop-saturate-150">
             <span className="h-1.5 w-1.5 rounded-full bg-[#39C463]" />
             {caseStudy.badge}
           </span>
