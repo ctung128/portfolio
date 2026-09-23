@@ -42,8 +42,7 @@ export function AboutSection() {
           {recommendationGroups.map((group) => (
             <div
               key={group.label}
-              className="rounded-[12px] bg-[#F7F8F7] p-8 sm:p-10"
-              style={{ boxShadow: "0 4px 4px 4px rgba(107, 87, 46, 0.08)" }}
+              className="rounded-[12px] border border-border bg-cream-subtle p-8 sm:p-10"
             >
               <h3 className="font-serif text-3xl text-ink">{group.label}</h3>
               <ul className="mt-6 space-y-4">
