@@ -236,10 +236,35 @@ export const jino: CaseStudy = {
       ],
     },
     {
-      id: "icp",
-      navLabel: "Understanding my ICP",
-      heading: "Preserving whimsy and play for couples set on achieving their goals",
+      id: "branding",
+      navLabel: "Art direction",
+      heading: "Defining the brand vision",
       blocks: [
+        {
+          type: "paragraph",
+          text: "I set out to create a visual identity that sits between those two worlds:",
+        },
+        {
+          type: "list",
+          items: [
+            "Expressive illustrations inspired by KakaoTalk/WeChat sticker culture",
+            "A premium, wellness-inspired brand",
+            "A playful mascot, like Duolingo or 365 Memories",
+          ],
+        },
+        {
+          type: "image",
+          src: "/case-studies/jino/branding.png",
+          alt: "Jino brand illustrations and mascot",
+          background: "#FCFFFA",
+          shadow: true,
+        },
+        {
+          type: "subheading",
+          text: "Preserving whimsy and play for couples set on achieving their goals",
+          style: "heading",
+          spaced: true,
+        },
         {
           type: "comparison",
           groups: [
@@ -271,32 +296,6 @@ export const jino: CaseStudy = {
         {
           type: "paragraph",
           text: "Neither experience resonates with the couples I'm designing for: Gen Z Asian or Asian-adjacent audiences who value both emotional intentionality and personal ambition (ex. a couple who might be building a company together while also loving Pokémon, Sanrio, or Studio Ghibli).",
-        },
-      ],
-    },
-    {
-      id: "branding",
-      navLabel: "Art direction",
-      heading: "Defining the brand vision",
-      blocks: [
-        {
-          type: "paragraph",
-          text: "I set out to create a visual identity that sits between those two worlds:",
-        },
-        {
-          type: "list",
-          items: [
-            "Expressive illustrations inspired by KakaoTalk/WeChat sticker culture",
-            "A premium, wellness-inspired brand",
-            "A playful mascot, like Duolingo or 365 Memories",
-          ],
-        },
-        {
-          type: "image",
-          src: "/case-studies/jino/branding.png",
-          alt: "Jino brand illustrations and mascot",
-          background: "#FCFFFA",
-          shadow: true,
         },
       ],
     },
@@ -334,8 +333,8 @@ export const jino: CaseStudy = {
           alt: "Jino onboarding happy path playing inside an iPhone mockup",
           label: "Onboarding happy path",
           variant: "13-pro",
-          frameHoldMs: 1200,
-          frameTransitionMs: 400,
+          frameHoldMs: 500,
+          frameTransitionMs: 0,
           frameMotion: "fade",
         },
         {
