@@ -138,6 +138,34 @@ export const jino: CaseStudy = {
             },
           ],
         },
+        {
+          type: "subheading",
+          text: "Existing apps lose users in one of two ways",
+        },
+        {
+          type: "paragraph",
+          text: "Reviews showed two recurring churn points: apps were either too basic, with novelty prompts that run dry within weeks, or locked behind a subscription before users experienced enough value to justify paying. Neither model supports a relationship that's meant to last years.",
+        },
+        {
+          type: "paragraph",
+          text: "Users also wanted more than prompts. They wanted to be known: to see their partner's inner life through the books, playlists, and films they love, not just answer another \"what's your favorite memory?\" question.",
+        },
+        {
+          type: "subheading",
+          text: "How might we…",
+        },
+        {
+          type: "quote",
+          text: "…help ambitious couples stay emotionally close through low-effort daily rituals, without asking either partner to shrink their individual life?",
+        },
+        {
+          type: "subheading",
+          text: "Meet the couple",
+        },
+        {
+          type: "paragraph",
+          text: "A couples app only works if the less-engaged partner opens it too. Instead of designing for one user, I built paired personas: the partner who initiates and the partner who needs a low-effort way in.",
+        },
       ],
     },
     {
