@@ -63,19 +63,35 @@ export function FeaturedWork() {
                 {cs.year}
               </span>
             </div>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {cs.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className={
-                    tag === "Techstars"
-                      ? "rounded-[12px] border border-[#39C463] bg-[#39C463]/10 px-2.5 py-1 font-sans text-xs text-[#1f8a45]"
-                      : "rounded-[12px] border border-border px-2.5 py-1 font-sans text-xs text-ink-soft"
-                  }
-                >
-                  {tag}
+            <div className="mt-3 flex flex-wrap items-center gap-2">
+              {cs.tags.map((tag) =>
+                tag === "Techstars" ? (
+                  <span
+                    key={tag}
+                    className="inline-flex h-[26px] items-center overflow-hidden rounded-full"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/case-studies/splitev/techstars-pill.png"
+                      alt="Techstars"
+                      className="h-full w-auto object-cover"
+                    />
+                  </span>
+                ) : (
+                  <span
+                    key={tag}
+                    className="rounded-[12px] border border-border px-2.5 py-1 font-sans text-xs text-ink-soft"
+                  >
+                    {tag}
+                  </span>
+                )
+              )}
+              {cs.badge && (
+                <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#39C463]/40 bg-[#39C463]/20 px-2.5 py-1 font-sans text-xs font-medium text-[#1f8a45] shadow-[0_1px_3px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.6)] backdrop-blur-md backdrop-saturate-150">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#39C463]" />
+                  {cs.badge}
                 </span>
-              ))}
+              )}
             </div>
           </Link>
         ))}
