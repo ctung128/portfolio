@@ -100,7 +100,7 @@ export const nav = [
 
 export const playPage = {
   // TODO: swap this for your real intro copy
-  headline: "Things I build for fun when I get that itch. If you know you know. ",
+  headline: "Things I build for fun when I get that itch to create. ",
   description:
     "branding/marketing, vibe-coding, web design, etc etc :-)"
 };
