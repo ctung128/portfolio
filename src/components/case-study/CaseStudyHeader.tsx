@@ -34,7 +34,11 @@ export function CaseStudyHeader({ caseStudy }: { caseStudy: CaseStudy }) {
         </div>
         <div className="col-span-2 sm:col-span-1">
           <dt className="font-sans text-xs uppercase tracking-wider text-ink-faint">Skills</dt>
-          <dd className="mt-1 font-sans text-sm text-ink">{caseStudy.skills.join(", ")}</dd>
+          <dd className="mt-1 space-y-1 font-sans text-sm text-ink">
+            {caseStudy.skills.map((skill) => (
+              <div key={skill}>{skill}</div>
+            ))}
+          </dd>
         </div>
       </dl>
     </header>

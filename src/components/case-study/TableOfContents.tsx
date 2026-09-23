@@ -40,7 +40,7 @@ export function TableOfContents({ items }: { items: TocItem[] }) {
             <li key={item.id}>
               <a
                 href={`#${item.id}`}
-                className={`block border-l-2 py-1.5 pl-4 font-serif text-base transition-colors ${
+                className={`block border-l-2 py-1.5 pl-4 font-sans text-sm transition-colors ${
                   isActive
                     ? "border-green text-ink"
                     : "border-transparent text-ink-faint hover:text-ink-soft"
@@ -68,7 +68,7 @@ export function MobileTableOfContents({ items }: { items: TocItem[] }) {
           <li key={item.id}>
             <a
               href={`#${item.id}`}
-              className="block py-1 font-serif text-base text-ink-soft hover:text-green"
+              className="block py-1 font-sans text-sm text-ink-soft hover:text-green"
             >
               {item.navLabel}
             </a>
