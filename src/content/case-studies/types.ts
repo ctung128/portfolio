@@ -3,11 +3,15 @@ export type CaseStudyBlock =
   | {
       type: "subheading";
       text: string;
-      /** "eyebrow" (default) is the small uppercase tracked-out label used
-       * throughout case studies. "heading" matches the section h2 exactly
-       * (same font-serif family and size) and is used to break a section
-       * into named subsections that read as equally weighted headers. */
-      style?: "eyebrow" | "heading";
+      /** "eyebrow" (default) is the bolder, dark uppercase tracked-out
+       * label used for interstitial labels like "Key insights". "label" is
+       * the fainter, lighter-weight treatment that matches the top-level
+       * section eyebrow and the mockup/comparison-card labels — use it
+       * when this subheading is meant to read as its own mini section
+       * marker. "heading" matches the section h2 exactly (same font-serif
+       * family and size) and is used to break a section into named
+       * subsections that read as equally weighted headers. */
+      style?: "eyebrow" | "label" | "heading";
       /** Add extra top margin to separate this subsection from the one
        * before it, beyond the standard block-to-block spacing. */
       spaced?: boolean;
@@ -92,7 +96,14 @@ export type CaseStudyBlock =
 
 export type CaseStudySection = {
   id: string;
+  /** Name shown in the table of contents. Also used as the on-page eyebrow
+   * label above `heading`, unless `eyebrow` overrides it. */
   navLabel: string;
+  /** On-page eyebrow label above `heading`, if it should read differently
+   * from the TOC name (e.g. a section folding a second topic's content
+   * in under one TOC entry, where the merged content should visibly lead
+   * with its own label). Defaults to `navLabel`. */
+  eyebrow?: string;
   heading: string;
   blocks: CaseStudyBlock[];
 };

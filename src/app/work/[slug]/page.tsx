@@ -105,7 +105,7 @@ export default async function CaseStudyPage({
             {caseStudy.sections.map((section) => (
               <section key={section.id} id={section.id} className="space-y-5">
                 <p className="font-sans text-xs uppercase tracking-widest text-ink-faint">
-                  {section.navLabel}
+                  {section.eyebrow ?? section.navLabel}
                 </p>
                 <h2 className="font-serif text-2xl text-ink sm:text-3xl">
                   {section.heading}

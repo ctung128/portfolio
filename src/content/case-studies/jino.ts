@@ -212,7 +212,7 @@ export const jino: CaseStudy = {
     },
     {
       id: "strategy",
-      navLabel: "Product Strategy",
+      navLabel: "Product strategy",
       heading: "Defining the MVP",
       blocks: [
         {
@@ -238,17 +238,9 @@ export const jino: CaseStudy = {
     {
       id: "branding",
       navLabel: "Art direction",
-      heading: "Defining the brand vision",
+      eyebrow: "Understanding my ICP",
+      heading: "Preserving whimsy and play for couples set on achieving their goals",
       blocks: [
-        {
-          type: "subheading",
-          text: "Understanding my ICP",
-        },
-        {
-          type: "subheading",
-          text: "Preserving whimsy and play for couples set on achieving their goals",
-          style: "heading",
-        },
         {
           type: "comparison",
           groups: [
@@ -280,6 +272,17 @@ export const jino: CaseStudy = {
         {
           type: "paragraph",
           text: "Neither experience resonates with the couples I'm designing for: Gen Z Asian or Asian-adjacent audiences who value both emotional intentionality and personal ambition (ex. a couple who might be building a company together while also loving Pokémon, Sanrio, or Studio Ghibli).",
+        },
+        {
+          type: "subheading",
+          text: "Art direction",
+          style: "label",
+          spaced: true,
+        },
+        {
+          type: "subheading",
+          text: "Defining the brand vision",
+          style: "heading",
         },
         {
           type: "paragraph",

@@ -17,7 +17,9 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
           className={`${block.spaced ? "mt-14!" : ""} ${
             block.style === "heading"
               ? "font-serif text-2xl text-ink sm:text-3xl"
-              : "font-sans text-sm font-semibold uppercase tracking-wider text-ink"
+              : block.style === "label"
+                ? "font-sans text-xs uppercase tracking-widest text-ink-faint"
+                : "font-sans text-sm font-semibold uppercase tracking-wider text-ink"
           }`}
         >
           {block.text}
