@@ -110,9 +110,6 @@ export type CaseStudyBlock =
       /** Small eyebrow-style label overlaid at the top of the card, above
        * the phone mockup. */
       label?: string;
-      /** Render `label` in ink-soft instead of ink-faint, for AA contrast
-       * on saturated or mid-tone backgrounds. */
-      labelStrong?: boolean;
       variant?: "13-pro" | "15-pro";
       /** Milliseconds each frame holds before transitioning. Only used with
        * `frames`. */
@@ -141,6 +138,23 @@ export type CaseStudyBlock =
        * side-by-side persona cards), instead of the default responsive
        * 2→3 column grid. */
       columns?: 2;
+    }
+  | {
+      /** Stacked two-column rows: a looping phone-mockup video on the left
+       * and a serif title with a short description on the right (stacks
+       * on mobile). For walking through a set of parallel options. */
+      type: "featureRows";
+      /** Shared background image behind every row's phone mockup. */
+      background: string;
+      variant?: "13-pro" | "15-pro";
+      items: {
+        video: string;
+        /** First frame of the video, shown until it starts playing. */
+        poster?: string;
+        alt: string;
+        title: string;
+        body: string;
+      }[];
     }
   | {
       /** Side-by-side labeled groups of images, e.g. a competitive audit

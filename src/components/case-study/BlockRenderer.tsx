@@ -203,13 +203,42 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
           background={block.background}
           alt={block.alt}
           label={block.label}
-          labelStrong={block.labelStrong}
           variant={block.variant}
           className="rounded-[24px] border border-border py-16 sm:py-20"
           frameHoldMs={block.frameHoldMs}
           frameTransitionMs={block.frameTransitionMs}
           frameMotion={block.frameMotion}
         />
+      );
+
+    case "featureRows":
+      return (
+        <div className="space-y-8 sm:space-y-6">
+          {block.items.map((item) => (
+            <div
+              key={item.video}
+              className="grid items-center gap-5 sm:grid-cols-[3fr_2fr] sm:gap-10"
+            >
+              <CaseStudyHeroMockup
+                video={item.video}
+                poster={item.poster}
+                background={block.background}
+                alt={item.alt}
+                variant={block.variant}
+                className="rounded-[24px] border border-border py-10 sm:py-12"
+                phoneSizeClassName="w-[170px] sm:w-[180px] md:w-[190px]"
+              />
+              <div>
+                <h3 className="font-serif text-xl leading-snug text-ink sm:text-2xl">
+                  {item.title}
+                </h3>
+                <p className="mt-2 font-sans text-base leading-relaxed text-ink-soft">
+                  {item.body}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       );
 
     case "crossfade": {

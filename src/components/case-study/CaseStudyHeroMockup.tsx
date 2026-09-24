@@ -7,7 +7,7 @@ export function CaseStudyHeroMockup({
   background,
   alt,
   label,
-  labelStrong,
+  poster,
   className = "mb-20 rounded-[24px] border border-border py-20 sm:py-24",
   phoneSizeClassName,
   variant,
@@ -28,9 +28,8 @@ export function CaseStudyHeroMockup({
   /** Small eyebrow-style label overlaid at the top of the card, above the
    * phone (matches the comparison-card label treatment). */
   label?: string;
-  /** Darken the label to ink-soft so it passes WCAG AA (4.5:1) on
-   * saturated or mid-tone background images. */
-  labelStrong?: boolean;
+  /** Still frame shown in the phone until the video starts playing. */
+  poster?: string;
   className?: string;
   phoneSizeClassName?: string;
   variant?: "13-pro" | "15-pro";
@@ -50,16 +49,13 @@ export function CaseStudyHeroMockup({
         className="absolute inset-0 h-full w-full object-cover"
       />
       {label && (
-        <p
-          className={`absolute left-6 top-6 z-20 font-sans text-xs uppercase tracking-wider sm:left-8 sm:top-8 ${
-            labelStrong ? "font-medium text-ink-soft" : "text-ink-faint"
-          }`}
-        >
+        <p className="absolute left-6 top-6 z-20 font-sans text-xs uppercase tracking-wider text-ink-faint sm:left-8 sm:top-8">
           {label}
         </p>
       )}
       <IPhoneMockup
         videoSrc={video}
+        poster={poster}
         frames={frames}
         scrollImage={scrollImage}
         alt={alt}

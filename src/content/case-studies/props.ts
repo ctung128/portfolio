@@ -66,6 +66,10 @@ export const props: CaseStudy = {
           ],
         },
         {
+          type: "subheading",
+          text: "Before the redesign",
+        },
+        {
           type: "mockup",
           frames: [
             "/case-studies/props/before-1.webp",
@@ -77,8 +81,6 @@ export const props: CaseStudy = {
           ],
           background: "/case-studies/props/cover-bg.webp",
           alt: "The original Props app, cycling through six screens inside an iPhone mockup",
-          label: "Before the redesign",
-          labelStrong: true,
           variant: "13-pro",
         },
       ],
@@ -139,18 +141,31 @@ export const props: CaseStudy = {
           text: "User testing showed that the original onboarding was cluttered, unintuitive, and lacked system feedback. Design goals: improve visual hierarchy, strengthen reward framing to boost the emotional hook, and sharpen CTAs to boost interactivity.",
         },
         {
-          type: "image",
-          src: "/case-studies/props/onboarding-explorations.png",
-          alt: "Three onboarding concepts: cut-scene, quest-based, and tutorial",
-          caption: "Three onboarding directions tested side by side.",
-          wide: true,
-        },
-        {
-          type: "list",
+          type: "featureRows",
+          background: "/case-studies/props/cover-bg.webp",
+          variant: "13-pro",
           items: [
-            "Cut-scene onboarding — strengthens Props' branding, evoking Animal Crossing & Pokémon",
-            "Quest-based onboarding — guides users through experiential learning",
-            "Tutorial onboarding — provides contextual education for first-time users",
+            {
+              video: "/case-studies/props/cutscene.mp4",
+              poster: "/case-studies/props/cutscene-poster.webp",
+              alt: "Cut-scene onboarding concept playing inside an iPhone mockup",
+              title: "Cut-scene onboarding",
+              body: "Strengthens Props' branding, evoking Animal Crossing and Pokémon.",
+            },
+            {
+              video: "/case-studies/props/quest.mp4",
+              poster: "/case-studies/props/quest-poster.webp",
+              alt: "Quest-based onboarding concept playing inside an iPhone mockup",
+              title: "Quest-based onboarding",
+              body: "Guides users through experiential learning.",
+            },
+            {
+              video: "/case-studies/props/tutorial.mp4",
+              poster: "/case-studies/props/tutorial-poster.webp",
+              alt: "Tutorial onboarding concept playing inside an iPhone mockup",
+              title: "Tutorial onboarding",
+              body: "Provides contextual education for first-time users.",
+            },
           ],
         },
         {
