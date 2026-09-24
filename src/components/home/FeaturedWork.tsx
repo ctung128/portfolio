@@ -13,7 +13,7 @@ export function FeaturedWork() {
   return (
     <section id="work" className="border-y border-border bg-cream-subtle">
       <div className="mx-auto max-w-5xl px-6 py-16 sm:px-8 sm:py-24">
-        <h2 className="font-serif text-3xl text-ink sm:text-4xl">Selected work</h2>
+        <h2 className="font-serif text-[26px] text-ink sm:text-[30px] lg:text-4xl">Selected work</h2>
         <div className="mt-10 grid grid-cols-1 gap-16">
         {caseStudies.map((cs) => (
           <div key={cs.slug} className="group flex flex-col">
@@ -47,7 +47,7 @@ export function FeaturedWork() {
               )}
             </div>
             <div className="mt-4 flex items-baseline justify-between gap-4">
-              <h3 className="font-serif text-xl text-ink group-hover:text-ink-soft sm:text-2xl">
+              <h3 className="font-serif text-xl text-ink group-hover:text-ink-soft sm:text-[22px] lg:text-2xl">
                 {cs.title}
               </h3>
               <span className="inline-flex items-center gap-1.5 whitespace-nowrap font-sans text-sm text-ink-faint">

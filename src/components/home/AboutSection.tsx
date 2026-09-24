@@ -20,7 +20,7 @@ export function AboutSection() {
           <Portrait src={portrait.src} alt={portrait.alt} />
 
           <div>
-            <h2 className="font-serif text-3xl text-ink sm:text-4xl">About</h2>
+            <h2 className="font-serif text-[26px] text-ink sm:text-[30px] lg:text-4xl">About</h2>
             <div className="mt-6 space-y-4">
               {about.paragraphs.map((p, i) => (
                 <p key={i} className="font-sans text-base leading-relaxed text-ink-soft">
@@ -44,7 +44,7 @@ export function AboutSection() {
               key={group.label}
               className="rounded-[12px] border border-border bg-cream-subtle p-8 sm:p-10"
             >
-              <h3 className="font-serif text-3xl text-ink">{group.label}</h3>
+              <h3 className="font-serif text-2xl text-ink lg:text-3xl">{group.label}</h3>
               <ul className="mt-6 space-y-4">
                 {group.items.map((item) => (
                   <li key={item.title} className="flex gap-3">

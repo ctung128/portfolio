@@ -15,7 +15,7 @@ export function CaseStudyHeader({
       <p className="font-sans text-sm uppercase tracking-widest text-ink-faint">
         {caseStudy.industry}
       </p>
-      <h1 className="mt-4 font-serif text-4xl leading-tight text-ink">{caseStudy.title}</h1>
+      <h1 className="mt-4 font-serif text-[28px] leading-tight text-ink sm:text-[34px] lg:text-4xl">{caseStudy.title}</h1>
       <div className="mt-4 flex flex-wrap items-start gap-3">
         <p className="max-w-2xl font-sans text-lg leading-relaxed text-ink-soft">
           {caseStudy.oneLiner}

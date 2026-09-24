@@ -111,7 +111,7 @@ export default async function CaseStudyPage({
                       {section.eyebrow ?? section.navLabel}
                     </p>
                     {section.heading && (
-                      <h2 className="font-serif text-2xl text-ink sm:text-3xl">
+                      <h2 className="font-serif text-[22px] text-ink sm:text-[26px] lg:text-3xl">
                         {section.heading}
                       </h2>
                     )}

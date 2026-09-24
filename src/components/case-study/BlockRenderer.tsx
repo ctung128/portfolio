@@ -48,7 +48,7 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
         <h3
           className={`${block.spaced && !block.kicker ? "mt-14!" : ""} ${
             block.style === "heading"
-              ? "font-serif text-2xl text-ink sm:text-3xl"
+              ? "font-serif text-[22px] text-ink sm:text-[26px] lg:text-3xl"
               : block.style === "label"
                 ? "font-sans text-xs uppercase tracking-widest text-ink-faint"
                 : "font-sans text-sm font-semibold uppercase tracking-wider text-ink"
@@ -71,7 +71,7 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
 
     case "quote":
       return (
-        <blockquote className="border-l-2 border-green py-1 pl-5 font-serif text-xl italic leading-snug text-ink sm:text-2xl">
+        <blockquote className="border-l-2 border-green py-1 pl-5 font-serif text-xl italic leading-snug text-ink sm:text-[22px] lg:text-2xl">
           &ldquo;{block.text}&rdquo;
           {block.attribution && (
             <footer className="mt-2 font-sans text-sm not-italic text-ink-faint">
@@ -87,7 +87,7 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
           <p className="font-sans text-xs font-semibold uppercase tracking-wider text-ink">
             {block.label}
           </p>
-          <p className="mt-3 font-serif text-xl leading-snug text-ink sm:text-2xl">
+          <p className="mt-3 font-serif text-xl leading-snug text-ink sm:text-[22px] lg:text-2xl">
             {block.text}
           </p>
         </div>
@@ -119,7 +119,7 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
         <div className="grid grid-cols-2 gap-6 border-y border-border py-6 sm:grid-cols-3">
           {block.items.map((stat) => (
             <div key={stat.label}>
-              <div className="font-serif text-3xl text-green sm:text-4xl">{stat.value}</div>
+              <div className="font-serif text-[28px] text-green sm:text-[32px] lg:text-4xl">{stat.value}</div>
               <div className="mt-1 font-sans text-sm text-ink-soft">{stat.label}</div>
             </div>
           ))}
@@ -167,7 +167,7 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
                 <div>
                   {item.quote ? (
                     <>
-                      <p className="font-serif text-xl italic leading-snug text-ink sm:text-2xl">
+                      <p className="font-serif text-xl italic leading-snug text-ink sm:text-[22px] lg:text-2xl">
                         &ldquo;{item.quote}&rdquo;
                       </p>
                       <p className="mt-2 font-sans text-sm leading-relaxed text-ink-soft sm:text-base">
@@ -287,7 +287,7 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
                 phoneSizeClassName="w-[170px] sm:w-[180px] md:w-[190px]"
               />
               <div>
-                <h3 className="font-serif text-xl leading-snug text-ink sm:text-2xl">
+                <h3 className="font-serif text-xl leading-snug text-ink sm:text-[22px] lg:text-2xl">
                   {item.title}
                 </h3>
                 <p className="mt-2 font-sans text-base leading-relaxed text-ink-soft">

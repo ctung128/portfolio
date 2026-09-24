@@ -9,7 +9,7 @@ const TITLE_MIN = 13;
 /** Below this container width, shrinking the headline onto one line would
  * make it smaller than body text, so it wraps at a fixed size instead. */
 const WRAP_BELOW = 560;
-const TITLE_WRAPPED = 30;
+const TITLE_WRAPPED = 28;
 
 function fitToContainer(
   container: HTMLElement,
