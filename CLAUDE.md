@@ -40,4 +40,4 @@ Running log of notable work done with Claude Code, newest first. Keep entries to
 - CTA buttons: hover now triggers on the whole pill (was arrow-glyph-only via `:has()`); the arrow slides in sync with the label instead of sitting static.
 - Design tokens: renamed `--color-blue` to `--color-green` (`#628A00`), consolidated across all usages.
 - Case study cards: removed numbering and description text, renamed "Props MVP Redesign" to "Props", added "Shipped <year>" labels to SplitEV/Jino/Inkline.
-- Installed GitHub CLI (`gh`) locally; repo not yet pushed to GitHub — pending `gh auth login` from the user, then create + push to a new `portfolio` repo.
+- Installed GitHub CLI (`gh`) locally. (Superseded: the repo lives at `github.com:ctung128/portfolio` and `main` is pushed.)
