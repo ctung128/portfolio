@@ -5,26 +5,27 @@ import { nav, siteConfig } from "@/content/site";
 export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/80 bg-cream/85 backdrop-blur">
-      <div className="mx-auto grid max-w-5xl grid-cols-[auto_1fr_auto] items-center gap-4 px-6 py-4 sm:px-8">
+      <div className="mx-auto grid max-w-5xl grid-cols-[auto_1fr] items-center gap-4 sm:grid-cols-[auto_1fr_auto] px-6 py-4 sm:px-8">
         <Link href="/" className="flex items-center gap-2" aria-label={`${siteConfig.name} home`}>
           <Image
             src="/brand/logo.svg"
             alt={siteConfig.name}
             width={86}
             height={58}
-            className="h-[58px] w-[86px]"
+            className="h-[58px] w-[86px] max-w-none shrink-0"
             priority
           />
         </Link>
 
-        <nav className="flex items-center justify-end gap-4 sm:justify-center sm:gap-8">
+        {/* Tighter below 360px (iPhone SE 1st gen) so the logo keeps its size. */}
+        <nav className="flex items-center justify-end gap-3 min-[360px]:gap-4 sm:justify-center sm:gap-8">
           {nav.map((item) => (
             <Link
               key={item.label}
               href={item.href}
               target={item.external ? "_blank" : undefined}
               rel={item.external ? "noreferrer" : undefined}
-              className="font-serif text-lg text-ink-soft transition-colors hover:text-ink"
+              className="font-serif text-base text-ink-soft transition-colors hover:text-ink min-[360px]:text-lg"
             >
               {item.label}
             </Link>

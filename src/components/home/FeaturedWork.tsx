@@ -22,6 +22,7 @@ export function FeaturedWork() {
               {cs.heroMockup ? (
                 <CaseStudyHeroMockup
                   video={cs.heroMockup.video}
+                  poster={cs.heroMockup.poster}
                   frames={cs.heroMockup.frames}
                   background={cs.heroMockup.background}
                   alt={cs.heroMockup.alt}
@@ -67,8 +68,6 @@ export function FeaturedWork() {
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      loading="lazy"
-                      decoding="async"
                       src="/case-studies/splitev/techstars-pill.png"
                       alt="Techstars"
                       className="h-full w-auto object-cover"

@@ -20,6 +20,7 @@ export const jino: CaseStudy = {
   },
   heroMockup: {
     video: "/case-studies/jino/cover.mp4",
+    poster: "/case-studies/jino/cover-poster.webp",
     background: "/case-studies/jino/cover-bg.webp",
     alt: "Jino app demo playing inside an iPhone mockup",
     variant: "13-pro",
@@ -31,6 +32,7 @@ export const jino: CaseStudy = {
       alt: "Jino splash screen with two hamster mascots",
     },
     video: "/case-studies/jino/cover.mp4",
+    poster: "/case-studies/jino/cover-poster.webp",
     alt: "Jino app demo playing inside an iPhone mockup",
     variant: "13-pro",
   },

@@ -19,7 +19,7 @@ export const mysupplementals: CaseStudy = {
   skills: ["Landing Page Design", "Interaction Design", "UX Writing", "Design–Dev Collaboration"],
   tags: ["0→1", "EdTech", "B2C + B2B"],
   coverImage: {
-    src: "/case-studies/mysupplementals/cover.png",
+    src: "/case-studies/mysupplementals/cover.webp",
     alt: "MySupplementals landing page cover image",
   },
   coverVideo: "/case-studies/mysupplementals/cover.mp4",

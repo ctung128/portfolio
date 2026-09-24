@@ -6,6 +6,10 @@ import { PersonalCarousel } from "./PersonalCarousel";
 
 const TITLE_MAX = 40;
 const TITLE_MIN = 13;
+/** Below this container width, shrinking the headline onto one line would
+ * make it smaller than body text, so it wraps at a fixed size instead. */
+const WRAP_BELOW = 560;
+const TITLE_WRAPPED = 30;
 
 function fitToContainer(
   container: HTMLElement,
@@ -27,14 +31,23 @@ export function Hero() {
   const titleContainerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const [titleSize, setTitleSize] = useState(TITLE_MAX);
+  const [wrap, setWrap] = useState(false);
 
   useLayoutEffect(() => {
     const fit = () => {
       const titleContainer = titleContainerRef.current;
       const title = titleRef.current;
-      if (titleContainer && title) {
-        setTitleSize(fitToContainer(titleContainer, title, TITLE_MAX, TITLE_MIN));
+      if (!titleContainer || !title) return;
+      if (titleContainer.clientWidth < WRAP_BELOW) {
+        title.style.whiteSpace = "";
+        setWrap(true);
+        setTitleSize(TITLE_WRAPPED);
+        return;
       }
+      setWrap(false);
+      // Measure on one line even before React swaps the wrap class back.
+      title.style.whiteSpace = "nowrap";
+      setTitleSize(fitToContainer(titleContainer, title, TITLE_MAX, TITLE_MIN));
     };
 
     fit();
@@ -48,7 +61,9 @@ export function Hero() {
       <div ref={titleContainerRef} className="w-full min-w-0">
         <h1
           ref={titleRef}
-          className="block whitespace-nowrap font-serif leading-[1.15] text-ink"
+          className={`block font-serif leading-[1.15] text-ink ${
+            wrap ? "whitespace-normal text-balance" : "whitespace-nowrap"
+          }`}
           style={{ fontSize: titleSize }}
         >
           {hero.headline}

@@ -33,6 +33,7 @@ export const props: CaseStudy = {
   },
   heroMockup: {
     video: "/case-studies/props/cover.mp4",
+    poster: "/case-studies/props/cover-poster.webp",
     background: "/case-studies/props/cover-bg.webp",
     alt: "Props app demo playing inside an iPhone mockup",
     variant: "13-pro",

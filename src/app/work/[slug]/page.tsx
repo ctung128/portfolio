@@ -25,7 +25,8 @@ export async function generateMetadata({
   const caseStudy = getCaseStudy(slug);
   if (!caseStudy) return {};
   return {
-    title: `${caseStudy.title} — Carolyn Tung`,
+    // The root layout's title template already appends " — Carolyn Tung".
+    title: caseStudy.title,
     description: caseStudy.oneLiner,
   };
 }
@@ -73,12 +74,14 @@ export default async function CaseStudyPage({
                     background={caseStudy.duoHero.background}
                     splash={caseStudy.duoHero.splash}
                     video={caseStudy.duoHero.video}
+                    poster={caseStudy.duoHero.poster}
                     alt={caseStudy.duoHero.alt}
                     variant={caseStudy.duoHero.variant}
                   />
                 ) : caseStudy.heroMockup ? (
                   <CaseStudyHeroMockup
                     video={caseStudy.heroMockup.video}
+                    poster={caseStudy.heroMockup.poster}
                     frames={caseStudy.heroMockup.frames}
                     background={caseStudy.heroMockup.background}
                     alt={caseStudy.heroMockup.alt}

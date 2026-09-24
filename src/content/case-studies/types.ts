@@ -260,6 +260,8 @@ export type CaseStudy = {
     /** A sequence of static screenshots to animate between. Provide this or
      * `video`. */
     frames?: string[];
+    /** First frame of `video`, shown until it starts playing. */
+    poster?: string;
     background: string;
     alt: string;
     variant?: "13-pro" | "15-pro";
@@ -272,6 +274,8 @@ export type CaseStudy = {
     background: string;
     splash: { src: string; alt: string };
     video: string;
+    /** First frame of `video`, shown until it starts playing. */
+    poster?: string;
     alt: string;
     variant?: "13-pro" | "15-pro";
   };

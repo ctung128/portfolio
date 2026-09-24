@@ -12,12 +12,14 @@ export function CaseStudyDuoHero({
   background,
   splash,
   video,
+  poster,
   alt,
   variant,
 }: {
   background: string;
   splash: { src: string; alt: string };
   video: string;
+  poster?: string;
   alt: string;
   variant?: "13-pro" | "15-pro";
 }) {
@@ -47,6 +49,7 @@ export function CaseStudyDuoHero({
       {/* Animated mockup: staggered down/right, spills past the bottom edge */}
       <IPhoneMockup
         videoSrc={video}
+        poster={poster}
         alt={alt}
         variant={variant}
         position="absolute"
