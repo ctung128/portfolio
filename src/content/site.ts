@@ -80,11 +80,11 @@ export const recommendations = {
   learning: [
     { title: "Training for a half-marathon" },
     {
-      title: "Running a quarterly Substack translation blog",
+      title: "Running a quarterly translation Substack",
       href: "https://tealeafgirl.substack.com",
     },
     { title: "Relearning tennis :')" },
-    { title: "Building a freelance portrait photography studio", href: "https://snowbellphoto.com" },
+    { title: "Building a portrait photography studio", href: "https://snowbellphoto.com" },
   ],
   recommending: [
     { title: "Siddhartha", detail: "by Hermann Hesse" },
@@ -108,18 +108,20 @@ export const playPage = {
     "branding/marketing, vibe-coding, web design, etc etc :-)"
 };
 
-export const playProjects = [
+export type PlayProject = {
+  title: string;
+  tag: string;
+  image: { src: string; alt: string; position?: string };
+  /** Looping video shown instead of the cover image. */
+  video?: string;
+  href?: string;
+};
+
+export const playProjects: PlayProject[] = [
   {
     title: "Queue management dashboard for tattoo studios",
     tag: "CLAUDE CODE * SHIPPED 2025",
     image: { src: "/play/project-one/cover.png", alt: "Project one cover image" },
-  },
-  {
-    title: "Smart essay merging for college apps",
-    tag: "UX DESIGN",
-    image: { src: "/play/project-eight/cover.mp4", alt: "Project eight cover image" },
-    video: "/play/project-eight/cover.mp4",
-    href: "https://mysupplementals.com",
   },
   {
     title: "Design studio marketing website",
@@ -155,5 +157,17 @@ export const playProjects = [
     title: "Branding for a sustainability firm",
     tag: "BRANDING * SHIPPED 2025",
     image: { src: "/play/project-six/cover.png", alt: "Project six cover image" },
+  },
+  {
+    title: "Web design for photography studio",
+    tag: "CLAUDE CODE * SHIPPED 2026",
+    image: { src: "/play/project-nine/cover.png", alt: "Project nine cover image" },
+    href: "https://snowbellphoto.com/",
+  },
+  {
+    title: "Translation Substack blog",
+    tag: "RESEARCH * WRITING",
+    image: { src: "/play/project-ten/cover.png", alt: "Project ten cover image" },
+    href: "https://tealeafgirl.substack.com/",
   },
 ];
