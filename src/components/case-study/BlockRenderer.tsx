@@ -2,6 +2,20 @@ import type { CaseStudyBlock } from "@/content/case-studies/types";
 import { CaseStudyImage, FLOAT_CLASS } from "./CaseStudyImage";
 import { CaseStudyHeroMockup } from "./CaseStudyHeroMockup";
 
+function StatusChip({ status }: { status: "rejected" | "shipped" }) {
+  return (
+    <span
+      className={`inline-flex shrink-0 items-center rounded-full px-2.5 py-0.5 align-middle font-sans text-[11px] font-medium uppercase tracking-wider ${
+        status === "shipped"
+          ? "bg-ink text-cream"
+          : "border border-border-strong text-ink-faint"
+      }`}
+    >
+      {status === "shipped" ? "Shipped" : "Rejected"}
+    </span>
+  );
+}
+
 export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
   switch (block.type) {
     case "paragraph": {
@@ -28,20 +42,31 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
       );
     }
 
-    case "subheading":
-      return (
+    case "subheading": {
+      const heading = (
         <h3
-          className={`${block.spaced ? "mt-14!" : ""} ${
+          className={`${block.spaced && !block.kicker ? "mt-14!" : ""} ${
             block.style === "heading"
               ? "font-serif text-2xl text-ink sm:text-3xl"
               : block.style === "label"
                 ? "font-sans text-xs uppercase tracking-widest text-ink-faint"
                 : "font-sans text-sm font-semibold uppercase tracking-wider text-ink"
-          }`}
+          } ${block.status ? "flex flex-wrap items-center gap-3" : ""}`}
         >
           {block.text}
+          {block.status && <StatusChip status={block.status} />}
         </h3>
       );
+      if (!block.kicker) return heading;
+      return (
+        <div className={block.spaced ? "mt-14!" : ""}>
+          <p className="mb-2 font-sans text-xs uppercase tracking-widest text-ink-faint">
+            {block.kicker}
+          </p>
+          {heading}
+        </div>
+      );
+    }
 
     case "quote":
       return (
@@ -53,6 +78,18 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
             </footer>
           )}
         </blockquote>
+      );
+
+    case "callout":
+      return (
+        <div className="border-l-2 border-green py-1 pl-5">
+          <p className="font-sans text-xs font-semibold uppercase tracking-wider text-ink">
+            {block.label}
+          </p>
+          <p className="mt-3 font-serif text-xl leading-snug text-ink sm:text-2xl">
+            {block.text}
+          </p>
+        </div>
       );
 
     case "stats":
@@ -74,6 +111,17 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
             <li key={i}>{item}</li>
           ))}
         </ol>
+      ) : block.marker === "arrow" ? (
+        <ul className="space-y-2 font-sans text-base leading-relaxed text-ink-soft sm:text-lg">
+          {block.items.map((item, i) => (
+            <li key={i} className="flex items-start gap-3">
+              <span aria-hidden className="text-ink-faint">
+                →
+              </span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
       ) : (
         <ul className="list-disc space-y-2 pl-5 font-sans text-base leading-relaxed text-ink-soft sm:text-lg">
           {block.items.map((item, i) => (
@@ -95,12 +143,20 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
                   →
                 </span>
                 <div>
-                  <p className="font-serif text-xl italic leading-snug text-ink sm:text-2xl">
-                    &ldquo;{item.quote}&rdquo;
-                  </p>
-                  <p className="mt-2 font-sans text-sm leading-relaxed text-ink-soft sm:text-base">
-                    {item.body}
-                  </p>
+                  {item.quote ? (
+                    <>
+                      <p className="font-serif text-xl italic leading-snug text-ink sm:text-2xl">
+                        &ldquo;{item.quote}&rdquo;
+                      </p>
+                      <p className="mt-2 font-sans text-sm leading-relaxed text-ink-soft sm:text-base">
+                        {item.body}
+                      </p>
+                    </>
+                  ) : (
+                    <p className="font-sans text-base leading-relaxed text-ink-soft sm:text-lg">
+                      {item.body}
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
@@ -159,7 +215,41 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
         />
       );
 
+    case "crossfade": {
+      const cycle = (block.holdSeconds ?? 3) * 2;
+      const [first, second] = block.images;
+      return (
+        <figure className="relative overflow-hidden rounded-[12px] border border-border">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={first.src}
+            alt={first.alt}
+            className="crossfade-frame block w-full"
+            style={{ animationDuration: `${cycle}s` }}
+          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={second.src}
+            alt={second.alt}
+            className="crossfade-frame absolute inset-0 h-full w-full object-cover"
+            style={{ animationDuration: `${cycle}s`, animationDelay: `-${cycle / 2}s` }}
+          />
+        </figure>
+      );
+    }
+
     case "gallery":
+      if (block.images.every((image) => image.aspect)) {
+        return (
+          <div className="flex gap-3 sm:gap-4">
+            {block.images.map((image) => (
+              <div key={image.src} style={{ flex: `${image.aspect} 1 0%` }}>
+                <CaseStudyImage src={image.src} alt={image.alt} />
+              </div>
+            ))}
+          </div>
+        );
+      }
       return (
         <div
           className={`grid grid-cols-2 gap-3 sm:gap-4 ${
@@ -181,9 +271,12 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
               className="rounded-[16px] border border-border bg-cream-subtle p-5 sm:p-6"
               style={block.background ? { backgroundColor: block.background } : undefined}
             >
-              <p className="font-sans text-xs uppercase tracking-wider text-ink-faint">
-                {i + 1} — {group.label}
-              </p>
+              <div className="flex items-center justify-between gap-3">
+                <p className="font-sans text-xs uppercase tracking-wider text-ink-faint">
+                  {i + 1} — {group.label}
+                </p>
+                {group.status && <StatusChip status={group.status} />}
+              </div>
               {block.float ? (
                 <div className="mt-4 flex flex-col items-center justify-center gap-4 px-2 py-4">
                   {group.images.map((image) => (

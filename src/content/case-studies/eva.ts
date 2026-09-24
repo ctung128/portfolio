@@ -27,85 +27,93 @@ export const eva: CaseStudy = {
     {
       id: "overview",
       navLabel: "Overview",
-      heading: "EOX Vantage was becoming a product company. EVA was the first proof of it.",
+      heading: "What is EVA?",
       blocks: [
         {
           type: "paragraph",
-          text: "EOX Vantage was transitioning from a Managed Services IT company toward a product company, and EVA was the first 0→1 internal product built to prove that shift out. I was the sole product designer, working with a PM, an engineer, and the Head of Managed Services as primary stakeholder — two months to a working prototype.",
+          text: "EVA is a conversational AI agent that turns operational data into decision-ready answers with built-in trust and verification, allowing Managed Services team leaders to validate metrics on demand. This was an internal tool meant to support the unique and established workflows of the Managed Services team.",
         },
         {
           type: "paragraph",
-          text: "The hard part was never \"design an AI interface.\" It was multiple user roles, a complicated underlying data model, existing organizational workflows, and a real open question about whether anyone would trust what the system told them.",
+          text: "I was the sole product designer, working with a PM, and an engineer. This project took around 2 months to test a working MVP prototype.",
         },
       ],
     },
     {
       id: "problem",
       navLabel: "Problem",
-      heading: "Operational intelligence existed. It was hard to validate and interpret.",
+      heading: "EOX had a lot of operational data, but it was tough to validate and interpret.",
       blocks: [
         {
-          type: "paragraph",
-          text: "The initial ask was broad: EOX had a lot of operational data, but leadership couldn't use it with confidence. My first job wasn't design — it was turning \"make this data easier to use\" into an actual product problem.",
-        },
-        {
           type: "subheading",
-          text: "Insight 1 — Trust was the bottleneck",
+          text: "Key insights",
         },
         {
-          type: "paragraph",
-          text: "Leadership lacked confidence in the accuracy of the data insights themselves, not access to them.",
+          type: "insights",
+          items: [
+            {
+              label: "Trust was the bottleneck",
+              body: "Leadership lacked confidence in the accuracy of the data insights themselves, not access to them.",
+            },
+            {
+              label: "Leadership wanted on-demand answers based on existing data",
+              body: "A conversational chatbot could interpret data and establish trust better than another dashboard.",
+            },
+          ],
         },
         {
-          type: "subheading",
-          text: "Insight 2 — Leadership wanted on-demand answers based on existing data",
-        },
-        {
-          type: "paragraph",
-          text: "A conversational chatbot could interpret data and establish trust better than another dashboard.",
-        },
-        {
-          type: "quote",
+          type: "callout",
+          label: "Problem statement",
           text: "Although performance data is readily available, Managed Services leadership lacks confidence in it because metrics are derived from opaque, manual reporting processes. This creates a need for on-demand, explainable insights that leaders can trust and act on.",
-          attribution: "Problem statement",
         },
       ],
     },
     {
       id: "user-research",
       navLabel: "User research",
-      heading: "Leadership reviewed metrics. Leadership didn't trust them.",
+      heading: "Two different stakeholders with contrasting use cases",
       blocks: [
         {
           type: "paragraph",
-          text: "My PM interviewed the Head of Managed Services and several Operations Managers about how they monitored team performance. Everyone landed in the same place: leadership reviewed metrics via static reports, workbooks, and exports, but data entry was time-consuming and disorganized — tracking performance was slow, inconsistent, and sometimes just inaccurate.",
+          text: "My PM interviewed the Head of Managed Services and several Operations Managers about how they monitored team performance. Everyone landed in the same place: leadership reviewed metrics via static reports, workbooks, and exports, but data entry was time-consuming and disorganized. Tracking performance was also slow, inconsistent, and sometimes just inaccurate.",
         },
         {
           type: "paragraph",
-          text: "Two very different jobs to be done fell out of that research: leadership needed a macro-level view they could defend in a meeting, without reading every number. Operations managers needed fast, granular answers — broken down by team, queue, case type, or individual — so they could act, not just observe. Same underlying data, very different jobs. One generic view would technically serve both and actually optimize for neither.",
+          text: "Two very different jobs to be done fell out of that research:",
+        },
+        {
+          type: "paragraph",
+          text: "1) Leadership needed a macro-level view they could defend in a meeting, without doing the calculations themselves.",
+        },
+        {
+          type: "paragraph",
+          text: "2) Operations managers needed fast, granular answers broken down by team, queue, case type, or individual, so that they could act on it.",
         },
       ],
     },
     {
       id: "competitive-research",
       navLabel: "Competitive research",
-      heading: "Studying Perplexity taught me the fix wasn't UI.",
+      heading: "Perplexity taught me that substrate-level decisions are what drive good conversational AI design.",
       blocks: [
         {
-          type: "image",
-          src: "/case-studies/eva/perplexity-audit.png",
-          alt: "Competitive research on Perplexity and AI UX pattern libraries",
+          type: "gallery",
+          columns: 2,
+          images: [
+            { src: "/case-studies/eva/perplexity.png", alt: "Competitive research: Perplexity", aspect: 642 / 642 },
+            { src: "/case-studies/eva/ai.png", alt: "Competitive research: AI UX pattern library", aspect: 935 / 642 },
+          ],
         },
         {
           type: "paragraph",
-          text: "I audited high-caliber AI products — Perplexity especially, alongside a broader pass through AI UX pattern libraries — to see how they'd earned trust. The finding that mattered: trust lived in the retrieval policy, not the interface. Which sources get prioritized, how conflicting data gets ranked — that's a substrate-level decision, not a surface one.",
+          text: "I audited high-caliber AI products like Perplexity and AI UX pattern libraries to see how they build trust. I found that trust grew from a solid retrieval policy, not the interface. For conversational AI design, substrate-level decisions—which sources get prioritized, how conflicting data gets ranked, what guardrails are in place—are the deciding factor, which informed my design approach.",
         },
       ],
     },
     {
       id: "ai-philosophy",
       navLabel: "AI design philosophy",
-      heading: "AI-second, not AI-first.",
+      heading: "Be AI-second, not AI-first.",
       blocks: [
         {
           type: "quote",
@@ -114,26 +122,21 @@ export const eva: CaseStudy = {
         },
         {
           type: "paragraph",
-          text: "I read as much of that research as I could find, plus articles and podcasts on designing for AI, before writing a single flow. That set the bar: this only shipped if it beat the static report on trust, not on novelty.",
-        },
-        {
-          type: "list",
-          items: [
-            "Designers should be AI-second, not AI-first.",
-            "Sprinkle AI in where it reduces frustration or speeds up success — never automate everything just because a real problem or user need hasn't been solved yet.",
-            "The artifact I was actually designing wasn't the UI. It was the retrieval policy.",
-          ],
+          text: "I read as much of that research as I could find, plus articles and podcasts on designing for AI, before designing a single flow. That set the bar: this only shipped if it was more trustworthy than the status quo—not if it was more novel.",
         },
       ],
     },
     {
       id: "iterations",
       navLabel: "Iterations",
-      heading: "Three rounds, each one breaking something the last one couldn't see.",
+      heading: "Exploring different AI design patterns",
+      hideHeader: true,
       blocks: [
         {
           type: "subheading",
-          text: "Iteration 1 — Raw text input, one role view",
+          kicker: "Iteration 1",
+          text: "Raw text input, one role view",
+          style: "heading",
         },
         {
           type: "image",
@@ -142,149 +145,173 @@ export const eva: CaseStudy = {
         },
         {
           type: "paragraph",
-          text: "The first version was intentionally simple: a raw text field and one shared view for every user. Ask a question, get an answer. Here's a trimmed version of what it actually produced for an Average Handling Time query.",
-        },
-        {
-          type: "quote",
-          text: "AHT for the trailing 30 days: 14,950 hours across 30,000 transactions — 29.9 min average, a 1.8% improvement over the trailing 14 days. Trend analysis flagged both wins (new training programs, process automation) and headwinds (unfamiliar transaction types in weeks 2–3).",
-          attribution: "Trimmed excerpt of the real Iteration 1 output",
+          text: "The first version was intentionally simple: a raw text field and one shared view for every user. Ask a question, get an answer—like your typical AI chatbot.",
         },
         {
           type: "paragraph",
-          text: "It worked. It also broke fast, in two specific ways: raw text input meant anyone could ask anything, with no guarantee the model stayed inside verified data — and this dense, spreadsheet-style answer was built for someone willing to read every number, which described neither audience well. One generic view couldn't serve a five-minute glance and a granular investigation at the same time.",
+          text: "It worked... but also broke fast. First, raw text input meant anyone could ask out-of-bounds questions, which was expensive and unsupported by our data. Secondly, one generic role view couldn't simultaneously provide a five-minute glance for Managed Services leaders and a granular analysis for Operational Managers.",
         },
         {
           type: "subheading",
-          text: "Iteration 2 — Disabled raw input, two role views",
+          kicker: "Iteration 2",
+          text: "Disabled raw input, two role views",
+          style: "heading",
+          spaced: true,
         },
         {
-          type: "image",
-          src: "/case-studies/eva/iteration-2-two-views.png",
-          alt: "Iteration 2: leadership's 3 broad question categories next to operations' 4 more granular ones",
+          type: "crossfade",
+          images: [
+            { src: "/case-studies/eva/managed.png", alt: "Iteration 2: leadership view with pre-configured questions" },
+            { src: "/case-studies/eva/ops.png", alt: "Iteration 2: operations manager view with pre-configured questions" },
+          ],
         },
         {
           type: "paragraph",
-          text: "Disabled raw text input entirely, replaced with pre-configured questions. Removing free text wasn't a downgrade — it meant every question that could be asked was one EVA could actually answer inside verified data.",
-        },
-        {
-          type: "paragraph",
-          text: "Split into two role views. Leadership's surfaced three broad categories (Average Handling Time, Specific Customer AHT, Specific Employee AHT); operations' surfaced four, with more granularity (adding incident volume, first-call resolution, and escalation patterns). Same underlying questions, different altitude. Research wasn't shaping the visuals here — it was shaping the product's structure and what the AI was allowed to do.",
+          text: "I disabled raw text input entirely and replaced it with pre-configured questions. This meant every question that could be asked was one EVA could answer with verified data. I also split the chatbot into two role views. Leadership accessed higher-level questions whereas operational managers accessed more granularity.",
         },
         {
           type: "subheading",
-          text: "Iteration 3 — Built-in trust and verification",
+          kicker: "Iteration 3",
+          text: "Built-in trust and verification",
+          style: "heading",
+          spaced: true,
         },
         {
           type: "paragraph",
           text: "Even if EVA gave the right answer — why should anyone trust it? My first instinct was citations. I explored two approaches.",
         },
         {
-          type: "subheading",
-          text: "Exploration 1 — Appended citations",
-        },
-        {
-          type: "image",
-          src: "/case-studies/eva/appended-citations.png",
-          alt: "Appended citations concept: a source link at the bottom of the answer",
-        },
-        {
-          type: "paragraph",
-          text: "A source link at the bottom of the answer. Rejected: linked the source, but gave no context for what the data actually said.",
-        },
-        {
-          type: "subheading",
-          text: "Exploration 2 — Inline citations",
-        },
-        {
-          type: "image",
-          src: "/case-studies/eva/inline-citations.png",
-          alt: "Inline citations concept: numbered footnotes inside the answer text",
-        },
-        {
-          type: "paragraph",
-          text: "Numbered footnotes inside the answer text. Rejected: required two or more clicks to actually verify anything — worked directly against the speed leadership needed.",
-        },
-        {
-          type: "paragraph",
-          text: "Looking closer, citations weren't solving the actual problem. For an operational metric, nobody needed to know which document an answer came from. They needed something more specific: how did you get this number, and can I defend it if someone challenges me on it?",
-        },
-        {
-          type: "quote",
-          text: "How might we enable trust and verification so that users will be confident in the accuracy of insights, while optimizing for low click rate and speed?",
-          attribution: "Reframed HMW",
-        },
-        {
-          type: "subheading",
-          text: "What shipped instead",
-        },
-        {
-          type: "subheading",
-          text: "Chain-of-Thought Disclosure",
+          type: "comparison",
+          groups: [
+            {
+              label: "Appended citations",
+              status: "rejected",
+              images: [
+                {
+                  src: "/case-studies/eva/appended-citations.png",
+                  alt: "Appended citations concept: a source link at the bottom of the answer",
+                },
+              ],
+              caption: "Gave no context for what the data actually said on the same page.",
+            },
+            {
+              label: "Inline citations",
+              status: "rejected",
+              images: [
+                {
+                  src: "/case-studies/eva/inline-citations.png",
+                  alt: "Inline citations concept: numbered footnotes inside the answer text",
+                },
+              ],
+              caption: "Took two or more clicks to verify anything, working against the speed leadership needed.",
+            },
+          ],
+          float: true,
         },
         {
           type: "paragraph",
-          text: "Users can view how the model reasoned its way to the answer. Conceptually interesting on its own — but reasoning alone still didn't give leadership enough to validate an operational decision.",
+          text: "Looking closer, citations weren't solving the actual problem. For an operational metric, users needed more specificity: how did you get this number, and can I defend it if someone challenges me on it?",
+        },
+        {
+          type: "callout",
+          label: "How might we",
+          text: "…enable trust and verification so that users will be confident in the accuracy of insights, while optimizing for low click rate and speed?",
         },
         {
           type: "subheading",
-          text: "Proof Mode",
+          kicker: "What shipped",
+          text: "Explainability and guided follow-ups",
+          style: "heading",
+          spaced: true,
+        },
+        {
+          type: "subheading",
+          text: "Chain-of-thought disclosure",
+          status: "shipped",
         },
         {
           type: "paragraph",
-          text: "Users can expand any answer, in place, into its calculation details and the data it was sourced from — no separate page, no extra click to a different view. This is what actually closed the gap chain-of-thought alone couldn't: leadership could validate a number before using it in an executive discussion, and operations could trace exactly where a number came from.",
+          text: "Users can view how the model reasoned its way to the answer. However, reasoning in real time still didn't give leadership enough to validate an operational decision.",
+        },
+        {
+          type: "video",
+          src: "/case-studies/eva/chain.mp4",
+          alt: "Expanding an EVA answer to reveal the model's chain of thought",
+        },
+        {
+          type: "subheading",
+          text: "Proof mode",
+          status: "shipped",
+        },
+        {
+          type: "paragraph",
+          text: "Users can expand any answer, in place, into its calculation details and the data it was sourced from. This closed the gap chain-of-thought alone couldn't: leadership could validate a number before using it in an executive discussion, and operations could trace exactly where a number came from.",
+        },
+        {
+          type: "video",
+          src: "/case-studies/eva/proof.mp4",
+          alt: "Proof mode expanding an answer into its calculation details and source data",
         },
         {
           type: "subheading",
           text: "Suggested follow-up questions",
+          status: "shipped",
+        },
+        {
+          type: "image",
+          src: "/case-studies/eva/suggested.png",
+          alt: "Suggested follow up questions",
         },
         {
           type: "paragraph",
-          text: "Aimed at raising the success rate per prompt rather than the number of prompts — every additional prompt is a real token cost to the business, so \"more engagement\" was the wrong goal to optimize toward.",
+          text: "I included suggested follow-up questions after a new chat initiated to raise the success rate per prompt rather than the number of prompts. Every additional prompt is a real token cost to the business, so \"more engagement\" opposed EOX's business needs.",
         },
       ],
     },
     {
       id: "final-designs",
       navLabel: "Final designs",
-      heading: "From a blank text box to a named, categorized starting point.",
+      heading: "From a ChatGPT dupe to a uniquely EOX solution.",
       blocks: [
         {
-          type: "image",
-          src: "/case-studies/eva/before-after.png",
-          alt: "Before and after: a blank chat entry point versus a categorized, named landing screen",
-          wide: true,
+          type: "gallery",
+          columns: 2,
+          images: [
+            {
+              src: "/case-studies/eva/before.png",
+              alt: "Before: a blank chat entry point with unlabeled question cards",
+            },
+            {
+              src: "/case-studies/eva/after.png",
+              alt: "After: a named landing screen with categorized questions",
+            },
+          ],
         },
         {
           type: "paragraph",
-          text: "Before: one generic entry point, four unlabeled question cards, no framing. After: EVA opens by naming what it does (\"AI-powered operations intelligence for Managed Services leaders\"), sorts questions into categories with counts, and gets leadership or operations to their first real question in one tap instead of a guess.",
+          text: "With pre-configured questions, the finished chatbot looks constrained, almost simple. That was intentional. EVA was never meant to be a general-purpose AI assistant. As an internal tool, it was built specifically around the EOX Managed Services team's existing workflows, data, roles, and constraints. Open-ended prompting would have let people ask questions the data couldn't support, and every one of those queries would have cost token money for no guaranteed value.",
         },
         {
           type: "paragraph",
-          text: "The finished chatbot looks constrained, almost simple. That was deliberate, not a limitation. EVA was never meant to be a general-purpose AI assistant — it was built specifically around EOX's existing workflows, data, roles, and constraints. Open-ended prompting was on the table, and I ruled it out: it would have let people ask questions the data couldn't support, and every one of those queries would have cost real token money for no guaranteed value.",
+          text: "After demoing our MVP to our target users, we received the following feedback:",
         },
         {
           type: "list",
           items: [
-            "Reduced ad-hoc reporting requests to analysts — with improved trust in the numbers themselves",
-            "Faster leadership decision cycles — faster insight generation, less reliance on manual reporting",
+            "Reduced ad-hoc reporting requests to analysts, with improved trust in the numbers themselves",
             "Strong signals of adoption and alignment across both roles",
           ],
-        },
-        {
-          type: "quote",
-          text: "Instead of scanning reports, I can ask a question and immediately understand whether we're improving, what changed, and where to look next. Being able to see how numbers were calculated and see what changed makes this more useful than the reports we rely on today.",
-          attribution: "Abhinav Goyal, Head of Managed Services, after an early prototype walkthrough",
         },
       ],
     },
     {
       id: "reflection",
       navLabel: "Reflection",
-      heading: "The constraint wasn't a limitation of the design. It was part of the product strategy.",
+      heading: "Our constraints weren't design limitations! They were part of the product strategy.",
       blocks: [
         {
           type: "paragraph",
-          text: "In a complex enterprise product, good design isn't maximum flexibility for the user — it's understanding the organization's workflows, technical architecture, economics, and different user needs, then deciding where the product should absorb complexity and where it needs to expose it.",
+          text: "For a complex enterprise product, especially for an internal tool, we weren't trying to max out AI chatbot capabilities.  For EOX Vantage, good design looked like a product that understood organizational workflows, technical architecture, buesiness needs, and different user needs. In the end, that might look like a simpler, more constrained design, but that was the solution that worked for EOX's users, and what moved the needle.",
         },
       ],
     },

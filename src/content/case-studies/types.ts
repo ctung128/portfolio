@@ -21,16 +21,36 @@ export type CaseStudyBlock =
       /** Add extra top margin to separate this subsection from the one
        * before it, beyond the standard block-to-block spacing. */
       spaced?: boolean;
+      /** Small faint uppercase label above the subheading text, e.g.
+       * "Iteration 2" over a descriptive "heading"-style title. */
+      kicker?: string;
+      /** Status chip after the text, marking a decision outcome: an
+       * outlined "Rejected" chip or a filled "Shipped" chip. */
+      status?: "rejected" | "shipped";
     }
   | { type: "quote"; text: string; attribution?: string }
+  | {
+      /** A labeled, non-italic statement (e.g. a problem statement or a
+       * "How might we" question) with the label above as an eyebrow. */
+      type: "callout";
+      label: string;
+      text: string;
+    }
   | { type: "stats"; items: { value: string; label: string }[] }
-  | { type: "list"; items: string[]; ordered?: boolean }
+  | {
+      type: "list";
+      items: string[];
+      ordered?: boolean;
+      /** "arrow" replaces the bullets of an unordered list with → markers. */
+      marker?: "arrow";
+    }
   | {
       /** A list of labeled research insights, each pairing a short
        * category tag with an arrow-led quote and a supporting body
-       * description (e.g. synthesized user-interview findings). */
+       * description (e.g. synthesized user-interview findings). When
+       * `quote` is omitted, the body follows the arrow at paragraph size. */
       type: "insights";
-      items: { label: string; quote: string; body: string }[];
+      items: { label: string; quote?: string; body: string }[];
     }
   | {
       type: "image";
@@ -59,6 +79,13 @@ export type CaseStudyBlock =
       src: string;
       alt: string;
       caption?: string;
+    }
+  | {
+      /** Two same-sized screenshots that loop, crossfading between them. */
+      type: "crossfade";
+      images: [{ src: string; alt: string }, { src: string; alt: string }];
+      /** Seconds each image holds before fading to the other. Defaults to 3. */
+      holdSeconds?: number;
     }
   | {
       type: "mockup";
@@ -93,7 +120,14 @@ export type CaseStudyBlock =
        * screenshots) that already have their own device frame/styling
        * baked in — no additional mockup wrapper. */
       type: "gallery";
-      images: { src: string; alt: string }[];
+      images: {
+        src: string;
+        alt: string;
+        /** Width ÷ height of the image. When every image in the gallery has
+         * one, they're laid out in a single row at equal heights, each
+         * column sized to its image's proportions (no cropping). */
+        aspect?: number;
+      }[];
       /** Force a fixed 2-column layout at every breakpoint (e.g. a pair of
        * side-by-side persona cards), instead of the default responsive
        * 2→3 column grid. */
@@ -108,6 +142,8 @@ export type CaseStudyBlock =
         images: { src: string; alt: string }[];
         /** Short description shown below the images. */
         caption?: string;
+        /** Decision-outcome chip shown next to the label. */
+        status?: "rejected" | "shipped";
       }[];
       /** Center each group's images and give them rounded corners and a soft
        * shadow, instead of the default 2-column grid. */
@@ -128,6 +164,9 @@ export type CaseStudySection = {
    * with its own label). Defaults to `navLabel`. */
   eyebrow?: string;
   heading: string;
+  /** Hide the on-page eyebrow and heading (kept for screen readers and the
+   * TOC), e.g. when the first block already introduces the section. */
+  hideHeader?: boolean;
   blocks: CaseStudyBlock[];
 };
 

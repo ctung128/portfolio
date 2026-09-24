@@ -106,3 +106,32 @@ body {
     0 1lh currentColor,
     0 -1lh currentColor;
 }
+
+/* Two stacked images trading places: each is fully visible for ~40% of the
+   cycle, then fades out while the other (offset by half a cycle) fades in. */
+@keyframes crossfade-pair {
+  0%,
+  40% {
+    opacity: 1;
+  }
+  50%,
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.crossfade-frame {
+  animation: crossfade-pair 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crossfade-frame {
+    animation: none;
+  }
+  .crossfade-frame + .crossfade-frame {
+    opacity: 0;
+  }
+}
