@@ -21,6 +21,20 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     images: ["/brand/social-preview.jpg"],
   },
+  icons: {
+    icon: [
+      {
+        url: "/brand/favicon-light.svg",
+        type: "image/svg+xml",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/brand/favicon-dark.svg",
+        type: "image/svg+xml",
+        media: "(prefers-color-scheme: dark)",
+      },
+    ],
+  },
   twitter: {
     card: "summary_large_image",
     images: ["/brand/social-preview.jpg"],
