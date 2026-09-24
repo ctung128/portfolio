@@ -44,6 +44,13 @@ export type CaseStudyBlock =
       shadow?: boolean;
     }
   | {
+      /** A looping, autoplaying video styled like a standard image card. */
+      type: "video";
+      src: string;
+      alt: string;
+      caption?: string;
+    }
+  | {
       type: "mockup";
       /** A looping video to fill the screen. Provide this or `frames`/`scrollImage`. */
       video?: string;
@@ -125,6 +132,9 @@ export type CaseStudy = {
   /** Small translucent status chip shown next to the one-liner in the
    * header, e.g. "Currently in beta!". */
   badge?: string;
+  /** Link to the live product, shown as a "See it live ↗" button next to
+   * the one-liner in the header. */
+  liveUrl?: string;
   heroMockup?: {
     /** A looping video to fill the screen. Provide this or `frames`. */
     video?: string;

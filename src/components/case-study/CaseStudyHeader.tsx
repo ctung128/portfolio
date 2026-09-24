@@ -26,6 +26,17 @@ export function CaseStudyHeader({
             {caseStudy.badge}
           </span>
         )}
+        {caseStudy.liveUrl && (
+          <a
+            href={caseStudy.liveUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="btn-slide mt-1 inline-flex shrink-0 items-center gap-1.5 rounded-[12px] bg-ink px-4 py-2 font-sans text-sm text-cream"
+          >
+            <span className="btn-slide-viewport"><span>See it live</span></span>
+            <span className="btn-slide-viewport" aria-hidden><span>↗</span></span>
+          </a>
+        )}
       </div>
 
       {children}

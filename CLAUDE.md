@@ -4,6 +4,11 @@
 
 Running log of notable work done with Claude Code, newest first. Keep entries to a few bullets — this is a changelog, not a task tracker.
 
+### 2026-09-24
+- New MySupplementals case study (`/work/mysupplementals`): overview, problem/stakeholders, opportunity, four design iterations, outcome with founder testimonial, and a closing reflection on opinionated design.
+- Case study header: optional `liveUrl` renders a "See it live ↗" button next to the one-liner.
+- New `video` block type: autoplaying looping video styled like an image card.
+
 ### 2026-09-21
 - About section: redesigned the Reading/Listening/Learning/Recommending pillar cards to match the original Framer site — moved out of the cramped half-column into a full-width 2x2 grid below the bio, `#F7F7F7` background with a custom drop shadow, larger type/padding/star bullets.
 - About content: new bio intro ("Hi there! I'm a product designer..."), removed "Stay True", "Farewell My Concubine", "Blockchain Chicken Farm"; swapped "Philosophy of aesthetics" for "A freelance portrait photography studio".

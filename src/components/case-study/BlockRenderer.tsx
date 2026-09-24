@@ -105,6 +105,25 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
         />
       );
 
+    case "video":
+      return (
+        <figure>
+          <video
+            className="w-full rounded-[12px] border border-border"
+            src={block.src}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label={block.alt}
+          />
+          {block.caption && (
+            <figcaption className="mt-3 font-sans text-sm text-ink-soft">{block.caption}</figcaption>
+          )}
+        </figure>
+      );
+
     case "mockup":
       return (
         <CaseStudyHeroMockup
