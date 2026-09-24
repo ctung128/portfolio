@@ -15,11 +15,8 @@ export function FeaturedWork() {
         <h2 className="font-serif text-3xl text-ink sm:text-4xl">Selected work</h2>
         <div className="mt-10 grid grid-cols-1 gap-16">
         {caseStudies.map((cs) => (
-          <Link
-            key={cs.slug}
-            href={`/work/${cs.slug}`}
-            className="group flex flex-col"
-          >
+          <div key={cs.slug} className="group flex flex-col">
+          <Link href={`/work/${cs.slug}`} className="flex flex-col">
             <div className="aspect-[16/9] overflow-hidden rounded-[12px]">
               {cs.heroMockup ? (
                 <CaseStudyHeroMockup
@@ -63,6 +60,8 @@ export function FeaturedWork() {
                 {cs.year}
               </span>
             </div>
+          </Link>
+            {/* Outside the card link so the live-site chip can be its own link. */}
             <div className="mt-3 flex flex-wrap items-center gap-2">
               {cs.tags.map((tag) =>
                 tag === "Techstars" ? (
@@ -92,8 +91,19 @@ export function FeaturedWork() {
                   {cs.badge}
                 </span>
               )}
+              {cs.liveUrl && (
+                <a
+                  href={cs.liveUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-slide inline-flex items-center gap-1 rounded-[12px] bg-ink px-2.5 py-1 font-sans text-xs font-medium text-cream"
+                >
+                  <span className="btn-slide-viewport"><span>See it live</span></span>
+                  <span className="btn-slide-viewport" aria-hidden><span>↗</span></span>
+                </a>
+              )}
             </div>
-          </Link>
+          </div>
         ))}
         </div>
       </div>
