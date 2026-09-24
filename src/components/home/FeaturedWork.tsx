@@ -3,6 +3,7 @@ import { caseStudies } from "@/content/case-studies";
 import { CaseStudyImage } from "@/components/case-study/CaseStudyImage";
 import { CaseStudyHeroMockup } from "@/components/case-study/CaseStudyHeroMockup";
 import { LazyVideo } from "@/components/LazyVideo";
+import { ARROW_NE } from "@/lib/glyphs";
 
 // Premium hover scale: a slow, ease-out-expo settle rather than a snappy
 // linear zoom — the same curve used for the frame-sequence animation.
@@ -96,7 +97,7 @@ export function FeaturedWork() {
                   className="btn-slide inline-flex items-center gap-1 rounded-[12px] bg-ink px-2.5 py-1 font-sans text-xs font-medium text-cream"
                 >
                   <span className="btn-slide-viewport"><span>See it live</span></span>
-                  <span className="btn-slide-viewport" aria-hidden><span>↗</span></span>
+                  <span className="btn-slide-viewport" aria-hidden><span>{ARROW_NE}</span></span>
                 </a>
               )}
             </div>

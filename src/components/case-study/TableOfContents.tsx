@@ -56,25 +56,3 @@ export function TableOfContents({ items }: { items: TocItem[] }) {
     </nav>
   );
 }
-
-export function MobileTableOfContents({ items }: { items: TocItem[] }) {
-  return (
-    <details className="group mb-8 rounded-[12px] border border-border bg-cream-subtle lg:hidden">
-      <summary className="cursor-pointer list-none px-4 py-3 font-sans text-sm font-semibold text-ink">
-        On this page
-      </summary>
-      <ol className="flex flex-col gap-1 border-t border-border px-4 py-3">
-        {items.map((item) => (
-          <li key={item.id}>
-            <a
-              href={`#${item.id}`}
-              className="block py-1 font-sans text-sm text-ink-soft hover:text-green"
-            >
-              {item.navLabel}
-            </a>
-          </li>
-        ))}
-      </ol>
-    </details>
-  );
-}

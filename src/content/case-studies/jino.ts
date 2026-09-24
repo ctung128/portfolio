@@ -13,7 +13,7 @@ export const jino: CaseStudy = {
   team: ["1 UX Designer", "1 Engineer"],
   timeline: "Design: Nov 2025 Development: Aug 2026 Testing: Sep 2026",
   skills: ["Design System", "Prototyping", "Product Strategy", "QA Testing"],
-  tags: ["0→1", "Founder", "Consumer Social"],
+  tags: ["0→1", "Consumer Social"],
   coverImage: {
     src: "/case-studies/jino/cover.webp",
     alt: "Jino relationship app cover image",

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { CaseStudy } from "@/content/case-studies/types";
+import { ARROW_NE } from "@/lib/glyphs";
 
 export function CaseStudyHeader({
   caseStudy,
@@ -34,7 +35,7 @@ export function CaseStudyHeader({
             className="btn-slide mt-1 inline-flex shrink-0 items-center gap-1.5 rounded-[12px] bg-ink px-4 py-2 font-sans text-sm text-cream"
           >
             <span className="btn-slide-viewport"><span>See it live</span></span>
-            <span className="btn-slide-viewport" aria-hidden><span>↗</span></span>
+            <span className="btn-slide-viewport" aria-hidden><span>{ARROW_NE}</span></span>
           </a>
         )}
       </div>

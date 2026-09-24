@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { nav, siteConfig } from "@/content/site";
+import { ARROW_NE } from "@/lib/glyphs";
 
 export function Header() {
   return (
@@ -39,7 +40,7 @@ export function Header() {
           className="btn-slide hidden items-center gap-1.5 justify-self-end rounded-[12px] bg-ink px-4 py-2 font-sans text-sm text-cream sm:inline-flex"
         >
           <span className="btn-slide-viewport"><span>Let&rsquo;s talk</span></span>
-          <span className="btn-slide-viewport" aria-hidden><span>↗</span></span>
+          <span className="btn-slide-viewport" aria-hidden><span>{ARROW_NE}</span></span>
         </a>
       </div>
     </header>

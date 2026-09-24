@@ -1,5 +1,6 @@
 import { about, education, portrait, recommendations } from "@/content/site";
 import { Portrait } from "./Portrait";
+import { ARROW_NE } from "@/lib/glyphs";
 
 const recommendationGroups: {
   label: string;
@@ -21,7 +22,7 @@ export function AboutSection() {
 
           <div>
             <h2 className="font-serif text-[26px] text-ink sm:text-[30px] lg:text-4xl">About</h2>
-            <div className="mt-6 space-y-4">
+            <div className="mt-3 space-y-4 lg:mt-6">
               {about.paragraphs.map((p, i) => (
                 <p key={i} className="font-sans text-base leading-relaxed text-ink-soft">
                   {p}
@@ -42,16 +43,16 @@ export function AboutSection() {
           {recommendationGroups.map((group) => (
             <div
               key={group.label}
-              className="rounded-[12px] border border-border bg-cream-subtle p-8 sm:p-10"
+              className="rounded-[12px] border border-border bg-cream-subtle p-6 sm:p-8"
             >
-              <h3 className="font-serif text-2xl text-ink lg:text-3xl">{group.label}</h3>
-              <ul className="mt-6 space-y-4">
+              <h3 className="font-serif text-xl text-ink lg:text-2xl">{group.label}</h3>
+              <ul className="mt-4 space-y-3">
                 {group.items.map((item) => (
                   <li key={item.title} className="flex gap-3">
-                    <span aria-hidden className="mt-1 shrink-0 text-base text-ink">
+                    <span aria-hidden className="mt-0.5 shrink-0 text-sm text-ink">
                       ✱
                     </span>
-                    <p className="font-sans text-base leading-relaxed text-ink-soft">
+                    <p className="font-sans text-[15px] leading-relaxed text-ink-soft">
                       {item.href ? (
                         <a
                           href={item.href}
@@ -61,7 +62,7 @@ export function AboutSection() {
                             group.boldTitles ? "font-medium text-ink" : "text-ink"
                           }`}
                         >
-                          {item.title} <span aria-hidden className="text-ink-faint">↗</span>
+                          {item.title} <span aria-hidden className="text-ink-faint">{ARROW_NE}</span>
                         </a>
                       ) : (
                         <span className={group.boldTitles ? "font-medium text-ink" : "text-ink"}>

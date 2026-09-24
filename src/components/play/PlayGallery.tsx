@@ -4,6 +4,7 @@ import { useCallback, useRef, useState } from "react";
 import { playProjects } from "@/content/site";
 import { CaseStudyImage } from "@/components/case-study/CaseStudyImage";
 import { LazyVideo } from "@/components/LazyVideo";
+import { ARROW_NE } from "@/lib/glyphs";
 
 // Premium hover scale: a slow, ease-out-expo settle rather than a snappy
 // linear zoom — the same curve used for the frame-sequence animation.
@@ -44,7 +45,7 @@ export function PlayGallery() {
         }}
       >
         See it live
-        <span aria-hidden>↗</span>
+        <span aria-hidden>{ARROW_NE}</span>
       </div>
       {playProjects.map((project) => {
         const Wrapper = project.href ? "a" : "div";
@@ -95,7 +96,7 @@ export function PlayGallery() {
               </h2>
               {project.href && (
                 <span aria-hidden className="font-sans text-sm text-ink-faint">
-                  ↗
+                  {ARROW_NE}
                 </span>
               )}
             </div>

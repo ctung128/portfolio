@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { siteConfig } from "@/content/site";
+import { ARROW_NE } from "@/lib/glyphs";
 
 const footerLinks = [
   { label: "Email", href: `mailto:${siteConfig.email}` },
@@ -32,7 +33,7 @@ export function Footer() {
             className="btn-slide mt-8 inline-flex items-center gap-1.5 rounded-[12px] bg-[#FAFAFA] px-5 py-2.5 font-sans text-sm text-ink"
           >
             <span className="btn-slide-viewport"><span>Let&rsquo;s talk</span></span>
-            <span className="btn-slide-viewport" aria-hidden><span>↗</span></span>
+            <span className="btn-slide-viewport" aria-hidden><span>{ARROW_NE}</span></span>
           </a>
         </div>
 
@@ -47,7 +48,7 @@ export function Footer() {
                   rel={isMailto ? undefined : "noreferrer"}
                   className="flex items-center justify-between font-serif text-lg text-white/80 transition-colors hover:text-white"
                 >
-                  {link.label} <span aria-hidden className="font-sans text-sm">↗</span>
+                  {link.label} <span aria-hidden className="font-sans text-sm">{ARROW_NE}</span>
                 </a>
               </li>
             );

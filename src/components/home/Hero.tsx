@@ -3,6 +3,7 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { hero, personalPhotos, siteConfig } from "@/content/site";
 import { PersonalCarousel } from "./PersonalCarousel";
+import { ARROW_NE } from "@/lib/glyphs";
 
 const TITLE_MAX = 40;
 const TITLE_MIN = 13;
@@ -82,7 +83,7 @@ export function Hero() {
         className="btn-slide mt-7 inline-flex items-center gap-1.5 rounded-[12px] bg-ink px-5 py-2.5 font-sans text-sm text-cream"
       >
         <span className="btn-slide-viewport"><span>Reach out</span></span>
-        <span className="btn-slide-viewport" aria-hidden><span>↗</span></span>
+        <span className="btn-slide-viewport" aria-hidden><span>{ARROW_NE}</span></span>
       </a>
 
       <PersonalCarousel photos={personalPhotos} />
