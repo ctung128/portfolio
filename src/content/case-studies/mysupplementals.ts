@@ -36,11 +36,11 @@ export const mysupplementals: CaseStudy = {
         },
         {
           type: "paragraph",
-          text: "It's built for more than students. High school counselors and private college counselors can use it to plan essays across a whole caseload, and it could be sold to schools as a resource.",
+          text: "It's built for more than students. High school counselors and private college counselors can use it to plan essays across a whole caseload, and it could be used by schools as a resource.",
         },
         {
           type: "paragraph",
-          text: "I worked as a founding designer with a founding engineer. I designed in Figma, he built in code, and we reviewed each iteration together in coworking sessions. I owned the marketing landing page and the core web app flow, from picking schools to the final insight reveal.",
+          text: "I worked as a founding designer with a founding engineer, and we reviewed each iteration together in coworking sessions. I owned the marketing landing page and the core web app flow, from picking schools to the final insight reveal.",
         },
         { type: "subheading", text: "Impact for students", style: "label", spaced: true },
         {
@@ -223,7 +223,7 @@ export const mysupplementals: CaseStudy = {
         { type: "subheading", text: "Which impact metric lands best for students?", style: "heading", spaced: true },
         {
           type: "paragraph",
-          text: "Instead of assuming an impact metric, I explored two competing ones.",
+          text: "Instead of assuming an impact metric, I explored two competing ones:",
         },
         {
           type: "comparison",
@@ -316,7 +316,7 @@ export const mysupplementals: CaseStudy = {
       blocks: [
         {
           type: "paragraph",
-          text: "MySupplementals is live, and the founder is now working on marketing. It hasn't had its public launch yet. Next is reaching students directly while positioning the app as a resource counselors and schools can offer.",
+          text: "MySupplementals is live, and the founder is now working on marketing. Next is reaching students directly while positioning the app as a resource counselors and schools can offer.",
           link: { text: "live", href: "https://mysupplementals.com/" },
         },
         {
@@ -345,7 +345,7 @@ export const mysupplementals: CaseStudy = {
         },
         {
           type: "paragraph",
-          text: "But knowing when taste should give way to strategy matters just as much. For example, letting a technical constraint delete a feature instead of complicate it, or adding friction on purpose in front of a destructive action. Knowing when taste should yield to constraint, and when a business need (a counselor's trust, a school's adoption) should outrank a personal preference, mattered as much as the taste itself. Every decision in this project, instinctive or constrained, came back to one question: what actually serves a stressed-out student staring down 47 essays?"
+          text: "But knowing when taste should give way to strategy matters just as much. For example, letting a technical constraint delete a feature instead of complicate it, or adding friction on purpose in front of a destructive action. Knowing when a business need (ex, a counselor's trust or a school's adoption) should outrank a personal preference, mattered as much as taste. Ultimately, every decision in this project came back to one question: what actually serves a stressed-out student staring down 47 essays?"
         }
       ],
     },

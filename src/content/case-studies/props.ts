@@ -11,14 +11,14 @@ export const props: CaseStudy = {
   industry: "Props / Consumer Social",
   role: "UX Manager/Designer",
   team: [
-    "2 Founders-Engineers",
+    "2 Founder-Engineers",
     "1 UX Manager (me!)",
     "1 UX Designer",
     "1 User Researcher",
   ],
   timeline: "Aug — Oct 2025",
   skills: ["UX Research", "iOS App Design", "Rapid Testing (RITE)", "Product Strategy"],
-  tags: ["End-to-end", "User Research", "Consumer Social", "Mobile"],
+  tags: ["End-to-end", "User Research", "Consumer Social", "Techstars"],
   coverImage: {
     src: "/case-studies/props/cover.png",
     alt: "Props app redesign cover image",
@@ -56,12 +56,8 @@ export const props: CaseStudy = {
     {
       id: "problem",
       navLabel: "Problem",
-      heading: "The problem",
+      heading: "Users liked the idea behind Props, but it felt overwhelming and unintuitive. Thus, users kept dropping off.",
       blocks: [
-        {
-          type: "paragraph",
-          text: "Users liked the idea behind Props, but it felt overwhelming and unintuitive.",
-        },
         {
           type: "stats",
           items: [
@@ -74,7 +70,7 @@ export const props: CaseStudy = {
     {
       id: "research",
       navLabel: "Research",
-      heading: "Research & key insights",
+      heading: "Turns out... the platform's reward loop was buried under unclear navigation and visual hierarchy.",
       blocks: [
         {
           type: "paragraph",
@@ -82,14 +78,11 @@ export const props: CaseStudy = {
         },
         {
           type: "subheading",
-          text: "Key insight",
-        },
-        {
-          type: "paragraph",
-          text: "The platform's reward loop was buried under unclear navigation and visual hierarchy.",
+          text: "Key insights",
         },
         {
           type: "list",
+          marker: "arrow",
           items: [
             "First-time users abandoned key tasks mid-flow",
             "Users cycled through every tab trying to guess where to complete tasks",
@@ -102,11 +95,11 @@ export const props: CaseStudy = {
     {
       id: "strategy",
       navLabel: "Strategy",
-      heading: "Strategy",
+      heading: "Optimizing the first-time user experience",
       blocks: [
         {
           type: "paragraph",
-          text: "New users needed a smoother path to their first win. Our strategy focused on reducing early friction and making the quest → reward loop unmistakable.",
+          text: "New users needed a smoother path to their first win. Our strategy focused on reducing early friction and making the quest-to-reward loop unmistakable.",
         },
         {
           type: "list",

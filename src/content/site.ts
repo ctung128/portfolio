@@ -103,7 +103,7 @@ export const nav = [
 
 export const playPage = {
   // TODO: swap this for your real intro copy
-  headline: "Things I build for fun when I get that itch to create. ",
+  headline: "Things I build for fun when I get that itch.",
   description:
     "branding/marketing, vibe-coding, web design, etc etc :-)"
 };
@@ -130,12 +130,12 @@ export const playProjects: PlayProject[] = [
     href: "https://www.bmore-designful.com",
   },
   {
-    title: "Branding for a $15K micro-SaaS app",
+    title: "Branding for a $15K MRR micro-SaaS app",
     tag: "BRANDING * SHIPPED 2025",
     image: { src: "/play/project-two/cover.png", alt: "Project two cover image" },
   },
   {
-    title: "Landing page for a HVAC startup",
+    title: "Landing page for an HVAC startup",
     tag: "FRAMER WEB DESIGN",
     image: {
       src: "/play/project-three/cover.png",
