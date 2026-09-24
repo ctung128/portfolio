@@ -361,7 +361,6 @@ export const jino: CaseStudy = {
           scrollImage: {
             src: "/case-studies/jino/home-empty.webp",
             alt: "Jino home screen empty state, panning to reveal the full screen inside an iPhone mockup",
-            endPercent: -47.15,
           },
           background: "/case-studies/jino/bg-fcfffa.png",
           alt: "Jino home screen empty state, panning to reveal the full screen inside an iPhone mockup",

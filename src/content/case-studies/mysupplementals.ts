@@ -11,7 +11,7 @@ export const mysupplementals: CaseStudy = {
     "A web app that merges overlapping college essay prompts across schools into a single, organized Google Doc. Built for students and the counselors who advise them.",
   cardDescription:
     "Freelance design for a solo founder: a landing page and core web app flow that help college applicants and counselors write once and apply everywhere.",
-  year: "2026",
+  year: "Shipped 2026",
   industry: "MySupplementals / EdTech",
   role: "Founding Product Designer",
   team: ["1 Designer (me!)", "1 Engineer"],

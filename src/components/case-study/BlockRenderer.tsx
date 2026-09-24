@@ -93,6 +93,27 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
         </div>
       );
 
+    case "details":
+      return (
+        <dl className="grid grid-cols-2 gap-x-6 gap-y-6 pt-4 sm:grid-cols-3">
+          {block.items.map((item) => (
+            <div
+              key={item.label}
+              className={Array.isArray(item.value) ? "col-span-2 sm:col-span-1" : undefined}
+            >
+              <dt className="font-sans text-xs uppercase tracking-wider text-ink-faint">
+                {item.label}
+              </dt>
+              <dd className="mt-1 space-y-1 font-sans text-sm text-ink">
+                {Array.isArray(item.value)
+                  ? item.value.map((line) => <div key={line}>{line}</div>)
+                  : item.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      );
+
     case "stats":
       return (
         <div className="grid grid-cols-2 gap-6 border-y border-border py-6 sm:grid-cols-3">
@@ -200,6 +221,7 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
           video={block.video}
           frames={block.frames}
           scrollImage={block.scrollImage}
+          scrollFrames={block.scrollFrames}
           background={block.background}
           alt={block.alt}
           label={block.label}
@@ -209,6 +231,42 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
           frameTransitionMs={block.frameTransitionMs}
           frameMotion={block.frameMotion}
         />
+      );
+
+    case "mockupRow":
+      return (
+        <div
+          className="grid gap-1.5 sm:gap-3"
+          // One column per card, with a narrow arrow column between each.
+          style={{ gridTemplateColumns: block.items.map(() => "1fr").join(" auto ") }}
+        >
+          {block.items.map((item, i) => [
+            i > 0 && (
+              // Offset by the label's height so the arrow centers on the cards.
+              <div
+                key={`arrow-${i}`}
+                aria-hidden
+                className="flex items-center pt-8 font-sans text-lg text-ink-soft sm:text-2xl"
+              >
+                →
+              </div>
+            ),
+            <figure key={item.label}>
+              <figcaption className="mb-3 font-sans text-sm font-semibold uppercase tracking-wider text-ink">
+                {item.label}
+              </figcaption>
+              <CaseStudyHeroMockup
+                frames={item.frames}
+                scrollFrames={item.scrollFrames}
+                background={item.background ?? block.background}
+                alt={item.alt}
+                variant={block.variant}
+                className="rounded-[24px] border border-border py-8 sm:py-12"
+                phoneSizeClassName="w-[118px] sm:w-[150px] md:w-[165px]"
+              />
+            </figure>,
+          ])}
+        </div>
       );
 
     case "featureRows":

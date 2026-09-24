@@ -3,7 +3,7 @@ import type { CaseStudy } from "./types";
 export const splitev: CaseStudy = {
   slug: "splitev",
   title: "A two-sided EV charging marketplace",
-  oneLiner: "Redesigning SplitEV's MVP, an EV charging startup.",
+  oneLiner: "Redesigning onboarding, booking, dashboards, and vehicle management",
   cardDescription:
     "A Techstars-backed EV charging startup's five most critical flows, rebuilt from fragmented prototype into a launch-ready MVP.",
   year: "Shipped 2026",
@@ -38,7 +38,7 @@ export const splitev: CaseStudy = {
     {
       id: "context",
       navLabel: "Context",
-      heading: "Context",
+      heading: "Introducing SplitEV",
       blocks: [
         {
           type: "paragraph",
@@ -49,11 +49,11 @@ export const splitev: CaseStudy = {
     {
       id: "problem",
       navLabel: "Problem",
-      heading: "The problem",
+      heading: "Friction everywhere",
       blocks: [
         {
           type: "paragraph",
-          text: "Early flows were incomplete and full of friction. Drivers couldn't reliably book chargers, hosts couldn't understand earnings or charger status, key user flows were broken or circular, and onboarding took too long — users dropped before they found value.",
+          text: "Early flows were incomplete and full of friction. Drivers couldn't reliably book chargers, hosts couldn't understand earnings or charger status, key user flows were broken or circular, and onboarding took too long. This led to users dropping before they found value.",
         },
         {
           type: "quote",
@@ -68,15 +68,27 @@ export const splitev: CaseStudy = {
           text: "I'd like a validation process for a host and driver, like Airbnb or Uber.",
         },
         {
-          type: "quote",
-          text: "I want to see how SplitEV compares to other charging stations like at the grocery store.",
+          type: "subheading",
+          text: "Before the redesign",
+        },
+        {
+          type: "mockup",
+          frames: [
+            "/case-studies/splitev/before-1.webp",
+            "/case-studies/splitev/before-2.png",
+            "/case-studies/splitev/before-3.webp",
+            "/case-studies/splitev/before-4.webp",
+          ],
+          background: "#EFF9EF",
+          alt: "The original SplitEV prototype, cycling through four screens inside an iPhone mockup",
+          variant: "13-pro",
         },
       ],
     },
     {
       id: "strategy",
       navLabel: "Strategy",
-      heading: "Strategy",
+      heading: "Our approach",
       blocks: [
         {
           type: "paragraph",
@@ -89,20 +101,17 @@ export const splitev: CaseStudy = {
       ],
     },
     {
-      id: "onboarding",
-      navLabel: "Onboarding",
-      heading: "Impact area 1 — Onboarding",
+      id: "solution",
+      navLabel: "Solution",
       blocks: [
         {
-          type: "paragraph",
-          text: "Onboarding was 200% longer than the industry average and was predicted to lead to high drop-off rates.",
+          type: "subheading",
+          text: "Reducing onboarding friction to boost conversion",
+          style: "heading",
         },
         {
-          type: "image",
-          src: "/case-studies/splitev/onboarding-before-after.png",
-          alt: "SplitEV onboarding before and after redesign",
-          caption: "Onboarding, before and after: 24 screens down to 10.",
-          wide: true,
+          type: "paragraph",
+          text: "Onboarding was 200% longer than the industry average and was predicted to lead to high drop-off rates. With a UX manager, we reduced onboarding friction by nearly 60%.",
         },
         {
           type: "stats",
@@ -113,35 +122,45 @@ export const splitev: CaseStudy = {
           ],
         },
         {
-          type: "paragraph",
-          text: "We defined role-specific onboarding flows. Progressive disclosure reduced cognitive overload and decreased time on task — completion rates increased meaningfully, and users consistently reached activation on the first attempt.",
-        },
-      ],
-    },
-    {
-      id: "booking",
-      navLabel: "Booking",
-      heading: "Impact area 2 — Booking & navigation",
-      blocks: [
-        {
-          type: "paragraph",
-          text: "This user flow was incomplete and failed to surface key information needed to select a fitting station.",
+          type: "image",
+          src: "/case-studies/splitev/driver-journey.webp",
+          alt: "Driver onboarding journey, current vs. new: the redesign cuts account creation, subscription, and vehicle setup into one shorter flow",
+          wide: true,
         },
         {
-          type: "quote",
-          text: "What kind of charger it is very important.",
+          type: "image",
+          src: "/case-studies/splitev/host-journey.webp",
+          alt: "Host onboarding journey, current vs. new",
+          caption: "Onboarding before and after for drivers and hosts",
+          wide: true,
         },
         {
           type: "paragraph",
-          text: "By reducing friction in the Driver flow, we reinforced the high-retention charging loop that drives SplitEV's subscription revenue.",
+          text: "Progressive disclosure reduced cognitive overload and decreased time on task. Completion rates increased meaningfully, and users consistently reached activation on the first attempt.",
         },
-      ],
-    },
-    {
-      id: "driver-dashboard",
-      navLabel: "Driver dashboard",
-      heading: "Impact area 3 — Driver dashboard",
-      blocks: [
+        {
+          type: "subheading",
+          text: "Booking & navigation",
+          style: "heading",
+          spaced: true,
+        },
+        {
+          type: "paragraph",
+          text: "This user flow was incomplete and failed to surface key information needed to select a fitting station. By reducing friction in the Driver flow, we reinforced the high-retention charging loop that drives SplitEV's subscription revenue.",
+        },
+        {
+          type: "image",
+          src: "/case-studies/splitev/booking.webp",
+          alt: "Booking user flows",
+          caption: "Map, station list & station details",
+          wide: true,
+        },
+        {
+          type: "subheading",
+          text: "Driver dashboard",
+          style: "heading",
+          spaced: true,
+        },
         {
           type: "paragraph",
           text: "Drivers had no way to understand their charging behavior, plan usage, or savings. This led to uncertainty about the value of their subscription.",
@@ -156,20 +175,19 @@ export const splitev: CaseStudy = {
         },
         {
           type: "image",
-          src: "/case-studies/splitev/driver-dashboard.png",
+          src: "/case-studies/splitev/driver-dashboard.webp",
           alt: "Redesigned SplitEV driver dashboard",
         },
         {
           type: "paragraph",
           text: "By giving Drivers a transparent, data-rich dashboard, we turned SplitEV's subscription model into a visible value loop that keeps Drivers charging.",
         },
-      ],
-    },
-    {
-      id: "vehicle-management",
-      navLabel: "Vehicle management",
-      heading: "Impact area 4 — Vehicle management",
-      blocks: [
+        {
+          type: "subheading",
+          text: "Vehicle management",
+          style: "heading",
+          spaced: true,
+        },
         {
           type: "paragraph",
           text: "The original system mixed plan details, subscription details, and vehicle details into one confusing flow. Core actions like adding a vehicle, starting a charge, or checking health indicators were buried in decorative UI.",
@@ -186,13 +204,17 @@ export const splitev: CaseStudy = {
           type: "paragraph",
           text: "By simplifying the vehicle experience and clarifying plan logic, we turned a busy, decorative interface into a reliable control center Drivers can use with confidence.",
         },
-      ],
-    },
-    {
-      id: "host-dashboard",
-      navLabel: "Host dashboard",
-      heading: "Impact area 5 — Host dashboard",
-      blocks: [
+        {
+          type: "image",
+          src: "/case-studies/splitev/vehicle-management.webp",
+          alt: "Redesigned SplitEV vehicle management",
+        },
+        {
+          type: "subheading",
+          text: "Host dashboard",
+          style: "heading",
+          spaced: true,
+        },
         {
           type: "paragraph",
           text: "Hosts had no way to see earnings, manage bookings, track station performance, or handle payouts. RITE testing showed confusion, distrust, and failed to meet user expectations.",
@@ -203,8 +225,15 @@ export const splitev: CaseStudy = {
         },
         {
           type: "image",
-          src: "/case-studies/splitev/host-dashboard.png",
+          src: "/case-studies/splitev/host-1.webp",
           alt: "Redesigned SplitEV host dashboard",
+          caption: "At-a-glance host analytics",
+        },
+        {
+          type: "image",
+          src: "/case-studies/splitev/host-2.webp",
+          alt: "Redesigned SplitEV host dashboard, second view",
+          caption: "Managing driver bookings",
         },
         {
           type: "paragraph",

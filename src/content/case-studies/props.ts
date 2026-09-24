@@ -1,5 +1,13 @@
 import type { CaseStudy } from "./types";
 
+/** Plain off-white (the Jino mockup background) behind "before" screens, so
+ * the redesigned "after" screens on the green gradient stand out. */
+const BEFORE_BG = "/case-studies/jino/bg-fcfffa.png";
+/** Background behind the final design "after" screens. Trying the same
+ * off-white as the befores; swap back to "/case-studies/props/cover-bg.webp"
+ * for the green gradient. */
+const AFTER_BG = BEFORE_BG;
+
 export const props: CaseStudy = {
   slug: "props",
   title: "A discoverable community that platforms & gamifies social orgs",
@@ -33,7 +41,7 @@ export const props: CaseStudy = {
     {
       id: "overview",
       navLabel: "Overview",
-      heading: "Overview",
+      heading: "Introducing Props",
       blocks: [
         {
           type: "paragraph",
@@ -44,11 +52,14 @@ export const props: CaseStudy = {
           text: "The goal: transform Props' confusing MVP into a clear, learnable experience that helps users understand what to do, where to go, and why it matters.",
         },
         {
-          type: "list",
+          type: "details",
           items: [
-            "Business goals: MVP features, Props Premium, advertising, user stickiness",
-            "Timeline: 3-month engagement",
-            "Technical constraints: responsive design",
+            {
+              label: "Business goals",
+              value: ["Props Premium", "Advertising", "User stickiness"],
+            },
+            { label: "Timeline", value: "3-month engagement" },
+            { label: "Technical constraints", value: "Responsive design" },
           ],
         },
       ],
@@ -79,7 +90,7 @@ export const props: CaseStudy = {
             "/case-studies/props/before-5.webp",
             "/case-studies/props/before-6.webp",
           ],
-          background: "/case-studies/props/cover-bg.webp",
+          background: BEFORE_BG,
           alt: "The original Props app, cycling through six screens inside an iPhone mockup",
           variant: "13-pro",
         },
@@ -138,7 +149,7 @@ export const props: CaseStudy = {
       blocks: [
         {
           type: "paragraph",
-          text: "User testing showed that the original onboarding was cluttered, unintuitive, and lacked system feedback. Design goals: improve visual hierarchy, strengthen reward framing to boost the emotional hook, and sharpen CTAs to boost interactivity.",
+          text: "User testing showed that the original onboarding was cluttered, unintuitive, and lacked system feedback. We explored 3 onboarding designs to improve visual hierarchy, strengthen reward framing to boost the emotional hook, and sharpen CTAs to boost interactivity.",
         },
         {
           type: "featureRows",
@@ -170,74 +181,220 @@ export const props: CaseStudy = {
         },
         {
           type: "paragraph",
-          text: "We combined a guided empty state with tutorial-based onboarding to both orient users and drive active engagement.",
+          text: "Based on user testing, we ultimately combined a guided empty state with tutorial-based onboarding to both orient users and drive active engagement.",
         },
       ],
     },
     {
       id: "solution",
       navLabel: "Final design",
-      heading: "Final design outputs",
       blocks: [
         {
-          type: "image",
-          src: "/case-studies/props/home-my-groups.png",
-          alt: "Redesigned Home (My Groups) screen",
-          caption: "Home (My Groups) — clear labels, predictable grouping, reduced scroll depth.",
+          type: "subheading",
+          text: "Home (My Groups)",
+          style: "heading",
+        },
+        {
+          type: "mockupRow",
+          background: AFTER_BG,
+          variant: "13-pro",
+          items: [
+            {
+              label: "Before",
+              background: BEFORE_BG,
+              alt: "Original Home (My Groups) screen",
+              frames: ["/case-studies/props/before-1.webp"],
+            },
+            {
+              label: "After",
+              alt: "Redesigned Home (My Groups) screen",
+              frames: ["/case-studies/props/after-1.png"],
+            },
+          ],
         },
         {
           type: "paragraph",
           text: "By restructuring the Home (My Groups) section with clear labels, predictable grouping, and reduced scroll depth, we gave users a reliable entry point into their community activity.",
         },
         {
-          type: "image",
-          src: "/case-studies/props/home-discover.png",
-          alt: "Redesigned Home (Discover) screen",
-          caption: "Home (Discover) — a scannable system that surfaces high-value groups and quests early.",
+          type: "subheading",
+          text: "Home (Discover)",
+          style: "heading",
+          spaced: true,
+        },
+        {
+          type: "mockupRow",
+          background: AFTER_BG,
+          variant: "13-pro",
+          items: [
+            {
+              label: "Before",
+              background: BEFORE_BG,
+              alt: "Original Home (Discover) screen",
+              frames: ["/case-studies/props/before-2.webp"],
+            },
+            {
+              label: "After",
+              alt: "Redesigned Home (Discover) screen",
+              frames: ["/case-studies/props/after-2.webp"],
+            },
+          ],
         },
         {
           type: "paragraph",
           text: "We reorganized Discover into a structured, scannable system that surfaces high-value groups and quests early, helping users find a first action quickly.",
         },
         {
-          type: "image",
-          src: "/case-studies/props/complete-quest.png",
-          alt: "Redesigned quest completion flow",
-          caption: "Complete Quest — guided, intuitive, confidence-building.",
+          type: "subheading",
+          text: "Complete Quest",
+          style: "heading",
+          spaced: true,
+        },
+        {
+          type: "mockupRow",
+          background: AFTER_BG,
+          variant: "13-pro",
+          items: [
+            {
+              label: "Before",
+              background: BEFORE_BG,
+              alt: "Original quest completion flow",
+              frames: ["/case-studies/props/before-4.webp"],
+            },
+            {
+              label: "After",
+              alt: "Redesigned quest completion flow",
+              frames: ["/case-studies/props/after-4.webp"],
+            },
+          ],
         },
         {
           type: "paragraph",
           text: "We redesigned quest completion to feel guided, intuitive, and confidence-building.",
         },
         {
-          type: "image",
-          src: "/case-studies/props/quest-rewards.png",
-          alt: "Redesigned quest rewards screen",
-          caption: "Quest Rewards — enlarged visuals, categorized into Prizes and Props.",
+          type: "subheading",
+          text: "Quest Rewards",
+          style: "heading",
+          spaced: true,
+        },
+        {
+          type: "mockupRow",
+          background: AFTER_BG,
+          variant: "13-pro",
+          items: [
+            {
+              label: "Before",
+              background: BEFORE_BG,
+              alt: "Original quest rewards screen",
+              frames: ["/case-studies/props/before-5.webp"],
+            },
+            {
+              label: "After",
+              alt: "Redesigned quest rewards screen",
+              frames: ["/case-studies/props/after-5.webp"],
+            },
+          ],
         },
         {
           type: "paragraph",
           text: "By enlarging the visuals, simplifying the layout, and categorizing rewards into Prizes and Props, we brought the reward loop to the forefront.",
         },
         {
-          type: "image",
-          src: "/case-studies/props/quests-list.png",
-          alt: "Redesigned quest list screen",
-          caption: "Quests — clear hierarchy, simplified cards, stronger visual cues.",
+          type: "subheading",
+          text: "Quests",
+          style: "heading",
+          spaced: true,
+        },
+        {
+          type: "mockupRow",
+          background: AFTER_BG,
+          variant: "13-pro",
+          items: [
+            {
+              label: "Before",
+              background: BEFORE_BG,
+              alt: "Original quest list screen",
+              frames: ["/case-studies/props/before-6.webp"],
+            },
+            {
+              label: "After",
+              alt: "Redesigned quest list screen",
+              frames: ["/case-studies/props/after-6.webp"],
+            },
+          ],
         },
         {
           type: "paragraph",
           text: "By redesigning the Quest List with clear hierarchy, simplified cards, and stronger visual cues, we turned a dense, overwhelming list into a scannable flow.",
         },
         {
-          type: "image",
-          src: "/case-studies/props/eventure-profile.png",
-          alt: "Redesigned Eventure profile screen",
-          caption: "Eventure Profile — restructured around clear hierarchy and social cues.",
+          type: "subheading",
+          text: "Eventure Profile",
+          style: "heading",
+          spaced: true,
+        },
+        {
+          type: "mockupRow",
+          background: AFTER_BG,
+          variant: "13-pro",
+          items: [
+            {
+              label: "Before",
+              background: BEFORE_BG,
+              alt: "Original Eventure profile screen",
+              frames: ["/case-studies/props/before-3.webp"],
+            },
+            {
+              label: "After",
+              alt: "Redesigned Eventure profile screen",
+              frames: ["/case-studies/props/after-3.webp"],
+            },
+          ],
         },
         {
           type: "paragraph",
           text: "By restructuring the Eventure profile around clear hierarchy and social cues, we transformed a visually noisy page into a focused event overview.",
+        },
+      ],
+    },
+    {
+      id: "testing",
+      navLabel: "Testing",
+      heading: "Every participant completed the core loop without help.",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "Our user researcher ran a final round of RITE testing with 3 participants (2 frequent event-goers, 1 infrequent) across onboarding, navigation, and quest completion.",
+        },
+        {
+          type: "stats",
+          items: [
+            { value: "0 → 3/3", label: "could explain Props' value after onboarding" },
+            { value: "10 → ≤2", label: "taps to reach an active Eventure" },
+            { value: "25% → 100%", label: "task completion rate" },
+          ],
+        },
+        {
+          type: "subheading",
+          text: "Why it matters",
+        },
+        {
+          type: "paragraph",
+          text: "Each result drives retention:",
+        },
+        {
+          type: "list",
+          marker: "arrow",
+          items: [
+            "Understanding the value prop in onboarding gives users a reason to come back",
+            "Reaching an Eventure in two taps helps users reach value faster",
+            "Completing a quest delivers the reward, a gamification loop that boosts retention ",
+          ],
+        },
+        {
+          type: "paragraph",
+          text: "These testing results gave us strong evidence the redesign fixed the core usability issues.",
         },
       ],
     },
@@ -248,22 +405,30 @@ export const props: CaseStudy = {
       blocks: [
         {
           type: "paragraph",
-          text: "We initially designed Home around Discover and My Groups, giving users an at-a-glance view of the communities they belonged to. But My Groups was surfacing individual Eventures, which risked blurring two distinct concepts in the product: the communities users belong to and the events happening within them.",
+          text: "We initially designed Home with two tabs: My Groups and Discover. But testing and conversations with stakeholders flagged this. Because Props eventually needed to scale with premium features, advertising, and leaderboards, we revisited the underlying information architecture.",
         },
         {
           type: "paragraph",
-          text: "We separated Groups and Eventures into distinct destinations. While this introduced slightly more structure for the MVP, it established a clearer mental model.",
+          text: "After evaluating the tradeoffs, we separated Groups and Eventures (originally in My Groups) into two different tabs. While this required changing our initial information architecture, it established a clearer mental model. Resolving this issue now saved money and time, giving us more room for future expansion without fundamentally rethinking the navigation as the product grows.",
         },
-      ],
-    },
-    {
-      id: "handoff",
-      navLabel: "Handoff",
-      heading: "Developer handoff",
-      blocks: [
         {
-          type: "paragraph",
-          text: "My UX design intern annotated key user flows to provide maximum clarity and context for the developers implementing the designs, tagging each as “Navigation Flow,” “Interaction,” or “Other.” I managed the project, delegated tasks to my intern, provided design critiques on user flows and design thinking, and communicated with the client about specs, design tokens, and navigation/usability.",
+          type: "mockup",
+          scrollFrames: {
+            frames: [
+              "/case-studies/props/final-1.webp",
+              "/case-studies/props/final-2.webp",
+              "/case-studies/props/final-3.webp",
+            ],
+            // Status bar and tab bar stay put while each Home tab scrolls.
+            pinTop: 54,
+            pinBottom: 83,
+            // 1.5x the default pace (1400ms holds, 2600ms scroll).
+            holdMs: 930,
+            scrollMs: 1730,
+          },
+          background: "/case-studies/props/cover-bg.webp",
+          alt: "The redesigned Home screen, cycling through Eventures & Quests, Groups, and Discover inside an iPhone mockup",
+          variant: "13-pro",
         },
       ],
     },

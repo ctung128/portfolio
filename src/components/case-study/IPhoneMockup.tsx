@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { LazyVideo } from "@/components/LazyVideo";
 
 const PLAYBACK_RATE = 1.25;
@@ -74,36 +74,188 @@ function FrameSequence({
 
 const SCROLL_EASE = "cubic-bezier(0.65, 0, 0.35, 1)";
 
-/** Pans a single tall screenshot down inside the fixed-aspect screen mask
- * and back, looping — a live CSS transform, not a rendered video. `endPercent`
- * is the exact translateY (relative to the image's own rendered height)
- * needed to reveal the image's bottom edge, computed from its aspect ratio
- * vs. the phone screen's fixed 9:19.5 aspect ratio: -(1 - (19.5 * imgWidth)
- * / (9 * imgHeight)) * 100. */
+/** Pans a single tall screenshot down inside the screen mask and back,
+ * looping — a live CSS transform, not a rendered video. The pan distance is
+ * measured from the rendered screen, so it stops exactly at the image's
+ * bottom edge (a fixed percentage overshoots, because the screen inside
+ * the bezel isn't exactly 9:19.5). */
+/** How far (in px) a full-width image must move up so its bottom edge meets
+ * the bottom of `box`: measured, so the pan never overshoots into black. */
+function useScrollDistance() {
+  const boxRef = useRef<HTMLDivElement>(null);
+  const [box, setBox] = useState({ w: 0, h: 0 });
+  useEffect(() => {
+    const el = boxRef.current;
+    if (!el) return;
+    const observer = new ResizeObserver(([entry]) => {
+      setBox({ w: entry.contentRect.width, h: entry.contentRect.height });
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  const distance = (natural: { w: number; h: number } | undefined) =>
+    natural && box.w ? Math.max(0, (box.w * natural.h) / natural.w - box.h) : 0;
+  return { boxRef, distance };
+}
+
+type NaturalSize = { w: number; h: number };
+const naturalSize = (img: HTMLImageElement): NaturalSize => ({
+  w: img.naturalWidth,
+  h: img.naturalHeight,
+});
+
 function ScrollingImage({
   src,
   alt,
-  endPercent,
   durationMs = 9000,
 }: {
   src: string;
   alt: string;
-  endPercent: number;
   durationMs?: number;
 }) {
+  const { boxRef, distance } = useScrollDistance();
+  const [natural, setNatural] = useState<NaturalSize>();
+  const imgRef = useCallback((img: HTMLImageElement | null) => {
+    if (img?.complete && img.naturalWidth) setNatural(naturalSize(img));
+  }, []);
+
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      loading="lazy"
-      decoding="async"
-      src={src}
-      alt={alt}
-      className="absolute inset-x-0 top-0 w-full"
-      style={{
-        ["--scroll-end" as string]: `${endPercent}%`,
-        animation: `scroll-reveal ${durationMs}ms ${SCROLL_EASE} infinite`,
-      }}
-    />
+    <div ref={boxRef} className="absolute inset-0">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        ref={imgRef}
+        loading="lazy"
+        decoding="async"
+        src={src}
+        alt={alt}
+        onLoad={(e) => setNatural(naturalSize(e.currentTarget))}
+        className="absolute inset-x-0 top-0 min-h-full w-full object-cover object-top"
+        style={{
+          ["--scroll-end" as string]: `-${distance(natural)}px`,
+          animation: natural ? `scroll-reveal ${durationMs}ms ${SCROLL_EASE} infinite` : undefined,
+        }}
+      />
+    </div>
+  );
+}
+
+const SCROLL_HOLD_MS = 1400;
+const SCROLL_MS = 2600;
+const SCROLL_FADE_MS = 450;
+
+/** Full-length screenshots shown one at a time like a real phone session:
+ * each holds at the top, scrolls down to its bottom, holds, then crossfades
+ * to the next, looping. `pinTop`/`pinBottom` (in source pixels) keep a
+ * status bar and tab bar fixed while the content between them scrolls. The
+ * scroll stops exactly where the image's bottom meets the screen's. */
+export type ScrollFrames = {
+  frames: string[];
+  /** Source-pixel height of a status bar to keep pinned at the top. */
+  pinTop?: number;
+  /** Source-pixel height of a tab bar to keep pinned at the bottom. */
+  pinBottom?: number;
+  holdMs?: number;
+  scrollMs?: number;
+};
+
+function ScrollSequence({
+  frames,
+  alt,
+  pinTop = 0,
+  pinBottom = 0,
+  holdMs = SCROLL_HOLD_MS,
+  scrollMs = SCROLL_MS,
+}: {
+  frames: string[];
+  alt: string;
+  pinTop?: number;
+  pinBottom?: number;
+  holdMs?: number;
+  scrollMs?: number;
+}) {
+  const { boxRef, distance } = useScrollDistance();
+  const [natural, setNatural] = useState<Record<string, NaturalSize>>({});
+  const [active, setActive] = useState(0);
+  const [prev, setPrev] = useState<number | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    if (!reduce) timers.push(setTimeout(() => setScrolled(true), holdMs));
+    timers.push(
+      setTimeout(
+        () => {
+          setPrev(active);
+          setScrolled(false);
+          setActive((active + 1) % frames.length);
+        },
+        reduce ? holdMs * 2 : holdMs + scrollMs + holdMs,
+      ),
+    );
+    return () => timers.forEach(clearTimeout);
+  }, [active, frames.length, holdMs, scrollMs]);
+
+  const onLoad = (src: string) => (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const size = naturalSize(e.currentTarget);
+    setNatural((n) => (n[src] ? n : { ...n, [src]: size }));
+  };
+
+  return (
+    <div ref={boxRef} className="absolute inset-0">
+      {frames.map((src, i) => {
+        const size = natural[src];
+        const isActive = i === active;
+        // The frame fading out stays scrolled; every other frame waits at the top.
+        const offset = (isActive && scrolled) || i === prev ? distance(size) : 0;
+        return (
+          <div
+            key={src}
+            aria-hidden={!isActive}
+            className="absolute inset-0 bg-black"
+            style={{
+              opacity: isActive ? 1 : 0,
+              zIndex: isActive ? 2 : i === prev ? 1 : 0,
+              transition: `opacity ${SCROLL_FADE_MS}ms ease`,
+            }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              loading="lazy"
+              src={src}
+              alt={i === 0 ? alt : ""}
+              onLoad={onLoad(src)}
+              // min-h-full: a screenshot shorter than the screen fills it
+              // (cropping its sides) instead of leaving a black strip.
+              className="absolute inset-x-0 top-0 min-h-full w-full object-cover object-top"
+              style={{
+                transform: `translateY(-${offset}px)`,
+                transition:
+                  isActive && scrolled ? `transform ${scrollMs}ms ${SCROLL_EASE}` : undefined,
+              }}
+            />
+            {size && pinTop > 0 && distance(size) > 0 && (
+              <div
+                className="absolute inset-x-0 top-0 overflow-hidden"
+                style={{ aspectRatio: `${size.w} / ${pinTop}` }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={src} alt="" className="absolute inset-x-0 top-0 w-full" />
+              </div>
+            )}
+            {size && pinBottom > 0 && distance(size) > 0 && (
+              <div
+                className="absolute inset-x-0 bottom-0 overflow-hidden"
+                style={{ aspectRatio: `${size.w} / ${pinBottom}` }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={src} alt="" className="absolute inset-x-0 bottom-0 w-full" />
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
@@ -182,6 +334,7 @@ export function IPhoneMockup({
   videoSrc,
   frames,
   scrollImage,
+  scrollFrames,
   poster,
   alt,
   className,
@@ -202,7 +355,10 @@ export function IPhoneMockup({
   /** A single tall screenshot that pans down inside the screen mask and
    * back, looping — for a live-scroll effect with no video render step.
    * Provide this or `videoSrc`/`frames`. */
-  scrollImage?: { src: string; alt: string; endPercent: number; durationMs?: number };
+  scrollImage?: { src: string; alt: string; durationMs?: number };
+  /** Full-length screenshots that each scroll top-to-bottom, then crossfade
+   * to the next, looping. See `ScrollSequence`. */
+  scrollFrames?: ScrollFrames;
   poster?: string;
   alt: string;
   className?: string;
@@ -260,11 +416,19 @@ export function IPhoneMockup({
                 aria-label={alt}
                 onLoadedMetadata={(e) => setPlaybackRate(e.currentTarget)}
               />
+            ) : scrollFrames ? (
+              <ScrollSequence
+                frames={scrollFrames.frames}
+                alt={alt}
+                pinTop={scrollFrames.pinTop}
+                pinBottom={scrollFrames.pinBottom}
+                holdMs={scrollFrames.holdMs}
+                scrollMs={scrollFrames.scrollMs}
+              />
             ) : scrollImage ? (
               <ScrollingImage
                 src={scrollImage.src}
                 alt={scrollImage.alt}
-                endPercent={scrollImage.endPercent}
                 durationMs={scrollImage.durationMs}
               />
             ) : null}

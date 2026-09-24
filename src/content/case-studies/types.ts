@@ -38,6 +38,12 @@ export type CaseStudyBlock =
     }
   | { type: "stats"; items: { value: string; label: string }[] }
   | {
+      /** Labeled facts in the same format as the header's Role / Timeline /
+       * Team row. An array value stacks one entry per line, like Team. */
+      type: "details";
+      items: { label: string; value: string | string[] }[];
+    }
+  | {
       type: "list";
       items: string[];
       ordered?: boolean;
@@ -101,10 +107,18 @@ export type CaseStudyBlock =
        * or `video`/`scrollImage`. */
       frames?: string[];
       /** A single tall screenshot that pans down inside the screen mask and
-       * back, looping. Provide this or `video`/`frames`. `endPercent` is the
-       * translateY (relative to the image's own rendered height) needed to
-       * reveal its bottom edge: -(1 - (19.5 * imgWidth) / (9 * imgHeight)) * 100. */
-      scrollImage?: { src: string; alt: string; endPercent: number; durationMs?: number };
+       * back, looping. Provide this or `video`/`frames`/`scrollFrames`. */
+      scrollImage?: { src: string; alt: string; durationMs?: number };
+      /** Full-length screenshots that each hold at the top, scroll to their
+       * bottom, then crossfade to the next, looping. `pinTop`/`pinBottom`
+       * (source pixels) keep a status bar and tab bar fixed. */
+      scrollFrames?: {
+        frames: string[];
+        pinTop?: number;
+        pinBottom?: number;
+        holdMs?: number;
+        scrollMs?: number;
+      };
       background: string;
       alt: string;
       /** Small eyebrow-style label overlaid at the top of the card, above
@@ -138,6 +152,31 @@ export type CaseStudyBlock =
        * side-by-side persona cards), instead of the default responsive
        * 2→3 column grid. */
       columns?: 2;
+    }
+  | {
+      /** Phone mockups side by side (e.g. a before/after pair), each on its
+       * own background card with a label above it. Each screen is either a
+       * static screenshot (`frames` with one entry), a crossfading sequence
+       * (`frames`), or scroll-then-navigate screenshots (`scrollFrames`).
+       * A → arrow sits between consecutive cards. */
+      type: "mockupRow";
+      background: string;
+      variant?: "13-pro" | "15-pro";
+      items: {
+        label: string;
+        alt: string;
+        /** Overrides the row's `background` for this card, e.g. a quieter
+         * "Before" so the "After" stands out. */
+        background?: string;
+        frames?: string[];
+        scrollFrames?: {
+          frames: string[];
+          pinTop?: number;
+          pinBottom?: number;
+          holdMs?: number;
+          scrollMs?: number;
+        };
+      }[];
     }
   | {
       /** Stacked two-column rows: a looping phone-mockup video on the left
@@ -186,7 +225,9 @@ export type CaseStudySection = {
    * in under one TOC entry, where the merged content should visibly lead
    * with its own label). Defaults to `navLabel`. */
   eyebrow?: string;
-  heading: string;
+  /** Omit to show just the eyebrow, e.g. when the section's first block
+   * is already a heading. */
+  heading?: string;
   /** Hide the on-page eyebrow and heading (kept for screen readers and the
    * TOC), e.g. when the first block already introduces the section. */
   hideHeader?: boolean;

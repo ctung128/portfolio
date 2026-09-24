@@ -127,12 +127,14 @@ export function CaseStudyImage({
 
   return (
     <figure className={`${wide ? "-mx-4 sm:mx-0" : ""} ${fill ? "h-full w-full" : ""}`}>
+      {/* Translucent border: matches the light gray on white screenshots but
+          stays visible on tinted ones (a fixed #e0e6e0 vanishes on sage). */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         {...imgProps}
         src={src}
         alt={alt}
-        className={`rounded-[12px] border border-border object-cover ${
+        className={`rounded-[12px] border border-black/10 object-cover ${
           fill ? "h-full w-full" : "w-full"
         } ${imageClassName ?? ""}`}
         style={{ objectPosition }}

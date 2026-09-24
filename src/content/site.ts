@@ -119,9 +119,9 @@ export type PlayProject = {
 
 export const playProjects: PlayProject[] = [
   {
-    title: "Queue management dashboard for tattoo studios",
-    tag: "CLAUDE CODE * SHIPPED 2025",
-    image: { src: "/play/project-one/cover.webp", alt: "Project one cover image" },
+    title: "Helping Grean win 1st place and $10K",
+    tag: "UX DESIGN * PITCH DECK DESIGN",
+    image: { src: "/play/project-eight/cover.webp", alt: "Project eight cover image" },
   },
   {
     title: "Design studio marketing website",
@@ -142,6 +142,11 @@ export const playProjects: PlayProject[] = [
       alt: "Project three cover image",
       position: "left",
     },
+  },
+  {
+    title: "Queue management dashboard for tattoo studios",
+    tag: "CLAUDE CODE * SHIPPED 2025",
+    image: { src: "/play/project-one/cover.webp", alt: "Project one cover image" },
   },
   {
     title: "Menu for a friend's pop-up cafe",
