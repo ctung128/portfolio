@@ -9,6 +9,7 @@ Run `node scripts/optimize-media.mjs --write` after adding images/videos: it con
 Running log of notable work done with Claude Code, newest first. Keep entries to a few bullets — this is a changelog, not a task tracker.
 
 ### 2026-09-24
+- Consistency pass: SplitEV images no longer use `wide` (it bled 16px past the text column on phones; nothing else uses it). `comparison` takes `numbered: false` (EVA Before/After drops "1 —"/"2 —"). Props `mockupRow` labels moved inside the cards in the light-gray eyebrow style to match EVA (phone-only `pt-12` keeps them clear of the phone); the arrow no longer needs a label offset.
 - ↗ arrows use `ARROW_NE` (`src/lib/glyphs.ts`, "↗" + U+FE0E) so iOS shows a plain symbol, not a color emoji; use it for any new ↗. About heading → bio gap is 12px below lg (was 24px everywhere).
 - Case studies: removed the mobile/tablet "On this page" dropdown (`MobileTableOfContents` deleted); the desktop sidebar TOC is unchanged. About pillar cards smaller on all devices: titles 20/24px (were 24/30), list text 15px (was 16), padding p-6/p-8 (was p-8/p-10).
 - Mobile/tablet type scale (desktop `lg:` sizes unchanged): page titles 28 → 34–38 → 36–48px; homepage/About h2 26 → 30 → 36; section + subsection headings 22 → 26 → 30; stats 28 → 32 → 36; quotes/callouts/card and row titles 20 → 22 → 24; wrapped hero headline 28px.

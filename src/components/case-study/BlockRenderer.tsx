@@ -242,26 +242,24 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
         >
           {block.items.map((item, i) => [
             i > 0 && (
-              // Offset by the label's height so the arrow centers on the cards.
               <div
                 key={`arrow-${i}`}
                 aria-hidden
-                className="flex items-center pt-8 font-sans text-lg text-ink-soft sm:text-2xl"
+                className="flex items-center font-sans text-lg text-ink-soft sm:text-2xl"
               >
                 →
               </div>
             ),
             <figure key={item.label}>
-              <figcaption className="mb-3 font-sans text-sm font-semibold uppercase tracking-wider text-ink">
-                {item.label}
-              </figcaption>
               <CaseStudyHeroMockup
+                label={item.label}
                 frames={item.frames}
                 scrollFrames={item.scrollFrames}
                 background={item.background ?? block.background}
                 alt={item.alt}
                 variant={block.variant}
-                className="rounded-[24px] border border-border py-8 sm:py-12"
+                // Extra top padding on phones clears the in-card label.
+                className="rounded-[24px] border border-border pb-8 pt-12 sm:py-12"
                 phoneSizeClassName="w-[118px] sm:w-[150px] md:w-[165px]"
               />
             </figure>,
@@ -378,7 +376,7 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
             >
               <div className="flex items-center justify-between gap-3">
                 <p className="font-sans text-xs uppercase tracking-wider text-ink-faint">
-                  {i + 1} — {group.label}
+                  {block.numbered === false ? group.label : `${i + 1} — ${group.label}`}
                 </p>
                 {group.status && <StatusChip status={group.status} />}
               </div>

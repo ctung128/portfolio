@@ -125,14 +125,12 @@ export const splitev: CaseStudy = {
           type: "image",
           src: "/case-studies/splitev/driver-journey.webp",
           alt: "Driver onboarding journey, current vs. new: the redesign cuts account creation, subscription, and vehicle setup into one shorter flow",
-          wide: true,
         },
         {
           type: "image",
           src: "/case-studies/splitev/host-journey.webp",
           alt: "Host onboarding journey, current vs. new",
           caption: "Onboarding before and after for drivers and hosts",
-          wide: true,
         },
         {
           type: "paragraph",
@@ -153,7 +151,6 @@ export const splitev: CaseStudy = {
           src: "/case-studies/splitev/booking.webp",
           alt: "Booking user flows",
           caption: "Map, station list & station details",
-          wide: true,
         },
         {
           type: "subheading",

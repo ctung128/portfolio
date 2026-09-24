@@ -307,6 +307,7 @@ export const eva: CaseStudy = {
             },
           ],
           float: true,
+          numbered: false,
         },
         {
           type: "paragraph",

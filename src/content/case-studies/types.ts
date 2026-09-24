@@ -210,6 +210,9 @@ export type CaseStudyBlock =
       /** Center each group's images and give them rounded corners and a soft
        * shadow, instead of the default 2-column grid. */
       float?: boolean;
+      /** Prefix each card's label with "1 —", "2 —", … Defaults to true;
+       * turn off for pairs like Before / After. */
+      numbered?: boolean;
       /** Background color for each group's card, in place of the default
        * off-white. */
       background?: string;
