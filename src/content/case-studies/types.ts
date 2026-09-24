@@ -112,6 +112,9 @@ export type CaseStudyBlock =
       /** Center each group's images and give them rounded corners and a soft
        * shadow, instead of the default 2-column grid. */
       float?: boolean;
+      /** Background color for each group's card, in place of the default
+       * off-white. */
+      background?: string;
     };
 
 export type CaseStudySection = {

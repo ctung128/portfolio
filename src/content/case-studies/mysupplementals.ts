@@ -17,7 +17,7 @@ export const mysupplementals: CaseStudy = {
   team: ["1 Designer (me!)", "1 Engineer"],
   timeline: "March - May 2026",
   skills: ["Landing Page Design", "Interaction Design", "UX Writing", "Design–Dev Collaboration"],
-  tags: ["0→1", "EdTech", "B2C + B2B", "Freelance"],
+  tags: ["0→1", "EdTech", "B2C + B2B"],
   coverImage: {
     src: "/case-studies/mysupplementals/cover.png",
     alt: "MySupplementals landing page cover image",
@@ -82,6 +82,11 @@ export const mysupplementals: CaseStudy = {
             },
           ],
         },
+        {
+          type: "image",
+          src: "/case-studies/mysupplementals/affinity-1.png",
+          alt: "Affinity map of student answers to what frustrates them about supplementals, grouped into scattered, redundant, and fragile",
+        },
         { type: "subheading", text: "Designing for multiple stakeholders", style: "heading", spaced: true },
         {
           type: "insights",
@@ -102,6 +107,11 @@ export const mysupplementals: CaseStudy = {
               body: "Independent counselors can spend less time on logistics and more on helping students with the essays themselves.",
             },
           ],
+        },
+        {
+          type: "image",
+          src: "/case-studies/mysupplementals/affinity-2.png",
+          alt: "Affinity map of what would make tracking supplemental essays easier, grouped by students, high school counselors, and private counselors",
         },
       ],
     },
@@ -218,6 +228,7 @@ export const mysupplementals: CaseStudy = {
         {
           type: "comparison",
           float: true,
+          background: TINT,
           groups: [
             {
               label: "Time saved",
@@ -305,7 +316,7 @@ export const mysupplementals: CaseStudy = {
       blocks: [
         {
           type: "paragraph",
-          text: "MySupplementals is live at mysupplementals.com, and the founder is now working on marketing. It hasn't had its public launch yet. Next is reaching students directly while positioning the app as a resource counselors and schools can offer.",
+          text: "MySupplementals is live, and the founder is now working on marketing. It hasn't had its public launch yet. Next is reaching students directly while positioning the app as a resource counselors and schools can offer.",
           link: { text: "live", href: "https://mysupplementals.com/" },
         },
         {

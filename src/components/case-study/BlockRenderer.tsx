@@ -179,6 +179,7 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
             <div
               key={group.label}
               className="rounded-[16px] border border-border bg-cream-subtle p-5 sm:p-6"
+              style={block.background ? { backgroundColor: block.background } : undefined}
             >
               <p className="font-sans text-xs uppercase tracking-wider text-ink-faint">
                 {i + 1} — {group.label}
