@@ -86,6 +86,12 @@ export type CaseStudyBlock =
       images: [{ src: string; alt: string }, { src: string; alt: string }];
       /** Seconds each image holds before fading to the other. Defaults to 3. */
       holdSeconds?: number;
+      /** Show both screenshots in a browser window on a solid-color
+       * background card, like an image block with `frame: "browser"`. */
+      background?: string;
+      /** Width of the browser window within the `background` card.
+       * Defaults to 88%. */
+      backgroundImageWidth?: string;
     }
   | {
       type: "mockup";

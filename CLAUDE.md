@@ -5,6 +5,7 @@
 Running log of notable work done with Claude Code, newest first. Keep entries to a few bullets — this is a changelog, not a task tracker.
 
 ### 2026-09-24
+- EVA screenshots sit on a `#E6EFF2` tint card (from EVA's own pale blue-gray surfaces): full screens in a browser frame, cropped components floating. Two-column `comparison` cards (citations, Before/After) keep the default off-white so the floating screens stand out. `crossfade` now takes `background` (renders in a `BrowserFrame`, extracted from `CaseStudyImage`).
 - EVA problem section: insights now use the Jino-style `insights` block (label + arrow, `quote` is now optional); problem statement and HMW use a new `callout` block (eyebrow label above non-italic serif text) instead of an attributed italic quote.
 - EVA iterations: iterations are serif headings with a `kicker` ("Iteration 1"); rejected citation explorations sit side-by-side in a `comparison` with outlined "Rejected" chips; shipped features get a filled "Shipped" chip (`status` on subheadings and comparison groups). The section's own eyebrow + heading are hidden via a new `hideHeader` section option, so "Iteration 1" opens it.
 - New MySupplementals case study (`/work/mysupplementals`): overview, problem/stakeholders, opportunity, four design iterations, outcome with founder testimonial, and a closing reflection on opinionated design.

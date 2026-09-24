@@ -1,5 +1,5 @@
 import type { CaseStudyBlock } from "@/content/case-studies/types";
-import { CaseStudyImage, FLOAT_CLASS } from "./CaseStudyImage";
+import { BrowserFrame, CaseStudyImage, FLOAT_CLASS } from "./CaseStudyImage";
 import { CaseStudyHeroMockup } from "./CaseStudyHeroMockup";
 
 function StatusChip({ status }: { status: "rejected" | "shipped" }) {
@@ -218,8 +218,8 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
     case "crossfade": {
       const cycle = (block.holdSeconds ?? 3) * 2;
       const [first, second] = block.images;
-      return (
-        <figure className="relative overflow-hidden rounded-[12px] border border-border">
+      const frames = (
+        <>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={first.src}
@@ -234,6 +234,23 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
             className="crossfade-frame absolute inset-0 h-full w-full object-cover"
             style={{ animationDuration: `${cycle}s`, animationDelay: `-${cycle / 2}s` }}
           />
+        </>
+      );
+      if (block.background) {
+        return (
+          <figure
+            className="flex items-center justify-center rounded-[24px] border border-border py-16 sm:py-20"
+            style={{ backgroundColor: block.background }}
+          >
+            <BrowserFrame width={block.backgroundImageWidth ?? "88%"}>
+              <div className="relative">{frames}</div>
+            </BrowserFrame>
+          </figure>
+        );
+      }
+      return (
+        <figure className="relative overflow-hidden rounded-[12px] border border-border">
+          {frames}
         </figure>
       );
     }

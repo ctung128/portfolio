@@ -1,5 +1,9 @@
 import type { CaseStudy } from "./types";
 
+/** Pale blue-gray from EVA's own chat surfaces, a step deeper so the screens
+ * still separate from it, used as the card behind every EVA screenshot. */
+const TINT = "#E6EFF2";
+
 export const eva: CaseStudy = {
   slug: "eva",
   title: "Conversational AI operational chatbot",
@@ -142,6 +146,9 @@ export const eva: CaseStudy = {
           type: "image",
           src: "/case-studies/eva/iteration-1-raw-input.png",
           alt: "Iteration 1: open text field with one shared set of suggested questions",
+          background: TINT,
+          frame: "browser",
+          backgroundImageWidth: "88%",
         },
         {
           type: "paragraph",
@@ -164,6 +171,7 @@ export const eva: CaseStudy = {
             { src: "/case-studies/eva/managed.png", alt: "Iteration 2: leadership view with pre-configured questions" },
             { src: "/case-studies/eva/ops.png", alt: "Iteration 2: operations manager view with pre-configured questions" },
           ],
+          background: TINT,
         },
         {
           type: "paragraph",
@@ -261,6 +269,9 @@ export const eva: CaseStudy = {
           type: "image",
           src: "/case-studies/eva/suggested.png",
           alt: "Suggested follow up questions",
+          background: TINT,
+          frame: "float",
+          backgroundImageWidth: "80%",
         },
         {
           type: "paragraph",
@@ -274,18 +285,28 @@ export const eva: CaseStudy = {
       heading: "From a ChatGPT dupe to a uniquely EOX solution.",
       blocks: [
         {
-          type: "gallery",
-          columns: 2,
-          images: [
+          type: "comparison",
+          groups: [
             {
-              src: "/case-studies/eva/before.png",
-              alt: "Before: a blank chat entry point with unlabeled question cards",
+              label: "Before",
+              images: [
+                {
+                  src: "/case-studies/eva/before.png",
+                  alt: "Before: a blank chat entry point with unlabeled question cards",
+                },
+              ],
             },
             {
-              src: "/case-studies/eva/after.png",
-              alt: "After: a named landing screen with categorized questions",
+              label: "After",
+              images: [
+                {
+                  src: "/case-studies/eva/after.png",
+                  alt: "After: a named landing screen with categorized questions",
+                },
+              ],
             },
           ],
+          float: true,
         },
         {
           type: "paragraph",

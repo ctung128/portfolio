@@ -7,6 +7,24 @@ import { useImageStatus } from "@/lib/useImageStatus";
 export const FLOAT_CLASS =
   "rounded-[12px] shadow-[0_0_0_1px_rgba(16,40,64,0.06),0_24px_48px_-20px_rgba(16,40,64,0.22)]";
 
+/** A minimal browser window around a full-page screenshot, for use on a
+ * tinted background card. */
+export function BrowserFrame({ width, children }: { width: string; children: React.ReactNode }) {
+  return (
+    <div
+      className="overflow-hidden rounded-[12px] bg-white shadow-[0_0_0_1px_rgba(16,40,64,0.08),0_28px_56px_-24px_rgba(16,40,64,0.28)]"
+      style={{ width }}
+    >
+      <div className="flex h-7 items-center gap-1.5 border-b border-[#e6edf1] bg-[#fbfdfe] px-3 sm:h-8">
+        <span className="h-2.5 w-2.5 rounded-full bg-[#dfe6ea]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#dfe6ea]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#dfe6ea]" />
+      </div>
+      {children}
+    </div>
+  );
+}
+
 export function CaseStudyImage({
   src,
   alt,
@@ -86,18 +104,10 @@ export function CaseStudyImage({
             </p>
           )}
           {frame === "browser" ? (
-            <div
-              className="overflow-hidden rounded-[12px] bg-white shadow-[0_0_0_1px_rgba(16,40,64,0.08),0_28px_56px_-24px_rgba(16,40,64,0.28)]"
-              style={{ width: backgroundImageWidth }}
-            >
-              <div className="flex h-7 items-center gap-1.5 border-b border-[#e6edf1] bg-[#fbfdfe] px-3 sm:h-8">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#dfe6ea]" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#dfe6ea]" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#dfe6ea]" />
-              </div>
+            <BrowserFrame width={backgroundImageWidth}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={src} alt={alt} className={`block w-full ${imageClassName ?? ""}`} />
-            </div>
+            </BrowserFrame>
           ) : (
             /* eslint-disable-next-line @next/next/no-img-element */
             <img
