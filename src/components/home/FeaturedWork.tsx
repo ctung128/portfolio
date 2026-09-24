@@ -2,6 +2,7 @@ import Link from "next/link";
 import { caseStudies } from "@/content/case-studies";
 import { CaseStudyImage } from "@/components/case-study/CaseStudyImage";
 import { CaseStudyHeroMockup } from "@/components/case-study/CaseStudyHeroMockup";
+import { LazyVideo } from "@/components/LazyVideo";
 
 // Premium hover scale: a slow, ease-out-expo settle rather than a snappy
 // linear zoom — the same curve used for the frame-sequence animation.
@@ -29,15 +30,10 @@ export function FeaturedWork() {
                   variant={cs.heroMockup.variant}
                 />
               ) : cs.coverVideo ? (
-                <video
+                <LazyVideo
                   className={`h-full w-full rounded-[12px] border border-border object-cover ${HOVER_SCALE}`}
                   src={cs.coverVideo}
                   poster={cs.coverImage.src}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
                   aria-label={cs.coverImage.alt}
                 />
               ) : (
@@ -71,6 +67,8 @@ export function FeaturedWork() {
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
+                      loading="lazy"
+                      decoding="async"
                       src="/case-studies/splitev/techstars-pill.png"
                       alt="Techstars"
                       className="h-full w-auto object-cover"

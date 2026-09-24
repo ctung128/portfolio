@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { LazyVideo } from "@/components/LazyVideo";
 
 const PLAYBACK_RATE = 1.25;
 
@@ -45,6 +46,8 @@ function FrameSequence({
       {frames.map((src, i) => (
         // eslint-disable-next-line @next/next/no-img-element
         <img
+          loading="lazy"
+          decoding="async"
           key={src}
           src={src}
           alt={i === 0 ? alt : ""}
@@ -91,6 +94,8 @@ function ScrollingImage({
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
+      loading="lazy"
+      decoding="async"
       src={src}
       alt={alt}
       className="absolute inset-x-0 top-0 w-full"
@@ -247,16 +252,11 @@ export function IPhoneMockup({
                 motion={frameMotion}
               />
             ) : videoSrc ? (
-              <video
-                ref={setPlaybackRate}
+              <LazyVideo
+                videoRef={setPlaybackRate}
                 className="absolute inset-0 h-full w-full object-cover"
                 src={videoSrc}
                 poster={poster}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
                 aria-label={alt}
                 onLoadedMetadata={(e) => setPlaybackRate(e.currentTarget)}
               />

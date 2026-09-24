@@ -10,6 +10,7 @@ import {
   TableOfContents,
   MobileTableOfContents,
 } from "@/components/case-study/TableOfContents";
+import { LazyVideo } from "@/components/LazyVideo";
 
 export function generateStaticParams() {
   return caseStudies.map((cs) => ({ slug: cs.slug }));
@@ -85,15 +86,10 @@ export default async function CaseStudyPage({
                   />
                 ) : (
                   <div className="mb-20 aspect-video overflow-hidden rounded-[12px] border border-border">
-                    <video
+                    <LazyVideo
                       className="h-full w-full object-cover"
                       src={caseStudy.coverVideo}
                       poster={caseStudy.coverImage.src}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      preload="metadata"
                       aria-label={caseStudy.coverImage.alt}
                     />
                   </div>

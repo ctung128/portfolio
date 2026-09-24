@@ -3,6 +3,7 @@
 import { useCallback, useRef, useState } from "react";
 import { playProjects } from "@/content/site";
 import { CaseStudyImage } from "@/components/case-study/CaseStudyImage";
+import { LazyVideo } from "@/components/LazyVideo";
 
 // Premium hover scale: a slow, ease-out-expo settle rather than a snappy
 // linear zoom — the same curve used for the frame-sequence animation.
@@ -67,16 +68,11 @@ export function PlayGallery() {
               }`}
             >
               {project.video ? (
-                <video
-                  ref={setPlaybackRate}
+                <LazyVideo
+                  videoRef={setPlaybackRate}
                   className={`h-full w-full rounded-[12px] border border-border object-contain ${HOVER_SCALE}`}
                   src={project.video}
                   aria-label={project.image.alt}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
                   onLoadedMetadata={(e) => setPlaybackRate(e.currentTarget)}
                 />
               ) : (

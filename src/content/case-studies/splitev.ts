@@ -20,17 +20,17 @@ export const splitev: CaseStudy = {
   skills: ["UI Design", "Prototyping", "Rapid Testing (RITE)", "Product Strategy", "Handoff"],
   tags: ["Climate Tech", "MVP", "Techstars"],
   coverImage: {
-    src: "/case-studies/splitev/cover.png",
+    src: "/case-studies/splitev/cover.webp",
     alt: "SplitEV app redesign cover image",
   },
   heroMockup: {
     frames: [
-      "/case-studies/splitev/frame-1.png",
-      "/case-studies/splitev/frame-2.png",
-      "/case-studies/splitev/frame-3.png",
-      "/case-studies/splitev/frame-4.png",
+      "/case-studies/splitev/frame-1.webp",
+      "/case-studies/splitev/frame-2.webp",
+      "/case-studies/splitev/frame-3.webp",
+      "/case-studies/splitev/frame-4.webp",
     ],
-    background: "/case-studies/splitev/cover-bg.png",
+    background: "/case-studies/splitev/cover-bg.webp",
     alt: "SplitEV app demo playing inside an iPhone mockup",
     variant: "13-pro",
   },

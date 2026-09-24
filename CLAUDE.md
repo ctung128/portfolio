@@ -1,10 +1,16 @@
 @AGENTS.md
 
+## Media
+
+Run `node scripts/optimize-media.mjs --write` after adding images/videos: it converts referenced PNG/JPGs to WebP (lossless for UI screenshots, q82–q90 for gradients/photos/covers, max 2000px wide), re-encodes MP4s (CRF 22, no audio), rewrites the paths in `src/`, and moves originals to the git-ignored `media-originals/`. Use `<LazyVideo>` instead of `<video autoPlay>`, and `loading="lazy"` on below-the-fold `<img>`s. Keep `/brand/social-preview.jpg` a JPEG (link unfurlers often skip WebP).
+
 ## Project log
 
 Running log of notable work done with Claude Code, newest first. Keep entries to a few bullets — this is a changelog, not a task tracker.
 
 ### 2026-09-24
+- Load performance: referenced media 118 MB → 27 MB (`scripts/optimize-media.mjs`; biggest wins were the `cover-bg.png` gradients, 4–8 MB → ~100 KB each, and Props `cover.mp4`, 28 MB → 3.4 MB). Videos now use `LazyVideo` (download/play only near the viewport, pause off-screen); `CaseStudyImage` uses `useImgFailed` instead of JS-preloading every image, so `loading="lazy"` works. Homepage initial media ~60 MB → ~1 MB. Unused `.mov` sources and the duplicate `props/props.mp4` moved to `media-originals/unused/`.
+- Props problem section: animated iPhone 13 Pro `mockup` cycling the six original-app screens (`before-1..6.png`) on `cover-bg.png`, below the stats, labeled "Before the redesign". New `labelStrong` mockup option renders the label in ink-soft (≥5.2:1 on the lime corner; the default ink-faint is ~2.6:1 and fails AA).
 - EVA screenshots sit on a `#E6EFF2` tint card (from EVA's own pale blue-gray surfaces): full screens in a browser frame, cropped components floating. Two-column `comparison` cards (citations, Before/After) keep the default off-white so the floating screens stand out. `crossfade` now takes `background` (renders in a `BrowserFrame`, extracted from `CaseStudyImage`).
 - EVA problem section: insights now use the Jino-style `insights` block (label + arrow, `quote` is now optional); problem statement and HMW use a new `callout` block (eyebrow label above non-italic serif text) instead of an attributed italic quote.
 - EVA iterations: iterations are serif headings with a `kicker` ("Iteration 1"); rejected citation explorations sit side-by-side in a `comparison` with outlined "Rejected" chips; shipped features get a filled "Shipped" chip (`status` on subheadings and comparison groups). The section's own eyebrow + heading are hidden via a new `hideHeader` section option, so "Iteration 1" opens it.

@@ -1,6 +1,7 @@
 import type { CaseStudyBlock } from "@/content/case-studies/types";
 import { BrowserFrame, CaseStudyImage, FLOAT_CLASS } from "./CaseStudyImage";
 import { CaseStudyHeroMockup } from "./CaseStudyHeroMockup";
+import { LazyVideo } from "@/components/LazyVideo";
 
 function StatusChip({ status }: { status: "rejected" | "shipped" }) {
   return (
@@ -182,14 +183,9 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
     case "video":
       return (
         <figure>
-          <video
+          <LazyVideo
             className="w-full rounded-[12px] border border-border"
             src={block.src}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
             aria-label={block.alt}
           />
           {block.caption && (
@@ -207,6 +203,7 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
           background={block.background}
           alt={block.alt}
           label={block.label}
+          labelStrong={block.labelStrong}
           variant={block.variant}
           className="rounded-[24px] border border-border py-16 sm:py-20"
           frameHoldMs={block.frameHoldMs}
@@ -222,6 +219,8 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
         <>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
+            loading="lazy"
+            decoding="async"
             src={first.src}
             alt={first.alt}
             className="crossfade-frame block w-full"
@@ -229,6 +228,8 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
           />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
+            loading="lazy"
+            decoding="async"
             src={second.src}
             alt={second.alt}
             className="crossfade-frame absolute inset-0 h-full w-full object-cover"

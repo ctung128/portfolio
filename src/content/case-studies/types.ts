@@ -110,6 +110,9 @@ export type CaseStudyBlock =
       /** Small eyebrow-style label overlaid at the top of the card, above
        * the phone mockup. */
       label?: string;
+      /** Render `label` in ink-soft instead of ink-faint, for AA contrast
+       * on saturated or mid-tone backgrounds. */
+      labelStrong?: boolean;
       variant?: "13-pro" | "15-pro";
       /** Milliseconds each frame holds before transitioning. Only used with
        * `frames`. */

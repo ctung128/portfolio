@@ -23,7 +23,7 @@ export const eva: CaseStudy = {
   skills: ["User Research", "Prototyping", "Conversational AI Design", "AI-Native Product Thinking"],
   tags: ["0→1", "AI / Enterprise", "Internal Tool"],
   coverImage: {
-    src: "/case-studies/eva/cover.png",
+    src: "/case-studies/eva/cover.webp",
     alt: "EVA conversational ops agent cover image",
   },
   coverVideo: "/case-studies/eva/cover.mp4",
@@ -105,7 +105,7 @@ export const eva: CaseStudy = {
           columns: 2,
           images: [
             { src: "/case-studies/eva/perplexity.png", alt: "Competitive research: Perplexity", aspect: 642 / 642 },
-            { src: "/case-studies/eva/ai.png", alt: "Competitive research: AI UX pattern library", aspect: 935 / 642 },
+            { src: "/case-studies/eva/ai.webp", alt: "Competitive research: AI UX pattern library", aspect: 935 / 642 },
           ],
         },
         {
@@ -196,7 +196,7 @@ export const eva: CaseStudy = {
               status: "rejected",
               images: [
                 {
-                  src: "/case-studies/eva/appended-citations.png",
+                  src: "/case-studies/eva/appended-citations.webp",
                   alt: "Appended citations concept: a source link at the bottom of the answer",
                 },
               ],
@@ -207,7 +207,7 @@ export const eva: CaseStudy = {
               status: "rejected",
               images: [
                 {
-                  src: "/case-studies/eva/inline-citations.png",
+                  src: "/case-studies/eva/inline-citations.webp",
                   alt: "Inline citations concept: numbered footnotes inside the answer text",
                 },
               ],
@@ -291,7 +291,7 @@ export const eva: CaseStudy = {
               label: "Before",
               images: [
                 {
-                  src: "/case-studies/eva/before.png",
+                  src: "/case-studies/eva/before.webp",
                   alt: "Before: a blank chat entry point with unlabeled question cards",
                 },
               ],
@@ -300,7 +300,7 @@ export const eva: CaseStudy = {
               label: "After",
               images: [
                 {
-                  src: "/case-studies/eva/after.png",
+                  src: "/case-studies/eva/after.webp",
                   alt: "After: a named landing screen with categorized questions",
                 },
               ],

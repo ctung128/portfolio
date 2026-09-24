@@ -17,16 +17,16 @@ export const hero = {
 };
 
 export const personalPhotos = [
-  { src: "/personal/street.jpg", alt: "A tree-lined street in Nanjing" },
-  { src: "/personal/calligraphy.jpg", alt: "A wall of Chinese calligraphy" },
-  { src: "/personal/flowers.jpg", alt: "Arranging flowers" },
-  { src: "/personal/storefront.jpg", alt: "A neighborhood storefront" },
-  { src: "/personal/boy.jpg", alt: "A personal photo" },
-  { src: "/personal/decor.jpg", alt: "A personal photo" },
+  { src: "/personal/street.webp", alt: "A tree-lined street in Nanjing" },
+  { src: "/personal/calligraphy.webp", alt: "A wall of Chinese calligraphy" },
+  { src: "/personal/flowers.webp", alt: "Arranging flowers" },
+  { src: "/personal/storefront.webp", alt: "A neighborhood storefront" },
+  { src: "/personal/boy.webp", alt: "A personal photo" },
+  { src: "/personal/decor.webp", alt: "A personal photo" },
 ];
 
 export const portrait = {
-  src: "/personal/me.jpg",
+  src: "/personal/me.webp",
   alt: "Carolyn Tung",
 };
 
@@ -121,24 +121,24 @@ export const playProjects: PlayProject[] = [
   {
     title: "Queue management dashboard for tattoo studios",
     tag: "CLAUDE CODE * SHIPPED 2025",
-    image: { src: "/play/project-one/cover.png", alt: "Project one cover image" },
+    image: { src: "/play/project-one/cover.webp", alt: "Project one cover image" },
   },
   {
     title: "Design studio marketing website",
     tag: "BRANDING * SHIPPED 2025",
-    image: { src: "/play/project-seven/cover.png", alt: "Project seven cover image" },
+    image: { src: "/play/project-seven/cover.webp", alt: "Project seven cover image" },
     href: "https://www.bmore-designful.com",
   },
   {
     title: "Branding for a $15K MRR micro-SaaS app",
     tag: "BRANDING * SHIPPED 2025",
-    image: { src: "/play/project-two/cover.png", alt: "Project two cover image" },
+    image: { src: "/play/project-two/cover.webp", alt: "Project two cover image" },
   },
   {
     title: "Landing page for an HVAC startup",
     tag: "FRAMER WEB DESIGN",
     image: {
-      src: "/play/project-three/cover.png",
+      src: "/play/project-three/cover.webp",
       alt: "Project three cover image",
       position: "left",
     },
@@ -146,28 +146,28 @@ export const playProjects: PlayProject[] = [
   {
     title: "Menu for a friend's pop-up cafe",
     tag: "GRAPHIC DESIGN",
-    image: { src: "/play/project-four/cover.png", alt: "Project four cover image" },
+    image: { src: "/play/project-four/cover.webp", alt: "Project four cover image" },
   },
   {
     title: "Cards for an art investing venture",
     tag: "VISUAL DESIGN",
-    image: { src: "/play/project-five/cover.png", alt: "Project five cover image" },
+    image: { src: "/play/project-five/cover.webp", alt: "Project five cover image" },
   },
   {
     title: "Branding for a sustainability firm",
     tag: "BRANDING * SHIPPED 2025",
-    image: { src: "/play/project-six/cover.png", alt: "Project six cover image" },
+    image: { src: "/play/project-six/cover.webp", alt: "Project six cover image" },
   },
   {
     title: "Web design for photography studio",
     tag: "CLAUDE CODE * SHIPPED 2026",
-    image: { src: "/play/project-nine/cover.png", alt: "Project nine cover image" },
+    image: { src: "/play/project-nine/cover.webp", alt: "Project nine cover image" },
     href: "https://snowbellphoto.com/",
   },
   {
     title: "Translation Substack blog",
     tag: "RESEARCH * WRITING",
-    image: { src: "/play/project-ten/cover.png", alt: "Project ten cover image" },
+    image: { src: "/play/project-ten/cover.webp", alt: "Project ten cover image" },
     href: "https://tealeafgirl.substack.com/",
   },
 ];

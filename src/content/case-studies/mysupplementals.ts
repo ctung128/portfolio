@@ -84,7 +84,7 @@ export const mysupplementals: CaseStudy = {
         },
         {
           type: "image",
-          src: "/case-studies/mysupplementals/affinity-1.png",
+          src: "/case-studies/mysupplementals/affinity-1.webp",
           alt: "Affinity map of student answers to what frustrates them about supplementals, grouped into scattered, redundant, and fragile",
         },
         { type: "subheading", text: "Designing for multiple stakeholders", style: "heading", spaced: true },
@@ -110,7 +110,7 @@ export const mysupplementals: CaseStudy = {
         },
         {
           type: "image",
-          src: "/case-studies/mysupplementals/affinity-2.png",
+          src: "/case-studies/mysupplementals/affinity-2.webp",
           alt: "Affinity map of what would make tracking supplemental essays easier, grouped by students, high school counselors, and private counselors",
         },
       ],
@@ -161,7 +161,7 @@ export const mysupplementals: CaseStudy = {
         },
         {
           type: "image",
-          src: "/case-studies/mysupplementals/dot.png",
+          src: "/case-studies/mysupplementals/dot.webp",
           alt: "Dot",
           background: TINT,
           frame: "float",
@@ -214,7 +214,7 @@ export const mysupplementals: CaseStudy = {
         },
         {
           type: "image",
-          src: "/case-studies/mysupplementals/insight-reveal.png",
+          src: "/case-studies/mysupplementals/insight-reveal.webp",
           alt: "Insight reveal card with confetti",
           background: TINT,
           frame: "browser",
@@ -261,7 +261,7 @@ export const mysupplementals: CaseStudy = {
         },
         {
           type: "image",
-          src: "/case-studies/mysupplementals/save.png",
+          src: "/case-studies/mysupplementals/save.webp",
           alt: "MySupplementals smart saving feature",
           background: TINT,
           frame: "float",
@@ -284,7 +284,7 @@ export const mysupplementals: CaseStudy = {
         },
         {
           type: "image",
-          src: "/case-studies/mysupplementals/shared-modal.png",
+          src: "/case-studies/mysupplementals/shared-modal.webp",
           alt: "MySupplementals smart saving feature",
           background: TINT,
           frame: "browser",
@@ -301,7 +301,7 @@ export const mysupplementals: CaseStudy = {
         },
         {
           type: "image",
-          src: "/case-studies/mysupplementals/choose-later.png",
+          src: "/case-studies/mysupplementals/choose-later.webp",
           alt: "Choose later feature",
           background: TINT,
           frame: "float",

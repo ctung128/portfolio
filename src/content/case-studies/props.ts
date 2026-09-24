@@ -20,12 +20,12 @@ export const props: CaseStudy = {
   skills: ["UX Research", "iOS App Design", "Rapid Testing (RITE)", "Product Strategy"],
   tags: ["End-to-end", "User Research", "Consumer Social", "Techstars"],
   coverImage: {
-    src: "/case-studies/props/cover.png",
+    src: "/case-studies/props/cover.webp",
     alt: "Props app redesign cover image",
   },
   heroMockup: {
     video: "/case-studies/props/cover.mp4",
-    background: "/case-studies/props/cover-bg.png",
+    background: "/case-studies/props/cover-bg.webp",
     alt: "Props app demo playing inside an iPhone mockup",
     variant: "13-pro",
   },
@@ -56,7 +56,7 @@ export const props: CaseStudy = {
     {
       id: "problem",
       navLabel: "Problem",
-      heading: "Users liked the idea behind Props, but it felt overwhelming and unintuitive. Thus, users kept dropping off.",
+      heading: "Users liked the idea behind Props, but it felt overwhelming and unintuitive. So, users kept dropping off.",
       blocks: [
         {
           type: "stats",
@@ -65,12 +65,28 @@ export const props: CaseStudy = {
             { value: "75%", label: "thought it was hard to use" },
           ],
         },
+        {
+          type: "mockup",
+          frames: [
+            "/case-studies/props/before-1.webp",
+            "/case-studies/props/before-2.webp",
+            "/case-studies/props/before-3.webp",
+            "/case-studies/props/before-4.webp",
+            "/case-studies/props/before-5.webp",
+            "/case-studies/props/before-6.webp",
+          ],
+          background: "/case-studies/props/cover-bg.webp",
+          alt: "The original Props app, cycling through six screens inside an iPhone mockup",
+          label: "Before the redesign",
+          labelStrong: true,
+          variant: "13-pro",
+        },
       ],
     },
     {
       id: "research",
       navLabel: "Research",
-      heading: "Turns out... the platform's reward loop was buried under unclear navigation and visual hierarchy.",
+      heading: "The platform's reward loop was buried under unclear navigation and visual hierarchy.",
       blocks: [
         {
           type: "paragraph",

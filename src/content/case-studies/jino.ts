@@ -15,19 +15,19 @@ export const jino: CaseStudy = {
   skills: ["Design System", "Prototyping", "Product Strategy", "QA Testing"],
   tags: ["0→1", "Founder", "Consumer Social"],
   coverImage: {
-    src: "/case-studies/jino/cover.png",
+    src: "/case-studies/jino/cover.webp",
     alt: "Jino relationship app cover image",
   },
   heroMockup: {
     video: "/case-studies/jino/cover.mp4",
-    background: "/case-studies/jino/cover-bg.png",
+    background: "/case-studies/jino/cover-bg.webp",
     alt: "Jino app demo playing inside an iPhone mockup",
     variant: "13-pro",
   },
   duoHero: {
-    background: "/case-studies/jino/cover-bg.png",
+    background: "/case-studies/jino/cover-bg.webp",
     splash: {
-      src: "/case-studies/jino/splash-screen.png",
+      src: "/case-studies/jino/splash-screen.webp",
       alt: "Jino splash screen with two hamster mascots",
     },
     video: "/case-studies/jino/cover.mp4",
@@ -54,12 +54,12 @@ export const jino: CaseStudy = {
         {
           type: "gallery",
           images: [
-            { src: "/case-studies/jino/appstore-1.png", alt: "Jino App Store screenshot 1" },
-            { src: "/case-studies/jino/appstore-2.png", alt: "Jino App Store screenshot 2" },
-            { src: "/case-studies/jino/appstore-3.png", alt: "Jino App Store screenshot 3" },
-            { src: "/case-studies/jino/appstore-4.png", alt: "Jino App Store screenshot 4" },
-            { src: "/case-studies/jino/appstore-5.png", alt: "Jino App Store screenshot 5" },
-            { src: "/case-studies/jino/appstore-6.png", alt: "Jino App Store screenshot 6" },
+            { src: "/case-studies/jino/appstore-1.webp", alt: "Jino App Store screenshot 1" },
+            { src: "/case-studies/jino/appstore-2.webp", alt: "Jino App Store screenshot 2" },
+            { src: "/case-studies/jino/appstore-3.webp", alt: "Jino App Store screenshot 3" },
+            { src: "/case-studies/jino/appstore-4.webp", alt: "Jino App Store screenshot 4" },
+            { src: "/case-studies/jino/appstore-5.webp", alt: "Jino App Store screenshot 5" },
+            { src: "/case-studies/jino/appstore-6.webp", alt: "Jino App Store screenshot 6" },
           ],
         },
       ],
@@ -121,7 +121,7 @@ export const jino: CaseStudy = {
         },
         {
           type: "image",
-          src: "/case-studies/jino/affinity-1.png",
+          src: "/case-studies/jino/affinity-1.webp",
           alt: "Affinity map of user interview notes on complacency, lack of curiosity, and uneven effort",
         },
         {
@@ -146,7 +146,7 @@ export const jino: CaseStudy = {
         },
         {
           type: "image",
-          src: "/case-studies/jino/affinity-2.png",
+          src: "/case-studies/jino/affinity-2.webp",
           alt: "Affinity map of user interview notes on love languages, comfort zones, and loss of individuality",
         },
         {
@@ -184,11 +184,11 @@ export const jino: CaseStudy = {
           columns: 2,
           images: [
             {
-              src: "/case-studies/jino/persona-1.png",
+              src: "/case-studies/jino/persona-1.webp",
               alt: "Persona: Serena Park, \"The Intentional Planner\" — the partner who initiates",
             },
             {
-              src: "/case-studies/jino/persona-2.png",
+              src: "/case-studies/jino/persona-2.webp",
               alt: "Persona: Daniel Nguyen, \"The Heads-Down Builder\" — the partner who needs a low-effort way in",
             },
           ],
@@ -247,7 +247,7 @@ export const jino: CaseStudy = {
             {
               label: "Cute, gamified Asian-market apps",
               images: [
-                { src: "/case-studies/jino/asia-1.png", alt: "SumOne couple app screenshot" },
+                { src: "/case-studies/jino/asia-1.webp", alt: "SumOne couple app screenshot" },
                 { src: "/case-studies/jino/asia-2.png", alt: "Couple Tree app screenshot" },
               ],
               caption:
@@ -257,11 +257,11 @@ export const jino: CaseStudy = {
               label: "Premium Western apps",
               images: [
                 {
-                  src: "/case-studies/jino/west-1.png",
+                  src: "/case-studies/jino/west-1.webp",
                   alt: "Premium Western relationship app screenshot with daily question, quiz, and game activities",
                 },
                 {
-                  src: "/case-studies/jino/west-2.png",
+                  src: "/case-studies/jino/west-2.webp",
                   alt: "Premium Western relationship app screenshot with a growth-tracking home screen",
                 },
               ],
@@ -298,7 +298,7 @@ export const jino: CaseStudy = {
         },
         {
           type: "image",
-          src: "/case-studies/jino/branding.png",
+          src: "/case-studies/jino/branding.webp",
           alt: "Jino brand illustrations and mascot",
           background: "#FCFFFA",
           shadow: true,
@@ -321,19 +321,19 @@ export const jino: CaseStudy = {
         {
           type: "mockup",
           frames: [
-            "/case-studies/jino/onboarding-1.png",
-            "/case-studies/jino/onboarding-2.png",
-            "/case-studies/jino/onboarding-3.png",
-            "/case-studies/jino/onboarding-4.png",
-            "/case-studies/jino/onboarding-5.png",
-            "/case-studies/jino/onboarding-6.png",
-            "/case-studies/jino/onboarding-7.png",
-            "/case-studies/jino/onboarding-8.png",
-            "/case-studies/jino/onboarding-9.png",
-            "/case-studies/jino/onboarding-10.png",
-            "/case-studies/jino/onboarding-11.png",
-            "/case-studies/jino/onboarding-12.png",
-            "/case-studies/jino/onboarding-13.png",
+            "/case-studies/jino/onboarding-1.webp",
+            "/case-studies/jino/onboarding-2.webp",
+            "/case-studies/jino/onboarding-3.webp",
+            "/case-studies/jino/onboarding-4.webp",
+            "/case-studies/jino/onboarding-5.webp",
+            "/case-studies/jino/onboarding-6.webp",
+            "/case-studies/jino/onboarding-7.webp",
+            "/case-studies/jino/onboarding-8.webp",
+            "/case-studies/jino/onboarding-9.webp",
+            "/case-studies/jino/onboarding-10.webp",
+            "/case-studies/jino/onboarding-11.webp",
+            "/case-studies/jino/onboarding-12.webp",
+            "/case-studies/jino/onboarding-13.webp",
           ],
           background: "/case-studies/jino/bg-fcfffa.png",
           alt: "Jino onboarding happy path playing inside an iPhone mockup",
@@ -345,7 +345,7 @@ export const jino: CaseStudy = {
         },
         {
           type: "image",
-          src: "/case-studies/jino/error-state.png",
+          src: "/case-studies/jino/error-state.webp",
           alt: "Jino onboarding error state",
           label: "Error state",
           background: "#FCFFFA",
@@ -359,7 +359,7 @@ export const jino: CaseStudy = {
         {
           type: "mockup",
           scrollImage: {
-            src: "/case-studies/jino/home-empty.png",
+            src: "/case-studies/jino/home-empty.webp",
             alt: "Jino home screen empty state, panning to reveal the full screen inside an iPhone mockup",
             endPercent: -47.15,
           },
@@ -381,7 +381,7 @@ export const jino: CaseStudy = {
         },
         {
           type: "image",
-          src: "/case-studies/jino/waitlist.png",
+          src: "/case-studies/jino/waitlist.webp",
           alt: "Jino waitlist",
         },
       ],
