@@ -1,5 +1,9 @@
 import type { CaseStudy } from "./types";
 
+/** Pale blue-gray from MySupplementals' own section backgrounds, used as the
+ * card behind every screenshot. */
+const TINT = "#F1F7FA";
+
 export const mysupplementals: CaseStudy = {
   slug: "mysupplementals",
   title: "Optimizing the college essay gathering process",
@@ -125,14 +129,16 @@ export const mysupplementals: CaseStudy = {
           type: "image",
           src: "/case-studies/mysupplementals/landing-page.png",
           alt: "MySupplementals marketing landing page",
-          wide: true,
+          background: TINT,
+          frame: "browser",
+          backgroundImageWidth: "88%",
         },
       ],
     },
     {
       id: "progress",
       navLabel: "Iteration 2",
-      heading: "When more flexibility made the design worse, not better",
+      heading: "More flexibility made the design worse, not better",
       blocks: [
         {
           type: "paragraph",
@@ -147,6 +153,9 @@ export const mysupplementals: CaseStudy = {
           type: "image",
           src: "/case-studies/mysupplementals/dot.png",
           alt: "Dot",
+          background: TINT,
+          frame: "float",
+          backgroundImageWidth: "52%",
         },
         { type: "subheading", text: "v2 → Progress bar + stepper", style: "label", spaced: true },
         {
@@ -161,6 +170,9 @@ export const mysupplementals: CaseStudy = {
           type: "image",
           src: "/case-studies/mysupplementals/stepper.png",
           alt: "School stepper with overflow count",
+          background: TINT,
+          frame: "float",
+          backgroundImageWidth: "80%",
         },
         { type: "subheading", text: "v3 → PROGRESS BAR", style: "label", spaced: true },
         {
@@ -171,19 +183,21 @@ export const mysupplementals: CaseStudy = {
           type: "image",
           src: "/case-studies/mysupplementals/stepper-states.png",
           alt: "School stepper with active, completed, and remaining states",
+          background: TINT,
+          frame: "float",
+          backgroundImageWidth: "80%",
         },
       ],
     },
     {
       id: "iteration-3",
       navLabel: "Iteration 3",
-      heading: "Making the payoff feel like a win",
+      heading: "Making the journey feel like a reward",
       blocks: [
         {
           type: "paragraph",
           text: "The insight reveal card is where students see how much work the app just saved them. It's the moment the whole flow builds toward, so it went through several rounds.",
         },
-        { type: "subheading", text: "V1", style: "heading", spaced: true },
         {
           type: "paragraph",
           text: "My engineer initially produced an insight card with a blurred background. After auditing comparable web apps, I found blur was largely absent from the category, and it muddied the card instead of elevating it, so I cut it. In the same round I tested green against blue for the primary accent. Blue read cleaner against the card's other elements, so that's what shipped.",
@@ -192,6 +206,9 @@ export const mysupplementals: CaseStudy = {
           type: "image",
           src: "/case-studies/mysupplementals/insight-reveal.png",
           alt: "Insight reveal card with confetti",
+          background: TINT,
+          frame: "browser",
+          backgroundImageWidth: "88%",
         },
         { type: "subheading", text: "Which impact metric lands best for students?", style: "heading", spaced: true },
         {
@@ -200,20 +217,19 @@ export const mysupplementals: CaseStudy = {
         },
         {
           type: "comparison",
+          float: true,
           groups: [
             {
               label: "Time saved",
               images: [
                 { src: "/case-studies/mysupplementals/metric-time.png", alt: "Insight card led by time saved" },
               ],
-              caption: "Big, abstract, hard to feel.",
             },
             {
               label: "Unique essays left to write",
               images: [
                 { src: "/case-studies/mysupplementals/metric-essays.png", alt: "Insight card led by unique essay count" },
               ],
-              caption: "Small, concrete, achievable.",
             },
           ],
         },
@@ -226,19 +242,21 @@ export const mysupplementals: CaseStudy = {
     {
       id: "saving",
       navLabel: "Iteration 4",
-      heading: "Designing around a feature that existed before the UX did",
+      heading: "Designing around features that existed before the UX did",
       blocks: [
         {
           type: "paragraph",
-          text: "Sometimes in fast startups, engineers, especially ones that are founders, develop features before a designer defines them. Partway through, my engineer shipped smart saving, where changes are saved even if the tab closes. As a result, I needed to design reactively to map out the user journey and more complex states. ",
+          text: "Sometimes in fast startups, engineers, especially ones that are founders, develop features before a designer defines them. Partway through, my engineer shipped smart saving, where changes are saved even if the tab closes. As a result, I needed to design reactively, or at least in parallel with my engineer, to map out the user journey and more complex states. ",
         },
         {
           type: "image",
           src: "/case-studies/mysupplementals/save.png",
           alt: "MySupplementals smart saving feature",
-          wide: true,
+          background: TINT,
+          frame: "float",
+          backgroundImageWidth: "80%",
         },
-        { type: "subheading", text: "V1: Making smart saving visible", style: "heading", spaced: true },
+        { type: "subheading", text: "Making smart saving visible", style: "heading", spaced: true },
         {
           type: "paragraph",
           text: "I proposed a save-status indicator based on a mental model students already trust, Google Docs' autosave, in two states. Green confirms their own selections are saved. A warning color flags that they're viewing someone else's data (ex. a college counseler viewing a student's list).",
@@ -248,12 +266,20 @@ export const mysupplementals: CaseStudy = {
           src: "/case-studies/mysupplementals/save-status.mp4",
           alt: "Save status indicator in saved and viewing-shared states",
         },
-        { type: "subheading", text: "V2: When someone's shared link collides with your own saved progress", style: "heading", spaced: true },
+        { type: "subheading", text: "Edge Case: When someone's shared link collides with your own saved progress", style: "heading", spaced: true },
         {
           type: "paragraph",
-          text: "This is the edge case a first draft skips, and it went through its own iteration.",
+          text: "What happens if a student opens up a friend's shared link, and they edit changes or want to make a copy of it for themselves? Do we enabled smart saving here and overwrite their own list?. We came up a persistent modal that prompts users to either overwrite changes or go back to their own list, with a clear indicator at the top making the shared view status visible. However, after much deliberation, we decided to push this to a future phase because it did not cover a core Job to be Done.",
         },
-        { type: "subheading", text: "V3: Letting students export first and answer questions later", style: "heading", spaced: true },
+        {
+          type: "image",
+          src: "/case-studies/mysupplementals/shared-modal.png",
+          alt: "MySupplementals smart saving feature",
+          background: TINT,
+          frame: "browser",
+          backgroundImageWidth: "72%",
+        },
+        { type: "subheading", text: "Edge Case: Letting students export first and answer questions later", style: "heading", spaced: true },
         {
           type: "paragraph",
           text: "Some schools require extra essays for specific departments or scholarships, which the Common App determines through a string of conditional questions. Making students answer all of those before reaching their essay list is the highest-friction point of the user journey, and letting students defer that decision meant they could reach value faster.",
@@ -266,22 +292,9 @@ export const mysupplementals: CaseStudy = {
           type: "image",
           src: "/case-studies/mysupplementals/choose-later.png",
           alt: "Choose later feature",
-          wide: true,
-        },
-        { type: "subheading", text: "v1 → The engineer's framing", style: "label", spaced: true },
-        {
-          type: "paragraph",
-          text: "Two outcomes: save as mine (overwrite), or go back to mine.",
-        },
-        { type: "subheading", text: "v2 → My addition", style: "label", spaced: true },
-        {
-          type: "paragraph",
-          text: "A student in the middle of deciding shouldn't be forced to pick between two options right now, especially when one of them is destructive. I added a third path, choose later, set apart from the other two by a divider and a line of copy explaining what it does. It's deliberately not given the same weight as \"save as mine\", because one of those choices overwrites data and the other doesn't.",
-        },
-        {
-          type: "image",
-          src: "/case-studies/mysupplementals/shared-modal.png",
-          alt: "Confirmation popup for a shared essay list",
+          background: TINT,
+          frame: "float",
+          backgroundImageWidth: "48%",
         },
       ],
     },
@@ -293,6 +306,7 @@ export const mysupplementals: CaseStudy = {
         {
           type: "paragraph",
           text: "MySupplementals is live at mysupplementals.com, and the founder is now working on marketing. It hasn't had its public launch yet. Next is reaching students directly while positioning the app as a resource counselors and schools can offer.",
+          link: { text: "live", href: "https://mysupplementals.com/" },
         },
         {
           type: "quote",
@@ -316,7 +330,7 @@ export const mysupplementals: CaseStudy = {
         },
         {
           type: "paragraph",
-          text: "For two founders in the early stages, that was a lot of MySupplementals. For example, I scrapped the dot progress steppers because they looked funky compared to a progress bar. Alternatively, I took the blur off the insight card because I didn't like how it felt. Together these craft-based decisions are what make the product feel like a real, lived-in thing.",
+          text: "For two founders in the early stages, that was a lot of MySupplementals. For example, I scrapped the dot progress steppers because they looked funky compared to a progress bar. Alternatively, I eliminated the blurred background from the insights popup modal screen because I didn't like how it felt. Together these craft-based decisions are what make the product feel like a real, lived-in thing.",
         },
         {
           type: "paragraph",

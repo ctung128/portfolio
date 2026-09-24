@@ -8,6 +8,8 @@ Running log of notable work done with Claude Code, newest first. Keep entries to
 - New MySupplementals case study (`/work/mysupplementals`): overview, problem/stakeholders, opportunity, four design iterations, outcome with founder testimonial, and a closing reflection on opinionated design.
 - Case study header: optional `liveUrl` renders a "See it live ↗" button next to the one-liner.
 - New `video` block type: autoplaying looping video styled like an image card.
+- Favicon: light/dark variants (`public/brand/favicon-light.svg` / `favicon-dark.svg`) wired via `metadata.icons` with `prefers-color-scheme` media queries; removed `src/app/icon.svg`.
+- Screenshot framing: image blocks take `frame: "browser" | "float"` on a `background` card; comparison blocks take `float`; paragraphs take an inline `link`. MySupplementals uses a `#F1F7FA` tint.
 
 ### 2026-09-21
 - About section: redesigned the Reading/Listening/Learning/Recommending pillar cards to match the original Framer site — moved out of the cramped half-column into a full-width 2x2 grid below the bio, `#F7F7F7` background with a custom drop shadow, larger type/padding/star bullets.

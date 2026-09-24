@@ -1,5 +1,11 @@
 export type CaseStudyBlock =
-  | { type: "paragraph"; text: string }
+  | {
+      type: "paragraph";
+      text: string;
+      /** Turns the first occurrence of `text` inside the paragraph into an
+       * external link. */
+      link?: { text: string; href: string };
+    }
   | {
       type: "subheading";
       text: string;
@@ -42,6 +48,10 @@ export type CaseStudyBlock =
       backgroundImageWidth?: string;
       /** Drop shadow following the image's own alpha silhouette. */
       shadow?: boolean;
+      /** How the image sits inside its `background` card: "browser" wraps it
+       * in a minimal browser window (for full-page screens), "float" gives it
+       * rounded corners and a soft shadow (for cropped UI components). */
+      frame?: "browser" | "float";
     }
   | {
       /** A looping, autoplaying video styled like a standard image card. */
@@ -99,6 +109,9 @@ export type CaseStudyBlock =
         /** Short description shown below the images. */
         caption?: string;
       }[];
+      /** Center each group's images and give them rounded corners and a soft
+       * shadow, instead of the default 2-column grid. */
+      float?: boolean;
     };
 
 export type CaseStudySection = {

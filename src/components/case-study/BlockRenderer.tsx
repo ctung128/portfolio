@@ -1,15 +1,32 @@
 import type { CaseStudyBlock } from "@/content/case-studies/types";
-import { CaseStudyImage } from "./CaseStudyImage";
+import { CaseStudyImage, FLOAT_CLASS } from "./CaseStudyImage";
 import { CaseStudyHeroMockup } from "./CaseStudyHeroMockup";
 
 export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
   switch (block.type) {
-    case "paragraph":
+    case "paragraph": {
+      const at = block.link ? block.text.indexOf(block.link.text) : -1;
       return (
         <p className="font-sans text-base leading-relaxed text-ink-soft sm:text-lg">
-          {block.text}
+          {block.link && at >= 0 ? (
+            <>
+              {block.text.slice(0, at)}
+              <a
+                href={block.link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="text-ink underline decoration-border-strong underline-offset-4 transition-colors hover:decoration-ink"
+              >
+                {block.link.text}
+              </a>
+              {block.text.slice(at + block.link.text.length)}
+            </>
+          ) : (
+            block.text
+          )}
         </p>
       );
+    }
 
     case "subheading":
       return (
@@ -102,6 +119,7 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
           background={block.background}
           backgroundImageWidth={block.backgroundImageWidth}
           shadow={block.shadow}
+          frame={block.frame}
         />
       );
 
@@ -165,11 +183,24 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
               <p className="font-sans text-xs uppercase tracking-wider text-ink-faint">
                 {i + 1} — {group.label}
               </p>
-              <div className="mt-4 grid grid-cols-2 gap-3">
-                {group.images.map((image) => (
-                  <CaseStudyImage key={image.src} src={image.src} alt={image.alt} />
-                ))}
-              </div>
+              {block.float ? (
+                <div className="mt-4 flex flex-col items-center justify-center gap-4 px-2 py-4">
+                  {group.images.map((image) => (
+                    <CaseStudyImage
+                      key={image.src}
+                      src={image.src}
+                      alt={image.alt}
+                      imageClassName={FLOAT_CLASS}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <div className="mt-4 grid grid-cols-2 gap-3">
+                  {group.images.map((image) => (
+                    <CaseStudyImage key={image.src} src={image.src} alt={image.alt} />
+                  ))}
+                </div>
+              )}
               {group.caption && (
                 <p className="mt-4 font-sans text-sm leading-relaxed text-ink-soft">
                   {group.caption}

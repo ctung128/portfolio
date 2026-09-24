@@ -2,6 +2,11 @@
 
 import { useImageStatus } from "@/lib/useImageStatus";
 
+/** Rounded corners plus a soft, slightly cool shadow and hairline ring, for
+ * screenshots floating on a tinted card. */
+export const FLOAT_CLASS =
+  "rounded-[12px] shadow-[0_0_0_1px_rgba(16,40,64,0.06),0_24px_48px_-20px_rgba(16,40,64,0.22)]";
+
 export function CaseStudyImage({
   src,
   alt,
@@ -14,6 +19,7 @@ export function CaseStudyImage({
   background,
   backgroundImageWidth = "85%",
   shadow,
+  frame,
 }: {
   src: string;
   alt: string;
@@ -37,6 +43,9 @@ export function CaseStudyImage({
    * (works well for images with transparent backgrounds), matching the
    * device mockup shadow treatment. */
   shadow?: boolean;
+  /** Only used with `background`. "browser" wraps the image in a minimal
+   * browser window; "float" gives it rounded corners and a soft shadow. */
+  frame?: "browser" | "float";
 }) {
   const status = useImageStatus(src);
 
@@ -76,16 +85,31 @@ export function CaseStudyImage({
               {label}
             </p>
           )}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={src}
-            alt={alt}
-            className={imageClassName}
-            style={{
-              width: backgroundImageWidth,
-              filter: shadow ? "drop-shadow(0 20px 30px rgba(0,0,0,0.25))" : undefined,
-            }}
-          />
+          {frame === "browser" ? (
+            <div
+              className="overflow-hidden rounded-[12px] bg-white shadow-[0_0_0_1px_rgba(16,40,64,0.08),0_28px_56px_-24px_rgba(16,40,64,0.28)]"
+              style={{ width: backgroundImageWidth }}
+            >
+              <div className="flex h-7 items-center gap-1.5 border-b border-[#e6edf1] bg-[#fbfdfe] px-3 sm:h-8">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#dfe6ea]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#dfe6ea]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#dfe6ea]" />
+              </div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={src} alt={alt} className={`block w-full ${imageClassName ?? ""}`} />
+            </div>
+          ) : (
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img
+              src={src}
+              alt={alt}
+              className={`${frame === "float" ? FLOAT_CLASS : ""} ${imageClassName ?? ""}`}
+              style={{
+                width: backgroundImageWidth,
+                filter: shadow ? "drop-shadow(0 20px 30px rgba(0,0,0,0.25))" : undefined,
+              }}
+            />
+          )}
         </div>
         {caption && (
           <figcaption className="mt-3 font-sans text-sm text-ink-soft">{caption}</figcaption>
