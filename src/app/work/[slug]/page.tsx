@@ -24,7 +24,7 @@ export async function generateMetadata({
   const caseStudy = getCaseStudy(slug);
   if (!caseStudy) return {};
   return {
-    // The root layout's title template already appends " — Carolyn Tung".
+    // The root layout's title template already appends " | Carolyn Tung".
     title: caseStudy.title,
     description: caseStudy.oneLiner,
   };

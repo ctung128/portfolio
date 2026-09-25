@@ -8,13 +8,13 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.domain),
   title: {
-    default: `${siteConfig.name} — Product Designer`,
-    template: `%s — ${siteConfig.name}`,
+    default: `${siteConfig.name} | Product Designer`,
+    template: `%s | ${siteConfig.name}`,
   },
   description:
     "Product designer who takes 0→1 problems to shipped products. Case studies in AI, climate tech, consumer social, and B2B SaaS.",
   openGraph: {
-    title: `${siteConfig.name} — Product Designer`,
+    title: `${siteConfig.name} | Product Designer`,
     description:
       "Product designer who takes 0→1 problems to shipped products.",
     url: siteConfig.domain,
