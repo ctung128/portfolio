@@ -18,7 +18,8 @@ export const metadata: Metadata = {
     description:
       "Product designer who takes 0→1 problems to shipped products.",
     url: siteConfig.domain,
-    siteName: siteConfig.name,
+    // No siteName: iMessage strips og:site_name out of og:title, which turned
+    // "Carolyn Tung | Product Designer" into just "Product Designer".
     images: ["/brand/social-preview.jpg"],
   },
   icons: {
