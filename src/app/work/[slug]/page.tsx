@@ -49,7 +49,6 @@ export default async function CaseStudyPage({
 
   return (
     <article className="mx-auto max-w-5xl px-6 pb-24 pt-8 sm:px-8 sm:pt-12">
-      <div className="mb-8 lg:hidden">{backLink}</div>
 
       <div className="grid gap-12 lg:grid-cols-[200px_minmax(0,1fr)]">
         <div className="hidden lg:block">

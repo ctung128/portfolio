@@ -8,6 +8,7 @@ export function CaseStudyHeroMockup({
   background,
   alt,
   label,
+  labelClassName = "left-6 top-6 sm:left-8 sm:top-8",
   poster,
   className = "mb-20 rounded-[24px] border border-border py-20 sm:py-24",
   phoneSizeClassName,
@@ -32,6 +33,8 @@ export function CaseStudyHeroMockup({
   /** Small eyebrow-style label overlaid at the top of the card, above the
    * phone (matches the comparison-card label treatment). */
   label?: string;
+  /** Position of `label` inside the card. */
+  labelClassName?: string;
   /** Still frame shown in the phone until the video starts playing. */
   poster?: string;
   className?: string;
@@ -59,7 +62,9 @@ export function CaseStudyHeroMockup({
         />
       )}
       {label && (
-        <p className="absolute left-6 top-6 z-20 font-sans text-xs uppercase tracking-wider text-ink-faint sm:left-8 sm:top-8">
+        <p
+          className={`absolute z-20 font-sans text-xs uppercase tracking-wider text-ink-faint ${labelClassName}`}
+        >
           {label}
         </p>
       )}

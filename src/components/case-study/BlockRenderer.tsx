@@ -253,13 +253,15 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
             <figure key={item.label}>
               <CaseStudyHeroMockup
                 label={item.label}
+                // Same inset as the comparison-card labels (p-5 / sm:p-6).
+                labelClassName="left-5 top-5 sm:left-6 sm:top-6"
                 frames={item.frames}
                 scrollFrames={item.scrollFrames}
                 background={item.background ?? block.background}
                 alt={item.alt}
                 variant={block.variant}
-                // Extra top padding on phones clears the in-card label.
-                className="rounded-[24px] border border-border pb-8 pt-12 sm:py-12"
+                // Extra top padding keeps the phone clear of the in-card label.
+                className="rounded-[24px] border border-border pb-8 pt-12 sm:pb-12 sm:pt-16"
                 phoneSizeClassName="w-[118px] sm:w-[150px] md:w-[165px]"
               />
             </figure>,
