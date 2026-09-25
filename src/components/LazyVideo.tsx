@@ -18,6 +18,10 @@ export function LazyVideo({
   useEffect(() => {
     const video = ref.current;
     if (!video) return;
+    // React doesn't render `muted` as an attribute or set it on hydration,
+    // and mobile browsers refuse to autoplay unmuted video.
+    video.muted = true;
+    video.defaultMuted = true;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
