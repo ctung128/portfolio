@@ -61,7 +61,7 @@ export const education = {
 
 export const about = {
   paragraphs: [
-    "Hey there! I'm a product designer that loves building things, whether that's an app or a good story. I studied Cognitive Science at Johns Hopkins University, where I became involved with the startup scene and eventually founded a design studio. So far, I've worked with 15+ founders across consumer social, automotive, and enterprise products, helping companies scale and drive growth.",
+    "Hey there! I'm a product designer that loves building things, whether that's an app or a good story. I studied Cognitive Science at Johns Hopkins University, where I became involved with the startup scene and eventually founded a design studio. So far, I've worked with 15+ founders across consumer social, healthcare, and enterprise products, helping companies scale and drive growth.",
     "Outside of work, I love tea, Italian literature, mountains, and all things wabi-sabi.",
   ],
 };
@@ -103,7 +103,7 @@ export const nav = [
 
 export const playPage = {
   // TODO: swap this for your real intro copy
-  headline: "Things I build for fun that make me lose sleep...",
+  headline: "Things I build for fun that make me lose sleep...  ",
   description:
     "branding/marketing, vibe-coding, web design, etc etc :-)"
 };
