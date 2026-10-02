@@ -130,7 +130,7 @@ export const playProjects: PlayProject[] = [
     href: "https://www.bmore-designful.com",
   },
   {
-    title: "Branding for a $15K MRR micro-SaaS app",
+    title: "Founding Designer of $20K MRR app for 30K+ users",
     tag: "BRANDING * SHIPPED 2025",
     image: { src: "/play/project-two/cover.webp", alt: "Project two cover image" },
   },
