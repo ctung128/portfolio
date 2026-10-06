@@ -9,6 +9,7 @@ Run `node scripts/optimize-media.mjs --write` after adding images/videos: it con
 Running log of notable work done with Claude Code, newest first. Keep entries to a few bullets — this is a changelog, not a task tracker.
 
 ### 2026-10-06
+- Play: new Pebble cover (450 KB PNG → 72 KB q90 WebP); previous original kept as `media-originals/play/project-eleven/cover.prev.png`.
 - Play: order is now "$20K MRR app" → Grean → Bmore Designful studio site.
 - Play: new Pebble card ("Built language learning app for Chinese podcasts") third, before Bmore Designful, linking to learnpebble.vercel.app; cover optimized 3.1 MB PNG → 219 KB WebP.
 
