@@ -10,6 +10,7 @@ Running log of notable work done with Claude Code, newest first. Keep entries to
 
 ### 2026-10-06
 - Play: order is now "$20K MRR app" → Grean → Bmore Designful studio site.
+- Play: new Pebble card ("Built language learning app for Chinese podcasts") third, before Bmore Designful, linking to learnpebble.vercel.app; cover optimized 3.1 MB PNG → 219 KB WebP.
 
 ### 2026-09-24
 - Props `mockupRow` labels sit at the comparison-card inset (`labelClassName` on `CaseStudyHeroMockup`, left/top 5→6) with more card top padding (pt-12 / sm:pt-16) so labels clear the phones. Removed the mobile/tablet "← Back to work" link on case studies (desktop sidebar keeps it).

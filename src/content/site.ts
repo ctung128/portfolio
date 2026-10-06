@@ -129,6 +129,12 @@ export const playProjects: PlayProject[] = [
     image: { src: "/play/project-eight/cover.webp", alt: "Project eight cover image" },
   },
   {
+    title: "Built language learning app for Chinese podcasts",
+    tag: "CLAUDE CODE * SHIPPED 2026",
+    image: { src: "/play/project-eleven/cover.webp", alt: "Project eleven cover image" },
+    href: "https://learnpebble.vercel.app/",
+  },
+  {
     title: "Design studio marketing website",
     tag: "BRANDING * SHIPPED 2025",
     image: { src: "/play/project-seven/cover.webp", alt: "Project seven cover image" },
