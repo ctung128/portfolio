@@ -119,6 +119,11 @@ export type PlayProject = {
 
 export const playProjects: PlayProject[] = [
   {
+    title: "Designed $20K MRR app for 30K+ users",
+    tag: "BRANDING * SHIPPED 2025",
+    image: { src: "/play/project-two/cover.webp", alt: "Project two cover image" },
+  },
+  {
     title: "Helping Grean win 1st place and $10K",
     tag: "UX DESIGN * PITCH DECK DESIGN",
     image: { src: "/play/project-eight/cover.webp", alt: "Project eight cover image" },
@@ -128,11 +133,6 @@ export const playProjects: PlayProject[] = [
     tag: "BRANDING * SHIPPED 2025",
     image: { src: "/play/project-seven/cover.webp", alt: "Project seven cover image" },
     href: "https://www.bmore-designful.com",
-  },
-  {
-    title: "Designed $20K MRR app for 30K+ users",
-    tag: "BRANDING * SHIPPED 2025",
-    image: { src: "/play/project-two/cover.webp", alt: "Project two cover image" },
   },
   {
     title: "Landing page for an HVAC startup",

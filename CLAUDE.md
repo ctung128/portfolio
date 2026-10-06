@@ -8,6 +8,9 @@ Run `node scripts/optimize-media.mjs --write` after adding images/videos: it con
 
 Running log of notable work done with Claude Code, newest first. Keep entries to a few bullets — this is a changelog, not a task tracker.
 
+### 2026-10-06
+- Play: order is now "$20K MRR app" → Grean → Bmore Designful studio site.
+
 ### 2026-09-24
 - Props `mockupRow` labels sit at the comparison-card inset (`labelClassName` on `CaseStudyHeroMockup`, left/top 5→6) with more card top padding (pt-12 / sm:pt-16) so labels clear the phones. Removed the mobile/tablet "← Back to work" link on case studies (desktop sidebar keeps it).
 - Consistency pass: SplitEV images no longer use `wide` (it bled 16px past the text column on phones; nothing else uses it). `comparison` takes `numbered: false` (EVA Before/After drops "1 —"/"2 —"). Props `mockupRow` labels moved inside the cards in the light-gray eyebrow style to match EVA (phone-only `pt-12` keeps them clear of the phone); the arrow no longer needs a label offset.
