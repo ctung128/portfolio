@@ -14,7 +14,7 @@ export default function LibraryPage() {
         <h1 className="font-serif text-[28px] leading-tight text-ink sm:text-[38px] lg:text-5xl">
           Library
         </h1>
-        <p className="mt-5 font-sans text-lg leading-relaxed text-ink-soft">
+        <p className="mt-5 font-sans text-base leading-relaxed text-ink-soft">
           A museum of my favorite books. Open one to read what I thought.
         </p>
       </header>

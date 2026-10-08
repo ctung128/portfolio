@@ -16,7 +16,8 @@ export function Bookshelf() {
 
   return (
     <section>
-      <ol className="grid grid-cols-5 overflow-hidden rounded-[12px] border border-border shadow-[0_1px_2px_rgba(37,37,37,0.06),0_8px_24px_-12px_rgba(37,37,37,0.18)]">
+      <p className="mb-3 text-right font-sans text-xs text-ink-faint">Tap a book to open it</p>
+      <ol className="grid grid-cols-4 overflow-hidden rounded-[12px] border border-border shadow-[0_1px_2px_rgba(37,37,37,0.06),0_8px_24px_-12px_rgba(37,37,37,0.18)] sm:grid-cols-6">
         {shelf.map((b, i) => (
           <li key={b.slug} className="relative">
             <button
