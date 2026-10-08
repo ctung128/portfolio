@@ -1,0 +1,60 @@
+/* Cloud palette, taken from the hero painting: its warm umber ink pushed
+   darker for contrast, its silk lightened toward the site's cream. */
+:root {
+  --cloud-ink: #3b322a;
+  --cloud-paper: #ebe4d9;
+  --cloud-wash: #8c7b68;
+}
+
+/* Fine silk grain, multiplied over the cloud scene. */
+.cloud-grain {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .36  0 0 0 0 .3  0 0 0 0 .24  0 0 0 .11 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  mix-blend-mode: multiply;
+}
+
+/* Lab-only. A centreline dash (pathLength = 1) that opens from its start
+   once an ancestor has data-play; dropping data-play resets it. */
+.ink-draw {
+  stroke-dasharray: 1 1;
+  stroke-dashoffset: 1;
+}
+
+[data-play] .ink-draw {
+  animation-name: ink-draw;
+  animation-timing-function: cubic-bezier(0.45, 0.05, 0.3, 1);
+  animation-fill-mode: both;
+}
+
+/* The paper and wash under a cloud are revealed by a soft wipe (a gradient
+   rect in an SVG mask) that slides across behind the brush front. */
+[data-play] .ink-reveal {
+  animation-name: ink-reveal;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+  animation-fill-mode: both;
+}
+
+@keyframes ink-reveal {
+  to {
+    transform: translateX(var(--reveal));
+  }
+}
+
+@keyframes ink-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ink-draw,
+  [data-play] .ink-draw {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
+  .ink-reveal,
+  [data-play] .ink-reveal {
+    animation: none;
+    transform: translateX(var(--reveal));
+  }
+}
