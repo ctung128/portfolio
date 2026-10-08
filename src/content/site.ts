@@ -164,8 +164,7 @@ export const nav: { label: string; href: string; external?: boolean }[] = [
 ];
 
 export const playPage = {
-  // TODO: swap this for your real intro copy
-  headline: "Things I build for fun that make me lose sleep...  ",
+  headline: "Things I design + build for fun",
   description:
     "branding/marketing, vibe-coding, web design, etc etc :-)"
 };
