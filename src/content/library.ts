@@ -83,8 +83,7 @@ export const books: Book[] = [
     tone: "#6f7a2c",
     tags: ["japanese", "essay", "tea", "philosophy"],
     review: [
-      "teaism = tea isn’t just a drink—it’s a philosophy and a way of life!! i love japandi interior design and tea houses, so it was fun learning about how tea rooms are constructed, organized, and involved in ritual.",
-      "so many interesting quotes in here about taoism and zennism that i still need to decompose and process. probably deserves a reread. i sympathize with okakura’s mission… the west just doesn’t get it",
+      "i sympathize heavily with okakura’s mission",
     ],
   },
   {
@@ -393,7 +392,6 @@ export const books: Book[] = [
     tags: ["nonfiction", "writing"],
     review: [
       "man this guy is so great. this book is basically an exposé on the racist and imperialist origins of iowa writers’ workshop and a radical reimagining of how fiction writing workshops could be structured.",
-      "this book also helped me understand why i’m so drawn to asian literature? … story arcs in asian literature redefine conflict: the protagonist learns to understand that they are part of this world or that the world is part of themself, or they simply continue to live. … the whole “rising conflict, climax” type arc is a western construction. i’m bored of it!!!! and u should be too!!!!",
       "anyways this book was brilliant, revolutionary, creative, and enlightening!",
     ],
   },
@@ -407,8 +405,7 @@ export const books: Book[] = [
     tone: "#b5402a",
     tags: ["british", "gothic", "novel", "classic"],
     review: [
-      "“last night i dreamt i went to manderley again...”",
-      "new top 10 favorite book + author just dropped. ah i just loved this. at first i thought the protagonist was insufferable and pathetic but tbh she grew on me after a while. i tried watching the film after but got kind of bored. the book is better!!",
+      "i eat up everything daphne du maurier writes. the perfect autumnal read",
     ],
   },
   {
@@ -585,6 +582,54 @@ export const books: Book[] = [
     review: [
       "4.5. really interesting deep dive on what it's like to not only raise middle-school-age children in the chinese public school system but also to teach journalism at a chinese university as a foreigner. … he has led a long legacy of conducting multidimensional, empathetic journalism on chinese society since the '90s and i really respect him for his contributions to the literature",
       "i found the phenomenon of “little pinks” - fiery nationalists in the young generation - interesting too, the idea that some freshmen might have reported hessler for his teaching content and nearly gotten him fired. the contrast between the betrayals of “little pinks” and the behavior of hessler's bright, passionate elective students, some of whom risked their lives to conduct research for their final papers … is quite interesting. also very timely notes on “involution” and “letting it rot.”",
+    ],
+  },
+  {
+    slug: "subplot",
+    title: "The Subplot: What China Is Reading and Why It Matters",
+    author: "Megan Walsh",
+    year: 2022,
+    read: "2023-01",
+    rating: 5,
+    tone: "#f2b53a",
+    tags: ["nonfiction", "china", "writing"],
+    review: ["i am the target audience. so so good"],
+  },
+  {
+    slug: "pale-view-of-hills",
+    title: "A Pale View of Hills",
+    author: "Kazuo Ishiguro",
+    year: 1982,
+    read: "2025-11",
+    rating: 4,
+    tone: "#8f9a3c",
+    tags: ["japanese", "novel", "family", "grief"],
+    review: [
+      "surprised that a book that is 80% dialogue can hold you at such distance and still leave you permanently changed. motherhood, grief, self-preservation, and the fallibility of memory—japanese literature at its finest",
+    ],
+  },
+  {
+    slug: "brilliant-friend",
+    title: "My Brilliant Friend",
+    author: "Elena Ferrante",
+    year: 2011,
+    read: "2023-07",
+    rating: 4,
+    tone: "#7d93a6",
+    tags: ["italian", "novel", "friendship", "comingOfAge"],
+    review: ["not sure what to say except that i highlighted like everything in this book"],
+  },
+  {
+    slug: "breath-becomes-air",
+    title: "When Breath Becomes Air",
+    author: "Paul Kalanithi",
+    year: 2016,
+    read: "2023-11",
+    rating: 4,
+    tone: "#6aa0d8",
+    tags: ["american", "memoir", "medicine", "grief"],
+    review: [
+      "maybe words will come to me later. such a heartbreaking read",
     ],
   },
 ];
