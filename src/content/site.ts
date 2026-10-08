@@ -73,13 +73,17 @@ export const education = {
   school: "Johns Hopkins University",
 };
 
-type AboutSegment = string | { text: string; href: string } | { text: string; highlight: true };
+type AboutSegment =
+  | string
+  /** `preview`: a screenshot of the linked site, shown on hover (public/about/previews/). */
+  | { text: string; href: string; preview?: string }
+  | { text: string; highlight: true };
 
 export const about: { paragraphs: (string | AboutSegment[])[] } = {
   paragraphs: [
     [
       "Hey there! I'm a product designer that's obsessed with building things. In university, I became involved with the startup scene and eventually founded a ",
-      { text: "design studio", href: "https://bmore-designful.com/" },
+      { text: "design studio", href: "https://bmore-designful.com/", preview: "/about/previews/bmore-designful.webp" },
       ". Since then, I've been the founding designer for ",
       { text: "3 venture-backed startups", highlight: true },
       ", scaled a bootstrapped SaaS app to ",
@@ -92,11 +96,19 @@ export const about: { paragraphs: (string | AboutSegment[])[] } = {
     ],
     [
       "Outside of work, I'm also a ",
-      { text: "published fiction writer", href: "https://sinetheta.net/26.html" },
+      {
+        text: "published fiction writer",
+        href: "https://sinetheta.net/26.html",
+        preview: "/about/previews/sinetheta.webp",
+      },
       ", ",
-      { text: "photographer", href: "https://snowbellphoto.com/" },
+      { text: "photographer", href: "https://snowbellphoto.com/", preview: "/about/previews/snowbell.webp" },
       ", voracious reader, and ",
-      { text: "aspiring translator", href: "https://tealeafgirl.substack.com/" },
+      {
+        text: "aspiring translator",
+        href: "https://tealeafgirl.substack.com/",
+        preview: "/about/previews/tealeafgirl.webp",
+      },
       ".",
     ],
   ],

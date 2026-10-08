@@ -2,6 +2,7 @@ import { about, education, portrait, recommendations, type RecommendationItem } 
 import { Portrait } from "@/components/home/Portrait";
 import { PhotoSlotList } from "./PhotoSlotList";
 import { SocialLinks } from "./SocialLinks";
+import { PreviewLink } from "./PreviewLink";
 import { ARROW_NE } from "@/lib/glyphs";
 
 const recommendationGroups: {
@@ -37,15 +38,9 @@ export function AboutSection() {
                             {seg.text}
                           </span>
                         ) : (
-                          <a
-                            key={j}
-                            href={seg.href}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="link-underline"
-                          >
+                          <PreviewLink key={j} href={seg.href} preview={seg.preview}>
                             {seg.text}
-                          </a>
+                          </PreviewLink>
                         ),
                       )}
                 </p>
