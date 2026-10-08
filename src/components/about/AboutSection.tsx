@@ -32,6 +32,10 @@ export function AboutSection() {
                     : p.map((seg, j) =>
                         typeof seg === "string" ? (
                           seg
+                        ) : "highlight" in seg ? (
+                          <span key={j} className="font-medium">
+                            {seg.text}
+                          </span>
                         ) : (
                           <a
                             key={j}

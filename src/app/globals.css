@@ -52,6 +52,7 @@
   --color-matcha: var(--color-matcha);
   --font-serif: var(--font-instrument-serif);
   --font-sans: var(--font-open-sans);
+  --font-zh: var(--font-huiwen-mincho);
 }
 
 html {
@@ -193,5 +194,80 @@ body {
   }
   .crossfade-frame + .crossfade-frame {
     opacity: 0;
+  }
+}
+
+/* Hero "Just shipped" line (ShippedLine): a pulsing matcha status dot, the line
+   typing itself in once, Pebble's mascot as an emoji, and a blinking caret. */
+
+.shipped-lead {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+/* ── A matcha status dot with a ring that breathes outward, like a
+   "live" / "updated" indicator. */
+/* Hangs in the line's left padding so a wrapped second line aligns with the text. */
+.shipped-dot {
+  position: absolute;
+  left: 0;
+  top: calc(0.6875em - 3.5px); /* centred on the first line (leading-snug) */
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background: var(--color-matcha);
+}
+
+.shipped-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--color-matcha);
+  animation: shipped-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes shipped-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  80%,
+  100% {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+
+/* Pebble's rock mascot, sized and set like an emoji after the name. */
+.shipped-mark {
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  margin-left: 0.2em;
+  vertical-align: -0.28em;
+}
+
+/* ── The line types itself in, then a matcha caret keeps blinking. */
+.shipped-caret {
+  display: inline-block;
+  width: 1.5px;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  background: var(--color-matcha);
+  animation: shipped-blink 1.05s steps(1, end) infinite;
+}
+
+@keyframes shipped-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shipped-dot::after,
+  .shipped-caret {
+    animation: none;
   }
 }

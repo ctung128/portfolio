@@ -76,7 +76,10 @@ export function PhotoSlotList({ items }: { items: RecommendationItem[] }) {
           style={{ opacity: active === null ? 1 : 0 }}
         >
           <span aria-hidden className="text-ink-faint">✱</span>
-          <span className="px-3 font-sans text-xs text-ink-faint">hover a sidequest</span>
+          <span className="px-3 font-sans text-xs text-ink-faint">
+            <span className="[@media(hover:none)]:hidden">hover</span>
+            <span className="hidden [@media(hover:none)]:inline">click</span> a sidequest
+          </span>
         </div>
         {photos.map((p, n) => {
           const on = active === p.index;

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { instrumentSerif, openSans } from "@/lib/fonts";
+import { huiwenMincho, instrumentSerif, openSans } from "@/lib/fonts";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { siteConfig } from "@/content/site";
@@ -46,7 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${instrumentSerif.variable} ${openSans.variable} h-full antialiased`}
+      className={`${instrumentSerif.variable} ${openSans.variable} ${huiwenMincho.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col font-sans">
         <Header />

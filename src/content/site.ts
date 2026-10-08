@@ -13,9 +13,21 @@ export const siteConfig = {
 };
 
 export const hero = {
-  headline: "Carolyn is a product-minded designer with a high bar for craft.",
+  name: "Carolyn Tung",
+  /** Set vertically beside the name in Huiwen Mincho. Changing it means
+   * rebuilding the font subset (src/fonts/LICENSE-huiwen-mincho.txt). */
+  chineseName: "童雪玲",
+  tagline: "AI-native product designer with a high bar for craft.",
+  /** "Just shipped {name} {relative date}". The date is counted in the
+   * visitor's browser, so it stays current without a rebuild. */
+  shipped: { name: "Pebble", href: "https://learnpebble.vercel.app/", date: "2026-10-06" },
   subheadBold: "Currently @ First Voyage.",
-  subheadMuted: "Previously secured funding for founders @ B'More Designful.",
+  location: "Based in NYC",
+  artwork: {
+    src: "/personal/hero.webp",
+    alt: "Ink painting of an immortal reclining on a billowing cloud, holding a pair of peaches",
+    caption: "“An Immortal on a Cloud with a Pair of Peaches” (20th century)",
+  },
 };
 
 export const personalPhotos = [
@@ -61,13 +73,25 @@ export const education = {
   school: "Johns Hopkins University",
 };
 
-type AboutSegment = string | { text: string; href: string };
+type AboutSegment = string | { text: string; href: string } | { text: string; highlight: true };
 
 export const about: { paragraphs: (string | AboutSegment[])[] } = {
   paragraphs: [
-    "Hey there! I'm a product designer that loves building things, whether that's an app or a good story. I studied Cognitive Science at Johns Hopkins University, where I became involved with the startup scene and eventually founded a design studio. So far, I've worked with 15+ founders across consumer social, healthcare, and enterprise products, helping companies scale and drive growth.",
     [
-      "Outside of work, I love Italian literature, mountains, and all things wabi-sabi. I'm also a ",
+      "Hey there! I'm a product designer that's obsessed with building things. In university, I became involved with the startup scene and eventually founded a ",
+      { text: "design studio", href: "https://bmore-designful.com/" },
+      ". Since then, I've been the founding designer for ",
+      { text: "3 venture-backed startups", highlight: true },
+      ", scaled a bootstrapped SaaS app to ",
+      { text: "30K+ users", highlight: true },
+      " and ",
+      { text: "$20K MRR", highlight: true },
+      " within 6 months, and designed products for ",
+      { text: "15+ founders", highlight: true },
+      ".",
+    ],
+    [
+      "Outside of work, I'm also a ",
       { text: "published fiction writer", href: "https://sinetheta.net/26.html" },
       ", ",
       { text: "photographer", href: "https://snowbellphoto.com/" },
@@ -102,7 +126,7 @@ export const recommendations: Record<
   ],
   learning: [
     {
-      title: "Creating at Happy Medium art cafe",
+      title: "Creating at art cafes",
       photo: { src: "/personal/sidequests/hamster.webp", ratio: 3 / 4 },
     },
     { title: "Moribana ikebana", photo: { src: "/personal/sidequests/ikebana.webp", ratio: 3 / 4 } },
@@ -115,11 +139,11 @@ export const recommendations: Record<
       photo: { src: "/personal/sidequests/tea.webp", ratio: 3 / 2 },
     },
     {
-      title: "Biking and hiking in Yosemite (heaven on earth)",
+      title: "Exploring Yosemite (heaven on earth)",
       photo: { src: "/personal/sidequests/yosemite.webp", ratio: 3 / 4 },
     },
     {
-      title: "Cookin up Chinese fairy recipes (traditional Chinese medicine)",
+      title: "Cookin up Chinese fairy medicine (TCM)",
       photo: { src: "/personal/sidequests/soup.webp", ratio: 3 / 2 },
     },
   ],
@@ -131,11 +155,12 @@ export const recommendations: Record<
   ],
 };
 
-export const nav = [
-  { label: "Work", href: "/#work" },
+// Resume and "Let's talk" live in the footer and the About links row.
+export const nav: { label: string; href: string; external?: boolean }[] = [
   { label: "About", href: "/about" },
+  { label: "Work", href: "/#work" },
   { label: "Play", href: "/play" },
-  { label: "Resume", href: siteConfig.resume, external: true },
+  { label: "Library", href: "/library" },
 ];
 
 export const playPage = {

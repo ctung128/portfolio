@@ -1,47 +1,59 @@
 import Link from "next/link";
-import Image from "next/image";
 import { nav, siteConfig } from "@/content/site";
-import { ARROW_NE } from "@/lib/glyphs";
 
+/** Height of the header row; the hero's fit-the-first-screen math reads it. */
+export const HEADER_HEIGHT = "64px";
+
+function HomeIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.6}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+      className="size-[22px]"
+    >
+      <path d="M3.5 10.5 12 3.5l8.5 7" />
+      <path d="M5.5 9v10.5h13V9" />
+      <path d="M10 19.5v-5h4v5" />
+    </svg>
+  );
+}
+
+/** A home icon (the logo now leads the homepage hero) and the nav. Rounded at
+ * the bottom like the footer is at the top, which shows once content scrolls
+ * under the translucent background. */
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-border/80 bg-cream/85 backdrop-blur">
-      <div className="mx-auto grid max-w-5xl grid-cols-[auto_1fr] items-center gap-4 sm:grid-cols-[auto_1fr_auto] px-6 py-4 sm:px-8">
-        <Link href="/" className="flex items-center gap-2" aria-label={`${siteConfig.name} home`}>
-          <Image
-            src="/brand/logo.svg"
-            alt={siteConfig.name}
-            width={86}
-            height={58}
-            className="h-[58px] w-[86px] max-w-none shrink-0"
-            priority
-          />
+    <header className="sticky top-0 z-40 rounded-b-[12px] bg-cream/85 backdrop-blur">
+      <div
+        className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 sm:px-8"
+        style={{ height: HEADER_HEIGHT }}
+      >
+        <Link
+          href="/"
+          aria-label={`${siteConfig.name} home`}
+          className="-ml-1 p-1 text-ink-soft transition-colors hover:text-ink"
+        >
+          <HomeIcon />
         </Link>
 
-        {/* Tighter below 360px (iPhone SE 1st gen) so the logo keeps its size. */}
-        <nav className="flex items-center justify-end gap-3 min-[360px]:gap-4 sm:justify-center sm:gap-8">
+        <nav className="flex items-center gap-5 sm:gap-8">
           {nav.map((item) => (
             <Link
               key={item.label}
               href={item.href}
               target={item.external ? "_blank" : undefined}
               rel={item.external ? "noreferrer" : undefined}
-              className="font-serif text-base text-ink-soft transition-colors hover:text-ink min-[360px]:text-lg"
+              className="font-serif text-lg text-ink-soft transition-colors hover:text-ink"
             >
               {item.label}
             </Link>
           ))}
         </nav>
-
-        <a
-          href={siteConfig.calendly}
-          target="_blank"
-          rel="noreferrer"
-          className="btn-slide hidden items-center gap-1.5 justify-self-end rounded-[12px] bg-ink px-4 py-2 font-sans text-sm text-cream sm:inline-flex"
-        >
-          <span className="btn-slide-viewport"><span>Let&rsquo;s talk</span></span>
-          <span className="btn-slide-viewport" aria-hidden><span>{ARROW_NE}</span></span>
-        </a>
       </div>
     </header>
   );

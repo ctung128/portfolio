@@ -1,92 +1,116 @@
-"use client";
+import Image from "next/image";
+import { hero, siteConfig } from "@/content/site";
+import { HEADER_HEIGHT } from "@/components/layout/Header";
+import { ShippedLine } from "./ShippedLine";
 
-import { useLayoutEffect, useRef, useState } from "react";
-import { hero, personalPhotos, siteConfig } from "@/content/site";
-import { PersonalCarousel } from "./PersonalCarousel";
-import { ARROW_NE } from "@/lib/glyphs";
+/** The scan's own shape, mat included (1438 x 1165). */
+const PAINTING_RATIO = 1438 / 1165;
+/** Non-painting height of the hero at sm+ (padding, logo row, box gaps) on top
+ * of the header. The vertical name runs a little taller than the logo. */
+const REST = "250px";
 
-const TITLE_MAX = 40;
-const TITLE_MIN = 13;
-/** Below this container width, shrinking the headline onto one line would
- * make it smaller than body text, so it wraps at a fixed size instead. */
-const WRAP_BELOW = 560;
-const TITLE_WRAPPED = 28;
-
-function fitToContainer(
-  container: HTMLElement,
-  text: HTMLElement,
-  max: number,
-  min: number
-) {
-  const width = container.clientWidth;
-  let size = max;
-  text.style.fontSize = `${size}px`;
-  while (text.scrollWidth > width && size > min) {
-    size -= 0.5;
-    text.style.fontSize = `${size}px`;
-  }
-  return size;
+function Painting({ preload = false }: { preload?: boolean }) {
+  return (
+    <div className="relative w-full" style={{ aspectRatio: String(PAINTING_RATIO) }}>
+      <Image
+        src={hero.artwork.src}
+        alt={hero.artwork.alt}
+        fill
+        unoptimized
+        loading="eager"
+        fetchPriority={preload ? "high" : undefined}
+        className="object-cover"
+      />
+    </div>
+  );
 }
 
+/**
+ * Laid out like a museum catalogue entry (図録): the logo (as the page title)
+ * with 童雪玲 set vertically beside it, then one box ruled in light hairlines.
+ *
+ * - sm+: the painting on the left; on the right a cell with the tagline and
+ *   the "Just shipped" line, over the label (role, location, caption). The
+ *   painting's width comes from the viewport height so the hero fits the first
+ *   screen uncropped; it's centred in its cell when the text column is taller.
+ * - Phones: the same box stacked, every cell on 16px padding so text and
+ *   painting share one left edge. The tagline stays on one line by scaling
+ *   with its cell (container query units), and the shipped line matches it.
+ *
+ * The painting is served as-is (unoptimized, q94 WebP of a 1438px scan):
+ * Next's default q75 re-encode visibly softened it.
+ */
 export function Hero() {
-  const titleContainerRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const [titleSize, setTitleSize] = useState(TITLE_MAX);
-  const [wrap, setWrap] = useState(false);
-
-  useLayoutEffect(() => {
-    const fit = () => {
-      const titleContainer = titleContainerRef.current;
-      const title = titleRef.current;
-      if (!titleContainer || !title) return;
-      if (titleContainer.clientWidth < WRAP_BELOW) {
-        title.style.whiteSpace = "";
-        setWrap(true);
-        setTitleSize(TITLE_WRAPPED);
-        return;
-      }
-      setWrap(false);
-      // Measure on one line even before React swaps the wrap class back.
-      title.style.whiteSpace = "nowrap";
-      setTitleSize(fitToContainer(titleContainer, title, TITLE_MAX, TITLE_MIN));
-    };
-
-    fit();
-    const ro = new ResizeObserver(fit);
-    if (titleContainerRef.current) ro.observe(titleContainerRef.current);
-    return () => ro.disconnect();
-  }, []);
-
   return (
-    <section className="mx-auto max-w-5xl px-6 pb-16 pt-16 sm:px-8 sm:pb-20 sm:pt-20">
-      <div ref={titleContainerRef} className="w-full min-w-0">
-        <h1
-          ref={titleRef}
-          className={`block font-serif leading-[1.15] text-ink ${
-            wrap ? "whitespace-normal text-balance" : "whitespace-nowrap"
-          }`}
-          style={{ fontSize: titleSize }}
-        >
-          {hero.headline}
+    <section className="mx-auto max-w-5xl px-6 pb-8 pt-8 sm:px-8 sm:pt-10">
+      <div className="flex items-start justify-between gap-6">
+        <h1>
+          <Image
+            src="/brand/logo.svg"
+            alt={siteConfig.name}
+            width={86}
+            height={48}
+            loading="eager"
+            className="h-[60px] w-auto sm:h-[76px] lg:h-[92px]"
+          />
         </h1>
+        <p
+          lang="zh-Hans"
+          className="shrink-0 font-zh text-[26px] leading-none tracking-[0.1em] text-ink [writing-mode:vertical-rl] sm:text-[30px] lg:text-[34px]"
+        >
+          {hero.chineseName}
+        </p>
       </div>
 
-      <p className="mt-[14px] max-w-2xl font-sans text-base leading-relaxed">
-        <span className="font-semibold text-ink">{hero.subheadBold}</span>{" "}
-        <span className="text-ink-faint">{hero.subheadMuted}</span>
-      </p>
+      {/* Phones */}
+      <div className="mt-6 rounded-[12px] border border-border sm:hidden">
+        <div className="p-4 @container">
+          <p className="whitespace-nowrap font-sans text-[min(15px,4.05cqi)] font-medium leading-snug text-ink">
+            {hero.tagline}
+          </p>
+          <div className="mt-2.5">
+            <ShippedLine className="text-[min(15px,4.05cqi)]" />
+          </div>
+        </div>
+        <figure className="border-t border-border p-4">
+          <Painting />
+          <figcaption className="mt-3 font-sans text-[12px] leading-snug text-ink-faint">
+            {hero.artwork.caption}
+          </figcaption>
+        </figure>
+        <div className="border-t border-border p-4 font-sans text-[15px] leading-relaxed">
+          <p className="font-semibold text-ink">{hero.subheadBold}</p>
+          <p className="text-ink-soft">{hero.location}</p>
+        </div>
+      </div>
 
-      <a
-        href={siteConfig.calendly}
-        target="_blank"
-        rel="noreferrer"
-        className="btn-slide mt-7 inline-flex items-center gap-1.5 rounded-[12px] bg-ink px-5 py-2.5 font-sans text-sm text-cream"
-      >
-        <span className="btn-slide-viewport"><span>Reach out</span></span>
-        <span className="btn-slide-viewport" aria-hidden><span>{ARROW_NE}</span></span>
-      </a>
+      {/* sm+ */}
+      <div className="mt-10 hidden items-stretch rounded-[12px] border border-border sm:flex">
+        <div
+          className="flex w-[min(100%-17rem,calc((100svh-var(--header)-var(--rest))*1.234+2rem))] shrink-0 items-center border-r border-border p-4"
+          style={{ "--header": HEADER_HEIGHT, "--rest": REST } as React.CSSProperties}
+        >
+          <Painting preload />
+        </div>
 
-      <PersonalCarousel photos={personalPhotos} />
+        <div className="flex min-w-0 flex-1 flex-col">
+          <div className="flex-1 p-5">
+            <p className="text-pretty font-sans text-base font-medium leading-snug text-ink">
+              {hero.tagline}
+            </p>
+            <div className="mt-3">
+              <ShippedLine />
+            </div>
+          </div>
+          <div className="border-t border-border p-5 font-sans text-[15px] leading-relaxed">
+            <p className="font-semibold text-ink">{hero.subheadBold}</p>
+            <p className="text-ink-soft">{hero.location}</p>
+            <p className="mt-6 border-t border-border pt-3 text-[13px] text-ink-faint">
+              {hero.artwork.caption}
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

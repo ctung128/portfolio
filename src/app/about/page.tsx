@@ -4,7 +4,10 @@ import { AboutSection } from "@/components/about/AboutSection";
 
 export const metadata: Metadata = {
   title: "About",
-  description: about.paragraphs[0] as string,
+  description: [about.paragraphs[0]]
+    .flat()
+    .map((seg) => (typeof seg === "string" ? seg : seg.text))
+    .join(""),
 };
 
 export default function AboutPage() {
