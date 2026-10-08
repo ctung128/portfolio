@@ -5,7 +5,6 @@ import { BookDialog } from "./BookDialog";
 import { BookCard, CARD_BACKDROP } from "./BookCard";
 import { useBookViewer } from "./useBookViewer";
 
-const COLS = 5;
 const shelf = [...books].sort((a, b) => hue(a.tone) - hue(b.tone));
 
 /** The shelf: covers cropped to one size and butted edge to edge,
@@ -16,17 +15,7 @@ export function Bookshelf() {
   const book = index === null ? null : shelf[index];
 
   return (
-    <section className="py-6">
-      <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
-        <h2 className="font-serif text-[26px] leading-none text-ink sm:text-[30px] lg:text-4xl">
-          The shelf
-          <span className="ml-3 align-middle font-sans text-xs uppercase tracking-[0.2em] text-ink-faint">
-            By color
-          </span>
-        </h2>
-        <span className="font-sans text-xs text-ink-faint">Tap a book to open it</span>
-      </div>
-
+    <section>
       <ol className="grid grid-cols-5 overflow-hidden rounded-[12px] border border-border shadow-[0_1px_2px_rgba(37,37,37,0.06),0_8px_24px_-12px_rgba(37,37,37,0.18)]">
         {shelf.map((b, i) => (
           <li key={b.slug} className="relative">
@@ -51,23 +40,7 @@ export function Bookshelf() {
             </button>
           </li>
         ))}
-        {shelf.length % COLS > 0 && (
-          <li
-            aria-hidden
-            style={{ gridColumn: `span ${COLS - (shelf.length % COLS)}` }}
-            className="flex items-end bg-cream-subtle p-3 font-sans text-[11px] uppercase leading-relaxed tracking-[0.18em] text-ink-faint sm:p-5"
-          >
-            {shelf.length} books,
-            <br />
-            warm to cool
-          </li>
-        )}
       </ol>
-      <div
-        aria-hidden
-        className="mt-3 h-1.5 rounded-full"
-        style={{ background: `linear-gradient(90deg, ${shelf.map((b) => b.tone).join(",")})` }}
-      />
 
       {book && index !== null && (
         <BookDialog
