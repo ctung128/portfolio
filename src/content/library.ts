@@ -156,11 +156,14 @@ export const books: Book[] = [
     author: "Leonard Koren",
     year: 1994,
     read: "2022-08",
-    rating: 3,
+    rating: 4,
     tone: "#8a6a3a",
     tags: ["aesthetics", "design", "philosophy"],
     review: [
-      "beauty can be coaxed out of ugliness; it is a dynamic event that occurs between you and something else and can spontaneously occur at any moment in the right conditions. beauty is thus an altered state of consciousness, an extraordinary moment of poetry and grace",
+      "reading this again 4 years later with a much stronger grasp on japanese philosophy and spirituality... i really enjoyed this!",
+      "i like how koren organized the book through sections on 1) metaphysics, 2) spiritual values, 3) state of mind, 4) moral precepts, and 5) material qualities, and that he set up binaries contrasting wabi-sabi with other schools of thought like modernism. … but, the photographs did very little work reinforcing those concepts, and i wish koren had included more robust analysis of his wabi-sabi examples.",
+      "however, the actual subject matter was right up my alley... i learned about iemoto families (which made me think: ah, so the Mansei-en bonsai garden from the 19th century is owned by what's called an iemoto family!). i also learned that japanese traditional arts are all interconnected … the tea ceremony was “an eclectic social art form combining... architecture, interior and garden design, flower arranging, painting, food preparation, and performance.” also also, the idea that one must bend or crawl in order to enter the wabi-sabi tea room as a symbolic act of humility - and that once completed, everyone in the tea room becomes of equal status - was fascinating.",
+      "finally, i liked the footnote at the end warning readers to maybe not refer to japanese ideas and values as “eastern” … why shy away from the fact that eating hamburgers and listening to the beatles is incredibly japanese?",
     ],
   },
   {
