@@ -53,13 +53,17 @@ export function PhotoSlotList({ items }: { items: RecommendationItem[] }) {
               {item.photo && active === i ? (
                 <span
                   className="mt-3 block max-w-[220px] animate-[print-rise_420ms_cubic-bezier(0.22,0.8,0.3,1)] motion-reduce:animate-none rounded-[6px] border border-border bg-white p-1.5 shadow-[0_1px_2px_rgba(37,37,37,0.06),0_8px_24px_-12px_rgba(37,37,37,0.25)] min-[420px]:hidden"
-                  style={{ aspectRatio: String(item.photo.ratio), rotate: "-1.5deg" }}
+                  style={{ rotate: "-1.5deg" }}
                 >
+                  {/* The photo sets its own shape and the white frame wraps it.
+                      (A percentage height inside an aspect-ratio frame isn't
+                      honoured by every browser; Safari let photos spill out.) */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={item.photo.src}
                     alt={item.title}
-                    className="block h-full w-full rounded-[3px] object-cover"
+                    className="block h-auto w-full rounded-[3px] object-cover"
+                    style={{ aspectRatio: String(item.photo.ratio) }}
                   />
                 </span>
               ) : null}
@@ -92,7 +96,6 @@ export function PhotoSlotList({ items }: { items: RecommendationItem[] }) {
               className="absolute left-1/2 top-1/2 rounded-[6px] border border-border bg-white p-1.5 shadow-[0_1px_2px_rgba(37,37,37,0.06),0_8px_24px_-12px_rgba(37,37,37,0.25)] motion-reduce:!transition-none"
               style={{
                 width: p.ratio > 1 ? "118%" : "100%",
-                aspectRatio: String(p.ratio),
                 opacity: on ? 1 : 0,
                 visibility: on ? "visible" : "hidden",
                 transform: `translate(-50%, -50%) translateY(${on ? 0 : 10}px) scale(${on ? 1 : 0.97}) rotate(${TILTS[n % TILTS.length]}deg)`,
@@ -105,7 +108,8 @@ export function PhotoSlotList({ items }: { items: RecommendationItem[] }) {
                 alt={p.title}
                 loading="lazy"
                 draggable={false}
-                className="block h-full w-full rounded-[3px] object-cover"
+                className="block h-auto w-full rounded-[3px] object-cover"
+                style={{ aspectRatio: String(p.ratio) }}
               />
             </div>
           );
