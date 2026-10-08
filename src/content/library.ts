@@ -281,12 +281,6 @@ export const books: Book[] = [
   },
 ];
 
-const SEASONS = ["WINTER", "WINTER", "SPRING", "SPRING", "SPRING", "SUMMER", "SUMMER", "SUMMER", "AUTUMN", "AUTUMN", "AUTUMN", "WINTER"];
-
-/** The season a book was finished in, for the vertical running text on cards;
- * its publication year when there's no read date. */
-export const season = (b: Book) => (b.read ? SEASONS[Number(b.read.slice(5, 7)) - 1] : String(b.year));
-
 /** "2024.09" */
 export const readLabel = (b: Book) => b.read?.replace("-", ".");
 

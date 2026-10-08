@@ -8,23 +8,6 @@
   --tone-wash: color-mix(in oklch, var(--tone) 22%, #fbf8f2);
 }
 
-/* Rain drop over the card's headline. Coloured by the card's tone. */
-.drop {
-  width: 7px;
-  height: 11px;
-  background: var(--tone);
-  border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%;
-  clip-path: polygon(50% 0, 100% 62%, 92% 88%, 50% 100%, 8% 88%, 0 62%);
-}
-
-/* Marker highlighter under a headline (shelf heading). */
-.highlight {
-  background: linear-gradient(transparent 58%, #fff36b 58%, #fff36b 92%, transparent 92%);
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-  padding: 0 0.08em;
-}
-
 /* The blow-up: the cover morphs from its tile into the card. */
 ::view-transition-group(library-cover) {
   animation-duration: 480ms;

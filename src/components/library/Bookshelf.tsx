@@ -18,16 +18,16 @@ export function Bookshelf() {
   return (
     <section className="py-6">
       <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
-        <h2 className="font-serif text-[28px] leading-none text-ink sm:text-4xl">
-          <span className="highlight">The shelf</span>
-          <span className="ml-3 align-middle font-sans text-xs tracking-[0.2em] text-ink-faint">
-            BY COLOUR
+        <h2 className="font-serif text-[26px] leading-none text-ink sm:text-[30px] lg:text-4xl">
+          The shelf
+          <span className="ml-3 align-middle font-sans text-xs uppercase tracking-[0.2em] text-ink-faint">
+            By color
           </span>
         </h2>
-        <span className="font-sans text-xs text-ink-faint">tap a book ↓</span>
+        <span className="font-sans text-xs text-ink-faint">Tap a book to open it</span>
       </div>
 
-      <ol className="grid grid-cols-5 overflow-hidden rounded-xl shadow-[0_20px_60px_-30px_rgba(0,0,0,0.45)]">
+      <ol className="grid grid-cols-5 overflow-hidden rounded-[12px] border border-border shadow-[0_1px_2px_rgba(37,37,37,0.06),0_8px_24px_-12px_rgba(37,37,37,0.18)]">
         {shelf.map((b, i) => (
           <li key={b.slug} className="relative">
             <button
@@ -55,7 +55,7 @@ export function Bookshelf() {
           <li
             aria-hidden
             style={{ gridColumn: `span ${COLS - (shelf.length % COLS)}` }}
-            className="flex items-end bg-[#f3f1ec] p-3 font-sans text-[11px] uppercase leading-relaxed tracking-[0.18em] text-ink-faint sm:p-5"
+            className="flex items-end bg-cream-subtle p-3 font-sans text-[11px] uppercase leading-relaxed tracking-[0.18em] text-ink-faint sm:p-5"
           >
             {shelf.length} books,
             <br />
