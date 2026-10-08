@@ -123,16 +123,12 @@ export type RecommendationItem = {
 };
 
 export const recommendations: Record<
-  "reading" | "listening" | "learning" | "recommending",
+  "listening" | "learning",
   RecommendationItem[]
 > = {
-  reading: [
-    { title: "jasmi.news", detail: "- my favorite journalist on Silicon Valley and trends in startup/tech/AI culture" },
-    { title: "Lies and Sorcery", detail: "by Elsa Morante" },
-  ],
   listening: [
     { title: "Dive Club", detail: "- my favorite product design podcast" },
-    { title: "How I Built This with Guy Raz" },
+    { title: "jasmi.news", detail: "- my favorite journalist on Silicon Valley and trends in startup/tech/AI culture" },
     { title: "The Lonely Palette", detail: "- my favorite art history podcast" },
     { title: "Sinica Podcast", detail: "- my favorite podcast on Chinese geopolitics, history & culture" },
   ],
@@ -158,12 +154,6 @@ export const recommendations: Record<
       title: "Cookin up Chinese fairy medicine (TCM)",
       photo: { src: "/personal/sidequests/soup.webp", ratio: 3 / 2 },
     },
-  ],
-  recommending: [
-    { title: "Siddhartha", detail: "by Hermann Hesse" },
-    { title: "Being Mortal: Medicine and What Matters in the End", detail: "by Atul Gawande" },
-    { title: "Days of Abandonment", detail: "by Elena Ferrante" },
-    { title: "Whiplash", detail: "(2014)" },
   ],
 };
 

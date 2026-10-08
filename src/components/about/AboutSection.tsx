@@ -10,13 +10,14 @@ const recommendationGroups: {
   items: RecommendationItem[];
   boldTitles?: boolean;
 }[] = [
-  { label: "Reading", items: recommendations.reading, boldTitles: true },
   { label: "Listening", items: recommendations.listening, boldTitles: true },
   { label: "Sidequesting", items: recommendations.learning },
-  { label: "Recommending", items: recommendations.recommending, boldTitles: true },
 ];
 
 export function AboutSection() {
+  // Alternate the prints' tilt across every preview link, in reading order.
+  let previewCount = 0;
+
   return (
     <section>
       <div className="mx-auto max-w-5xl px-6 py-16 sm:px-8 sm:py-24">
@@ -38,7 +39,12 @@ export function AboutSection() {
                             {seg.text}
                           </span>
                         ) : (
-                          <PreviewLink key={j} href={seg.href} preview={seg.preview}>
+                          <PreviewLink
+                            key={j}
+                            href={seg.href}
+                            preview={seg.preview}
+                            tilt={seg.preview && previewCount++ % 2 ? 2 : -2}
+                          >
                             {seg.text}
                           </PreviewLink>
                         ),

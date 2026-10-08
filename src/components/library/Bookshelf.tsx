@@ -7,7 +7,7 @@ import { useBookViewer } from "./useBookViewer";
 
 const shelf = [...books].sort((a, b) => hue(a.tone) - hue(b.tone));
 
-/** The shelf: covers cropped to one size and butted edge to edge,
+/** The shelf: covers cropped to one size with a thin gutter between,
  * sorted by hue so the shelf reads as a single colour field. A cover opens
  * its BookCard. Laid out like the Play page: a sticky left column (title,
  * description, hint) beside the grid. */
@@ -42,13 +42,13 @@ export function Bookshelf() {
         </p>
       </aside>
 
-      <ol className="grid flex-1 grid-cols-4 self-start overflow-hidden rounded-[12px] border border-border shadow-[0_1px_2px_rgba(37,37,37,0.06),0_8px_24px_-12px_rgba(37,37,37,0.18)] sm:grid-cols-6">
+      <ol className="grid flex-1 grid-cols-4 gap-1 self-start p-1 sm:gap-1.5 sm:p-1.5 overflow-hidden rounded-[12px] border border-border shadow-[0_1px_2px_rgba(37,37,37,0.06),0_8px_24px_-12px_rgba(37,37,37,0.18)] sm:grid-cols-6">
         {shelf.map((b, i) => (
           <li key={b.slug} className="relative">
             <button
               type="button"
               onClick={() => open(i)}
-              className="group relative block aspect-[2/3] w-full overflow-hidden focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+              className="group relative block aspect-[2/3] w-full overflow-hidden rounded-[8px] sm:rounded-[6px] focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
               aria-label={`${b.title} by ${b.author}`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}

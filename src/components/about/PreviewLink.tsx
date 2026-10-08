@@ -27,10 +27,13 @@ function hostOf(href: string) {
 export function PreviewLink({
   href,
   preview,
+  tilt = -2,
   children,
 }: {
   href: string;
   preview?: string;
+  /** Resting rotation of the print, in degrees. */
+  tilt?: number;
   children: React.ReactNode;
 }) {
   const link = useRef<HTMLAnchorElement>(null);
@@ -95,7 +98,7 @@ export function PreviewLink({
               visibility: shown ? "visible" : "hidden",
               transformOrigin: pos.below ? "50% 0" : "50% 100%",
               transform: shown
-                ? "translateY(0) rotate(-2deg) scale(1)"
+                ? `translateY(0) rotate(${tilt}deg) scale(1)`
                 : `translateY(${pos.below ? -6 : 6}px) rotate(0deg) scale(0.96)`,
               transition: `opacity 200ms, visibility 200ms, transform 320ms cubic-bezier(0.22, 0.8, 0.3, 1)`,
             }}
