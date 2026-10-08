@@ -8,10 +8,8 @@ type Props = {
   count: number;
   onClose: () => void;
   onStep: (delta: number) => void;
-  /** Backdrop colour/texture; each direction brings its own. */
+  /** Backdrop colour/texture. */
   backdropClassName: string;
-  /** Classes for the round controls (close, prev/next, counter). */
-  controlClassName?: string;
   children: ReactNode;
 };
 
@@ -24,7 +22,6 @@ export function BookDialog({
   onClose,
   onStep,
   backdropClassName,
-  controlClassName = "bg-white/90 text-ink shadow-sm hover:bg-white",
   children,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
@@ -48,7 +45,8 @@ export function BookDialog({
     };
   }, []);
 
-  const control = `grid size-10 place-items-center rounded-full font-sans text-sm transition-colors ${controlClassName}`;
+  const control =
+    "grid size-10 place-items-center rounded-full bg-white/90 font-sans text-sm text-ink shadow-sm transition-colors hover:bg-white";
 
   return (
     <div

@@ -4,7 +4,7 @@ import type { CSSProperties } from "react";
 import { TAGS, cover, readLabel, season, type Book } from "@/content/library";
 import { COVER_VT } from "./useBookViewer";
 
-/** Backdrop behind CardA when it's open. */
+/** Backdrop behind the card when it's open. */
 export const CARD_BACKDROP = "bg-[#f3f1ec]/95 backdrop-blur-sm";
 
 const DROPS = [
@@ -18,7 +18,7 @@ const DROPS = [
 /** The blown-up card, after the xhs book-post layout: headline with rain
  * drops, cover with a round rating sticker, the season running down both
  * sides, the review on a highlighter block, genre chips. */
-export function CardA({ book }: { book: Book }) {
+export function BookCard({ book }: { book: Book }) {
   const style = { "--tone": book.tone } as CSSProperties;
   const runner = (
     <div aria-hidden className="flex flex-col items-center justify-around py-2 font-serif text-[15px] tracking-[0.35em] text-[var(--tone-ink)] sm:text-lg">

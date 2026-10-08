@@ -46,7 +46,7 @@ export type Book = {
   author: string;
   /** Original publication year. */
   year: number;
-  /** Month finished, "YYYY-MM"; absent for books read after the Goodreads export. */
+  /** Month finished, "YYYY-MM". */
   read?: string;
   rating?: 1 | 2 | 3 | 4 | 5;
   /** A colour pulled from the cover, for tints and the colour-sorted shelf. */
@@ -141,9 +141,14 @@ export const books: Book[] = [
     title: "The Brothers Karamazov",
     author: "Fyodor Dostoevsky",
     year: 1880,
+    read: "2025-10",
+    rating: 5,
     tone: "#b8261e",
     tags: ["russian", "novel", "classic", "philosophy"],
-    review: [],
+    review: [
+      "the heart of this novel is so overshadowed by the dramatic murder trial and grandiose intellectual monologues that i almost forget its most revolutionary moments, like alyosha’s kiss to ivan after the grand inquisitor speech.",
+      "i think of how much dostoevsky’s personal suffering and philosophy has been imbued into these pages, and how beautiful that, in some ways, his solution to grief was to reinvent his deceased baby son into the angel and hero of this novel, the messenger that delivers dostoevsky’s core philosophy of active love and compassion…",
+    ],
   },
   {
     slug: "wabi-sabi",
@@ -236,9 +241,16 @@ export const books: Book[] = [
     title: "Breakneck: China's Quest to Engineer the Future",
     author: "Dan Wang",
     year: 2025,
+    read: "2025-11",
+    rating: 5,
     tone: "#c9a43a",
     tags: ["nonfiction", "china", "tech"],
-    review: [],
+    review: [
+      "I've only really listened to podcasts discussing China's modern history as a technocratic state, but this week I finally got to sit down and read a proper thesis-driven publication about how this affects China's policy leadership and contrasts with the U.S.'s.",
+      "According to Wang, China is an engineering state that can build public infrastructure at breakneck speed whereas the U.S. is a lawyerly society that is designed to block policy change. … Wang warns us that, while the U.S. has plenty of advantages over China on the global stage, China is the country that has the engineering smarts and manpower to build in an apocalyptic scenario...",
+      "He conducts incredible deep dives into China's two most indebted regions, Guizhou and Tianjin … It's why we have Paris replicas in rural parts of China that fail to attract tourists and skyscraper buildings that have zero inhabitants.",
+      "I also really appreciated Wang’s last chapter, which functioned partially as a personal memoir and gave context into his immigrant upbringing. Really timely and great read.",
+    ],
   },
   {
     slug: "mountains-are-high",

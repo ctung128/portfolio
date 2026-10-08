@@ -2,15 +2,16 @@
 
 import { books, cover, hue } from "@/content/library";
 import { BookDialog } from "./BookDialog";
-import { CARD_BACKDROP, CardA } from "./CardA";
+import { BookCard, CARD_BACKDROP } from "./BookCard";
 import { useBookViewer } from "./useBookViewer";
 
 const COLS = 5;
 const shelf = [...books].sort((a, b) => hue(a.tone) - hue(b.tone));
 
-/** B — Spectrum. Covers cropped to one size and butted edge to edge,
- * sorted by hue so the shelf reads as a single colour field. Opens CardA. */
-export function DirectionB() {
+/** The shelf: covers cropped to one size and butted edge to edge,
+ * sorted by hue so the shelf reads as a single colour field. A cover opens
+ * its BookCard. */
+export function Bookshelf() {
   const { index, open, close, step, registerTile } = useBookViewer(shelf.length);
   const book = index === null ? null : shelf[index];
 
@@ -40,7 +41,6 @@ export function DirectionB() {
                 ref={registerTile(i)}
                 src={cover(b)}
                 alt=""
-                loading={i < 10 ? "eager" : "lazy"}
                 className="size-full object-cover transition-[filter,scale] duration-300 group-hover:scale-105 group-hover:brightness-75"
               />
               <span className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
@@ -78,7 +78,7 @@ export function DirectionB() {
           onStep={step}
           backdropClassName={CARD_BACKDROP}
         >
-          <CardA book={book} />
+          <BookCard book={book} />
         </BookDialog>
       )}
     </section>

@@ -8,7 +8,7 @@
   --tone-wash: color-mix(in oklch, var(--tone) 22%, #fbf8f2);
 }
 
-/* Rain drop over the headline (card A). Coloured by the card's tone. */
+/* Rain drop over the card's headline. Coloured by the card's tone. */
 .drop {
   width: 7px;
   height: 11px;
@@ -17,52 +17,12 @@
   clip-path: polygon(50% 0, 100% 62%, 92% 88%, 50% 100%, 8% 88%, 0 62%);
 }
 
-/* Marker highlighter under a headline (card B, shelf heading). */
+/* Marker highlighter under a headline (shelf heading). */
 .highlight {
   background: linear-gradient(transparent 58%, #fff36b 58%, #fff36b 92%, transparent 92%);
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
   padding: 0 0.08em;
-}
-
-/* Washi tape strip. */
-.tape {
-  position: absolute;
-  z-index: 1;
-  width: 64px;
-  height: 20px;
-  background: repeating-linear-gradient(
-    -45deg,
-    rgba(255, 255, 255, 0.55) 0 6px,
-    rgba(255, 255, 255, 0.35) 6px 12px
-  );
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
-  backdrop-filter: blur(1px);
-}
-
-/* Square manuscript grid in faded red. */
-.manuscript {
-  background-color: #fbf8f1;
-  background-image:
-    linear-gradient(rgba(200, 50, 43, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(200, 50, 43, 0.12) 1px, transparent 1px);
-  background-size: 32px 32px;
-  background-position: -1px calc(2.5rem - 7px);
-}
-
-@media (min-width: 640px) {
-  .manuscript {
-    background-position: -1px calc(3.5rem - 7px);
-  }
-}
-
-/* Red seal: double border, slightly uneven like a chop. */
-.seal {
-  border: 2.5px solid currentColor;
-  outline: 1px solid currentColor;
-  outline-offset: 2px;
-  border-radius: 6px 4px 7px 3px;
-  opacity: 0.9;
 }
 
 /* The blow-up: the cover morphs from its tile into the card. */
