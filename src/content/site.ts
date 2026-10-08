@@ -103,7 +103,9 @@ export const about: { paragraphs: (string | AboutSegment[])[] } = {
       },
       ", ",
       { text: "photographer", href: "https://snowbellphoto.com/", preview: "/about/previews/snowbell.webp" },
-      ", voracious reader, and ",
+      ", ",
+      { text: "voracious reader", href: "/library", preview: "/about/previews/library.webp" },
+      ", and ",
       {
         text: "aspiring translator",
         href: "https://tealeafgirl.substack.com/",

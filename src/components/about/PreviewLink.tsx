@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import Link from "next/link";
+import { siteConfig } from "@/content/site";
 import { ARROW_NE } from "@/lib/glyphs";
 
 const WIDTH = 280;
@@ -12,8 +14,11 @@ const EDGE = 16;
 /** Keep the card clear of the sticky header. */
 const TOP_LIMIT = 72;
 
+/** Caption for the print: the site's host, plus the path for this site's own pages. */
 function hostOf(href: string) {
-  return new URL(href).hostname.replace(/^www\./, "");
+  const url = new URL(href, siteConfig.domain);
+  const host = url.hostname.replace(/^www\./, "");
+  return href.startsWith("/") ? host + url.pathname : host;
 }
 
 /**
@@ -22,7 +27,8 @@ function hostOf(href: string) {
  * like the Sidequesting prints. The print is a screenshot (most sites refuse
  * to be framed); it's fixed-positioned in a portal so the paragraph never
  * reflows, flips below the link near the top of the screen, and stays inside
- * the viewport. Touch devices skip it: a tap just follows the link.
+ * the viewport. Touch devices skip it: a tap just follows the link. A
+ * root-relative `href` is one of this site's pages and opens in the same tab.
  */
 export function PreviewLink({
   href,
@@ -37,6 +43,8 @@ export function PreviewLink({
   children: React.ReactNode;
 }) {
   const link = useRef<HTMLAnchorElement>(null);
+  const internal = href.startsWith("/");
+  const Anchor = internal ? Link : "a";
   const [armed, setArmed] = useState(false); // mount the card on first use only
   const [shown, setShown] = useState(false);
   const [pos, setPos] = useState({ left: 0, top: 0, below: false });
@@ -71,19 +79,18 @@ export function PreviewLink({
 
   return (
     <>
-      <a
+      <Anchor
         ref={link}
         href={href}
-        target="_blank"
-        rel="noreferrer"
         className="link-underline"
         onPointerEnter={(e) => e.pointerType === "mouse" && show()}
         onPointerLeave={hide}
         onFocus={(e) => e.currentTarget.matches(":focus-visible") && show()}
         onBlur={hide}
+        {...(internal ? {} : { target: "_blank", rel: "noreferrer" })}
       >
         {children}
-      </a>
+      </Anchor>
       {armed &&
         preview &&
         createPortal(
