@@ -167,6 +167,20 @@ body {
   }
 }
 
+/* Header sound toggle's note while music plays: a little sway and hop. */
+@keyframes note-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-1.5px) rotate(-8deg);
+  }
+  75% {
+    transform: translateY(-0.5px) rotate(6deg);
+  }
+}
+
 @keyframes link-wiggle {
   from {
     background-position: 0 100%, 0 calc(100% - 1.5px);

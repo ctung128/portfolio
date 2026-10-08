@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { nav, siteConfig } from "@/content/site";
+import { SoundToggle } from "./SoundToggle";
 
 /** Height of the header row; the hero's fit-the-first-screen math reads it. */
 export const HEADER_HEIGHT = "64px";
@@ -33,13 +34,16 @@ export function Header() {
         className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 sm:px-8"
         style={{ height: HEADER_HEIGHT }}
       >
-        <Link
-          href="/"
-          aria-label={`${siteConfig.name} home`}
-          className="-ml-1 p-1 text-ink-soft transition-colors hover:text-ink"
-        >
-          <HomeIcon />
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link
+            href="/"
+            aria-label={`${siteConfig.name} home`}
+            className="-ml-1 p-1 text-ink-soft transition-colors hover:text-ink"
+          >
+            <HomeIcon />
+          </Link>
+          <SoundToggle />
+        </div>
 
         <nav className="flex items-center gap-5 sm:gap-8">
           {nav.map((item) => (

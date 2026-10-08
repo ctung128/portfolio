@@ -164,7 +164,7 @@ export const nav: { label: string; href: string; external?: boolean }[] = [
 ];
 
 export const playPage = {
-  headline: "Things I design + build for fun",
+  headline: "Things I design & build for fun",
   description:
     "branding/marketing, vibe-coding, web design, etc etc :-)"
 };
