@@ -68,7 +68,16 @@ export function AboutSection() {
               key={group.label}
               className="rounded-[12px] border border-border bg-cream-subtle p-6 sm:p-8"
             >
-              <h3 className="font-serif text-xl text-ink lg:text-2xl">{group.label}</h3>
+              <div className="flex items-baseline justify-between gap-3">
+                <h3 className="font-serif text-xl text-ink lg:text-2xl">{group.label}</h3>
+                {/* Phones lose the dashed photo slot's prompt, so it moves up here. */}
+                {group.items.some((item) => item.photo) && (
+                  <span className="flex items-center gap-1.5 font-sans text-xs text-matcha min-[420px]:hidden">
+                    <span aria-hidden>✱</span>
+                    click a sidequest
+                  </span>
+                )}
+              </div>
               {group.items.some((item) => item.photo) ? (
                 <PhotoSlotList items={group.items} />
               ) : (

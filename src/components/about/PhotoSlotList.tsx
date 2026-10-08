@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { RecommendationItem } from "@/content/site";
 import { ARROW_NE } from "@/lib/glyphs";
+import { SidequestArrow } from "./SidequestArrow";
 
 /** Small fixed tilts so prints feel hand-placed but stay stable across renders. */
 const TILTS = [-3, 2, -1.5, 2.5, -2, 1.5];
@@ -75,8 +76,9 @@ export function PhotoSlotList({ items }: { items: RecommendationItem[] }) {
           className="absolute inset-0 flex flex-col items-center justify-center gap-2 rounded-[8px] border border-dashed border-border-strong text-center transition-opacity duration-300"
           style={{ opacity: active === null ? 1 : 0 }}
         >
-          <span aria-hidden className="text-ink-faint">✱</span>
-          <span className="px-3 font-sans text-xs text-ink-faint">
+          <SidequestArrow />
+          <span aria-hidden className="text-matcha">✱</span>
+          <span className="px-3 font-sans text-xs text-matcha">
             <span className="[@media(hover:none)]:hidden">hover</span>
             <span className="hidden [@media(hover:none)]:inline">click</span> a sidequest
           </span>

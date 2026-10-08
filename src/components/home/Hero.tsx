@@ -6,8 +6,10 @@ import { ShippedLine } from "./ShippedLine";
 /** The scan's own shape, mat included (1438 x 1165). */
 const PAINTING_RATIO = 1438 / 1165;
 /** Non-painting height of the hero at sm+ (padding, logo row, box gaps) on top
- * of the header. The vertical name runs a little taller than the logo. */
-const REST = "250px";
+ * of the header. The vertical name runs a little taller than the logo. Any
+ * height left over is shared equally above the logo, between the logo and the
+ * box, and below the box (`justify-evenly`), so the hero sits centred. */
+const REST = "266px";
 
 function Painting({ preload = false }: { preload?: boolean }) {
   return (
@@ -42,7 +44,10 @@ function Painting({ preload = false }: { preload?: boolean }) {
  */
 export function Hero() {
   return (
-    <section className="mx-auto max-w-5xl px-6 pb-8 pt-8 sm:px-8 sm:pt-10">
+    <section
+      className="mx-auto flex min-h-[calc(100svh-var(--header))] max-w-5xl flex-col justify-evenly gap-8 px-6 py-8 sm:gap-10 sm:px-8 sm:py-10"
+      style={{ "--header": HEADER_HEIGHT } as React.CSSProperties}
+    >
       <div className="flex items-start justify-between gap-6">
         <h1>
           <Image
@@ -63,7 +68,7 @@ export function Hero() {
       </div>
 
       {/* Phones */}
-      <div className="mt-6 rounded-[12px] border border-border sm:hidden">
+      <div className="rounded-[12px] border border-border sm:hidden">
         <div className="p-4 @container">
           <p className="whitespace-nowrap font-sans text-[min(15px,4.05cqi)] font-medium leading-snug text-ink">
             {hero.tagline}
@@ -85,10 +90,10 @@ export function Hero() {
       </div>
 
       {/* sm+ */}
-      <div className="mt-10 hidden items-stretch rounded-[12px] border border-border sm:flex">
+      <div className="hidden items-stretch rounded-[12px] border border-border sm:flex">
         <div
           className="flex w-[min(100%-17rem,calc((100svh-var(--header)-var(--rest))*1.234+2rem))] shrink-0 items-center border-r border-border p-4"
-          style={{ "--header": HEADER_HEIGHT, "--rest": REST } as React.CSSProperties}
+          style={{ "--rest": REST } as React.CSSProperties}
         >
           <Painting preload />
         </div>
