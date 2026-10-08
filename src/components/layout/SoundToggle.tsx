@@ -107,7 +107,7 @@ export function SoundToggle() {
       onClick={toggle}
       aria-pressed={on}
       aria-label={on ? "Turn background music off" : "Turn background music on"}
-      className="inline-flex h-7 items-center gap-[7px] whitespace-nowrap rounded-[4px] bg-[#f1f3f0] px-2.5 font-sans text-[11px] uppercase leading-none tracking-[0.06em] text-ink transition-opacity duration-150 select-none active:opacity-45 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+      className="hidden h-7 sm:inline-flex items-center gap-[7px] whitespace-nowrap rounded-[4px] bg-[#f1f3f0] px-2.5 font-sans text-[11px] uppercase leading-none tracking-[0.06em] text-ink transition-opacity duration-150 select-none active:opacity-45 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
     >
       <NoteIcon playing={on} />
       <span aria-hidden>
