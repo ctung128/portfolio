@@ -30,7 +30,7 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
                 href={block.link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="text-ink underline decoration-border-strong underline-offset-4 transition-colors hover:decoration-ink"
+                className="link-underline"
               >
                 {block.link.text}
               </a>

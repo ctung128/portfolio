@@ -4,6 +4,8 @@ export const siteConfig = {
   role: "Product Designer",
   email: "carolynatung@gmail.com",
   linkedin: "https://www.linkedin.com/in/carolyntung/",
+  x: "https://x.com/carolyn_tung",
+  curius: "https://curius.app/carolyn-tung",
   resume:
     "https://drive.google.com/file/d/1LgpJfmMNJraZ7HGYR7XIB5QbkGCNe5_E/view?usp=sharing",
   calendly: "https://calendly.com/carolyn-tung-bmore-designful/quick-chat",
@@ -59,14 +61,35 @@ export const education = {
   school: "Johns Hopkins University",
 };
 
-export const about = {
+type AboutSegment = string | { text: string; href: string };
+
+export const about: { paragraphs: (string | AboutSegment[])[] } = {
   paragraphs: [
     "Hey there! I'm a product designer that loves building things, whether that's an app or a good story. I studied Cognitive Science at Johns Hopkins University, where I became involved with the startup scene and eventually founded a design studio. So far, I've worked with 15+ founders across consumer social, healthcare, and enterprise products, helping companies scale and drive growth.",
-    "Outside of work, I love tea, Italian literature, mountains, and all things wabi-sabi.",
+    [
+      "Outside of work, I love Italian literature, mountains, and all things wabi-sabi. I'm also a ",
+      { text: "published fiction writer", href: "https://sinetheta.net/26.html" },
+      ", ",
+      { text: "photographer", href: "https://snowbellphoto.com/" },
+      ", voracious reader, and ",
+      { text: "aspiring translator", href: "https://tealeafgirl.substack.com/" },
+      ".",
+    ],
   ],
 };
 
-export const recommendations = {
+export type RecommendationItem = {
+  title: string;
+  detail?: string;
+  href?: string;
+  /** Shown in the card's photo slot on hover/tap. `ratio` is width / height. */
+  photo?: { src: string; ratio: number };
+};
+
+export const recommendations: Record<
+  "reading" | "listening" | "learning" | "recommending",
+  RecommendationItem[]
+> = {
   reading: [
     { title: "jasmi.news", detail: "- my favorite journalist on Silicon Valley and trends in startup/tech/AI culture" },
     { title: "Lies and Sorcery", detail: "by Elsa Morante" },
@@ -78,13 +101,27 @@ export const recommendations = {
     { title: "Sinica Podcast", detail: "- my favorite podcast on Chinese geopolitics, history & culture" },
   ],
   learning: [
-    { title: "Training for a half-marathon" },
     {
-      title: "Running a quarterly translation Substack",
-      href: "https://tealeafgirl.substack.com",
+      title: "Creating at Happy Medium art cafe",
+      photo: { src: "/personal/sidequests/hamster.webp", ratio: 3 / 4 },
     },
-    { title: "Relearning tennis :')" },
-    { title: "Building a portrait photography studio", href: "https://snowbellphoto.com" },
+    { title: "Moribana ikebana", photo: { src: "/personal/sidequests/ikebana.webp", ratio: 3 / 4 } },
+    {
+      title: "Making rock friends",
+      photo: { src: "/personal/sidequests/rock-friends.webp", ratio: 3 / 2 },
+    },
+    {
+      title: "Tea apprenticing",
+      photo: { src: "/personal/sidequests/tea.webp", ratio: 3 / 2 },
+    },
+    {
+      title: "Biking and hiking in Yosemite (heaven on earth)",
+      photo: { src: "/personal/sidequests/yosemite.webp", ratio: 3 / 4 },
+    },
+    {
+      title: "Cookin up Chinese fairy recipes (traditional Chinese medicine)",
+      photo: { src: "/personal/sidequests/soup.webp", ratio: 3 / 2 },
+    },
   ],
   recommending: [
     { title: "Siddhartha", detail: "by Hermann Hesse" },
@@ -96,7 +133,7 @@ export const recommendations = {
 
 export const nav = [
   { label: "Work", href: "/#work" },
-  { label: "About", href: "/#about" },
+  { label: "About", href: "/about" },
   { label: "Play", href: "/play" },
   { label: "Resume", href: siteConfig.resume, external: true },
 ];

@@ -8,6 +8,11 @@ Run `node scripts/optimize-media.mjs --write` after adding images/videos: it con
 
 Running log of notable work done with Claude Code, newest first. Keep entries to a few bullets — this is a changelog, not a task tracker.
 
+### 2026-10-08
+- Inline text links share one style: the `link-underline` utility in `globals.css`. At rest a dotted `ink-faint` rule; on hover/focus/pressed the text turns `--color-matcha` (`#58753a`, 5.1:1 on cream) and the dots melt into a wiggling hand-drawn wave (`--wave-matcha` SVG; its stroke hex must match `--color-matcha`). Drawn as background layers so wrapped links underline every line. Picked from three mockups (sweep / ant trail / squiggle × ink / matcha / hojicha / ai). Used by bio links, case-study paragraph `link`s and Sidequesting captions; use it for any new inline link.
+- About moved off the homepage to its own `/about` route (`src/components/about/`); nav "About" → `/about`. Social row under Education (LinkedIn, X icons | Curius, Resume) in `SocialLinks.tsx`; `siteConfig` gains `x` and `curius`. Bio paragraphs accept inline link segments ("published fiction writer", "photographer", "aspiring translator" are linked).
+- Sidequesting card: now just six captioned photo items (`photo` on `RecommendationItem`); the half-marathon, Substack, tennis and photo-studio items were removed. `PhotoSlotList` develops one tilted print at a time in a side slot on hover/focus/tap (after charisa.design/about; dashed "hover a sidequest" frame when idle); below 420px the print opens inline under the tapped line instead. Photos in `public/personal/sidequests/` (1000px q80 WebP, soup, rock-friends, hamster and yosemite re-cropped tighter at the same sizes; previous versions saved as `*.prev.webp`); originals in `media-originals/personal/`. Mockup page `/about/lab` (3 directions) removed after A was picked.
+
 ### 2026-10-06
 - Play: new Pebble cover (450 KB PNG → 72 KB q90 WebP); previous original kept as `media-originals/play/project-eleven/cover.prev.png`.
 - Play: order is now "$20K MRR app" → Grean → Bmore Designful studio site.

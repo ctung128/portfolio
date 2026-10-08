@@ -9,6 +9,11 @@
   --color-border: #e0e6e0;
   --color-border-strong: #d0d8d0;
   --color-green: #1a1a1a;
+  /* Link hover/pressed accent: moss green, 5.1:1 on cream. */
+  --color-matcha: #58753a;
+  /* Hand-drawn wave under a hovered link. Data URIs can't read CSS vars, so the
+     stroke is --color-matcha written out (%2358753a); keep the two in sync. */
+  --wave-matcha: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='4' viewBox='0 0 8 4'%3E%3Cpath d='M0 2 Q2 0.4 4 2 T8 2' fill='none' stroke='%2358753a' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E");
   --spring: linear(
     0, 0.049, 0.175, 0.348, 0.54, 0.729, 0.897, 1.035, 1.136, 1.2, 1.23, 1.231,
     1.21, 1.175, 1.132, 1.087, 1.044, 1.008, 0.98, 0.96, 0.949, 0.945, 0.948,
@@ -44,6 +49,7 @@
   --color-border: var(--color-border);
   --color-border-strong: var(--color-border-strong);
   --color-green: var(--color-green);
+  --color-matcha: var(--color-matcha);
   --font-serif: var(--font-instrument-serif);
   --font-sans: var(--font-open-sans);
 }
@@ -120,6 +126,60 @@ body {
   }
   100% {
     opacity: 1;
+  }
+}
+
+/* Inline text links: one style across the site (bio, case study paragraphs,
+   Sidequesting captions). At rest a dotted ink-faint rule; on hover/focus, and
+   while a toggle such as a Sidequesting caption is pressed, the text turns
+   matcha and the dots melt into a hand-drawn wave that keeps wiggling.
+
+   Both lines are background layers rather than text-decoration or ::after so
+   they paint on every line of a wrapped link and can be animated. Layer 1 is
+   the wave (hidden at 0 height), layer 2 the dots. */
+@utility link-underline {
+  --link-line: var(--color-ink-faint);
+  color: var(--color-ink);
+  text-decoration: none;
+  padding-bottom: 4px;
+  background-image:
+    var(--wave-matcha),
+    repeating-linear-gradient(90deg, var(--link-line) 0 1.5px, transparent 1.5px 4px);
+  background-repeat: repeat-x, no-repeat;
+  background-size: 8px 0, 100% 1.5px;
+  background-position: 0 100%, 0 calc(100% - 1.5px);
+  transition:
+    color 200ms,
+    background-size 260ms cubic-bezier(0.22, 0.8, 0.3, 1);
+
+  &:hover,
+  &:focus-visible,
+  &[aria-pressed="true"] {
+    --link-line: var(--color-matcha);
+    color: var(--color-matcha);
+    background-size: 8px 4px, 100% 0;
+    animation: link-wiggle 0.7s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none !important;
+  }
+}
+
+@keyframes link-wiggle {
+  from {
+    background-position: 0 100%, 0 calc(100% - 1.5px);
+  }
+  to {
+    background-position: 8px 100%, 0 calc(100% - 1.5px);
+  }
+}
+
+/* Sidequesting print on phones: rises and settles in as it's tapped open. */
+@keyframes print-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
   }
 }
 
