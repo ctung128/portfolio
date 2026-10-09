@@ -87,7 +87,7 @@ export const about: { paragraphs: (string | AboutSegment[])[] } = {
       ". Since then, I've been the founding designer for ",
       { text: "3 venture-backed startups", highlight: true },
       ", scaled a bootstrapped SaaS app to ",
-      { text: "30K+ users", highlight: true },
+      { text: "35K+ users", highlight: true },
       " and ",
       { text: "$20K MRR", highlight: true },
       " within 6 months, and designed products for ",
@@ -184,7 +184,7 @@ export type PlayProject = {
 
 export const playProjects: PlayProject[] = [
   {
-    title: "Designed $20K MRR app for 30K+ users",
+    title: "Designed $20K MRR app for 35K+ users",
     tag: "BRANDING * SHIPPED 2025",
     image: { src: "/play/project-two/cover.webp", alt: "Project two cover image" },
   },
