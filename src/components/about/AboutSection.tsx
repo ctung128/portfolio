@@ -74,7 +74,7 @@ export function AboutSection() {
         </div>
 
         {/* Tight spacing above so the taped cards' tops show above the fold on a laptop. */}
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8">
+        <div className="mt-12 grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-8">
           {recommendationGroups.map((group, g) => (
             <AboutCard key={group.label} index={g} tilt={g % 2 ? 1.4 : -1.2}>
               <div className="flex items-baseline justify-between gap-3">

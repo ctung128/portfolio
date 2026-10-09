@@ -83,7 +83,7 @@ export function PhotoSlotList({ items }: { items: RecommendationItem[] }) {
           <SidequestArrow />
           <span
             aria-hidden
-            className="inline-block text-matcha group-hover:animate-[asterisk-spin_1.6s_linear_infinite] motion-reduce:!animate-none"
+            className="inline-block text-matcha [@media(hover:hover)_and_(pointer:fine)]:group-hover:animate-[asterisk-spin_1.6s_linear_infinite] motion-reduce:!animate-none"
           >
             ✱
           </span>

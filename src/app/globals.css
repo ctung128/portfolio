@@ -372,14 +372,17 @@ body {
   rotate: var(--from-tilt, 5deg);
 }
 
-/* ✱ bullets spin when their row is hovered. */
+/* ✱ bullets spin when their row is hovered, on mouse/trackpad only: a tap
+   on a phone leaves :hover stuck, so they stay still there. */
 .about-star {
   display: inline-block;
   transition: rotate 700ms var(--spring);
 }
-.about-row:hover .about-star,
-.about-row:focus-within .about-star {
-  rotate: 144deg;
+@media (hover: hover) and (pointer: fine) {
+  .about-row:hover .about-star,
+  .about-row:focus-within .about-star {
+    rotate: 144deg;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
