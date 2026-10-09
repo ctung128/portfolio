@@ -95,7 +95,7 @@ export const about: { paragraphs: (string | AboutSegment[])[] } = {
       ".",
     ],
     [
-      "Outside of work, I'm also a ",
+      "Outside of work, I'm a ",
       {
         text: "published fiction writer",
         href: "https://sinetheta.net/26.html",
