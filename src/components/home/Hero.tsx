@@ -34,9 +34,10 @@ function Painting({ preload = false }: { preload?: boolean }) {
  * gap from the box to the bottom of the screen.
  *
  * Phones: pinned to the top instead, so the logo sits at the same height on
- * every phone (118px down, where the Play and Library titles sit too) rather
- * than drifting with the screen height. The spacing is what the balanced
- * layout gave on a 390×844 iPhone.
+ * every phone (98px down, where the Play and Library titles sit too) rather
+ * than drifting with the screen height, kept high with a 16px gap down to the
+ * box so as much of the box as possible shows in Safari's visible area before
+ * the scroll scene starts.
  *
  * Laid out like a museum catalogue entry (図録): the logo (as the page title)
  * with 童雪玲 set vertically beside it, then one box ruled in light hairlines.
@@ -55,7 +56,7 @@ function Painting({ preload = false }: { preload?: boolean }) {
 export function Hero() {
   return (
     <section
-      className="mx-auto flex min-h-[calc(100svh-var(--header))] max-w-5xl flex-col justify-start gap-[76px] px-6 pb-8 pt-[54px] sm:justify-evenly sm:gap-10 sm:px-8 sm:pb-10 sm:pt-[18px]"
+      className="mx-auto flex min-h-[calc(100svh-var(--header))] max-w-5xl flex-col justify-start gap-4 px-6 pb-8 pt-[34px] sm:justify-evenly sm:gap-10 sm:px-8 sm:pb-10 sm:pt-[18px]"
       style={{ "--header": HEADER_HEIGHT } as React.CSSProperties}
     >
       <div className="flex items-start justify-between gap-6">
@@ -69,11 +70,19 @@ export function Hero() {
             className="h-[60px] w-auto sm:h-[76px] lg:h-[92px]"
           />
         </h1>
+        {/* Stacked by hand rather than with writing-mode: vertical-rl, which
+            Safari draws half a character right of its box with this font (the
+            right half got cut off whenever the name animated). Each character
+            is a 1em line plus 0.1em, matching the old vertical tracking. */}
         <p
           lang="zh-Hans"
-          className="shrink-0 font-zh text-[26px] leading-none tracking-[0.1em] text-ink [writing-mode:vertical-rl] sm:text-[30px] lg:text-[34px]"
+          className="flex shrink-0 flex-col items-center font-zh text-[26px] leading-none text-ink sm:text-[30px] lg:text-[34px]"
         >
-          {hero.chineseName}
+          {[...hero.chineseName].map((ch, i) => (
+            <span key={i} className="block pb-[0.1em]">
+              {ch}
+            </span>
+          ))}
         </p>
       </div>
 

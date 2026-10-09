@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function PlayPage() {
   return (
-    <div className="mx-auto max-w-5xl px-6 pb-24 pt-[45px] sm:px-8 sm:pt-20">
+    <div className="mx-auto max-w-5xl px-6 pb-24 pt-[25px] sm:px-8 sm:pt-20">
       <PlayGallery />
     </div>
   );

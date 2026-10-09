@@ -7,10 +7,8 @@
 
 /* Text rises out of its own baseline: it travels up while being clipped at
    its final box, so it reads as coming out from behind a mask without a
-   wrapper element. The clip only ever cuts top/bottom (wide open sideways)
-   and only while animating (fill-mode backwards, never at rest): Safari
-   misplaces inset() boxes on vertical text and was shaving the right half
-   off 童雪玲 when the end clip stayed applied. */
+   wrapper element. The clip only cuts top/bottom (wide open sideways) and
+   only while animating (fill-mode backwards), so nothing is clipped at rest. */
 @keyframes hero-rise {
   from {
     transform: translateY(100%);
@@ -21,13 +19,14 @@
     clip-path: inset(-20% -50% -20% -50%);
   }
 }
-/* The vertical name inks downward. */
-@keyframes hero-ink-down {
+/* The vertical name drifts down into place as it fades in. No clip-path:
+   Safari misplaces clips on vertical text and, once the animation ends,
+   kept showing the clipped (right-half-missing) paint until a scroll or tap
+   forced a repaint. */
+@keyframes hero-name-in {
   from {
-    clip-path: inset(-50% -100% 100% -100%);
-  }
-  to {
-    clip-path: inset(-50% -100% -10% -100%);
+    opacity: 0;
+    transform: translateY(-12px);
   }
 }
 @keyframes hero-hairline {
@@ -45,7 +44,7 @@
   animation: hero-rise 1100ms var(--hero-out) 350ms backwards;
 }
 [data-hero-scene] section > div:first-child p {
-  animation: hero-ink-down 1600ms var(--hero-out) 550ms backwards;
+  animation: hero-name-in 1400ms var(--hero-out) 550ms backwards;
 }
 [data-hero-scene] section > div:not(:first-child),
 [data-hero-scene] section > div:not(:first-child) > div {
