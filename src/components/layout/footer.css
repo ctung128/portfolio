@@ -1,0 +1,61 @@
+/* Site footer (Footer.tsx). After charisa.design's footer, in the site's ink. */
+.ft {
+  --ft-accent: #b9cf94; /* light matcha: current page + weather dot, 9.6:1 on ink */
+}
+.ft-dot {
+  width: 10px;
+  height: 10px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--ft-accent);
+  animation: ft-breathe 4.4s ease-in-out infinite;
+}
+@keyframes ft-breathe {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(0.7); opacity: 0.55; }
+}
+
+.ft-link { color: rgb(255 255 255 / 0.8); transition: color 0.2s ease; }
+.ft-link:hover, .ft-link:focus-visible { color: #fff; }
+.ft-link[aria-current="page"] { color: var(--ft-accent); }
+.ft-lbl { position: relative; }
+/* Underline draws left to right under the word only (not the icon). */
+.ft-lbl::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ft-link:hover .ft-lbl::after, .ft-link:focus-visible .ft-lbl::after { transform: scaleX(1); }
+
+.ft-toast {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 10px);
+  border-radius: 8px;
+  padding: 6px 10px;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.3;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: opacity 0.16s ease, transform 0.16s cubic-bezier(0.22, 0.8, 0.3, 1), visibility 0.16s;
+}
+.ft-toast.is-on { opacity: 1; visibility: visible; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ft-dot { animation: none; }
+  .ft-lbl::after, .ft-toast { transition: none; }
+  .ft-toast { transform: none; }
+}
