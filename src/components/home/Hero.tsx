@@ -28,10 +28,15 @@ function Painting({ preload = false }: { preload?: boolean }) {
 }
 
 /**
- * Top padding is 22px less than the bottom: the header is cream on cream, so
- * the eye measures from its links (whose ink ends 22px above its bottom
- * edge), and this makes the gap from the links to the logo match the gap
- * from the box to the bottom of the screen.
+ * sm+: top padding is 22px less than the bottom: the header is cream on
+ * cream, so the eye measures from its links (whose ink ends 22px above its
+ * bottom edge), and this makes the gap from the links to the logo match the
+ * gap from the box to the bottom of the screen.
+ *
+ * Phones: pinned to the top instead, so the logo sits at the same height on
+ * every phone (118px down, where the Play and Library titles sit too) rather
+ * than drifting with the screen height. The spacing is what the balanced
+ * layout gave on a 390×844 iPhone.
  *
  * Laid out like a museum catalogue entry (図録): the logo (as the page title)
  * with 童雪玲 set vertically beside it, then one box ruled in light hairlines.
@@ -50,7 +55,7 @@ function Painting({ preload = false }: { preload?: boolean }) {
 export function Hero() {
   return (
     <section
-      className="mx-auto flex min-h-[calc(100svh-var(--header))] max-w-5xl flex-col justify-evenly gap-8 px-6 pb-8 pt-[10px] sm:gap-10 sm:px-8 sm:pb-10 sm:pt-[18px]"
+      className="mx-auto flex min-h-[calc(100svh-var(--header))] max-w-5xl flex-col justify-start gap-[76px] px-6 pb-8 pt-[54px] sm:justify-evenly sm:gap-10 sm:px-8 sm:pb-10 sm:pt-[18px]"
       style={{ "--header": HEADER_HEIGHT } as React.CSSProperties}
     >
       <div className="flex items-start justify-between gap-6">
