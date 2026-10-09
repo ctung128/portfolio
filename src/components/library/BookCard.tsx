@@ -12,6 +12,11 @@ export const CARD_BACKDROP = "bg-cream/95 backdrop-blur-sm";
  * genre chips. */
 export function BookCard({ book }: { book: Book }) {
   const style = { "--tone": book.tone } as CSSProperties;
+  // A one-or-two-line review leaves the cover as the only tall thing, so cap it
+  // to whatever height the rest of the card (~32rem incl. the dialog's padding)
+  // leaves, at a 2:3 cover, but never below 12rem wide.
+  const short = book.review.length === 1 && book.review[0].length <= SHORT_REVIEW;
+  const coverWidth = short ? "w-[min(62%,max(12rem,calc((100dvh-32rem)/1.5)))]" : "w-[62%]";
   return (
     <article style={style} className="tone-vars w-full max-w-[540px] rounded-[24px] border border-border bg-white px-5 pb-8 pt-10 shadow-[0_1px_2px_rgba(37,37,37,0.06),0_24px_60px_-24px_rgba(37,37,37,0.3)] sm:px-8">
       <h2 className="mx-auto text-center font-serif text-[28px] leading-tight text-[var(--tone-ink)] sm:text-[34px]">
@@ -22,7 +27,7 @@ export function BookCard({ book }: { book: Book }) {
       </p>
 
       <div className="mt-6">
-        <div className="relative mx-auto w-[62%]">
+        <div className={`relative mx-auto ${coverWidth}`}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={cover(book)}
@@ -70,6 +75,9 @@ export function BookCard({ book }: { book: Book }) {
     </article>
   );
 }
+
+/** Characters that fit in about two lines of the review block. */
+const SHORT_REVIEW = 130;
 
 /** A star with softened points: a round-joined stroke in the fill colour
  * blunts each tip. */
