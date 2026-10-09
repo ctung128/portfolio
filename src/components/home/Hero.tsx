@@ -102,9 +102,9 @@ export function Hero() {
             {hero.artwork.caption}
           </figcaption>
         </figure>
-        <div className="border-t border-border p-4 font-sans text-[15px] leading-relaxed">
-          <p className="font-semibold text-ink">{hero.subheadBold}</p>
-          <p className="text-ink-soft">{hero.location}</p>
+        <div className="border-t border-border p-4 font-sans leading-relaxed @container">
+          <p className="text-[min(15px,4.05cqi)] font-semibold text-ink">{hero.subheadBold}</p>
+          <p className="text-[min(15px,4.05cqi)] text-ink-soft">{hero.location}</p>
         </div>
       </div>
 
