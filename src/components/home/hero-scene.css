@@ -7,24 +7,27 @@
 
 /* Text rises out of its own baseline: it travels up while being clipped at
    its final box, so it reads as coming out from behind a mask without a
-   wrapper element. */
+   wrapper element. The clip only ever cuts top/bottom (wide open sideways)
+   and only while animating (fill-mode backwards, never at rest): Safari
+   misplaces inset() boxes on vertical text and was shaving the right half
+   off 童雪玲 when the end clip stayed applied. */
 @keyframes hero-rise {
   from {
     transform: translateY(100%);
-    clip-path: inset(0 0 100% 0);
+    clip-path: inset(0 -50% 100% -50%);
   }
   to {
     transform: none;
-    clip-path: inset(0 0 -20% 0);
+    clip-path: inset(-20% -50% -20% -50%);
   }
 }
 /* The vertical name inks downward. */
 @keyframes hero-ink-down {
   from {
-    clip-path: inset(0 0 100% 0);
+    clip-path: inset(-50% -100% 100% -100%);
   }
   to {
-    clip-path: inset(0 0 -10% 0);
+    clip-path: inset(-50% -100% -10% -100%);
   }
 }
 @keyframes hero-hairline {
@@ -39,29 +42,29 @@
   opacity: 0;
 }
 [data-hero-scene] section > div:first-child h1 {
-  animation: hero-rise 1100ms var(--hero-out) 350ms both;
+  animation: hero-rise 1100ms var(--hero-out) 350ms backwards;
 }
 [data-hero-scene] section > div:first-child p {
-  animation: hero-ink-down 1600ms var(--hero-out) 550ms both;
+  animation: hero-ink-down 1600ms var(--hero-out) 550ms backwards;
 }
 [data-hero-scene] section > div:not(:first-child),
 [data-hero-scene] section > div:not(:first-child) > div {
-  animation: hero-hairline 1200ms ease 700ms both;
+  animation: hero-hairline 1200ms ease 700ms backwards;
 }
 /* sm+: tagline cell, then the label cell. */
 [data-hero-scene] section > div:last-child > div:last-child > div:first-child > * {
-  animation: hero-rise 1000ms var(--hero-out) 850ms both;
+  animation: hero-rise 1000ms var(--hero-out) 850ms backwards;
 }
 [data-hero-scene] section > div:last-child > div:last-child > div:first-child > * + * {
   animation-delay: 930ms;
 }
 [data-hero-scene] section > div:last-child > div:last-child > div:last-child > * {
-  animation: hero-rise 1000ms var(--hero-out) 1010ms both;
+  animation: hero-rise 1000ms var(--hero-out) 1010ms backwards;
 }
 /* Phones: the stacked box. */
 [data-hero-scene] section > div:nth-child(2) > div > *,
 [data-hero-scene] section > div:nth-child(2) figcaption {
-  animation: hero-rise 1000ms var(--hero-out) 850ms both;
+  animation: hero-rise 1000ms var(--hero-out) 850ms backwards;
 }
 
 /* The layout's header slides up out of the way while the painting fills the
