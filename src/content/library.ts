@@ -108,7 +108,7 @@ export const books: Book[] = [
     tags: ["german", "novella", "spirituality"],
     review: [
       "after letting my notes on this book marinate, one year later i have returned feeling much more “childlike,” as siddhartha puts it.",
-      "the self, personal growth, and life is cyclic. nothing is linear. the young are arrogant and don’t know things. nobody can teach you how to attain spiritual peace or to gain enlightenment; only your lived experiences can help you reach this state.",
+      "siddartha tells us that the self, personal growth, and life is cyclic, and nothing is linear. he reminds us that the young are arrogant and don’t know things and that nobody can teach you how to attain spiritual peace or to gain enlightenment; only your lived experiences can help you reach this state and the only way to gain these lived experiences is to live them.",
     ],
   },
   {
@@ -174,9 +174,8 @@ export const books: Book[] = [
     tags: ["aesthetics", "design", "philosophy"],
     review: [
       "reading this again 4 years later with a much stronger grasp on japanese philosophy and spirituality... i really enjoyed this!",
-      "i like how koren organized the book through sections on 1) metaphysics, 2) spiritual values, 3) state of mind, 4) moral precepts, and 5) material qualities, and that he set up binaries contrasting wabi-sabi with other schools of thought like modernism. … but, the photographs did very little work reinforcing those concepts, and i wish koren had included more robust analysis of his wabi-sabi examples.",
-      "however, the actual subject matter was right up my alley... i learned about iemoto families (which made me think: ah, so the Mansei-en bonsai garden from the 19th century is owned by what's called an iemoto family!). i also learned that japanese traditional arts are all interconnected … the tea ceremony was “an eclectic social art form combining... architecture, interior and garden design, flower arranging, painting, food preparation, and performance.” also also, the idea that one must bend or crawl in order to enter the wabi-sabi tea room as a symbolic act of humility - and that once completed, everyone in the tea room becomes of equal status - was fascinating.",
-      "finally, i liked the footnote at the end warning readers to maybe not refer to japanese ideas and values as “eastern” … why shy away from the fact that eating hamburgers and listening to the beatles is incredibly japanese?",
+      "this book was right up my alley... i learned about iemoto families (which made me think: ah, so the Mansei-en bonsai garden from the 19th century is owned by what's called an iemoto family!). i also learned that japanese traditional arts are all interconnected … the tea ceremony was “an eclectic social art form combining... architecture, interior and garden design, flower arranging, painting, food preparation, and performance.",
+      "also also, the idea that one must bend or crawl in order to enter the wabi-sabi tea room as a symbolic act of humility - and that once completed, everyone in the tea room becomes of equal status - was fascinating.",
     ],
   },
   {
@@ -306,8 +305,6 @@ export const books: Book[] = [
     tags: ["italian", "novella", "comingOfAge"],
     review: [
       "sweet days of discipline is a hypnotic and rare find. set in postwar switzerland, we meet the fourteen-year-old narrator at a catholic all-girls boarding school. … when a new girl—frédérique—arrives, distant and obedient, the narrator tumbles into an obsessive mission to conquer her.",
-      "i'm sensing a more subtle teetering between submission and dominion, one that exists on a spiritual plane rather than purely physical … the girls are chaste, but the energy is sexual (possessiveness, jealousy, etc.).",
-      "what makes these days of discipline so sweet is this “senile girlhood” that eats at the boarders' vitality. being young and pretty is sweet, but being sheltered from the world during adolescence is saccharine.",
       "4.5 stars! i adored this book... so many beautiful lines pocketed forever: “There is no time, at that time. Childhood is ancient.”",
     ],
   },
@@ -391,8 +388,7 @@ export const books: Book[] = [
     tone: "#6a3fb0",
     tags: ["nonfiction", "writing"],
     review: [
-      "man this guy is so great. this book is basically an exposé on the racist and imperialist origins of iowa writers’ workshop and a radical reimagining of how fiction writing workshops could be structured.",
-      "anyways this book was brilliant, revolutionary, creative, and enlightening!",
+      "man this guy is so great. this book is basically an exposé on the racist and imperialist origins of iowa writers’ workshop and a radical reimagining of how fiction writing workshops could be structured. this book was brilliant, revolutionary, creative, and enlightening!",
     ],
   },
   {
@@ -563,10 +559,8 @@ export const books: Book[] = [
     tone: "#e8c21a",
     tags: ["memoir", "art", "love"],
     review: [
-      "absolutely blown away. so many things to love about this book :(",
-      "for context, clement was close friends with suzanne, basquiat’s longtime lover, during the period that this book (which is about suzanne) was set. she did such great justice to the fragmented form. beautiful, poetic storytelling. … i was hooked and incredibly moved",
-      "i really felt like i was there witnessing this cambrian explosion of artistic and sexual freedom. it was chaotic and beautiful and sadly ephemeral—destroyed by the aids epidemic. something so giovanni’s-room-tragic about this.",
-      "thinking of the self-destructive artist figure we see so often in history. does being a creative genius curse you to a fate where you slowly destroy yourself in the name of being great? … to be immortalized in history as one of the greats, must there always be sacrifice involved??",
+      "absolutely blown away. so many things to love about this book :( jennifer clement did such great justice to the fragmented form of this book. beautiful, poetic storytelling. … i was hooked and incredibly moved",
+      "i really felt like i was there witnessing the cambrian explosion of artistic and sexual freedom in 1980s new york city. it was chaotic and beautiful and sadly ephemeral—destroyed by the aids epidemic. something so giovanni’s-room-tragic about this.",
       "also, i love jennifer clement. she is an angel and she loves suzanne so much. … to be seen and understood is to be loved!!!! what a beautiful beautiful friendship!!!!",
     ],
   },
@@ -581,7 +575,7 @@ export const books: Book[] = [
     tags: ["memoir", "china"],
     review: [
       "4.5. really interesting deep dive on what it's like to not only raise middle-school-age children in the chinese public school system but also to teach journalism at a chinese university as a foreigner. … he has led a long legacy of conducting multidimensional, empathetic journalism on chinese society since the '90s and i really respect him for his contributions to the literature",
-      "i found the phenomenon of “little pinks” - fiery nationalists in the young generation - interesting too, the idea that some freshmen might have reported hessler for his teaching content and nearly gotten him fired. the contrast between the betrayals of “little pinks” and the behavior of hessler's bright, passionate elective students, some of whom risked their lives to conduct research for their final papers … is quite interesting. also very timely notes on “involution” and “letting it rot.”",
+      "i found the phenomenon of “little pinks” - fiery nationalists in the young generation - interesting too. also very timely notes on “involution” and “letting it rot.”",
     ],
   },
   {
