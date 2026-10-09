@@ -285,3 +285,216 @@ body {
     animation: none;
   }
 }
+
+/* Library "Tap a book to open it" arrow: pokes forward twice, rests, repeats,
+   like someone tapping the shelf to say "go on". Sits in `transform`, which
+   applies before the element's `rotate`, so the poke follows the arrow down
+   on phones. */
+@keyframes arrow-nudge {
+  0%, 55%, 100% {
+    transform: translateX(0);
+  }
+  12% {
+    transform: translateX(6px);
+  }
+  24% {
+    transform: translateX(1px);
+  }
+  36% {
+    transform: translateX(5px);
+  }
+}
+
+/* Sidequesting idle slot: on hover the hand-drawn arrow redraws itself from
+   the frame out to the first sidequest (paths use pathLength="1"). */
+@keyframes arrow-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes asterisk-spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+/* About cards (AboutCard): matcha paper pinned at --tilt under washi tape.
+   They drop in tilted on first scroll into view and spring to rest
+   (.about-reveal, individual translate/rotate props); on hover the card
+   straightens and lifts (transform) and the tape flips its angle. */
+.about-card {
+  position: relative;
+  background: #edf3e4;
+  border: 1px solid #cfdcbf;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(63, 90, 36, 0.08), 0 16px 34px -20px rgba(63, 90, 36, 0.45);
+  transform: rotate(var(--tilt, 0deg));
+  transition:
+    transform 600ms var(--spring),
+    box-shadow 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.about-card:hover {
+  transform: rotate(0deg) translateY(-6px) scale(1.012);
+  box-shadow: 0 2px 4px rgba(63, 90, 36, 0.1), 0 30px 50px -22px rgba(63, 90, 36, 0.5);
+}
+
+.about-tape {
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  width: 84px;
+  height: 22px;
+  translate: -50% 0;
+  rotate: var(--tape-tilt, -3deg);
+  background: rgba(185, 205, 160, 0.75);
+  border-left: 1px dashed rgba(255, 255, 255, 0.7);
+  border-right: 1px dashed rgba(255, 255, 255, 0.7);
+  transition: rotate 500ms var(--spring);
+}
+.about-card:hover .about-tape {
+  rotate: calc(var(--tape-tilt, -3deg) * -1);
+}
+
+.about-reveal {
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    translate 800ms cubic-bezier(0.22, 1, 0.36, 1),
+    rotate 900ms var(--spring);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+.about-reveal:not([data-in]) {
+  opacity: 0;
+  translate: 0 48px;
+  rotate: var(--from-tilt, 5deg);
+}
+
+/* ✱ bullets spin when their row is hovered. */
+.about-star {
+  display: inline-block;
+  transition: rotate 700ms var(--spring);
+}
+.about-row:hover .about-star,
+.about-row:focus-within .about-star {
+  rotate: 144deg;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-reveal,
+  .about-reveal:not([data-in]) {
+    opacity: 1;
+    translate: none;
+    rotate: none;
+    transition: none;
+  }
+  .about-card,
+  .about-card:hover {
+    transform: rotate(var(--tilt, 0deg));
+    transition: box-shadow 200ms;
+  }
+  .about-tape,
+  .about-star {
+    transition: none;
+  }
+}
+
+/* About on-load intro: the portrait drops in tilted like a print and comes
+   to rest at a slight angle, matching the cards; the heading, bio and
+   education (.intro-item, --n in reading order) rise in after it. Cards
+   already on screen at load wait for it to finish (AboutCard). */
+@keyframes intro-print {
+  from {
+    opacity: 0;
+    translate: 0 40px;
+    rotate: -7deg;
+  }
+}
+@keyframes intro-rise {
+  from {
+    opacity: 0;
+    translate: 0 14px;
+  }
+}
+
+.intro-portrait {
+  rotate: -1.5deg;
+  animation: intro-print 600ms var(--spring) both;
+}
+.intro-item {
+  animation: intro-rise 450ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(100ms + var(--n) * 60ms);
+}
+@media (prefers-reduced-motion: reduce) {
+  .intro-portrait,
+  .intro-item {
+    animation: none;
+  }
+}
+
+/* Play tiles (PlayGallery): like the Library shelf, each tile drops in
+   tilted as it scrolls into view (staggered across the row, --col) and
+   springs to rest; on hover the cover hops up with a slight tilt
+   (--hop-tilt, alternating by column) and a soft shadow. Reveal on the
+   tile (translate/rotate), hop on the cover (transform). */
+.play-tile {
+  transition:
+    opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+    translate 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    rotate 800ms var(--spring);
+  transition-delay: calc(var(--col, 0) * 80ms);
+}
+.play-tile:not([data-in]) {
+  opacity: 0;
+  translate: 0 40px;
+  rotate: var(--from-tilt, 5deg);
+}
+.play-cover {
+  transition:
+    transform 500ms var(--spring),
+    box-shadow 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.play-tile:hover .play-cover {
+  transform: translateY(-8px) rotate(var(--hop-tilt, -1.5deg));
+  box-shadow: 0 2px 4px rgba(37, 37, 37, 0.08), 0 24px 40px -18px rgba(37, 37, 37, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .play-tile,
+  .play-tile:not([data-in]) {
+    opacity: 1;
+    translate: none;
+    rotate: none;
+    transition: none;
+  }
+  .play-tile:hover .play-cover {
+    transform: none;
+  }
+}
+
+/* Selected work (WorkReveal): each case study drops in from a slight tilt
+   (--from-tilt, alternating) as it scrolls into view and springs to rest,
+   like the Play tiles. Larger than a tile, so a gentler tilt and drop. */
+.work-reveal {
+  transition:
+    opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+    translate 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    rotate 800ms var(--spring);
+}
+.work-reveal:not([data-in]) {
+  opacity: 0;
+  translate: 0 48px;
+  rotate: var(--from-tilt, 0deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-reveal,
+  .work-reveal:not([data-in]) {
+    opacity: 1;
+    translate: none;
+    rotate: none;
+    transition: none;
+  }
+}

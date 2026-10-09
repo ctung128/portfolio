@@ -3,6 +3,7 @@ import { Portrait } from "@/components/home/Portrait";
 import { PhotoSlotList } from "./PhotoSlotList";
 import { SocialLinks } from "./SocialLinks";
 import { PreviewLink } from "./PreviewLink";
+import { AboutCard } from "./AboutCard";
 import { ARROW_NE } from "@/lib/glyphs";
 
 const recommendationGroups: {
@@ -20,15 +21,21 @@ export function AboutSection() {
 
   return (
     <section>
-      <div className="mx-auto max-w-5xl px-6 py-16 sm:px-8 sm:py-24">
+      <div className="mx-auto max-w-5xl px-6 py-16 sm:px-8 sm:pb-24 sm:pt-12">
         <div className="grid gap-8 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] sm:items-center sm:gap-14">
-          <Portrait src={portrait.src} alt={portrait.alt} />
+          <div className="intro-portrait relative" style={{ "--n": 0 } as React.CSSProperties}>
+            <Portrait src={portrait.src} alt={portrait.alt} />
+          </div>
 
           <div>
-            <h1 className="font-serif text-[26px] text-ink sm:text-[30px] lg:text-4xl">About</h1>
+            <h1 style={{ "--n": 1 } as React.CSSProperties} className="intro-item font-serif text-[26px] text-ink sm:text-[30px] lg:text-4xl">About</h1>
             <div className="mt-3 space-y-4 lg:mt-6">
               {about.paragraphs.map((p, i) => (
-                <p key={i} className="font-sans text-base leading-relaxed text-ink-soft">
+                <p
+                  key={i}
+                  style={{ "--n": i + 2 } as React.CSSProperties}
+                  className="intro-item font-sans text-base leading-relaxed text-ink-soft"
+                >
                   {typeof p === "string"
                     ? p
                     : p.map((seg, j) =>
@@ -52,7 +59,10 @@ export function AboutSection() {
                 </p>
               ))}
             </div>
-            <div className="mt-8 border-t border-border pt-6">
+            <div
+              style={{ "--n": about.paragraphs.length + 2 } as React.CSSProperties}
+              className="intro-item mt-8 border-t border-border pt-6"
+            >
               <p className="font-sans text-xs uppercase tracking-wider text-ink-faint">
                 Education
               </p>
@@ -63,12 +73,10 @@ export function AboutSection() {
           </div>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:mt-16 sm:grid-cols-2 sm:gap-8">
-          {recommendationGroups.map((group) => (
-            <div
-              key={group.label}
-              className="rounded-[12px] border border-border bg-cream-subtle p-6 sm:p-8"
-            >
+        {/* Tight spacing above so the taped cards' tops show above the fold on a laptop. */}
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8">
+          {recommendationGroups.map((group, g) => (
+            <AboutCard key={group.label} index={g} tilt={g % 2 ? 1.4 : -1.2}>
               <div className="flex items-baseline justify-between gap-3">
                 <h3 className="font-serif text-xl text-ink lg:text-2xl">{group.label}</h3>
                 {/* Phones lose the dashed photo slot's prompt, so it moves up here. */}
@@ -84,8 +92,8 @@ export function AboutSection() {
               ) : (
                 <ul className="mt-4 space-y-3">
                   {group.items.map((item) => (
-                    <li key={item.title} className="flex gap-3">
-                      <span aria-hidden className="mt-0.5 shrink-0 text-sm text-ink">
+                    <li key={item.title} className="about-row flex gap-3">
+                      <span aria-hidden className="about-star mt-0.5 shrink-0 text-sm text-ink">
                         ✱
                       </span>
                       <p className="font-sans text-[15px] leading-relaxed text-ink-soft">
@@ -111,7 +119,7 @@ export function AboutSection() {
                   ))}
                 </ul>
               )}
-            </div>
+            </AboutCard>
           ))}
         </div>
       </div>

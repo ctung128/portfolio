@@ -32,7 +32,11 @@ export function BookCard({ book }: { book: Book }) {
           />
           {book.rating && (
             <span className="absolute -right-[14%] top-[52%] grid aspect-square w-[30%] place-items-center rounded-full bg-[color-mix(in_oklch,var(--tone)_80%,#121212)] font-sans text-[10px] font-semibold tracking-tight text-white shadow-md sm:text-xs">
-              {"★".repeat(book.rating)}
+              <span className="flex" role="img" aria-label={`${book.rating} out of 5 stars`}>
+                {Array.from({ length: book.rating }, (_, i) => (
+                  <RoundStar key={i} />
+                ))}
+              </span>
             </span>
           )}
         </div>
@@ -64,5 +68,21 @@ export function BookCard({ book }: { book: Book }) {
         )}
       </div>
     </article>
+  );
+}
+
+/** A star with softened points: a round-joined stroke in the fill colour
+ * blunts each tip. */
+function RoundStar() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden className="h-[1em] w-[1em]">
+      <polygon
+        points="12,3 14.6,8.8 20.8,9.4 16.1,13.6 17.5,19.8 12,16.6 6.5,19.8 7.9,13.6 3.2,9.4 9.4,8.8"
+        fill="currentColor"
+        stroke="currentColor"
+        strokeWidth={3}
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }

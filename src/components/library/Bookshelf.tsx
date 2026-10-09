@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { books, cover, hue } from "@/content/library";
 import { BookDialog } from "./BookDialog";
 import { BookCard, CARD_BACKDROP } from "./BookCard";
@@ -14,6 +15,7 @@ const shelf = [...books].sort((a, b) => hue(a.tone) - hue(b.tone));
 export function Bookshelf() {
   const { index, open, close, step, registerTile } = useBookViewer(shelf.length);
   const book = index === null ? null : shelf[index];
+  const listRef = useShelfReveal();
 
   return (
     <section className="flex flex-col gap-10 md:flex-row md:gap-14">
@@ -34,7 +36,7 @@ export function Bookshelf() {
             strokeWidth={1.3}
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="h-3.5 w-[30px] rotate-90 text-matcha md:rotate-0"
+            className="h-3.5 w-[30px] rotate-90 animate-[arrow-nudge_1.8s_cubic-bezier(0.22,0.8,0.3,1)_infinite] text-matcha motion-reduce:animate-none md:rotate-0"
           >
             <path d="M1.5 7.6 C8 6.4 15.5 6.6 27.5 7" />
             <path d="M21 2.2 C23.4 3.9 25.4 5.4 28.2 7 C25.2 8.6 23.2 10.1 21.2 12" />
@@ -42,9 +44,16 @@ export function Bookshelf() {
         </p>
       </aside>
 
-      <ol className="grid flex-1 grid-cols-4 gap-1 self-start p-1 sm:gap-1.5 sm:p-1.5 overflow-hidden rounded-[12px] border border-border shadow-[0_1px_2px_rgba(37,37,37,0.06),0_8px_24px_-12px_rgba(37,37,37,0.18)] sm:grid-cols-6">
+      <ol
+        ref={listRef}
+        className={`grid flex-1 grid-cols-4 gap-1 self-start p-1 sm:gap-1.5 sm:p-1.5 shelf-motion rounded-[12px] border border-border shadow-[0_1px_2px_rgba(37,37,37,0.06),0_8px_24px_-12px_rgba(37,37,37,0.18)] sm:grid-cols-6`}
+      >
         {shelf.map((b, i) => (
-          <li key={b.slug} className="relative">
+          <li
+            key={b.slug}
+            className="relative"
+            style={{ "--col": i % 6, "--from-tilt": `${i % 2 ? 6 : -6}deg` } as React.CSSProperties}
+          >
             <button
               type="button"
               onClick={() => open(i)}
@@ -82,4 +91,28 @@ export function Bookshelf() {
       )}
     </section>
   );
+}
+
+/** Each cover drops in tilted the first time it scrolls
+ * into view, staggered along its row, and springs to rest (`.shelf-motion`
+ * in library.css, which also makes covers hop on hover). */
+function useShelfReveal() {
+  const ref = useRef<HTMLOListElement>(null);
+  useEffect(() => {
+    const list = ref.current;
+    if (!list) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue;
+          e.target.setAttribute("data-in", "");
+          io.unobserve(e.target);
+        }
+      },
+      { rootMargin: "0px 0px 60px 0px" },
+    );
+    for (const li of list.children) io.observe(li);
+    return () => io.disconnect();
+  }, []);
+  return ref;
 }

@@ -25,8 +25,8 @@ export function PhotoSlotList({ items }: { items: RecommendationItem[] }) {
     >
       <ul className="space-y-3">
         {items.map((item, i) => (
-          <li key={item.title} className="flex gap-3">
-            <span aria-hidden className="mt-0.5 shrink-0 text-sm text-ink">
+          <li key={item.title} className="about-row flex gap-3">
+            <span aria-hidden className="about-star mt-0.5 shrink-0 text-sm text-ink">
               ✱
             </span>
             <p className="font-sans text-[15px] leading-relaxed text-ink-soft">
@@ -73,15 +73,20 @@ export function PhotoSlotList({ items }: { items: RecommendationItem[] }) {
       </ul>
 
       <div
-        className="relative hidden self-center min-[420px]:block"
+        className="group relative hidden self-center min-[420px]:block"
         style={{ aspectRatio: "3 / 4" }}
       >
         <div
-          className="absolute inset-0 flex flex-col items-center justify-center gap-2 rounded-[8px] border border-dashed border-border-strong text-center transition-opacity duration-300"
+          className="absolute inset-0 flex flex-col items-center justify-center gap-2 rounded-[8px] border border-dashed border-border-strong text-center transition-[opacity,rotate,scale,border-color,background-color] duration-300 ease-[cubic-bezier(0.22,0.8,0.3,1)] group-hover:-rotate-2 group-hover:scale-[1.03] group-hover:border-matcha group-hover:bg-matcha/5 motion-reduce:group-hover:rotate-0 motion-reduce:group-hover:scale-100"
           style={{ opacity: active === null ? 1 : 0 }}
         >
           <SidequestArrow />
-          <span aria-hidden className="text-matcha">✱</span>
+          <span
+            aria-hidden
+            className="inline-block text-matcha group-hover:animate-[asterisk-spin_1.6s_linear_infinite] motion-reduce:!animate-none"
+          >
+            ✱
+          </span>
           <span className="px-3 font-sans text-xs text-matcha">
             <span className="[@media(hover:none)]:hidden">hover</span>
             <span className="hidden [@media(hover:none)]:inline">click</span> a sidequest

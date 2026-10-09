@@ -21,7 +21,7 @@ export const hero = {
   /** "Just shipped {name} {relative date}". The date is counted in the
    * visitor's browser, so it stays current without a rebuild. */
   shipped: { name: "Pebble", href: "https://learnpebble.vercel.app/", date: "2026-10-06" },
-  subheadBold: "Currently @ First Voyage.",
+  subheadBold: "Currently @ First Voyage",
   location: "Based in NYC",
   artwork: {
     src: "/personal/hero.webp",
@@ -130,7 +130,7 @@ export const recommendations: Record<
 > = {
   listening: [
     { title: "Dive Club", detail: "- my favorite product design podcast" },
-    { title: "jasmi.news", detail: "- my favorite journalist on Silicon Valley and trends in startup/tech/AI culture" },
+    { title: "jasmi.news", detail: "- my favorite journalist on Silicon Valley and startup/tech/AI trends" },
     { title: "The Lonely Palette", detail: "- my favorite art history podcast" },
     { title: "Sinica Podcast", detail: "- my favorite podcast on Chinese geopolitics, history & culture" },
   ],

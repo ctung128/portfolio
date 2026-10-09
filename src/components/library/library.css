@@ -18,3 +18,46 @@
 ::view-transition-new(root) {
   animation-duration: 320ms;
 }
+
+/* Shelf motion (.shelf-motion): covers drop in tilted as they scroll into view,
+   staggered along the row, then spring to rest; on hover a cover hops up
+   with a slight tilt. The shelf drops overflow-hidden so hops aren't
+   clipped. The reveal sits on the <li> (translate/rotate), the hop on the
+   button (transform), so they never fight. */
+.shelf-motion > li {
+  transition:
+    opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+    translate 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    rotate 800ms var(--spring);
+  transition-delay: calc(var(--col, 0) * 60ms);
+}
+.shelf-motion > li:not([data-in]) {
+  opacity: 0;
+  translate: 0 40px;
+  rotate: var(--from-tilt, 5deg);
+}
+.shelf-motion > li > button {
+  transition:
+    transform 500ms var(--spring),
+    box-shadow 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.shelf-motion > li:hover {
+  z-index: 10;
+}
+.shelf-motion > li > button:hover {
+  transform: translateY(-8px) rotate(-2deg);
+  box-shadow: 0 2px 4px rgba(37, 37, 37, 0.08), 0 22px 36px -16px rgba(37, 37, 37, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shelf-motion > li,
+  .shelf-motion > li:not([data-in]) {
+    opacity: 1;
+    translate: none;
+    rotate: none;
+    transition: none;
+  }
+  .shelf-motion > li > button:hover {
+    transform: none;
+  }
+}

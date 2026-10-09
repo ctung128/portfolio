@@ -75,7 +75,7 @@ export function Hero() {
       {/* Phones */}
       <div className="rounded-[12px] border border-border sm:hidden">
         <div className="p-4 @container">
-          <p className="whitespace-nowrap font-sans text-[min(15px,4.05cqi)] font-medium leading-snug text-ink">
+          <p className="whitespace-nowrap font-sans text-[min(15px,4.05cqi)] font-normal leading-snug text-ink">
             {hero.tagline}
           </p>
           <div className="mt-2.5">
@@ -105,7 +105,7 @@ export function Hero() {
 
         <div className="flex min-w-0 flex-1 flex-col">
           <div className="flex-1 p-5">
-            <p className="text-pretty font-sans text-base font-medium leading-snug text-ink">
+            <p className="text-pretty font-sans text-[15px] font-normal leading-snug text-ink">
               {hero.tagline}
             </p>
             <div className="mt-3">

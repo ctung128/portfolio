@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { playPage, playProjects, type PlayProject } from "@/content/site";
 import { LazyVideo } from "@/components/LazyVideo";
 
@@ -50,18 +50,20 @@ function Cover({ project, className }: { project: PlayProject; className: string
 function Card({
   project,
   className,
+  style,
   children,
 }: {
   project: PlayProject;
   className: string;
+  style?: React.CSSProperties;
   children: React.ReactNode;
 }) {
   return project.href ? (
-    <a href={project.href} target="_blank" rel="noreferrer" className={`group ${className}`}>
+    <a href={project.href} target="_blank" rel="noreferrer" className={`group ${className}`} style={style}>
       {children}
     </a>
   ) : (
-    <div className={className}>
+    <div className={className} style={style}>
       {children}
     </div>
   );
@@ -70,22 +72,37 @@ function Card({
 function Aside({ children }: { children?: React.ReactNode }) {
   return (
     <aside className="md:sticky md:top-28 md:h-fit md:w-[220px] md:shrink-0">
-      <h1 className="font-serif text-[26px] text-ink sm:text-[30px] lg:text-4xl">
+      <h1 style={{ "--n": 0 } as React.CSSProperties} className="intro-item font-serif text-[26px] text-ink sm:text-[30px] lg:text-4xl">
         {playPage.headline}
       </h1>
-      <p className="mt-3 font-sans text-[15px] leading-relaxed text-ink-soft">
+      <p
+        style={{ "--n": 1 } as React.CSSProperties}
+        className="intro-item mt-3 font-sans text-[15px] leading-relaxed text-ink-soft"
+      >
         {playPage.description}
       </p>
-      {children}
+      <div style={{ "--n": 2 } as React.CSSProperties} className="intro-item">
+        {children}
+      </div>
     </aside>
   );
 }
 
-function Shell({ aside, children }: { aside: React.ReactNode; children: React.ReactNode }) {
+function Shell({
+  aside,
+  gridRef,
+  children,
+}: {
+  aside: React.ReactNode;
+  gridRef: React.Ref<HTMLDivElement>;
+  children: React.ReactNode;
+}) {
   return (
     <div className="flex flex-col gap-10 md:flex-row md:gap-14">
       {aside}
-      <div className="grid flex-1 grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2">{children}</div>
+      <div ref={gridRef} className="grid flex-1 grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2">
+        {children}
+      </div>
     </div>
   );
 }
@@ -98,9 +115,11 @@ export function PlayGallery() {
   const [filter, setFilter] = useState<"all" | "open">("all");
   const openCount = playProjects.filter((p) => p.href).length;
   const shown = filter === "open" ? playProjects.filter((p) => p.href) : playProjects;
+  const gridRef = useTileReveal(filter);
 
   return (
     <Shell
+      gridRef={gridRef}
       aside={
         <Aside>
           <div
@@ -130,9 +149,20 @@ export function PlayGallery() {
         </Aside>
       }
     >
-      {shown.map((p) => (
-        <Card key={p.title} project={p} className="flex flex-col gap-3">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-[14px] bg-[#f1f3f0]">
+      {shown.map((p, i) => (
+        <Card
+          key={p.title}
+          project={p}
+          className="play-tile flex flex-col gap-3"
+          style={
+            {
+              "--col": i % 2,
+              "--from-tilt": `${i % 2 ? 5 : -5}deg`,
+              "--hop-tilt": `${i % 2 ? 1.5 : -1.5}deg`,
+            } as React.CSSProperties
+          }
+        >
+          <div className="play-cover relative aspect-[4/3] overflow-hidden rounded-[14px] bg-[#f1f3f0]">
             {p.href && (
               <span className="pointer-events-none absolute right-3 top-3 z-10 inline-flex items-center rounded-full bg-ink py-1.5 pl-2.5 pr-3 font-sans text-xs text-cream shadow-[0_6px_16px_-6px_rgba(0,0,0,0.35)]">
                 <ExpandIcon />
@@ -162,4 +192,28 @@ export function PlayGallery() {
       ))}
     </Shell>
   );
+}
+
+/** Each tile drops in tilted the first time it scrolls into view, staggered
+ * across the row, and springs to rest (`.play-tile` in globals.css). Re-runs
+ * when the filter brings tiles back so new ones get observed too. */
+function useTileReveal(filter: string) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const grid = ref.current;
+    if (!grid) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue;
+          e.target.setAttribute("data-in", "");
+          io.unobserve(e.target);
+        }
+      },
+      { rootMargin: "0px 0px 60px 0px" },
+    );
+    for (const tile of grid.children) if (!tile.hasAttribute("data-in")) io.observe(tile);
+    return () => io.disconnect();
+  }, [filter]);
+  return ref;
 }
