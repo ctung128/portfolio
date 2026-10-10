@@ -502,3 +502,18 @@ body {
     transition: none;
   }
 }
+
+/* Read-along on a note with audio: sentences ahead of the voice are faint, the
+   one being read is ink with an underline that fades in (`NoteAudio` sets the states). */
+.note-sentence {
+  text-decoration: underline 1.5px transparent;
+  text-underline-offset: 0.2em;
+  transition: color 0.26s, text-decoration-color 0.26s;
+}
+.note-sentence[data-state="unread"] {
+  color: var(--color-ink-faint);
+}
+.note-sentence[data-state="current"] {
+  color: var(--color-ink);
+  text-decoration-color: currentColor;
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { NOTE_AUDIO_PLAY } from "@/components/notes/NoteAudio";
 
 /**
  * "Sound [off] / [on]" toggle after isablyns.vercel.app, playing a few tracks
@@ -92,6 +93,18 @@ export function SoundToggle() {
         .catch(() => setOn(false));
     }
   }, [on, getAudio, rampTo]);
+
+  // A note's read-aloud starting fades the music out.
+  useEffect(() => {
+    const stop = () => {
+      if (!on || !audio.current) return;
+      const a = audio.current;
+      setOn(false);
+      rampTo(0, () => a.pause());
+    };
+    window.addEventListener(NOTE_AUDIO_PLAY, stop);
+    return () => window.removeEventListener(NOTE_AUDIO_PLAY, stop);
+  }, [on, rampTo]);
 
   useEffect(
     () => () => {
