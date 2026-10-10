@@ -15,12 +15,12 @@ export function FeaturedWork() {
   return (
     <section id="work" className="border-y border-border bg-cream-subtle">
       <div className="mx-auto max-w-5xl px-6 py-16 sm:px-8 sm:py-24">
-        <WorkReveal tilt={0}>
+        <WorkReveal>
           <h2 className="font-serif text-[26px] text-ink sm:text-[30px] lg:text-4xl">Selected work</h2>
         </WorkReveal>
         <div className="mt-10 grid grid-cols-1 gap-16">
-        {caseStudies.map((cs, i) => (
-          <WorkReveal key={cs.slug} tilt={i % 2 ? 3 : -3} className="group flex flex-col">
+        {caseStudies.map((cs) => (
+          <WorkReveal key={cs.slug} className="group flex flex-col">
           <Link href={`/work/${cs.slug}`} className="flex flex-col">
             <div className="aspect-[16/9] overflow-hidden rounded-[12px]">
               {cs.heroMockup ? (

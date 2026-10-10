@@ -445,22 +445,20 @@ body {
   }
 }
 
-/* Play tiles (PlayGallery): like the Library shelf, each tile drops in
-   tilted as it scrolls into view (staggered across the row, --col) and
-   springs to rest; on hover the cover hops up with a slight tilt
-   (--hop-tilt, alternating by column) and a soft shadow. Reveal on the
-   tile (translate/rotate), hop on the cover (transform). */
+/* Play tiles (PlayGallery): each tile fades up a short way as it scrolls into
+   view on a long ease-out, staggered across the row (--col); on hover the
+   cover hops up with a slight tilt (--hop-tilt, alternating by column) and a
+   soft shadow. Reveal on the tile (opacity/translate), hop on the cover
+   (transform). */
 .play-tile {
   transition:
-    opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
-    translate 700ms cubic-bezier(0.22, 1, 0.36, 1),
-    rotate 800ms var(--spring);
-  transition-delay: calc(var(--col, 0) * 80ms);
+    opacity 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    translate 1100ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--col, 0) * 100ms);
 }
 .play-tile:not([data-in]) {
   opacity: 0;
-  translate: 0 40px;
-  rotate: var(--from-tilt, 5deg);
+  translate: 0 24px;
 }
 .play-cover {
   transition:
@@ -477,7 +475,6 @@ body {
   .play-tile:not([data-in]) {
     opacity: 1;
     translate: none;
-    rotate: none;
     transition: none;
   }
   .play-tile:hover .play-cover {
@@ -485,19 +482,16 @@ body {
   }
 }
 
-/* Selected work (WorkReveal): each case study drops in from a slight tilt
-   (--from-tilt, alternating) as it scrolls into view and springs to rest,
-   like the Play tiles. Larger than a tile, so a gentler tilt and drop. */
+/* Selected work (WorkReveal): each case study fades up a short way as it
+   scrolls into view, on the same long ease-out as the Play tiles. */
 .work-reveal {
   transition:
-    opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
-    translate 700ms cubic-bezier(0.22, 1, 0.36, 1),
-    rotate 800ms var(--spring);
+    opacity 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    translate 1100ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 .work-reveal:not([data-in]) {
   opacity: 0;
-  translate: 0 48px;
-  rotate: var(--from-tilt, 0deg);
+  translate: 0 24px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -505,7 +499,6 @@ body {
   .work-reveal:not([data-in]) {
     opacity: 1;
     translate: none;
-    rotate: none;
     transition: none;
   }
 }

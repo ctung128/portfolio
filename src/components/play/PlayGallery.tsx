@@ -157,7 +157,6 @@ export function PlayGallery() {
           style={
             {
               "--col": i % 2,
-              "--from-tilt": `${i % 2 ? 5 : -5}deg`,
               "--hop-tilt": `${i % 2 ? 1.5 : -1.5}deg`,
             } as React.CSSProperties
           }
@@ -194,9 +193,9 @@ export function PlayGallery() {
   );
 }
 
-/** Each tile drops in tilted the first time it scrolls into view, staggered
- * across the row, and springs to rest (`.play-tile` in globals.css). Re-runs
- * when the filter brings tiles back so new ones get observed too. */
+/** Each tile fades up the first time it scrolls into view, staggered across
+ * the row (`.play-tile` in globals.css). Re-runs when the filter brings tiles
+ * back so new ones get observed too. */
 function useTileReveal(filter: string) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {

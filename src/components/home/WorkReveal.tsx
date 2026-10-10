@@ -3,16 +3,13 @@
 import { useEffect, useRef } from "react";
 
 /**
- * Selected work entry that drops in tilted (`tilt` degrees) the first time it
- * scrolls into view and springs to rest, like the Play tiles and Library
- * covers. Styles are `.work-reveal` in globals.css.
+ * Selected work entry that fades up the first time it scrolls into view, like
+ * the Play tiles. Styles are `.work-reveal` in globals.css.
  */
 export function WorkReveal({
-  tilt,
   className,
   children,
 }: {
-  tilt: number;
   className?: string;
   children: React.ReactNode;
 }) {
@@ -37,7 +34,6 @@ export function WorkReveal({
     <div
       ref={ref}
       className={`work-reveal ${className ?? ""}`}
-      style={{ "--from-tilt": `${tilt}deg` } as React.CSSProperties}
     >
       {children}
     </div>
