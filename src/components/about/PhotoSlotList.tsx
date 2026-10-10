@@ -11,8 +11,8 @@ const EASE_OUT = "cubic-bezier(0.22, 0.8, 0.3, 1)";
 
 /**
  * Recommendation list whose photo items develop a print in a reserved slot
- * on hover/focus/tap (after charisa.design/about). One print at a time; a
- * dashed frame holds the space otherwise so the card never resizes.
+ * on hover/focus/tap. One print at a time; a dashed frame holds the space
+ * otherwise so the card never resizes.
  */
 export function PhotoSlotList({ items }: { items: RecommendationItem[] }) {
   const [active, setActive] = useState<number | null>(null);

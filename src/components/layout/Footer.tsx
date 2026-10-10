@@ -17,7 +17,7 @@ const navLinks = [
   { label: "Library", href: "/library" },
 ];
 
-/** WMO weather code → one word, the way charisa.design says "Sunny". */
+/** WMO weather code → one word ("Sunny", "Clear", ...). */
 function describe(code: number, isDay: boolean) {
   if (code === 0) return isDay ? "Sunny" : "Clear";
   if (code <= 2) return "Partly cloudy";
@@ -94,9 +94,8 @@ function ExternalIcon() {
   );
 }
 
-/** After charisa.design's footer, in the site's ink: logo where the quote and
- * flower tiles sit, NYC weather + clock beneath, Email / LinkedIn and the nav
- * as two columns on the right. Email copies the address and flashes a
+/** Site footer in the site's ink: the logo on the left with NYC weather +
+ * clock beneath, Email / LinkedIn and the nav as two columns on the right. Email copies the address and flashes a
  * toast. */
 export function Footer() {
   const pathname = usePathname();

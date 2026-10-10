@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { playPage, playProjects, type PlayProject } from "@/content/site";
 import { LazyVideo } from "@/components/LazyVideo";
 
-// Layout after dinmukhamed.me/craft: a sticky left column, a two-up grid of
+// Layout: a sticky left column, a two-up grid of
 // 4:3 tiles, and an "open" chip on the projects you can visit.
 
 const EASE = "ease-[cubic-bezier(0.22,1,0.36,1)]";
