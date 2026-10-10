@@ -36,7 +36,7 @@ export function BookCard({ book }: { book: Book }) {
             className="block w-full rounded-[6px] shadow-[0_6px_18px_-8px_rgba(37,37,37,0.4)]"
           />
           {book.rating && (
-            <span className="absolute -right-[14%] top-[52%] grid aspect-square w-[30%] place-items-center rounded-full bg-[color-mix(in_oklch,var(--tone)_80%,#121212)] font-sans text-[10px] font-semibold tracking-tight text-white shadow-md sm:text-xs">
+            <span className="absolute -right-[14%] top-[52%] grid aspect-square w-[30%] place-items-center rounded-full bg-[color-mix(in_oklch,var(--tone)_80%,#121212)] font-sans text-[10px] font-normal tracking-tight text-white shadow-md sm:text-xs">
               <span className="flex" role="img" aria-label={`${book.rating} out of 5 stars`}>
                 {Array.from({ length: book.rating }, (_, i) => (
                   <RoundStar key={i} />

@@ -6,7 +6,7 @@ import { LazyVideo } from "@/components/LazyVideo";
 function StatusChip({ status }: { status: "rejected" | "shipped" }) {
   return (
     <span
-      className={`inline-flex shrink-0 items-center rounded-full px-2.5 py-0.5 align-middle font-sans text-[11px] font-medium uppercase tracking-wider ${
+      className={`inline-flex shrink-0 items-center rounded-full px-2.5 py-0.5 align-middle font-sans text-[11px] font-normal uppercase tracking-wider ${
         status === "shipped"
           ? "bg-ink text-cream"
           : "border border-border-strong text-ink-faint"
@@ -51,7 +51,7 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
               ? "font-serif text-[22px] text-ink sm:text-[26px] lg:text-3xl"
               : block.style === "label"
                 ? "font-sans text-xs uppercase tracking-widest text-ink-faint"
-                : "font-sans text-sm font-semibold uppercase tracking-wider text-ink"
+                : "font-sans text-sm font-normal uppercase tracking-wider text-ink"
           } ${block.status ? "flex flex-wrap items-center gap-3" : ""}`}
         >
           {block.text}
@@ -84,7 +84,7 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
     case "callout":
       return (
         <div className="border-l-2 border-green py-1 pl-5">
-          <p className="font-sans text-xs font-semibold uppercase tracking-wider text-ink">
+          <p className="font-sans text-xs font-normal uppercase tracking-wider text-ink">
             {block.label}
           </p>
           <p className="mt-3 font-serif text-xl leading-snug text-ink sm:text-[22px] lg:text-2xl">

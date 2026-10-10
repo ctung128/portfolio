@@ -51,8 +51,17 @@
   --color-green: var(--color-green);
   --color-matcha: var(--color-matcha);
   --font-serif: var(--font-instrument-serif);
-  --font-sans: var(--font-open-sans);
+  --font-sans: var(--font-pp-neue-montreal);
+  /* PP Neue Montreal Text Book; Tailwind's other weight tokens map to its cuts as-is. */
+  --font-weight-book: 350;
   --font-zh: var(--font-huiwen-mincho);
+}
+
+/* Faux medium: PP Neue Montreal has no 500 cut, so thicken Regular with a hairline
+   stroke in the text colour (0.015em ≈ the stem difference between 400 and 500). */
+@utility font-faux-medium {
+  font-weight: 400;
+  -webkit-text-stroke: 0.015em currentColor;
 }
 
 html {
@@ -216,7 +225,6 @@ body {
 
 .shipped-lead {
   color: var(--color-ink);
-  font-weight: 600;
 }
 
 /* ── A matcha status dot with a ring that breathes outward, like a

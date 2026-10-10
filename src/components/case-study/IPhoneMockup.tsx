@@ -437,7 +437,7 @@ export function IPhoneMockup({
               <>
                 {/* Status bar */}
                 <div className="absolute inset-x-0 top-0 z-20 flex items-center justify-between px-[1.6rem] pt-[0.65rem]">
-                  <span className="font-sans text-[13px] font-semibold tracking-tight text-white">
+                  <span className="font-sans text-[13px] font-normal tracking-tight text-white">
                     9:41
                   </span>
                   <StatusBarIcons />

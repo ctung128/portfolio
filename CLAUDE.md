@@ -8,6 +8,9 @@ Run `node scripts/optimize-media.mjs --write` after adding images/videos: it con
 
 Running log of notable work done with Claude Code, newest first. Keep entries to a few bullets — this is a changelog, not a task tracker.
 
+### 2026-10-10
+- Sans is now PP Neue Montreal (was Open Sans): all 12 faces of the free personal-use release (Hairline 100, Light 300, Text Book 350, Regular 400, Semibold 600, Extrabold 800, each with italic) as Latin-subset WOFF2s in `src/fonts/pp-neue-montreal/`, loaded with `next/font/local` as `--font-pp-neue-montreal` → `--font-sans`. New `--font-weight-book: 350` token (`font-book`) for the Text cut. No Medium cut exists; every `font-medium` / `font-semibold` (and `.shipped-lead`'s 600) is now Regular (`font-normal`), so the site uses no bold weights, except a `font-faux-medium` utility (Regular + a 0.015em `-webkit-text-stroke` in the text colour) on the hero's "Just shipped" lead and "Currently @ First Voyage". Rebuild and licence notes in `src/fonts/LICENSE-pp-neue-montreal.txt` (personal-use licence only; a commercial use needs a web licence).
+
 ### 2026-10-08
 - Hero, phones: "Currently @ First Voyage" / "Based in NYC" now scale with the tagline (`min(15px,4.05cqi)` on their own `@container` cell, same width and padding), so all three are always the same size. sm+ was already 15px for all three.
 - About: the ✱ bullets (both cards) and the Sidequesting slot's ✱ only spin on mouse/trackpad devices (`(hover: hover) and (pointer: fine)`); on phones a tap left `:hover` stuck and set them spinning.

@@ -70,7 +70,7 @@ export function ShippedLine({ className = "text-[15px]" }: { className?: string 
     <p className={`relative pl-4 font-sans leading-snug text-ink-soft ${className}`}>
       <span>
         <span aria-hidden className="shipped-dot" />
-        <span className="shipped-lead">{lead.slice(0, n)}</span>
+        <span className="shipped-lead font-faux-medium">{lead.slice(0, n)}</span>
         {n > lead.length && (
           <>
             <a href={href} target="_blank" rel="noreferrer" className="link-underline">

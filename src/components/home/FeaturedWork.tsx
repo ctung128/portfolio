@@ -87,7 +87,7 @@ export function FeaturedWork() {
                 )
               )}
               {cs.badge && (
-                <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#39C463]/40 bg-[#39C463]/20 px-2.5 py-1 font-sans text-xs font-medium text-[#1f8a45] shadow-[0_1px_3px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.6)] backdrop-blur-md backdrop-saturate-150">
+                <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#39C463]/40 bg-[#39C463]/20 px-2.5 py-1 font-sans text-xs font-normal text-[#1f8a45] shadow-[0_1px_3px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.6)] backdrop-blur-md backdrop-saturate-150">
                   <span className="h-1.5 w-1.5 rounded-full bg-[#39C463]" />
                   {cs.badge}
                 </span>
@@ -97,7 +97,7 @@ export function FeaturedWork() {
                   href={cs.liveUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="btn-slide inline-flex items-center gap-1 rounded-[12px] bg-ink px-2.5 py-1 font-sans text-xs font-medium text-cream"
+                  className="btn-slide inline-flex items-center gap-1 rounded-[12px] bg-ink px-2.5 py-1 font-sans text-xs font-normal text-cream"
                 >
                   <span className="btn-slide-viewport"><span>See it live</span></span>
                   <span className="btn-slide-viewport" aria-hidden><span>{ARROW_NE}</span></span>

@@ -1,0 +1,15 @@
+PP Neue Montreal by Pangram Pangram Foundry, "Free for Personal Use" release v3.0
+(EULA-PangramPangram-FreeForPersonalUse-MAY2021.pdf, shipped with the download).
+
+Bundled here as pp-neue-montreal/*.woff2: every OTF in that release, subset to Latin,
+Latin Extended, punctuation, currency, arrows and math symbols, all OpenType features
+kept. Rebuild from the download's otf/ folder:
+
+  for f in otf/*.otf; do
+    pyftsubset "$f" --unicodes="U+0000-024F,U+02B0-02FF,U+0300-036F,U+1E00-1EFF,U+2000-206F,U+2070-209F,U+20A0-20CF,U+2100-214F,U+2150-218F,U+2190-21FF,U+2200-22FF,U+25A0-25FF" \
+      --layout-features='*' --flavor=woff2 \
+      --output-file="src/fonts/pp-neue-montreal/$(basename "$f" .otf).woff2"
+  done
+
+The personal-use licence does not cover commercial use; buy a web licence from
+pangrampangram.com if the site's use needs one.

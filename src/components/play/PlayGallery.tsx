@@ -182,7 +182,7 @@ export function PlayGallery() {
             />
           </div>
           <div className="flex items-baseline justify-between gap-3">
-            <h2 className="font-sans text-[15px] font-medium leading-snug text-ink">{p.title}</h2>
+            <h2 className="font-sans text-[15px] font-normal leading-snug text-ink">{p.title}</h2>
             {p.href && (
               <span className="mt-0.5 h-1.5 w-1.5 shrink-0 self-center rounded-full bg-matcha" aria-hidden />
             )}

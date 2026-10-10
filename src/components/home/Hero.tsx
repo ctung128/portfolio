@@ -103,7 +103,7 @@ export function Hero() {
           </figcaption>
         </figure>
         <div className="border-t border-border p-4 font-sans leading-relaxed @container">
-          <p className="text-[min(15px,4.05cqi)] font-semibold text-ink">{hero.subheadBold}</p>
+          <p className="text-[min(15px,4.05cqi)] font-faux-medium text-ink">{hero.subheadBold}</p>
           <p className="text-[min(15px,4.05cqi)] text-ink-soft">{hero.location}</p>
         </div>
       </div>
@@ -127,7 +127,7 @@ export function Hero() {
             </div>
           </div>
           <div className="border-t border-border p-5 font-sans text-[15px] leading-relaxed">
-            <p className="font-semibold text-ink">{hero.subheadBold}</p>
+            <p className="font-faux-medium text-ink">{hero.subheadBold}</p>
             <p className="text-ink-soft">{hero.location}</p>
             <p className="mt-6 border-t border-border pt-3 text-[13px] text-ink-faint">
               {hero.artwork.caption}

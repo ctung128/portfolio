@@ -20,7 +20,7 @@ export function CloudPreview() {
         <button
           type="button"
           onClick={() => setRun((r) => r + 1)}
-          className="rounded-[12px] bg-ink px-3 py-1.5 text-[14px] font-medium text-cream"
+          className="rounded-[12px] bg-ink px-3 py-1.5 text-[14px] font-normal text-cream"
         >
           Replay
         </button>

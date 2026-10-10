@@ -42,7 +42,7 @@ export function AboutSection() {
                         typeof seg === "string" ? (
                           seg
                         ) : "highlight" in seg ? (
-                          <span key={j} className="font-medium">
+                          <span key={j} className="font-normal">
                             {seg.text}
                           </span>
                         ) : (
@@ -103,13 +103,13 @@ export function AboutSection() {
                             target="_blank"
                             rel="noreferrer"
                             className={`hover:text-ink-soft ${
-                              group.boldTitles ? "font-medium text-ink" : "text-ink"
+                              group.boldTitles ? "font-normal text-ink" : "text-ink"
                             }`}
                           >
                             {item.title} <span aria-hidden className="text-ink-faint">{ARROW_NE}</span>
                           </a>
                         ) : (
-                          <span className={group.boldTitles ? "font-medium text-ink" : "text-ink"}>
+                          <span className={group.boldTitles ? "font-normal text-ink" : "text-ink"}>
                             {item.title}
                           </span>
                         )}
