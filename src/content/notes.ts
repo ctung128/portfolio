@@ -37,15 +37,15 @@ export const notes: Note[] = [
       src: "/notes/design-philosophy.m4a",
       cover: "/notes/design-philosophy-banner.webp",
       description: "my thoughts on design craft",
-      duration: 106,
-      // From the pauses in the recording, 0.1s early so the highlight leads the voice.
-      sentenceStarts: [0.68, 3.88, 11.25, 13.53, 19.62, 26.37, 32.98, 42.93, 46.64, 52.52, 55.86, 59.32, 68.98, 75.51, 84.97, 89.4, 92.94, 94.55, 99.5],
+      duration: 88,
+      // Word timestamps from a transcript (faster-whisper small.en), 0.1s early so the highlight leads the voice.
+      sentenceStarts: [0, 3.19, 9.01, 14.25, 16.65, 23.49, 28.85, 32.37, 37.31, 40.65, 43.65, 51.89, 59.25, 63.29, 68.23, 72.97, 77.57, 81.09],
     },
     paragraphs: [
-      "Design, to me, is the search for form. Every time I start from nothing, I’m asking a question more critical than any KPI: what deserves to exist? I take that question seriously. Design was born to fight for the person on the other side of the work, and I still believe that’s the job.",
-      "Although function is king, it's now more important than ever for products to have identities and souls. In Japan, there’s an aesthetic called wabi-sabi that finds beauty in things that are imperfect and ephemeral. To teach his son a lesson about wabi-sabi, the tea master Sen no Rikyu raked his garden perfectly clean, then shook a tree so a few leaves fell back down. What Rikyu said: \"Now the garden is perfect.\" A perfectly manicured garden feels soulless, but a few leaves on the ground can bring it back to life. In an interface, the details do the same.",
-      "So, ornament is what gives things soul. In the 1800s, craftsmen spent years dedicated to ornament, crafting grand cathedrals, engraved rifles, or twenty-feet-long rugs, sewn by hand. Today we call ourselves minimalists, but that craftsmanship is still here; it just looks different. When light glides cleanly across the curve of an AirPods case, that’s the product of engineers painstakingly sculpting a surface most people will never consciously notice. That hidden craftmanship is how you know someone paid attention to the human.",
-      "Dostoevsky believed beauty will save the world. I believe it too. Good design is about making things worth keeping, things people still love years from now. And that, to me, is what deserves to exist.",
+      "I believe that design is the search for form. Every time I'm starting from 0, I’m really asking one question: What deserves to exist? Design was born to fight for the person on the other side of the work, and I still believe that’s the job.",
+      "Products need to have identities and souls. The tea master Sen no Rikyu once asked his son to tidy their garden, so the son raked it perfectly clean, as one does. To teach him a lesson about wabi-sabi, Rikyu shook a tree so that a few leaves fell back down. Then he said: \"Now the garden is perfect.\" A completely manicured garden feels lifeless, but a few fallen leaves can bring it back to life. In an interface, the details do the same.",
+      "So, ornament is what gives things soul. In the 1800s, craftsmen spent years dedicated to ornament, crafting grand cathedrals, engraved rifles, and twenty-foot-long rugs. Today we call ourselves minimalists, but that craftsmanship is actually still here; it just looks a little different. Pick up an AirPods case and watch the light glide across its curve. Engineers painstakingly sculpted that surface, purely for the sake of beauty and delight. That hidden craftsmanship is how you know someone was paying attention to the human.",
+      "Dostoevsky wrote that beauty will save the world, and I believe it too. I want to make things people still love years from now, things worth keeping. That, to me, is what deserves to exist.",
     ],
     signoff: "— Carolyn",
     reading: {

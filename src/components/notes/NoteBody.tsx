@@ -29,7 +29,7 @@ export function NoteBody({ note }: { note: Note }) {
           <ul className="mt-4 space-y-2 font-sans text-[15px] leading-snug text-ink-soft">
             {note.reading.items.map((item, i) => (
               <li key={i} className="flex gap-2.5">
-                <span aria-hidden className="text-matcha">
+                <span aria-hidden className="text-ink">
                   ✱
                 </span>
                 <ReadingLine item={item} />

@@ -36,7 +36,7 @@ export function NotesShell({ children }: { children: React.ReactNode }) {
                   <span className="min-w-0">
                     <span
                       className={`block font-sans text-[15px] leading-snug transition-colors group-hover:text-matcha ${
-                        current ? "text-ink md:text-matcha" : "text-ink"
+                        current ? "text-ink md:font-semibold" : "text-ink"
                       }`}
                     >
                       {note.title}
