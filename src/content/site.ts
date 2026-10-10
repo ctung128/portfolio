@@ -165,6 +165,7 @@ export const nav: { label: string; href: string; external?: boolean }[] = [
   { label: "Work", href: "/#work" },
   { label: "Play", href: "/play" },
   { label: "Library", href: "/library" },
+  { label: "Notes", href: "/notes" },
 ];
 
 export const playPage = {

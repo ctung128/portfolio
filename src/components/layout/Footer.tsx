@@ -95,8 +95,8 @@ function ExternalIcon() {
 }
 
 /** Site footer in the site's ink: the logo on the left with NYC weather +
- * clock beneath, Email / LinkedIn and the nav as two columns on the right. Email copies the address and flashes a
- * toast. */
+ * clock beneath, Email / LinkedIn and the nav as two columns on the right.
+ * Email copies the address and flashes a toast. */
 export function Footer() {
   const pathname = usePathname();
   const weather = useNycWeather();
