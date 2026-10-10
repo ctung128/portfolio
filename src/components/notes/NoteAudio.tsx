@@ -88,7 +88,7 @@ export function NoteAudio({
       className="relative isolate overflow-hidden rounded-[8px] text-white"
     >
       <div aria-hidden style={bg} className="absolute inset-0 -z-30 bg-cover bg-right" />
-      {/* Blurred copy fades out toward the right; on phones it covers the whole card. */}
+      {/* Blurred copy fades out toward the right; on phones it fills in behind the text under the sharp strip. */}
       <div
         aria-hidden
         style={bg}
@@ -101,8 +101,14 @@ export function NoteAudio({
         className="pointer-events-none absolute inset-0 opacity-[.07] mix-blend-overlay"
       />
       <div aria-hidden className="pointer-events-none absolute inset-0 rounded-[8px] ring-1 ring-white/10 ring-inset" />
+      {/* Phones: the whole cover, sharp, across the top, melting into the blur below. */}
+      <div
+        aria-hidden
+        style={bg}
+        className="aspect-[2.56] bg-cover bg-center [mask-image:linear-gradient(180deg,#000_55%,transparent)] sm:hidden"
+      />
 
-      <div className="px-6 py-8 sm:max-w-[62%] sm:px-[8%] sm:py-10">
+      <div className="px-6 pt-2 pb-8 sm:max-w-[62%] sm:px-[8%] sm:py-10">
         <h2 className="font-serif text-[26px] leading-tight sm:text-[30px] lg:text-4xl">{title}</h2>
         <p className="mt-2 font-sans text-[15px] leading-relaxed text-white/85 sm:text-base">{description}</p>
 
