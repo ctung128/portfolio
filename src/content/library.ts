@@ -559,7 +559,7 @@ export const books: Book[] = [
     tone: "#e8c21a",
     tags: ["memoir", "art", "love"],
     review: [
-      "absolutely blown away. so many things to love about this book :( jennifer clement did such great justice to the fragmented form of this book. beautiful, poetic storytelling. … i was hooked and incredibly moved",
+      "absolutely blown away. so many things to love about this book :( jennifer clement did such great justice to the fragmented form. beautiful, poetic storytelling. … i was hooked and incredibly moved",
       "i really felt like i was there witnessing the cambrian explosion of artistic and sexual freedom in 1980s new york city. it was chaotic and beautiful and sadly ephemeral—destroyed by the aids epidemic. something so giovanni’s-room-tragic about this.",
       "also, i love jennifer clement. she is an angel and she loves suzanne so much. … to be seen and understood is to be loved!!!! what a beautiful beautiful friendship!!!!",
     ],
