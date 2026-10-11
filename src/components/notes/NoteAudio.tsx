@@ -85,7 +85,8 @@ export function NoteAudio({
     <section
       ref={root}
       aria-label={`${title} audio`}
-      className="relative isolate overflow-hidden rounded-[8px] text-white"
+      // clip-path as well as overflow: iOS Safari lets the blurred and masked layers escape the rounded corners otherwise.
+      className="relative isolate overflow-hidden rounded-[8px] [clip-path:inset(0_round_8px)] text-white"
     >
       <div aria-hidden style={bg} className="absolute inset-0 -z-30 bg-cover bg-right" />
       {/* Blurred copy fades out toward the right; on phones it fills in behind the text under the sharp strip. */}

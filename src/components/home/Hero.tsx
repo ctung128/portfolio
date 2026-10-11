@@ -96,9 +96,10 @@ export function Hero() {
             <ShippedLine className="text-[min(15px,4.05cqi)]" />
           </div>
         </div>
-        <figure className="border-t border-border p-4">
+        <figure className="border-t border-border p-4 @container">
           <Painting />
-          <figcaption className="mt-3 font-sans text-[12px] leading-snug text-ink-faint">
+          {/* One line: shrinks with the cell once 12px no longer fits (the caption is ~26em wide). */}
+          <figcaption className="mt-3 font-sans text-[min(12px,3.8cqi)] leading-snug whitespace-nowrap text-ink-faint">
             {hero.artwork.caption}
           </figcaption>
         </figure>
