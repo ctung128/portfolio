@@ -21,10 +21,10 @@ export function Bookshelf() {
     <section className="flex flex-col gap-10 md:flex-row md:gap-14">
       <aside className="md:sticky md:top-28 md:h-fit md:w-[220px] md:shrink-0">
         <h1 className="font-serif text-[26px] text-ink sm:text-[30px] lg:text-4xl">Library</h1>
-        <p className="mt-3 font-sans text-[15px] leading-relaxed text-ink-soft">
+        <p className="mt-4 font-sans text-[15px] leading-relaxed text-ink-soft">
           A museum of books I love. Open one to read my thoughts.
         </p>
-        <p className="mt-6 flex items-center gap-2 font-sans text-xs text-ink-faint">
+        <p className="mt-4 flex items-center gap-2 font-sans text-xs text-ink-faint">
           Tap a book to open it
           {/* Hand-drawn, like the Sidequesting arrow; points down when the
               shelf stacks below this column. */}

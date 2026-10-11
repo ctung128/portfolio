@@ -55,7 +55,7 @@ export const mysupplementals: CaseStudy = {
     },
     {
       id: "problem",
-      navLabel: "Problem",
+      navLabel: "Research",
       heading: "Applying to ten schools can mean 47 essays across 15 browser tabs.",
       blocks: [
         {
