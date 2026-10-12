@@ -272,7 +272,7 @@ export const notes: Note[] = [
       description: "my thoughts on design craft",
       duration: 93,
       // Where each sentence's voice starts in the edited file (pauses evened to 0.9s), 0.1s early so the highlight leads the voice.
-      sentenceStarts: [0, 6.36, 9.97, 14.88, 18.02, 22.76, 32.3, 36.31, 43.51, 46.85, 50.6, 52.43, 58.89, 67.34, 72.81, 76.13, 80.87, 87.3],
+      sentenceStarts: [0, 6.39, 10, 14.94, 18.11, 22.87, 32.43, 36.49, 43.93, 47.3, 51.06, 52.91, 59.44, 67.91, 73.38, 76.74, 81.48, 87.92],
     },
     paragraphs: [
       "Every time I'm starting a new project from zero, I'm really asking one question: what deserves to exist?",
