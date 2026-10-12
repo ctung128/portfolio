@@ -108,7 +108,7 @@ export const books: Book[] = [
     tags: ["german", "novella", "spirituality"],
     review: [
       "after letting my notes on this book marinate, one year later i have returned feeling much more “childlike,” as siddhartha puts it.",
-      "siddartha tells us that the self, personal growth, and life is cyclic, and nothing is linear. he reminds us that the young are arrogant and don’t know things and that nobody can teach you how to attain spiritual peace or to gain enlightenment; only your lived experiences can help you reach this state and the only way to gain these lived experiences is to live them.",
+      "siddartha tells us that the self, personal growth, and life is cyclic, and nothing is linear. he reminds us that the young are arrogant and don’t know things, that nobody can teach you how to attain spiritual peace or to gain enlightenment; only your lived experiences can help you reach this state. but isn't the attempt to heal and break the cycle a sacred act in itself? it’s a beautiful thing to change and grow and learn from your mistakes. this is everyone's first time living too",
     ],
   },
   {
