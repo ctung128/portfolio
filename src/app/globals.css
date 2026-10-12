@@ -465,7 +465,7 @@ body {
     transform 500ms var(--spring),
     box-shadow 500ms cubic-bezier(0.22, 1, 0.36, 1);
 }
-.play-tile:hover .play-cover {
+.play-hit:hover .play-cover {
   transform: translateY(-8px) rotate(var(--hop-tilt, -1.5deg));
   box-shadow: 0 2px 4px rgba(37, 37, 37, 0.08), 0 24px 40px -18px rgba(37, 37, 37, 0.4);
 }
@@ -477,7 +477,7 @@ body {
     translate: none;
     transition: none;
   }
-  .play-tile:hover .play-cover {
+  .play-hit:hover .play-cover {
     transform: none;
   }
 }
@@ -516,4 +516,190 @@ body {
 .note-sentence[data-state="current"] {
   color: var(--color-ink);
   text-decoration-color: currentColor;
+}
+
+/* Note figures: a die-cut photo sticker (StickerFigure), tilted as if stuck on a storybook
+   scrapbook page. Says hello once she's fully in view; a penciled "say hi 你好" points up at
+   her; on hover (or a tap on phones) she lifts and wobbles while flat doodles bloom around her. */
+.note-sticker {
+  --vermilion: #cf4a2f;
+  position: relative;
+  display: flow-root; /* keeps the image's negative margins (its padding) from collapsing through */
+  margin-bottom: 42px; /* room for the note under her, with air before the credit line */
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.note-sticker-img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transform: rotate(-2deg);
+  transform-origin: 50% 80%;
+  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.14)) drop-shadow(0 4px 8px rgb(0 0 0 / 0.08));
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+  user-select: none;
+}
+
+.note-sticker[data-entered] .note-sticker-img {
+  animation: sticker-hello 1s ease-in-out;
+}
+
+/* Hover (or a tap on phones): lift and wobble, then settle. */
+.note-sticker:hover .note-sticker-img,
+.note-sticker[data-active] .note-sticker-img {
+  transform: rotate(-2deg) scale(1.04);
+  filter: drop-shadow(0 2px 2px rgb(0 0 0 / 0.14)) drop-shadow(0 10px 16px rgb(0 0 0 / 0.12));
+  animation: sticker-wobble 0.9s ease-in-out;
+}
+
+@keyframes sticker-wobble {
+  0% {
+    transform: rotate(-2deg) scale(1);
+  }
+  20% {
+    transform: rotate(5deg) scale(1.04);
+  }
+  40% {
+    transform: rotate(-6deg) scale(1.04);
+  }
+  60% {
+    transform: rotate(3deg) scale(1.04);
+  }
+  80% {
+    transform: rotate(-3.5deg) scale(1.04);
+  }
+  100% {
+    transform: rotate(-2deg) scale(1.04);
+  }
+}
+
+@keyframes sticker-hello {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+  25% {
+    transform: rotate(3deg) translateY(-3px);
+  }
+  50% {
+    transform: rotate(-4deg);
+  }
+  75% {
+    transform: rotate(1deg) translateY(-1px);
+  }
+}
+
+/* Doodles: tucked behind her, they bloom out with a spring. */
+.note-sticker-doodles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.note-sticker-doodle {
+  position: absolute;
+  display: block;
+  translate: -50% -50%;
+  opacity: 0;
+  transform: scale(0.2) rotate(calc(var(--r) - 40deg));
+  transition:
+    transform 0.6s var(--spring) var(--d),
+    opacity 0.25s ease var(--d);
+
+  & svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.note-sticker:hover .note-sticker-doodle,
+.note-sticker[data-active] .note-sticker-doodle {
+  opacity: 1;
+  transform: scale(1) rotate(var(--r));
+}
+
+.note-sticker:hover .note-sticker-doodle.is-bird,
+.note-sticker[data-active] .note-sticker-doodle.is-bird {
+  animation: sticker-hop 0.5s ease-out calc(var(--d) + 450ms) 2;
+}
+
+@keyframes sticker-hop {
+  0%,
+  100% {
+    translate: -50% -50%;
+  }
+  40% {
+    translate: -50% calc(-50% - 7px);
+  }
+}
+
+/* The penciled note under her; its arrow draws itself in with the hello. */
+
+.note-sticker-hi {
+  position: absolute;
+  z-index: 2;
+  left: 30%;
+  top: calc(100% + 8px);
+  white-space: nowrap;
+  font-size: 19px;
+  line-height: 1;
+  color: var(--vermilion);
+  transform: rotate(-3deg);
+  pointer-events: none;
+}
+
+.note-sticker-arrow {
+  position: absolute;
+  left: -30px;
+  top: -18px;
+  width: 26px;
+  overflow: visible;
+
+  & path {
+    fill: none;
+    stroke: var(--vermilion);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 60;
+    stroke-dashoffset: 60;
+  }
+}
+
+.note-sticker[data-entered] .note-sticker-arrow path {
+  animation: sticker-draw 0.7s ease-out 0.6s forwards;
+}
+
+.note-sticker[data-entered] .note-sticker-arrow path + path {
+  animation-delay: 1.2s;
+}
+
+@keyframes sticker-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .note-sticker .note-sticker-img,
+  .note-sticker .note-sticker-doodle,
+  .note-sticker .note-sticker-arrow path {
+    animation: none !important;
+  }
+
+  .note-sticker-arrow path {
+    stroke-dashoffset: 0;
+  }
+
+  .note-sticker-doodle {
+    transform: scale(1) rotate(var(--r, 0deg));
+    transition: opacity 0.3s ease;
+  }
 }

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { playPage, playProjects, type PlayProject } from "@/content/site";
 import { LazyVideo } from "@/components/LazyVideo";
+import { PreviewLink } from "@/components/about/PreviewLink";
 
 // Layout: a sticky left column, a two-up grid of
 // 4:3 tiles, and an "open" chip on the projects you can visit.
@@ -46,7 +47,8 @@ function Cover({ project, className }: { project: PlayProject; className: string
 }
 
 /** The whole card is the link when the project has one, so the chip itself
- *  stays decorative. */
+ *  stays decorative. A project with a `story` gets a second link under the
+ *  card, so the tile becomes a wrapper around the two. */
 function Card({
   project,
   className,
@@ -58,12 +60,32 @@ function Card({
   style?: React.CSSProperties;
   children: React.ReactNode;
 }) {
-  return project.href ? (
-    <a href={project.href} target="_blank" rel="noreferrer" className={`group ${className}`} style={style}>
+  const link = (cls: string, s?: React.CSSProperties) => (
+    <a href={project.href} target="_blank" rel="noreferrer" className={`group play-hit ${cls}`} style={s}>
       {children}
     </a>
+  );
+  if (project.href && project.story) {
+    return (
+      <div className={className} style={style}>
+        {link("flex flex-col gap-3")}
+        <PreviewLink
+          href={project.story.href}
+          preview={project.story.preview}
+          className="group/story -mt-1 inline-flex w-fit items-center gap-1.5 font-sans text-[13px]"
+        >
+          Learn how I made it
+          <span aria-hidden className={`transition-transform duration-300 ${EASE} group-hover/story:translate-x-1`}>
+            →
+          </span>
+        </PreviewLink>
+      </div>
+    );
+  }
+  return project.href ? (
+    link(className, style)
   ) : (
-    <div className={className} style={style}>
+    <div className={`play-hit ${className}`} style={style}>
       {children}
     </div>
   );

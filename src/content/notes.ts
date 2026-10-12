@@ -13,9 +13,27 @@ export type Note = {
   title: string;
   /** ISO date, shown as MM-DD-YYYY. */
   date: string;
+  /** Paragraphs starting "## " are section headings; ones made of "- " lines are lists. Text may hold [words](https://…) links and **bold**. */
   paragraphs: string[];
-  /** Images shown after the paragraph at index `after`; width/height in CSS px (half the 2× screenshot). */
-  figures?: { after: number; src: string; alt: string; width: number; height: number }[];
+  /** Images or videos shown after the paragraph at index `after`; image width/height in CSS px (half the 2× screenshot). */
+  figures?: (
+    | {
+        after: number;
+        src: string;
+        alt: string;
+        width: number;
+        height: number;
+        /**
+         * A transparent cutout shown as a storybook sticker (`StickerFigure`): a hello on scroll-in,
+         * a wobble and blooming doodles on hover. `pad` is the transparent margin around the
+         * die-cut, in the same units as width/height; rows line up her visible edge, not the file's.
+         */
+        sticker?: { pad: number };
+        /** Where the image came from; credits show in one line under the image or row. */
+        credit?: { label: string; href: string };
+      }
+    | { after: number; video: string; poster?: string; alt: string; /** File not added yet: a dashed slot in dev, nothing in production. */ pending?: boolean }
+  )[];
   signoff?: string;
   /** Reading lists under the note, each under its own heading; `credit` names the source of the whole list. */
   reading?: { heading: string; credit?: Credit; items: Reading[] }[];
@@ -32,6 +50,44 @@ export type Note = {
 
 // Listed in the order of `noteOrder`, not this array.
 export const notes: Note[] = [
+  {
+    slug: "shipping-with-claude-code",
+    title: "Designing Pebble: AI-second product design",
+    date: "2026-10-12",
+    paragraphs: [
+      "My newest side project is [Pebble](https://learnpebble.vercel.app), a bespoke language learning app I built for my own learning. It transcribes Chinese podcasts, adds pinyin and English on demand, and exports vocab to Anki. Building it end to end in Claude Code sharpened how I think about designing AI products, so here’s my process.",
+      "My pain point started with 小宇宙 (Xiaoyuzhou), a popular Chinese podcast app full of comedy, psychology discussions, and life advice. I wanted to listen to an interview with Cai Gao, a children's book illustrator and the first Chinese illustrator to win the [Hans Christian Andersen Award](https://www.ibby.org/awards-activities/awards/hans-christian-andersen-award/hans-christian-andersen-awards-2026/hcaa-2026-winner-for-illustration-cai-gao) (the highest honor in children's literature worldwide). But the app is built for native speakers, so following along meant screenshotting the subtitles every 30 seconds and pasting them into a translator. A very high friction experience that I wanted to solve!",
+      "## AI-second, not AI-first",
+      "Pebble runs on AI, but I design it AI-second. This philosophy comes from [Vitaly Friedman](https://www.dive.club/deep-dives/vitaly-friedman). Vitaly asks us to obsess over how people use AI, and add “quiet AI” only where it removes friction or speeds up success. An AI-first mentality tends to turn teams into a feature factory of sparkle buttons and chatbots.",
+      "Working from first principles, I start with the job to be done and employ design patterns people already trust. AI powers them in the backdrop of a familiar audio transcript interface, showing pinyin when you toggle it on and English on tap. With so many proven design patterns available, being a chatbot loyalist is a local maximum, not a global one.",
+      "Trust is the limiting factor. Numerous [Nielsen Norman Group studies](https://www.nngroup.com/articles/designing-ai-study-guide/) show that advertising AI features make people expect upsells, hallucinations, and credits that run out fast. That puts the burden on design. Our job is to help people reach a good result in fewer prompts, so they succeed before they hit a credit limit and the company isn’t paying for every retry.",
+      "## Designing for failure modes",
+      "Hallucination is the default failure mode of AI. We can’t design it away, so I treat it as a constraint and over-index on surface area for trust. In Pebble, any line can be corrected by hand and reverted, and a line can be marked as “May need review” to be transparent about the model's limitations.",
+      "The hardest failure mode was the loading screen. Transcribing episodes that last over an hour can take a while, and a loading spinner leaves people wondering whether anything is happening. People want to see work in motion to trust the process and catch errors early.",
+      "My first few iterations of the loading screen filled the bar only from real progress, one tick per finished section. Then I uploaded a 55-second clip. It was a single section, so the bar sat empty for 20 seconds and jumped straight to done, which offered an unsatisfying, underwhelming waiting experience.",
+      "Now the bar eases forward on an estimate within each section and holds short of the end until the work actually finishes. Real-time progress still drives chain-of-thought disclosure, but now a progress estimate fills the silence between updates, providing system feedback that keeps the user in-the-loop. I also hid the chain-of-thought disclosure for audio less than 4-minutes-long because it added more visual clutter for videos that don't require long waiting times.",
+      "## How I build with Claude Code",
+      "I built Pebble end to end in Claude Code. I wanted to start learning from podcasts as soon as possible, and an MVP that covered the core jobs to be done (a non-negotiable) would deliver value right away. The last 20%, the taste layer, could wait for later versions. My setup is the usual Claude Code playbook:",
+      "- Plan mode before big changes, so we agree on the approach before any code is written\n- A CLAUDE.md that works like a product spec with guardrails, establishing what Pebble must never do, and which actions need my sign-off\n- A design system in Claude Design that Claude checks for exact sizes and tokens before building UI\n- Skills for repeatable work, like commits and fixing failing tests",
+      "Prompting is a refinement journey that I try to optimize. I ask Claude to interview me before it starts, so it captures my vision and doesn’t waste tokens on guesses. I also use sliders to fine-tune UI details to take control over the taste layer.",
+      "AI can’t one-shot a design and probably never will, so I ask Claude to generate three visual directions. There I can play with the brand direction, micro-interactions, and feel before committing to one—or combining the best parts of each—to refine.",
+      "## Design agents",
+      "Taste is something you cultivate a sensitivity for through tacit knowledge. How might we leverage AI tools to reflect that in our work? After reading [Claire Taylor’s essay](https://claireytee.substack.com/p/thinking-is-still-the-work), I started keeping a taste journal in a skill file and adopted a new agent:",
+      "-  **Taste maker:** gathers my recent saves from Substack, Instagram, and X, asks what they reveal about my taste, and turns the answers into heuristics for my design.md.",
+      "I still prefer to rely on my own knowledge of best practices and heuristics for design critiques, as well as user testing. Outsourcing that to an agent works for evaluating visual consistency across a system, but now that AI can generate design (even if it can't one-shot it), critical thinking, process, and authority is kind of the whole point of hiring a designer.",
+      "## Next steps?",
+      "The [live demo](https://learnpebble.vercel.app) runs on sample episodes and Luvvoice AI voice actors, but I run a local-first version where I upload my own audio. Pebble has saved me an extraordinary amount of time. I translate lines while I listen instead of leaving the app and opening new tabs, so I stay immersed in the episode. If you’d like to use it too, let me know and I’ll build it for public use!! :D",
+    ],
+    // Recorded from the local version of Pebble.
+    figures: [
+      { after: 1, src: "/notes/pebble/cai-gao-sticker.webp", alt: "Illustrator Cai Gao smiling, holding flowers and her picture book 出生的故事", width: 192, height: 243, sticker: { pad: 10 }, credit: { label: "Hunan Provincial Government", href: "http://www.enghunan.gov.cn/hneng/News/Localnews/202604/t20260414_33954428.html" } },
+      { after: 1, src: "/notes/pebble/cai-gao-baoer.webp", alt: "Cai Gao in her garden beside the cover of her picture book Baoer, winner of the BIB Golden Apple Award", width: 1180, height: 793, credit: { label: "Publishers Weekly", href: "https://www.publishersweekly.com/pw/by-topic/specials/promotional/article/98654-pw-studio-spotlight-on-cai-gao-innovative-storytelling-for-children.html" } },
+      { after: 0, video: "/notes/pebble/listening.mp4", poster: "/notes/pebble/listening-poster.webp", alt: "Pebble playing an episode, revealing pinyin and English line by line" },
+      { after: 9, video: "/notes/pebble/processing-before.mp4", poster: "/notes/pebble/processing-before-poster.webp", alt: "Pebble’s first progress screen: the bar sits empty for the whole of a one-section clip, then jumps to Transcript ready" },
+      { after: 10, video: "/notes/pebble/processing-after.mp4", poster: "/notes/pebble/processing-after-poster.webp", alt: "Pebble’s progress screen now: the bar eases forward while the clip processes, then fills when the transcript is ready" },
+      { after: 15, src: "/notes/pebble/directions.webp", alt: "Three visual directions for Pebble, Scholarly, Editorial and Wabi-sabi, combined into a fourth", width: 1792, height: 1344 },
+    ],
+  },
   {
     slug: "my-2026-book-log",
     title: "My 2026 book log",
@@ -307,6 +363,7 @@ export const splitSentences = (p: string) => p.split(/(?<=[.?!"])\s+(?=[A-Z"])/)
 /** List order, most relevant to people in tech first; the first one opens by default on /notes. Unlisted notes follow, newest first. */
 const noteOrder = [
   "design-philosophy",
+  "shipping-with-claude-code",
   "role-of-the-designer",
   "hiring-junior-designers",
   "exploratory-education",

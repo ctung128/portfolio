@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { hero } from "@/content/site";
+import { PreviewLink } from "@/components/about/PreviewLink";
 
 const WORDS = ["zero", "one", "two", "three", "four", "five", "six"];
 
@@ -42,7 +43,7 @@ function useDaysSinceShipped() {
 export function ShippedLine({ className = "text-[15px]" }: { className?: string }) {
   const days = useDaysSinceShipped();
   const when = days === null ? "recently" : relativeDay(days);
-  const { name, href } = hero.shipped;
+  const { name, href, preview } = hero.shipped;
 
   const lead = "Just shipped ";
   // Non-breaking spaces keep the date phrase together when the line wraps.
@@ -73,9 +74,9 @@ export function ShippedLine({ className = "text-[15px]" }: { className?: string 
         <span className="shipped-lead font-faux-medium">{lead.slice(0, n)}</span>
         {n > lead.length && (
           <>
-            <a href={href} target="_blank" rel="noreferrer" className="link-underline">
+            <PreviewLink href={href} preview={preview}>
               {name}
-            </a>
+            </PreviewLink>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/brand/pebble-mark.webp" alt="" width={18} height={18} className="shipped-mark" />
           </>

@@ -20,7 +20,7 @@ export const hero = {
   tagline: "AI-native product designer with a high bar for craft.",
   /** "Just shipped {name} {relative date}". The date is counted in the
    * visitor's browser, so it stays current without a rebuild. */
-  shipped: { name: "Pebble", href: "https://learnpebble.vercel.app/", date: "2026-10-06" },
+  shipped: { name: "Pebble", href: "https://learnpebble.vercel.app/", preview: "/about/previews/pebble.webp", date: "2026-10-06" },
   subheadBold: "Currently @ First Voyage",
   location: "Based in NYC",
   artwork: {
@@ -181,6 +181,8 @@ export type PlayProject = {
   /** Looping video shown instead of the cover image. */
   video?: string;
   href?: string;
+  /** An internal page about how it was made, linked under the tile, with a hover print of it (public/play/previews/). */
+  story?: { href: string; preview: string };
 };
 
 export const playProjects: PlayProject[] = [
@@ -199,6 +201,7 @@ export const playProjects: PlayProject[] = [
     tag: "CLAUDE CODE * SHIPPED 2026",
     image: { src: "/play/project-eleven/cover.webp", alt: "Project eleven cover image" },
     href: "https://learnpebble.vercel.app/",
+    story: { href: "/notes/shipping-with-claude-code", preview: "/play/previews/shipping-with-claude-code.webp" },
   },
   {
     title: "Design studio marketing website",

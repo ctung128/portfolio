@@ -34,10 +34,13 @@ export function PreviewLink({
   href,
   preview,
   tilt = -2,
+  className = "",
   children,
 }: {
   href: string;
   preview?: string;
+  /** Extra classes beside `link-underline`. */
+  className?: string;
   /** Resting rotation of the print, in degrees. */
   tilt?: number;
   children: React.ReactNode;
@@ -82,7 +85,7 @@ export function PreviewLink({
       <Anchor
         ref={link}
         href={href}
-        className="link-underline"
+        className={`link-underline ${className}`}
         onPointerEnter={(e) => e.pointerType === "mouse" && show()}
         onPointerLeave={hide}
         onFocus={(e) => e.currentTarget.matches(":focus-visible") && show()}
