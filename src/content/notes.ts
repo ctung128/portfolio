@@ -255,6 +255,7 @@ export const notes: Note[] = [
       {
         heading: "If you’re a small team that's hiring",
         items: [
+          { name: "If you’re going after a highly sought-after designer, reach out with a personalized note or video explaining what you like about their work. Some sales skills are especially relevant if you’re in the market for poaching." },
           { name: "Respond personally to thank-you emails." },
           { name: "Send personalized feedback to final round candidates whom you don’t move forward." },
           { name: "Send a physical welcome care package with a handwritten letter." },
