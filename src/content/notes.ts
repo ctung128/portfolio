@@ -143,7 +143,7 @@ export const notes: Note[] = [
       {
         heading: "2025",
         items: [
-          { name: "Cursor", note: "my first descent into vibe-coding & git basics" },
+          { name: "Cursor", note: "my first descent into vibe-coding & git" },
           { name: "Growing a design studio", note: "scaled it to six-figures in < 1 year and learned i dislike marketing. also binged a lot of chris do videos." },
           { name: "Good Culture cottage cheese", note: "admittedly fell victim to Big Protein" },
           {

@@ -277,7 +277,7 @@ export const books: Book[] = [
     tone: "#d8a060",
     tags: ["memoir", "china"],
     review: [
-      "before reading this, if you had told me that dali, a city in rural china, is a psychedelic rave haven that houses the kind of environmentalist collectives, coworking spaces, and web3 conferences that you'd find in SF or toronto...i would never have believed you.",
+      "before reading this, if you had told me that dali, a fourth-tier city embedded in rural china, is a psychedelic rave haven that houses the kind of environmentalist collectives, coworking spaces, and web3 conferences that you'd find in SF or toronto...i would never have believed you.",
       "100% worth reading just to learn about the cultural landscape of this one (1) city... i’m really interested in the psychogeography of cities, and its historical role in safeguarding counterculture rebels who want to escape state surveillance and societal norms.",
     ],
   },
