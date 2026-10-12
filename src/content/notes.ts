@@ -231,7 +231,7 @@ export const notes: Note[] = [
     paragraphs: [
       "Before we closed up shop in early 2026, my cofounder Sean and I hired an intern for B’More Designful, our design studio. We ran three rounds: a behavioral interview, a case study presentation, and a live design challenge. We interviewed 25+ candidates in the first round and narrowed it down to about five for the final round.",
       "If you’re a junior designer applying for roles, one piece of advice: let your personality shine in the right places. Likeability and personality fit mattered a lot to us (they even settled our tiebreaker), and the best places to show them are a charming, quirky portfolio and the conversation itself. In written answers, clear, professional, and thoughtful still wins. One applicant told us their favorite candy is \"Nerds Gummy Clusters :3\" (valid, but save it for the call). Another assured us that they are HIM over email. Show us in the case study!",
-      "Being intentional about hiring, onboarding, and mentorship led us to the best intern for our needs: someone hungry to grow, scrappy, willing to go above and beyond, and a delight to work with. Shoutout to Alli! We met up in NYC earlier this year, which was a great way to close things out.",
+      "Being intentional about hiring, onboarding, and mentorship led us to the best intern for our needs: someone hungry to grow, scrappy, and a delight to work with. Shoutout to Alli! We met up in NYC earlier this year, which was a great way to close things out.",
     ],
     reading: [
       {
