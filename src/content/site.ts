@@ -160,12 +160,14 @@ export const recommendations: Record<
 };
 
 // Resume and "Let's talk" live in the footer and the About links row.
+// Ordered by relevance to people in tech and recruiting: Work first (the first item read, and
+// the closest to the cursor in a right-aligned nav), then About, Notes, Play, Library.
 export const nav: { label: string; href: string; external?: boolean }[] = [
-  { label: "About", href: "/about" },
   { label: "Work", href: "/#work" },
+  { label: "About", href: "/about" },
+  { label: "Notes", href: "/notes" },
   { label: "Play", href: "/play" },
   { label: "Library", href: "/library" },
-  { label: "Notes", href: "/notes" },
 ];
 
 export const playPage = {

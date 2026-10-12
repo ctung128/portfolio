@@ -10,9 +10,11 @@ import "./footer.css";
 /** NYC, for the weather line. */
 const NYC = { lat: 40.7128, lon: -74.006 };
 
+// The header's order without Work (the homepage is one click away via the header's home icon); still four
+// links, so the column keeps its measured balance against the weather line.
 const navLinks = [
   { label: "About", href: "/about" },
-  { label: "Work", href: "/#work" },
+  { label: "Notes", href: "/notes" },
   { label: "Play", href: "/play" },
   { label: "Library", href: "/library" },
 ];
