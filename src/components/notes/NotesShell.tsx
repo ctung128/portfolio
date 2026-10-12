@@ -8,7 +8,7 @@ import { formatNoteDate, notesPage, sortedNotes } from "@/content/notes";
 /**
  * Notes, laid out like Play: a sticky 220px left column (headline and the
  * list of notes) beside a window holding the open note, ruled like the hero
- * box. It lives in the notes layout, so clicking a note only swaps the window. md+: /notes opens the first (pinned) note. Phones: /notes
+ * box. It lives in the notes layout, so clicking a note only swaps the window. md+: /notes opens the first note. Phones: /notes
  * is just the list and /notes/[slug] just the note, with a link back.
  */
 export function NotesShell({ children }: { children: React.ReactNode }) {

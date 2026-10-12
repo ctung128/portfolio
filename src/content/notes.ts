@@ -13,8 +13,6 @@ export type Note = {
   title: string;
   /** ISO date, shown as MM-DD-YYYY. */
   date: string;
-  /** Pinned notes lead the list and open by default on /notes. */
-  pinned?: boolean;
   paragraphs: string[];
   /** Images shown after the paragraph at index `after`; width/height in CSS px (half the 2× screenshot). */
   figures?: { after: number; src: string; alt: string; width: number; height: number }[];
@@ -32,7 +30,7 @@ export type Note = {
   };
 };
 
-// Newest first; pinned notes are lifted to the top by `sortedNotes`.
+// Listed in the order of `noteOrder`, not this array.
 export const notes: Note[] = [
   {
     slug: "my-2026-book-log",
@@ -79,9 +77,9 @@ export const notes: Note[] = [
         items: [
           { name: "Design engineering" },
           { name: "Consumer app growth hacks" },
+          { name: "Spirituality, mysticism, and airbending" },
           { name: "Portrait photography" },
           { name: "Ticks and cyclosporiasis" },
-          { name: "Spirituality, mysticism, and airbending" },
           { name: "Calligraphy" },
         ],
       },
@@ -89,7 +87,7 @@ export const notes: Note[] = [
         heading: "2025",
         items: [
           { name: "Cursor", note: "my first descent into vibe-coding & git basics" },
-          { name: "Growing a creative business", note: "scaled my design studio to six-figures in < 1 year and learned i dislike marketing. binged a lot of chris do videos." },
+          { name: "Growing a design studio", note: "scaled it to six-figures in < 1 year and learned i dislike marketing. also binged a lot of chris do videos." },
           { name: "Good Culture cottage cheese", note: "admittedly fell victim to Big Protein" },
           {
             name: "Folk search engines like [Marginalia](https://marginalia-search.com/)",
@@ -104,25 +102,25 @@ export const notes: Note[] = [
       {
         heading: "2024",
         items: [
-          { name: "Chess", note: "forced my friends to play every night of winter 2024. i am washed" },
+          { name: "Framer web design & high-converting landing pages" },
+          { name: "Chess", note: "forced my friends to play every night of winter 2024. i am washed now though" },
           { name: "Schema monks", note: "iykyk" },
           { name: "Audrey Hepburn movies" },
           { name: "Phantom of the Opera" },
-          { name: "Italian", note: "thanks to elena ferrante's grip on me" },
           { name: "Sporcle", note: "i love geography" },
           { name: "Unicorns" },
         ],
       },
       {
         heading: "2023",
-        items: [{ name: "Hamsters" }, { name: "Cheer Chen" }],
+        items: [ { name: "Zines & graphic design" }, { name: "Video editing" }, { name: "Hamsters" }, { name: "Cheer Chen 陈绮贞"}, { name: "Magical realism"}],
       },
     ],
   },
   {
     slug: "exploratory-education",
     title: "Exploratory education",
-    date: "2026-10-11",
+    date: "2026-08-05",
     paragraphs: [],
     // `work` is the course, `name` who teaches it, `note` when it was finished.
     reading: [
@@ -170,9 +168,7 @@ export const notes: Note[] = [
         credit: { work: "Objectified", year: 2009 },
         items: [
           {
-            name: "In France, philosophers are the culture generators: people want their thoughts on the cheese war with Italy, or the price of gas.",
-          },
-          { name: "Designers could be the culture generators all over the world—the intellectuals of the future." },
+            name: "In France, philosophers are the culture generators (people want their thoughts on the cheese war with Italy, or the price of gas). Designers could be the culture generators all over the world—the intellectuals of the future." },
         ],
       },
       {
@@ -230,8 +226,8 @@ export const notes: Note[] = [
   },
   {
     slug: "hiring-junior-designers",
-    title: "On hiring/mentoring junior designers",
-    date: "2026-10-11",
+    title: "Hiring/mentoring junior designers",
+    date: "2026-03-30",
     paragraphs: [
       "Before we closed up shop in early 2026, my cofounder Sean and I hired an intern for B’More Designful, our design studio. We ran three rounds: a behavioral interview, a case study presentation, and a live design challenge. We interviewed 25+ candidates in the first round and narrowed it down to about five for the final round.",
       "If you’re a junior designer applying for roles, one piece of advice: let your personality shine in the right places. Likeability and personality fit mattered a lot to us (they even settled our tiebreaker), and the best places to show them are a charming, quirky portfolio and the conversation itself. In written answers, clear, professional, and thoughtful still wins. One applicant told us their favorite candy is \"Nerds Gummy Clusters :3\" (valid, but save it for the call). Another assured us that they are HIM over email. Show us in the case study!",
@@ -261,10 +257,6 @@ export const notes: Note[] = [
         items: [
           { name: "Respond personally to thank-you emails." },
           { name: "Send personalized feedback to final round candidates whom you don’t move forward." },
-          {
-            name: "Be completely transparent about how to prepare for each round: how to timeblock the agenda, what kinds of projects to present, and our judging criteria.",
-            note: "this helped us as much as them: with limited bandwidth, hiring took time away from management and IC work",
-          },
           { name: "Send a physical welcome care package with a handwritten letter." },
         ],
       },
@@ -274,20 +266,20 @@ export const notes: Note[] = [
     slug: "design-philosophy",
     title: "Design philosophy",
     date: "2026-10-10",
-    pinned: true,
     audio: {
       src: "/notes/design-philosophy.m4a",
       cover: "/notes/design-philosophy-banner.webp",
       description: "my thoughts on design craft",
-      duration: 88,
-      // Word timestamps from a transcript (faster-whisper small.en), 0.1s early so the highlight leads the voice.
-      sentenceStarts: [0, 3.19, 9.01, 14.25, 16.65, 23.49, 28.85, 32.37, 37.31, 40.65, 43.65, 51.89, 59.25, 63.29, 68.23, 72.97, 77.57, 81.09],
+      duration: 93,
+      // Where each sentence's voice starts in the edited file (pauses evened to 0.9s), 0.1s early so the highlight leads the voice.
+      sentenceStarts: [0, 6.36, 9.97, 14.88, 18.02, 22.76, 32.3, 36.31, 43.51, 46.85, 50.6, 52.43, 58.89, 67.34, 72.81, 76.13, 80.87, 87.3],
     },
     paragraphs: [
-      "I believe that design is the search for form. Every time I'm starting from 0, I’m really asking one question: What deserves to exist? Design was born to fight for the person on the other side of the work, and I still believe that’s the job.",
-      "Products need to have identities and souls. The tea master Sen no Rikyu once asked his son to tidy their garden, so the son raked it perfectly clean, as one does. To teach him a lesson about wabi-sabi, Rikyu shook a tree so that a few leaves fell back down. Then he said: \"Now the garden is perfect.\" A completely manicured garden feels lifeless, but a few fallen leaves can bring it back to life. In an interface, the details do the same.",
-      "So, ornament is what gives things soul. In the 1800s, craftsmen spent years dedicated to ornament, crafting grand cathedrals, engraved rifles, and twenty-foot-long rugs. Today we call ourselves minimalists, but that craftsmanship is actually still here; it just looks a little different. Pick up an AirPods case and watch the light glide across its curve. Engineers painstakingly sculpted that surface, purely for the sake of beauty and delight. That hidden craftsmanship is how you know someone was paying attention to the human.",
-      "Dostoevsky wrote that beauty will save the world, and I believe it too. I want to make things people still love years from now, things worth keeping. That, to me, is what deserves to exist.",
+      "Every time I'm starting a new project from zero, I'm really asking one question: what deserves to exist?",
+      "In tech, our answer tends to be colored by minimalism. Dieter Rams famously said, \"Good design is as little design as possible.\" But taken too far, every product starts looking the same.",
+      "A lot of people in tech believe function is king, while others lament over the loss of ornament. In the 1800s, craftsmen spent years on grand cathedrals, engraved rifles, and twenty-foot-long rugs, and it can feel like that level of craft belongs to a bygone era. But look at the way light glides across the curve of an AirPods case. Engineers sculpted that in CAD purely for the sake of beauty and delight, and knockoff AirPods can’t replicate that level of craft. So it's more accurate to say ornament never died. It just found a new vessel, hidden beneath the veneer of minimalism.",
+      "So how do you learn to see it? For me, being an eager student of life has led me to disciplines like ikebana, calligraphy, and philosophy. Each one has sharpened my sensibility, and made me a more patient, passionate, and invested maker of products that pay attention to the human. Every rabbit hole I fall down and every side project I build helps fill in the shape of my craft.",
+      "Design was born to fight for the person on the other side of the work. Dostoevsky wrote that beauty will save the world, and I believe it too. I want to make things that make people's lives a little bit easier, and a little bit more beautiful. That's what deserves to exist.",
     ],
     signoff: "— Carolyn",
     reading: [
@@ -311,8 +303,20 @@ export const notes: Note[] = [
 /** Splits a paragraph after . ? ! (or a closing quote) followed by a capital. */
 export const splitSentences = (p: string) => p.split(/(?<=[.?!"])\s+(?=[A-Z"])/);
 
+/** List order, most relevant to people in tech first; the first one opens by default on /notes. Unlisted notes follow, newest first. */
+const noteOrder = [
+  "design-philosophy",
+  "role-of-the-designer",
+  "hiring-junior-designers",
+  "exploratory-education",
+  "rabbitholes",
+  "my-2026-book-log",
+];
+
+const rank = (n: Note) => (noteOrder.indexOf(n.slug) + 1 || Infinity);
+
 export const sortedNotes = [...notes].sort(
-  (a, b) => Number(!!b.pinned) - Number(!!a.pinned) || b.date.localeCompare(a.date),
+  (a, b) => rank(a) - rank(b) || b.date.localeCompare(a.date),
 );
 
 export const getNote = (slug: string) => notes.find((n) => n.slug === slug);

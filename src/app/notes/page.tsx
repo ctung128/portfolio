@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: notesPage.headline,
 };
 
-/** md+ shows the first (pinned) note beside the list; phones show only the list. */
+/** md+ shows the first note beside the list; phones show only the list. */
 export default function NotesPage() {
   return <NoteBody note={sortedNotes[0]} />;
 }
