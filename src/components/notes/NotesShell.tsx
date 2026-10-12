@@ -35,8 +35,8 @@ export function NotesShell({ children }: { children: React.ReactNode }) {
                 >
                   <span className="min-w-0">
                     <span
-                      className={`block font-sans text-[15px] leading-snug transition-colors group-hover:text-matcha ${
-                        current ? "text-ink md:font-semibold" : "text-ink"
+                      className={`block font-sans text-[15px] leading-snug transition-colors group-hover:text-ink ${
+                        current ? "text-ink md:font-semibold" : "text-ink-soft"
                       }`}
                     >
                       {note.title}
@@ -47,7 +47,7 @@ export function NotesShell({ children }: { children: React.ReactNode }) {
                   </span>
                   <span
                     aria-hidden
-                    className="shrink-0 text-[13px] text-ink-faint transition-[translate,color] duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-matcha"
+                    className="shrink-0 text-[13px] text-ink-faint transition-[translate,color] duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink"
                   >
                     {ARROW_NE}
                   </span>

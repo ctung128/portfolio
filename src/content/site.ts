@@ -165,9 +165,7 @@ export const nav: { label: string; href: string; external?: boolean }[] = [
   { label: "Work", href: "/#work" },
   { label: "Play", href: "/play" },
   { label: "Library", href: "/library" },
-  // Notes is hidden for now; restore this link and remove notFound() in
-  // src/app/notes/layout.tsx to bring it back.
-  // { label: "Notes", href: "/notes" },
+  { label: "Notes", href: "/notes" },
 ];
 
 export const playPage = {
