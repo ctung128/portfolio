@@ -282,11 +282,18 @@ function Dive({ work }: { work: ReactNode }) {
       glide(right.current!, fo);
       // The lower clouds sink into haze behind them.
       fade(haze.current!, seg(D, 0.1, 0.55));
+      // Drawn at screen size each frame rather than scaled up: a scaled
+      // gradient layer re-rasters in tiles and its banding magnifies (blocky).
+      const big = Math.max(W, H);
       mist.current.forEach((m, i) => {
         if (!m) return;
-        const k = seg(D, MIST[i].at, MIST[i].at + 0.35);
-        glide(m, Math.sin(Math.PI * k) * 0.85);
-        m.style.transform = `translate(-50%, -50%) scale(${0.5 + 4 * k * k})`;
+        const { x, y, size, at } = MIST[i];
+        const k = seg(D, at, at + 0.35);
+        const o = Math.sin(Math.PI * k) * 0.85;
+        fade(m, o);
+        if (o <= 0.001) return;
+        const r = (size * big * (0.5 + 4 * k * k)) / 2;
+        m.style.background = `radial-gradient(circle ${r}px at ${x * W}px ${y * SH}px, ${SILK_PALE}, ${SILK_PALE}cc ${0.35 * r}px, transparent ${r}px)`;
       });
 
       // 3 · Surface: into the silk, which pales as the sheet comes up.
@@ -348,20 +355,14 @@ function Dive({ work }: { work: ReactNode }) {
             <img ref={left} src={hero.artwork.src} alt="" className={`ch-cloud-l ${img}`} />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img ref={right} src={hero.artwork.src} alt="" className={`ch-cloud-r ${img}`} />
-            {MIST.map((m, i) => (
+            {MIST.map((_, i) => (
               <div
                 key={i}
                 ref={(el) => {
                   mist.current[i] = el;
                 }}
-                className="absolute aspect-square rounded-full will-change-transform"
-                style={{
-                  left: `${m.x * 100}%`,
-                  top: `${m.y * 100}%`,
-                  width: `${m.size * 100}vmax`,
-                  opacity: 0,
-                  background: `radial-gradient(closest-side, ${SILK_PALE}, ${SILK_PALE}cc 35%, transparent)`,
-                }}
+                className="absolute inset-0"
+                style={{ opacity: 0, visibility: "hidden" }}
               />
             ))}
             <div ref={wash} className="absolute inset-0" style={{ opacity: 0, background: SILK }} />
