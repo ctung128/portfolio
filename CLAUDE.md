@@ -9,6 +9,7 @@ Run `node scripts/optimize-media.mjs --write` after adding images/videos: it con
 Running log of notable work done with Claude Code, newest first. Keep entries to a few bullets — this is a changelog, not a task tracker.
 
 ### 2026-10-13
+- "Design philosophy" hidden: new `hidden` flag on a note keeps it in `notes.ts` (text, audio, `sentenceStarts` intact) but off the list, out of `generateStaticParams`, and its page 404s (`visibleNotes`; `getNote` only finds visible notes). /notes now opens "My take on AI-second design". Delete `hidden: true` to bring it back.
 - Notes list: the open note is regular weight in `ink` (no longer semibold on md+); the others rest in `ink-faint` (was `ink-soft`) for a stronger gap, after a reference where inactive titles sit in a pale grey. `ink-faint` is 3.2:1 on cream, under AA's 4.5:1 for 15px text (chosen knowingly; `ink-soft` passes). Hover still turns them `ink`.
 - Note "Hiring/mentoring junior designers" renamed "Hiring junior designers" (slug unchanged).
 - Pebble note renamed "My take on AI-second design" (was "Designing Pebble: AI-second product design"; slug still `shipping-with-claude-code`).

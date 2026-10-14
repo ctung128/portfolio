@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getNote, notes } from "@/content/notes";
+import { getNote, visibleNotes } from "@/content/notes";
 import { NoteBody } from "@/components/notes/NoteBody";
 
 export function generateStaticParams() {
-  return notes.map((n) => ({ slug: n.slug }));
+  return visibleNotes.map((n) => ({ slug: n.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/notes/[slug]">): Promise<Metadata> {
