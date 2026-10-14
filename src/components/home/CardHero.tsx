@@ -49,10 +49,16 @@ const MIST = [
 ];
 
 /** Opacity, and out of the compositor entirely while invisible (stacked
- * full-screen layers are what make a dive like this stutter). */
+ * full-screen layers are what make a dive like this stutter). Only for flat
+ * colour layers: a hidden will-change layer drops its raster and, shown again
+ * mid-dive at full zoom, re-rasters tile by tile (rectangles, white flashes).
+ * Those get `glide`, which keeps them composited. */
 const fade = (el: HTMLElement, o: number) => {
   el.style.opacity = String(o);
   el.style.visibility = o <= 0.001 ? "hidden" : "";
+};
+const glide = (el: HTMLElement, o: number) => {
+  el.style.opacity = String(o);
 };
 
 /**
@@ -272,14 +278,14 @@ function Dive({ work }: { work: ReactNode }) {
       place(left.current!, cover, { ...L, x: L.x - W * 0.4 * Dp, y: L.y + H * 0.22 * Dp });
       place(right.current!, cover, { ...R, x: R.x + W * 0.4 * Dp, y: R.y + H * 0.22 * Dp });
       const fo = 1 - seg(D, 0.5, 0.85);
-      fade(left.current!, fo);
-      fade(right.current!, fo);
+      glide(left.current!, fo);
+      glide(right.current!, fo);
       // The lower clouds sink into haze behind them.
       fade(haze.current!, seg(D, 0.1, 0.55));
       mist.current.forEach((m, i) => {
         if (!m) return;
         const k = seg(D, MIST[i].at, MIST[i].at + 0.35);
-        fade(m, Math.sin(Math.PI * k) * 0.85);
+        glide(m, Math.sin(Math.PI * k) * 0.85);
         m.style.transform = `translate(-50%, -50%) scale(${0.5 + 4 * k * k})`;
       });
 
@@ -287,8 +293,6 @@ function Dive({ work }: { work: ReactNode }) {
       const w = seg(p, sheetFrom - 0.04, sheetFrom + 0.14);
       fade(wash.current!, w);
       fade(pale.current!, seg(p, sheetFrom + 0.1, sheetFrom + 0.35));
-      // Fully washed: nothing underneath needs drawing.
-      back.current!.style.visibility = w >= 1 ? "hidden" : "";
     };
 
     // Scroll maps straight to the dive, no smoothing: native scroll is
