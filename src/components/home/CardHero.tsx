@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef, useSyncExternalStore, type CSSProperties, type ReactNode } from "react";
 import { hero, siteConfig } from "@/content/site";
 import { ShippedLine } from "@/components/home/ShippedLine";
@@ -135,12 +134,12 @@ function Cards({
           <div className="mt-4">
             <ShippedLine sound />
           </div>
-          {/* At the card's foot; sm+ only (the nav already has About on phones). */}
-          <p className="hidden font-sans text-[15px] sm:mt-auto sm:block sm:pt-8">
-            <Link href="/about" className="link-underline text-ink">
-              click me! <span aria-hidden className="whitespace-nowrap">☽⋆｡˚( ˘ᵕ˘ )˚｡⋆☾</span>
-            </Link>
-          </p>
+          {/* The painting's caption at the card's foot, under a hairline. */}
+          <div className="mt-8 sm:mt-auto sm:pt-8">
+            <p className="border-t border-border pt-4 text-pretty font-sans text-[12px] leading-snug text-ink-faint">
+              {hero.artwork.caption}
+            </p>
+          </div>
         </article>
       </div>
     </section>
