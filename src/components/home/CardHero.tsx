@@ -135,8 +135,8 @@ function Cards({
           <div className="mt-4">
             <ShippedLine sound />
           </div>
-          {/* At the card's foot at sm+; under the shipped line on phones. */}
-          <p className="mt-6 font-sans text-[15px] sm:mt-auto sm:pt-8">
+          {/* At the card's foot; sm+ only (the nav already has About on phones). */}
+          <p className="hidden font-sans text-[15px] sm:mt-auto sm:block sm:pt-8">
             <Link href="/about" className="link-underline text-ink">
               click me! <span aria-hidden className="whitespace-nowrap">☽⋆｡˚( ˘ᵕ˘ )˚｡⋆☾</span>
             </Link>

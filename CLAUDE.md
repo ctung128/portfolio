@@ -8,7 +8,12 @@ Run `node scripts/optimize-media.mjs --write` after adding images/videos: it con
 
 Running log of notable work done with Claude Code, newest first. Keep entries to a few bullets — this is a changelog, not a task tracker.
 
+### 2026-10-14
+- "Design philosophy" hidden again (`hidden: true`); /notes opens "My take on AI-second design".
+- Card hero "click me!" link hidden on phones (below sm); shown at the card's foot from sm up.
+
 ### 2026-10-13
+- "Design philosophy" shown again (`hidden: true` removed); it's first in `noteOrder`, so /notes opens it again. The `hidden` flag stays for future use.
 - Removed the cicadas clip (`01-summer-cicadas.mp3`) from the Sound playlist and `public/audio/`; the playlist now opens with `02-cash-shop`. Files weren't renumbered, so the gap at `01-` is expected.
 - Card hero copy: "Just shipped" moved back under the tagline (all sizes); the card's foot (sm+; under the shipped line on phones) is now a "click me!" `link-underline` link to `/about`.
 - Homepage hero is now the card hero from `/lab/hero` (`CardHero`, moved from `lab/hero/CardDive.tsx` to `src/components/home/CardHero.tsx`; `page.tsx` renders `<CardHero work={<FeaturedWork />} />`). Its styles moved out of `hero-lab.css` into `src/components/home/card-hero.css` with a `ch-` prefix (`ch-rise`, `ch-soft`, `ch-cloud-*`, `ch-zh-stack`); the header hides through `html[data-card-nav]`. Unlike the lab, the header keeps its usual translucent cream at the top, and the click sound plays. The old aperture hero (`Hero.tsx`, `HeroScene`'s `Aperture`) is unused but kept; `HeroScene.tsx` still exports the scene helpers `CardHero` uses. `/lab/hero` now shows the real `CardHero` (Mountains still parked there).
