@@ -38,9 +38,47 @@ function useDaysSinceShipped() {
   );
 }
 
+const TYPING_SRC = "/audio/sfx/typing.mp3";
+const TYPING_VOLUME = 0.6;
+
+/** Soft keyboard clicks while the line types in, faded out as it finishes.
+ * Browsers only allow sound after the visitor has interacted with the page,
+ * so on a first, untouched visit this stays silent. */
+function typingSound() {
+  let ctx: AudioContext | null = null;
+  let gain: GainNode | null = null;
+  let stopped = false;
+  const bytes = fetch(TYPING_SRC).then((r) => r.arrayBuffer());
+  return {
+    async start() {
+      const activation = (navigator as Navigator & { userActivation?: { hasBeenActive: boolean } }).userActivation;
+      if (!activation?.hasBeenActive) return;
+      ctx = new AudioContext();
+      const buffer = await ctx.decodeAudioData((await bytes).slice(0));
+      if (stopped) return;
+      const source = ctx.createBufferSource();
+      gain = ctx.createGain();
+      gain.gain.value = TYPING_VOLUME;
+      source.buffer = buffer;
+      source.connect(gain).connect(ctx.destination);
+      source.start();
+    },
+    stop(fadeS = 0.25) {
+      stopped = true;
+      if (!ctx || !gain) return;
+      const now = ctx.currentTime;
+      gain.gain.setValueAtTime(gain.gain.value, now);
+      gain.gain.linearRampToValueAtTime(0, now + fadeS);
+      const c = ctx;
+      window.setTimeout(() => c.close(), fadeS * 1000 + 50);
+    },
+  };
+}
+
 /** The live dot (pulsing matcha ring) plus the line typing itself in once and
- * leaving a blinking caret: "recently updated" on arrival and at rest. */
-export function ShippedLine({ className = "text-[15px]" }: { className?: string }) {
+ * leaving a blinking caret: "recently updated" on arrival and at rest. With
+ * `sound`, soft keyboard clicks play while it types. */
+export function ShippedLine({ className = "text-[15px]", sound = false }: { className?: string; sound?: boolean }) {
   const days = useDaysSinceShipped();
   const when = days === null ? "recently" : relativeDay(days);
   const { name, href, preview } = hero.shipped;
@@ -58,14 +96,20 @@ export function ShippedLine({ className = "text-[15px]" }: { className?: string 
     }
     let i = 0;
     let timer = 0;
+    const keys = sound ? typingSound() : null;
     const tick = () => {
+      if (i === 0) keys?.start().catch(() => {});
       i += 1;
       setN(i);
       if (i < total) timer = window.setTimeout(tick, i === lead.length ? 260 : 45);
+      else keys?.stop();
     };
     timer = window.setTimeout(tick, 700);
-    return () => window.clearTimeout(timer);
-  }, [total, lead.length]);
+    return () => {
+      window.clearTimeout(timer);
+      keys?.stop(0.05);
+    };
+  }, [total, lead.length, sound]);
 
   return (
     <p className={`relative pl-4 font-sans leading-snug text-ink-soft ${className}`}>
