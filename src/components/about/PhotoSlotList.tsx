@@ -3,11 +3,13 @@
 import { useState } from "react";
 import type { RecommendationItem } from "@/content/site";
 import { ARROW_NE } from "@/lib/glyphs";
+import { POP, playSfx } from "@/lib/sfx";
 import { SidequestArrow } from "./SidequestArrow";
 
 /** Small fixed tilts so prints feel hand-placed but stay stable across renders. */
 const TILTS = [-3, 2, -1.5, 2.5, -2, 1.5];
 const EASE_OUT = "cubic-bezier(0.22, 0.8, 0.3, 1)";
+const ZIP_SRC = "/audio/sfx/zip.mp3";
 
 /**
  * Recommendation list whose photo items develop a print in a reserved slot
@@ -34,6 +36,9 @@ export function PhotoSlotList({ items }: { items: RecommendationItem[] }) {
                 <button
                   type="button"
                   onMouseEnter={() => setActive(i)}
+                  onPointerEnter={(e) => {
+                    if (e.pointerType === "mouse") playSfx(POP.src, POP.volume).catch(() => {});
+                  }}
                   onFocus={() => setActive(i)}
                   onClick={() => setActive(active === i ? null : i)}
                   aria-pressed={active === i}
@@ -75,6 +80,11 @@ export function PhotoSlotList({ items }: { items: RecommendationItem[] }) {
       <div
         className="group relative hidden self-center min-[420px]:block"
         style={{ aspectRatio: "3 / 4" }}
+        // A zip as the idle frame tilts up under a mouse; silent while a
+        // sidequest's print is showing.
+        onPointerEnter={(e) => {
+          if (e.pointerType === "mouse" && active === null) playSfx(ZIP_SRC).catch(() => {});
+        }}
       >
         <div
           className="absolute inset-0 flex flex-col items-center justify-center gap-2 rounded-[8px] border border-dashed border-border-strong text-center transition-[opacity,rotate,scale,border-color,background-color] duration-300 ease-[cubic-bezier(0.22,0.8,0.3,1)] group-hover:-rotate-2 group-hover:scale-[1.03] group-hover:border-matcha group-hover:bg-matcha/5 motion-reduce:group-hover:rotate-0 motion-reduce:group-hover:scale-100"

@@ -5,13 +5,15 @@ import { books, cover, hue } from "@/content/library";
 import { BookDialog } from "./BookDialog";
 import { BookCard, CARD_BACKDROP } from "./BookCard";
 import { useBookViewer } from "./useBookViewer";
+import { POP, playSfx } from "@/lib/sfx";
 
 const shelf = [...books].sort((a, b) => hue(a.tone) - hue(b.tone));
 
 /** The shelf: covers cropped to one size with a thin gutter between,
  * sorted by hue so the shelf reads as a single colour field. A cover opens
  * its BookCard. Laid out like the Play page: a sticky left column (title,
- * description, hint) beside the grid. */
+ * description, hint) beside the grid. Hovering a cover pops, like the
+ * sidequests on About. */
 export function Bookshelf() {
   const { index, open, close, step, registerTile } = useBookViewer(shelf.length);
   const book = index === null ? null : shelf[index];
@@ -57,6 +59,9 @@ export function Bookshelf() {
             <button
               type="button"
               onClick={() => open(i)}
+              onPointerEnter={(e) => {
+                if (e.pointerType === "mouse") playSfx(POP.src, POP.volume).catch(() => {});
+              }}
               className="group relative block aspect-[2/3] w-full overflow-hidden rounded-[8px] sm:rounded-[6px] focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
               aria-label={`${b.title} by ${b.author}`}
             >
