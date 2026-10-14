@@ -72,7 +72,8 @@ function Card({
         <PreviewLink
           href={project.story.href}
           preview={project.story.preview}
-          className="group/story -mt-1 inline-flex w-fit items-center gap-1.5 font-sans text-[13px]"
+          underline={false}
+          className="group/story -mt-1 inline-flex text-ink w-fit items-center gap-1.5 font-sans text-[13px]"
         >
           Learn how I made it
           <span aria-hidden className={`transition-transform duration-300 ${EASE} group-hover/story:translate-x-1`}>
