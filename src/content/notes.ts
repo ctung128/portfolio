@@ -35,6 +35,8 @@ export type Note = {
     | { after: number; video: string; poster?: string; alt: string; /** File not added yet: a dashed slot in dev, nothing in production. */ pending?: boolean }
   )[];
   signoff?: string;
+  /** Kept in the file but off the site: not listed, and its page 404s. */
+  hidden?: boolean;
   /** Reading lists under the note, each under its own heading; `credit` names the source of the whole list. */
   reading?: { heading: string; credit?: Credit; items: Reading[] }[];
   /** Read-aloud banner at the top of the note; its cover carries the title. */
@@ -323,6 +325,7 @@ export const notes: Note[] = [
   {
     slug: "design-philosophy",
     title: "Design philosophy",
+    hidden: true,
     date: "2026-10-10",
     audio: {
       src: "/notes/design-philosophy.m4a",
@@ -361,7 +364,7 @@ export const notes: Note[] = [
 /** Splits a paragraph after . ? ! (or a closing quote) followed by a capital. */
 export const splitSentences = (p: string) => p.split(/(?<=[.?!"])\s+(?=[A-Z"])/);
 
-/** List order, most relevant to people in tech first; the first one opens by default on /notes. Unlisted notes follow, newest first. */
+/** List order, most relevant to people in tech first; the first visible one opens by default on /notes. Unlisted notes follow, newest first. */
 const noteOrder = [
   "design-philosophy",
   "shipping-with-claude-code",
@@ -374,11 +377,14 @@ const noteOrder = [
 
 const rank = (n: Note) => (noteOrder.indexOf(n.slug) + 1 || Infinity);
 
-export const sortedNotes = [...notes].sort(
+/** Notes on the site (hidden ones left out). */
+export const visibleNotes = notes.filter((n) => !n.hidden);
+
+export const sortedNotes = [...visibleNotes].sort(
   (a, b) => rank(a) - rank(b) || b.date.localeCompare(a.date),
 );
 
-export const getNote = (slug: string) => notes.find((n) => n.slug === slug);
+export const getNote = (slug: string) => visibleNotes.find((n) => n.slug === slug);
 
 /** "2026-10-10" → "10-10-2026". */
 export const formatNoteDate = (iso: string) => {
