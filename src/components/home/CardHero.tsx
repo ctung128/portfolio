@@ -114,13 +114,13 @@ function Cards({
         </figure>
 
         <article ref={article} className="ch-soft ch-rise flex flex-col rounded-[28px] p-7 sm:p-9" style={d(350)}>
-          <p className="flex items-center justify-between font-sans text-[13px] text-ink-faint">
+          <p className="hidden items-center justify-between font-sans text-[13px] text-ink-faint sm:flex">
             <span>Product Design</span>
             <span>NYC</span>
           </p>
           {/* The logo left, 童雪玲 stacked at the card's right edge, sized so
               its first and last strokes meet the logo's top and baseline, and its right edge meets "NYC". */}
-          <h1 className="mt-7 flex items-start justify-between gap-3">
+          <h1 className="flex items-start justify-between gap-3 sm:mt-7">
             <Image src="/brand/logo.svg" alt={siteConfig.name} width={86} height={48} loading="eager" className="h-[64px] w-auto sm:h-[76px]" />
             <span lang="zh-Hans" aria-hidden className="ch-zh-stack flex flex-col font-zh leading-none text-ink">
               {[...hero.chineseName].map((ch, i) => (
@@ -130,13 +130,14 @@ function Cards({
               ))}
             </span>
           </h1>
-          <p className="mt-5 text-pretty font-sans text-[16px] leading-relaxed text-ink-soft">{hero.tagline.replace("product designer", "designer")}</p>
-          <div className="mt-4">
+          <div className="mt-5 flex flex-col gap-1.5">
+            <p className="text-pretty font-sans text-[16px] leading-relaxed text-ink-soft">{hero.tagline.replace("product designer", "designer")}</p>
             <ShippedLine sound />
           </div>
-          {/* The painting's caption at the card's foot, under a hairline. */}
-          <div className="mt-8 sm:mt-auto sm:pt-8">
-            <p className="border-t border-border pt-4 text-pretty font-sans text-[12px] leading-snug text-ink-faint">
+          {/* The painting's caption at the card's foot, under a hairline; on
+              phones it stays on one line, sized to the card's width. */}
+          <div className="@container mt-8 sm:mt-auto sm:pt-8">
+            <p className="border-t border-border pt-4 font-sans text-[min(3.6cqw,12px)] leading-snug text-ink-faint max-sm:whitespace-nowrap sm:text-pretty sm:text-[12px]">
               {hero.artwork.caption}
             </p>
           </div>

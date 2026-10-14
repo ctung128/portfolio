@@ -35,6 +35,7 @@ export function PreviewLink({
   href,
   preview,
   tilt = -2,
+  underline = true,
   className = "",
   children,
 }: {
@@ -44,6 +45,8 @@ export function PreviewLink({
   className?: string;
   /** Resting rotation of the print, in degrees. */
   tilt?: number;
+  /** False drops the `link-underline` style (the hover print stays). */
+  underline?: boolean;
   children: React.ReactNode;
 }) {
   const link = useRef<HTMLAnchorElement>(null);
@@ -86,7 +89,7 @@ export function PreviewLink({
       <Anchor
         ref={link}
         href={href}
-        className={`link-underline ${className}`}
+        className={`${underline ? "link-underline" : ""} ${className}`}
         onPointerEnter={(e) => {
           if (e.pointerType !== "mouse") return;
           show();
