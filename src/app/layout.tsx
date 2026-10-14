@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { huiwenMincho, instrumentSerif, ppNeueMontreal } from "@/lib/fonts";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { ClickSound } from "@/components/layout/ClickSound";
 import { siteConfig } from "@/content/site";
 import "./globals.css";
 
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <ClickSound />
       </body>
     </html>
   );
