@@ -1,10 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useSyncExternalStore, type CSSProperties, type ReactNode } from "react";
 import { hero, siteConfig } from "@/content/site";
 import { ShippedLine } from "@/components/home/ShippedLine";
 import { FIGURE, clamp, inOut, lerpRect, seg, type Rect } from "@/components/home/HeroScene";
+import "./card-hero.css";
 
 const d = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
 
@@ -97,7 +99,7 @@ function Cards({
   return (
     <section className="relative mx-auto flex min-h-[calc(100svh-64px)] max-w-5xl flex-col justify-start px-6 pb-10 pt-3 sm:justify-center sm:px-8 sm:py-10">
       <div className="grid grid-cols-1 items-stretch gap-5 sm:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] sm:gap-6">
-        <figure ref={figure} className="hl-soft hl-rise rounded-[28px] p-2.5" style={d(150)}>
+        <figure ref={figure} className="ch-soft ch-rise rounded-[28px] p-2.5" style={d(150)}>
           <div ref={win} className="relative overflow-hidden rounded-[20px]" style={{ aspectRatio: String(ART_RATIO) }}>
             <Image
               src={hero.artwork.src}
@@ -112,7 +114,7 @@ function Cards({
           </div>
         </figure>
 
-        <article ref={article} className="hl-soft hl-rise flex flex-col rounded-[28px] p-7 sm:p-9" style={d(350)}>
+        <article ref={article} className="ch-soft ch-rise flex flex-col rounded-[28px] p-7 sm:p-9" style={d(350)}>
           <p className="flex items-center justify-between font-sans text-[13px] text-ink-faint">
             <span>Product Design</span>
             <span>NYC</span>
@@ -121,7 +123,7 @@ function Cards({
               its first and last strokes meet the logo's top and baseline, and its right edge meets "NYC". */}
           <h1 className="mt-7 flex items-start justify-between gap-3">
             <Image src="/brand/logo.svg" alt={siteConfig.name} width={86} height={48} loading="eager" className="h-[64px] w-auto sm:h-[76px]" />
-            <span lang="zh-Hans" aria-hidden className="hl-zh-stack flex flex-col font-zh leading-none text-ink">
+            <span lang="zh-Hans" aria-hidden className="ch-zh-stack flex flex-col font-zh leading-none text-ink">
               {[...hero.chineseName].map((ch, i) => (
                 <span key={i} className="block">
                   {ch}
@@ -130,10 +132,15 @@ function Cards({
             </span>
           </h1>
           <p className="mt-5 text-pretty font-sans text-[16px] leading-relaxed text-ink-soft">{hero.tagline.replace("product designer", "designer")}</p>
-          {/* Just shipped: under the tagline on phones, at the card's foot at sm+. */}
-          <div className="mt-4 sm:mt-auto sm:pt-8">
+          <div className="mt-4">
             <ShippedLine sound />
           </div>
+          {/* At the card's foot at sm+; under the shipped line on phones. */}
+          <p className="mt-6 font-sans text-[15px] sm:mt-auto sm:pt-8">
+            <Link href="/about" className="link-underline text-ink">
+              click me! <span aria-hidden className="whitespace-nowrap">☽⋆｡˚( ˘ᵕ˘ )˚｡⋆☾</span>
+            </Link>
+          </p>
         </article>
       </div>
     </section>
@@ -224,8 +231,8 @@ function Dive({ work }: { work: ReactNode }) {
       const hide = U > 0.9 && p < sheetFrom + (0.6 * SHEET_SCREENS) / PIN_SCREENS;
       if (hide !== navHidden) {
         navHidden = hide;
-        if (hide) root.dataset.labNav = "hidden";
-        else delete root.dataset.labNav;
+        if (hide) root.dataset.cardNav = "hidden";
+        else delete root.dataset.cardNav;
       }
 
       // 1 · Unframe.
@@ -314,7 +321,7 @@ function Dive({ work }: { work: ReactNode }) {
       ro.disconnect();
       removeEventListener("resize", remeasure);
       removeEventListener("scroll", kick);
-      delete root.dataset.labNav;
+      delete root.dataset.cardNav;
     };
   }, []);
 
@@ -327,16 +334,16 @@ function Dive({ work }: { work: ReactNode }) {
 
           <div ref={scene} aria-hidden className="pointer-events-none absolute inset-0" style={{ visibility: "hidden", background: SILK }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img ref={back} src={hero.artwork.src} alt="" className={`hl-cloud-back ${img}`} />
+            <img ref={back} src={hero.artwork.src} alt="" className={`ch-cloud-back ${img}`} />
             <div
               ref={haze}
               className="absolute inset-0"
               style={{ opacity: 0, background: `linear-gradient(transparent 45%, ${SILK} 80%)` }}
             />
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img ref={left} src={hero.artwork.src} alt="" className={`hl-cloud-l ${img}`} />
+            <img ref={left} src={hero.artwork.src} alt="" className={`ch-cloud-l ${img}`} />
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img ref={right} src={hero.artwork.src} alt="" className={`hl-cloud-r ${img}`} />
+            <img ref={right} src={hero.artwork.src} alt="" className={`ch-cloud-r ${img}`} />
             {MIST.map((m, i) => (
               <div
                 key={i}

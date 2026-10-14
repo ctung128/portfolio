@@ -2,7 +2,7 @@
 
 import { useEffect, useState, type ReactNode } from "react";
 import { MountainHero } from "./variants";
-import { CardHero } from "./CardDive";
+import { CardHero } from "@/components/home/CardHero";
 import "./hero-lab.css";
 
 type Kind = "mountains" | "card";

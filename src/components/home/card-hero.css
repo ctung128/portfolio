@@ -1,0 +1,87 @@
+/* Homepage hero (CardHero): the painting and the copy as two soft cards,
+   diving into the painting on scroll. The scroll-linked motion lives in
+   CardHero.tsx; this is the load-in, the cards, the cloud masks and the
+   header hide. */
+
+@keyframes ch-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+.ch-rise {
+  animation: ch-rise 1100ms cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0ms) backwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ch-rise {
+    animation: none;
+  }
+}
+
+/* The layout's header slides up out of the way while the painting fills the
+   screen. */
+html[data-card-nav] body > header {
+  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+html[data-card-nav="hidden"] body > header {
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+/* The two cards: soft white, with layered, diffuse shadows; each lifts a
+   little on hover. */
+.ch-soft {
+  background: #fff;
+  box-shadow:
+    0 0 0 1px rgba(37, 37, 37, 0.04),
+    0 1px 2px rgba(37, 37, 37, 0.04),
+    0 10px 24px -12px rgba(37, 37, 37, 0.1),
+    0 40px 80px -40px rgba(37, 37, 37, 0.18);
+  transition:
+    transform 600ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (hover: hover) {
+  .ch-soft:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 0 0 1px rgba(37, 37, 37, 0.04),
+      0 2px 4px rgba(37, 37, 37, 0.04),
+      0 16px 32px -14px rgba(37, 37, 37, 0.12),
+      0 56px 96px -44px rgba(37, 37, 37, 0.22);
+  }
+}
+
+/* The dive: the clouds in front of the immortal, split
+   down the middle, so each half can rush past its own way. */
+/* The back copy keeps only the sky and the immortal, so the clouds are never
+   drawn twice once the halves move. Every fade sits over a band where its
+   partner is fully opaque, so at rest the copies add up to the painting with
+   no see-through seams. */
+.ch-cloud-back {
+  mask-image: linear-gradient(#000 56%, transparent 64%);
+}
+.ch-cloud-l,
+.ch-cloud-r {
+  mask-composite: intersect;
+}
+.ch-cloud-l {
+  mask-image: linear-gradient(transparent 46%, #000 56%), linear-gradient(90deg, #000 52%, transparent 58%);
+}
+.ch-cloud-r {
+  mask-image: linear-gradient(transparent 46%, #000 56%), linear-gradient(90deg, transparent 42%, #000 48%);
+}
+
+/* 童雪玲 beside the logo: three characters whose ink spans
+   the logo's ink (top of the teapot lid to the baseline of "Tung"), so the
+   pair reads as one block. Sizes measured from rendered ink. */
+.ch-zh-stack {
+  font-size: 21.7px;
+  margin-top: -1px;
+}
+@media (min-width: 640px) {
+  .ch-zh-stack {
+    font-size: 26.2px;
+    margin-top: -1.5px;
+  }
+}
