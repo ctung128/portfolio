@@ -9,6 +9,7 @@ Run `node scripts/optimize-media.mjs --write` after adding images/videos: it con
 Running log of notable work done with Claude Code, newest first. Keep entries to a few bullets — this is a changelog, not a task tracker.
 
 ### 2026-10-14
+- Card hero foot: the "click me!" link is gone; in its place a `border-border` hairline and the painting's caption (12px `ink-faint`), on every screen size (bottom of the card from sm up, under the shipped line on phones).
 - "Design philosophy" hidden again (`hidden: true`); /notes opens "My take on AI-second design".
 - Card hero "click me!" link hidden on phones (below sm); shown at the card's foot from sm up.
 
