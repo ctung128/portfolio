@@ -52,7 +52,7 @@ export type Note = {
 export const notes: Note[] = [
   {
     slug: "shipping-with-claude-code",
-    title: "Designing Pebble: AI-second product design",
+    title: "My take on AI-second design",
     date: "2026-10-12",
     paragraphs: [
       "My newest side project is [Pebble](https://learnpebble.vercel.app), a bespoke language learning app I built for my own learning. It transcribes Chinese podcasts, adds pinyin and English on demand, and exports vocab to Anki. Building it end to end in Claude Code sharpened how I think about designing AI products, so here’s my process.",
@@ -283,7 +283,7 @@ export const notes: Note[] = [
   },
   {
     slug: "hiring-junior-designers",
-    title: "Hiring/mentoring junior designers",
+    title: "Hiring junior designers",
     date: "2026-03-30",
     paragraphs: [
       "Before we closed up shop in early 2026, my cofounder Sean and I hired an intern for B’More Designful, our design studio. We ran three rounds: a behavioral interview, a case study presentation, and a live design challenge. We interviewed 25+ candidates in the first round and narrowed it down to about five for the final round.",
