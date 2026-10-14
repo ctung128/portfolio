@@ -1,0 +1,195 @@
+
+/* The scene runs under the header: clear at the very top, then the site's
+   usual translucent cream once the page scrolls. */
+html[data-lab]:not([data-lab-scrolled]) body > header {
+  background: transparent;
+  backdrop-filter: none;
+}
+
+/* ── Shared motion. */
+@keyframes hl-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+@keyframes hl-name {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+}
+@keyframes hl-fade {
+  from {
+    opacity: 0;
+  }
+}
+.hl-rise {
+  animation: hl-rise 1100ms cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0ms) backwards;
+}
+.hl-name {
+  animation: hl-name 1500ms cubic-bezier(0.16, 1, 0.3, 1) 450ms backwards;
+}
+/* Pointer depth: each layer drifts against the pointer by its --depth. */
+.hl-depth {
+  translate: calc(var(--mx, 0) * var(--depth, 0px) * -1) calc(var(--my, 0) * var(--depth, 0px) * -0.6);
+  transition: translate 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+/* Its own compositor layer, so pointer drift never re-rasterises the SVG. */
+.hl-layer {
+  will-change: translate;
+}
+/* Paper grain, multiplied over the ground. */
+.hl-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.42 0 0 0 0 0.38 0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+  opacity: 0.3;
+}
+
+/* The painting's ink alone: silk pushed to white, then multiplied, so only
+   the lines land on the ground. The blend sits on a wrapper (load-in
+   animations make stacking contexts that would isolate it). Night: inverted
+   and screened, so the lines glow. */
+.hl-ink-wrap,
+.hl-ink-svg {
+  mix-blend-mode: multiply;
+}
+.hl-ink,
+.hl-ink-svg image {
+  filter: grayscale(1) contrast(1.7) brightness(1.3);
+}
+.hl-ink {
+  width: 100%;
+}
+.hl-feather {
+  mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent), linear-gradient(transparent, #000 14%, #000 86%, transparent);
+  mask-composite: intersect;
+}
+.hl-ink-vignette {
+  mask-image: radial-gradient(closest-side, #000 55%, transparent);
+}
+.hl-moonlit {
+  background: #6e7aae;
+  mix-blend-mode: multiply;
+  transition: opacity 900ms ease;
+}
+
+/* ── Text mountains. */
+/* A soft pool of ground behind the name and facts, so the words of the
+   mountains never run under them. */
+@media (min-width: 640px) and (min-aspect-ratio: 21/20) {
+.hl-plate::before {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  z-index: -1;
+  background: radial-gradient(closest-side, var(--s-ground) 65%, transparent);
+}
+}
+.hl-ridge {
+  --s-ground: #efede7;
+  --s-ink: #1c1b19;
+  --s-soft: #5d5b55;
+  --s-moon: #1c1b19;
+}
+@keyframes hl-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+.hl-ridge-line {
+  stroke-dasharray: 1;
+  animation: hl-draw 2400ms cubic-bezier(0.5, 0, 0.2, 1) var(--d, 0ms) backwards;
+}
+.hl-ridge-text {
+  animation: hl-fade 1400ms ease var(--d, 0ms) backwards;
+}
+
+/* ── Transitions into Selected work. Scroll sets each layer's transform and
+   opacity directly (MountainHero); these are transform/opacity only. */
+.hl-L {
+  position: absolute;
+  inset: -12px;
+  will-change: transform, opacity;
+}
+.hl-L-text {
+  will-change: transform, opacity;
+}
+/* 2 · Into the moon: the header steps aside while the moon fills the view. */
+html body > header {
+  transition:
+    transform 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 300ms ease;
+}
+html[data-lab-nav="hidden"] body > header {
+  transform: translateY(-100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hl-rise,
+  .hl-name,
+  .hl-ridge-line,
+  .hl-ridge-text {
+    animation: none;
+  }
+  .hl-depth {
+    translate: none;
+  }
+}
+
+/* ── Card hero: soft white cards with layered, diffuse shadows. */
+.hl-soft {
+  background: #fff;
+  box-shadow:
+    0 0 0 1px rgba(37, 37, 37, 0.04),
+    0 1px 2px rgba(37, 37, 37, 0.04),
+    0 10px 24px -12px rgba(37, 37, 37, 0.1),
+    0 40px 80px -40px rgba(37, 37, 37, 0.18);
+  transition:
+    transform 600ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (hover: hover) {
+  .hl-soft:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 0 0 1px rgba(37, 37, 37, 0.04),
+      0 2px 4px rgba(37, 37, 37, 0.04),
+      0 16px 32px -14px rgba(37, 37, 37, 0.12),
+      0 56px 96px -44px rgba(37, 37, 37, 0.22);
+  }
+}
+
+/* ── Card hero dive (CardDive): the clouds in front of the immortal, split
+   down the middle, so each half can rush past its own way. */
+/* The back copy keeps only the sky and the immortal, so the clouds are never
+   drawn twice once the halves move. Every fade sits over a band where its
+   partner is fully opaque, so at rest the copies add up to the painting with
+   no see-through seams. */
+.hl-cloud-back {
+  mask-image: linear-gradient(#000 56%, transparent 64%);
+}
+.hl-cloud-l,
+.hl-cloud-r {
+  mask-composite: intersect;
+}
+.hl-cloud-l {
+  mask-image: linear-gradient(transparent 46%, #000 56%), linear-gradient(90deg, #000 52%, transparent 58%);
+}
+.hl-cloud-r {
+  mask-image: linear-gradient(transparent 46%, #000 56%), linear-gradient(90deg, transparent 42%, #000 48%);
+}
+
+/* 童雪玲 beside the logo in the Card hero: three characters whose ink spans
+   the logo's ink (top of the teapot lid to the baseline of "Tung"), so the
+   pair reads as one block. Sizes measured from rendered ink. */
+.hl-zh-stack {
+  font-size: 21.7px;
+  margin-top: -1px;
+}
+@media (min-width: 640px) {
+  .hl-zh-stack {
+    font-size: 26.2px;
+    margin-top: -1.5px;
+  }
+}
