@@ -13,7 +13,8 @@ import { NOTE_AUDIO_PLAY } from "@/components/notes/NoteAudio";
  */
 
 const TRACKS = [
-  "02-cash-shop",
+  "01-cash-shop",
+  "02-maplestory-bgm",
   "03-merry-christmas-mr-lawrence",
   "04-marginalia-163",
   "05-reflections",
