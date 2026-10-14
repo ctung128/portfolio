@@ -13,7 +13,6 @@ import { NOTE_AUDIO_PLAY } from "@/components/notes/NoteAudio";
  */
 
 const TRACKS = [
-  "01-summer-cicadas",
   "02-cash-shop",
   "03-merry-christmas-mr-lawrence",
   "04-marginalia-163",
@@ -28,7 +27,7 @@ const VOLUME = 0.6;
 const FADE_MS = 600;
 /** Tracks overlap this long: the next starts before the current one ends,
  * one fading out as the other fades in. (iOS ignores volume, so there the
- * fades baked into the ambient clips carry the transition.) */
+ * two just overlap at full volume for those seconds.) */
 const XFADE_S = 3;
 
 function NoteIcon({ playing }: { playing: boolean }) {
