@@ -2,6 +2,7 @@
 
 import { Caveat, Long_Cang } from "next/font/google";
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { TWINKLE, playSfx } from "@/lib/sfx";
 import { Bird, Dots, Flower, INK, Leaf } from "./storybookDoodles";
 
 const caveat = Caveat({ subsets: ["latin"], weight: "500", preload: false });
@@ -9,6 +10,8 @@ const longCang = Long_Cang({ subsets: ["latin"], weight: "400", preload: false }
 
 /** How long she has to stay fully on screen before saying hello, so a reader scrolling past sees it. */
 const HELLO_DWELL_MS = 350;
+/** The twinkle rings ~1.8s; brushing in and out again sooner doesn't restart it on top of itself. */
+const TWINKLE_GAP_MS = 1200;
 
 /**
  * The doodles that bloom around her: a symmetric halo on one ellipse around her head and
@@ -55,6 +58,7 @@ export function StickerFigure({
   const ref = useRef<HTMLDivElement>(null);
   const [entered, setEntered] = useState(false);
   const [tapped, setTapped] = useState(false);
+  const lastTwinkle = useRef(0);
 
   // Hello once she's entirely on screen and stays there a moment, not as soon as the page loads.
   useEffect(() => {
@@ -80,7 +84,15 @@ export function StickerFigure({
     };
   }, []);
 
+  const twinkle = () => {
+    const now = performance.now();
+    if (now - lastTwinkle.current < TWINKLE_GAP_MS) return;
+    lastTwinkle.current = now;
+    playSfx(TWINKLE.src, TWINKLE.volume).catch(() => {});
+  };
+
   const tap = () => {
+    twinkle();
     setTapped(true);
     window.setTimeout(() => setTapped(false), 1400);
   };
@@ -92,6 +104,7 @@ export function StickerFigure({
       data-entered={entered || undefined}
       data-active={tapped || undefined}
       onClick={tap}
+      onPointerEnter={(e) => e.pointerType === "mouse" && twinkle()}
     >
       <div className="note-sticker-doodles" aria-hidden="true">
         {BLOOM.map((d, i) => (

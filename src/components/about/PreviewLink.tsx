@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import { siteConfig } from "@/content/site";
 import { ARROW_NE } from "@/lib/glyphs";
+import { POP, playSfx } from "@/lib/sfx";
 
 const WIDTH = 280;
 /** Screenshot 16:10 inside a 6px print border, plus the caption row. */
@@ -86,7 +87,11 @@ export function PreviewLink({
         ref={link}
         href={href}
         className={`link-underline ${className}`}
-        onPointerEnter={(e) => e.pointerType === "mouse" && show()}
+        onPointerEnter={(e) => {
+          if (e.pointerType !== "mouse") return;
+          show();
+          playSfx(POP.src, POP.volume).catch(() => {});
+        }}
         onPointerLeave={hide}
         onFocus={(e) => e.currentTarget.matches(":focus-visible") && show()}
         onBlur={hide}
