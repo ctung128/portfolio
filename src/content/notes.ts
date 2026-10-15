@@ -59,7 +59,7 @@ export const notes: Note[] = [
     paragraphs: [
       "At the end of the day, people just want to make cool things with their friends. That’s one of the reasons I like startups.",
       "I’ve worked at companies early enough that there was no HR yet. At that size, they're kind of like members-only social clubs where you also happen to be building a business together. My design studio was just three of us: me, my cofounder, and an awesome design intern. When a team is that small, friendability matters as much as what you can do. The best people I’ve worked with were hungry and curious, but also just fun to be around.",
-      "In *The Founder’s Dilemmas*, Noam Wasserman writes that the strongest founding teams are people who have worked together before and became friends through that work, so trust and fit are filtered from day one. Rockefeller said it best: “A friendship built on business can be glorious, while a business built on friendship can be murder.” My cofounder and I met at a startup, and it’s the four years and three teams together since then that made us friends. I’d say we’re on the glorious side.",
+      "In *The Founder’s Dilemmas*, Noam Wasserman writes that the strongest founding teams are people who have worked together before and became friends through that work, so the team is already filtered for trust and fit from day one. Rockefeller said it best: “A friendship built on business can be glorious, while a business built on friendship can be murder.” My cofounder and I met at a startup, and it’s the four years and three teams together since then that made us friends. I’d say we’re on the glorious side.",
     ],
   },
   {
