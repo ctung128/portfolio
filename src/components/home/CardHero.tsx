@@ -137,7 +137,7 @@ function Cards({
             </span>
           </h1>
           <div className="mt-5 flex flex-col gap-1.5">
-            <p className="text-pretty font-sans text-[16px] leading-relaxed text-ink-soft">{hero.tagline.replace("product designer", "designer")}</p>
+            <p className="text-pretty font-sans text-[16px] leading-relaxed text-ink-soft">{hero.tagline}</p>
             <ShippedLine sound />
           </div>
           {/* The painting's caption at the card's foot, under a hairline; on

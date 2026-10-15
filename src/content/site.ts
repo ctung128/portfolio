@@ -17,7 +17,7 @@ export const hero = {
   /** Set vertically beside the name in Huiwen Mincho. Changing it means
    * rebuilding the font subset (src/fonts/LICENSE-huiwen-mincho.txt). */
   chineseName: "童雪玲",
-  tagline: "AI-native product designer with a high bar for craft.",
+  tagline: "Product-minded designer with a high bar for craft.",
   /** "Just shipped {name} {relative date}". The date is counted in the
    * visitor's browser, so it stays current without a rebuild. */
   shipped: { name: "Pebble", href: "https://learnpebble.vercel.app/", preview: "/about/previews/pebble.webp", date: "2026-10-06" },

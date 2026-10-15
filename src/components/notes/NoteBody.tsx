@@ -205,9 +205,9 @@ function Figure({ figure: f, fill = false }: { figure: NoteFigure; fill?: boolea
   return <LazyVideo src={f.video} poster={f.poster} aria-label={f.alt} loop muted playsInline className={`${frame} w-full`} />;
 }
 
-/** Text with [words](https://…) turned into inline links that open in a new tab, and **words** set in ink. */
+/** Text with [words](https://…) turned into inline links that open in a new tab, **words** set in ink, and *words* in italics. */
 function Linked({ text }: { text: string }) {
-  return text.split(/(\[[^\]]+\]\([^)]+\)|\*\*[^*]+\*\*)/).map((part, i) => {
+  return text.split(/(\[[^\]]+\]\([^)]+\)|\*\*[^*]+\*\*|\*[^*]+\*)/).map((part, i) => {
     const m = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
     if (m) {
       return (
@@ -217,12 +217,14 @@ function Linked({ text }: { text: string }) {
       );
     }
     const b = part.match(/^\*\*([^*]+)\*\*$/);
-    return b ? (
-      <span key={i} className="text-ink">
-        {b[1]}
-      </span>
-    ) : (
-      part
-    );
+    if (b) {
+      return (
+        <span key={i} className="text-ink">
+          {b[1]}
+        </span>
+      );
+    }
+    const it = part.match(/^\*([^*]+)\*$/);
+    return it ? <em key={i}>{it[1]}</em> : part;
   });
 }
